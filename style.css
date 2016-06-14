@@ -117,3 +117,6 @@ dd {
   unicode-bidi: embed;
   white-space: pre;
 }
+  .chords_title {}
+  .chords_subtitle {}
+  .chords_year {}
