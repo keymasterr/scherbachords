@@ -24,13 +24,13 @@ function activateChords(thisObj) {
   if (thisObj) {
     currTrack = thisObj.attr('href').substring(1);
   }
-  else if (document.location.hash) {
+  else if (document.location.hash.length > 2) {
     currTrack = document.location.hash.substring(1);
   }
   else {
     return false;
   }
-  var currChords = $('.display .chords_text[track-id="' + currTrack +'"]').clone();
+  var currChords = $('.display .chords_text[chords-id="' + currTrack +'"]').clone();
   $('.modal').empty().html(currChords);
   $('.modal').modal().open();
   $.modal({
