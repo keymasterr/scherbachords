@@ -31,7 +31,7 @@ function activateChords(thisObj) {
     $.modal().close();
     return false;
   }
-  var currChords = $('.display .chords_text[chords-id="' + currTrack +'"]').clone();
+  var currChords = $('.display .chords_text[data-chords-id="' + currTrack +'"]').clone();
   $('.modal').empty().html(currChords);
   $('.modal').modal().open();
   $.modal({
