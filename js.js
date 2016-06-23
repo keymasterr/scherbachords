@@ -1,11 +1,11 @@
 $(document).ready(function() {
 
   doubleHover('a', 'hover');
-  activateChords();
 
-  $('.content dd a').click(function() {
-    activateChords( $(this) );
-  });
+  $(window).hashchange( function(){
+    activateChords();
+  })
+  $(window).hashchange();
 });
 
 
@@ -28,6 +28,7 @@ function activateChords(thisObj) {
     currTrack = document.location.hash.substring(1);
   }
   else {
+    $.modal().close();
     return false;
   }
   var currChords = $('.display .chords_text[chords-id="' + currTrack +'"]').clone();
@@ -43,6 +44,6 @@ function activateChords(thisObj) {
 
 var clearAddress = function() {
   // document.location.hash = "";
-  history.pushState('', '', window.location.href.split('#')[0]);
   currTrack = "";
+  history.pushState('', '', window.location.href.split('#')[0]);
 };
