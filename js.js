@@ -28,7 +28,7 @@ function activateChords(thisObj) {
   if (thisObj) {
     currTrack = thisObj.attr('href').substring(1);
   }
-  else if (document.location.hash.length > 2) {
+  else if (document.location.hash.length > 2 && document.location.hash != '#top') {
     currTrack = document.location.hash.substring(1);
   }
   else {
