@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+  $('dl.content-contents dt a').each(function(){
+    $('.abc_index').append('<a href="#' + $(this).attr('name') + '">' + $(this).text() + '</a>');
+  });
+
   doubleHover('a', 'hover');
 
   $(window).hashchange( function(){
