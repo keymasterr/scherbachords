@@ -1,5 +1,6 @@
 body {
   padding: 20px 40px 60px 30px;
+  min-width: 730px;
   margin: 0;
   font-size: 12px;
   line-height: 1.5;
@@ -51,11 +52,11 @@ a:hover, a.hover {
   .content dd ul {
     padding: 0;
     margin: 0;
-    width: 74em;
+    max-width: 75em;
     -webkit-column-gap: 2em;
     -webkit-column-count: 2;
     -webkit-column-width: 36em;
-    -webkit-column-break-inside:avoid;
+    -webkit-column-break-inside: avoid;
   }
   .content dd ul li {
     padding: 0 0 .375em;
