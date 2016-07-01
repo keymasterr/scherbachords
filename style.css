@@ -53,10 +53,19 @@ a:hover, a.hover {
     padding: 0;
     margin: 0;
     max-width: 75em;
+
     -webkit-column-gap: 2em;
-    -webkit-column-count: 2;
+    -moz-column-gap: 2em;
+    -o-column-gap: 2em;
+    column-gap: 2em;
     -webkit-column-width: 36em;
+    -moz-column-width: 36em;
+    -o-column-width: 36em;
+    column-width: 36em;
     -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    -o-column-break-inside: avoid;
+    column-break-inside: avoid;
   }
   .content dd ul li {
     padding: 0 0 .375em;

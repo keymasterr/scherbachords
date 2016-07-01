@@ -1,23 +1,27 @@
 $(document).ready(function() {
 
-  $('dl.content-contents dt a').each(function(){
-    $('.abc_index').append('<a href="#' + $(this).attr('name') + '">' + $(this).text() + '</a>');
-  });
-
   doubleHover('a', 'hover');
+
+  $.get('chords.xml', {},
+    xmlOnLoad
+  );
 
   $(window).hashchange( function(){
     activateChords();
   })
   $(window).hashchange();
-
-  goToLetter();
 });
+
+function abcIndex() {
+  $('dl.content-contents dt a').each(function(){
+    $('.abc_index').append('<a href="#' + $(this).attr('name') + '">' + $(this).text() + '</a>');
+  });
+};
 
 function goToLetter() {
   var a = {
     49  : 'top',
-    70  : 'top',
+    70  : 'a',
     188 : 'b',
     68  : 'v',
     85  : 'g',
@@ -75,21 +79,93 @@ var doubleHover = function(selector, hoverClass) {
   });
 };
 
-var currTrack = "";
+var currTrackId = "";
+
+function trimSpecial(k) {
+  if (k.match(/^[0-9a-zA-Zа-яёА-ЯЁ]/)) {
+    return k;
+  } else if (k) {
+    k = k.substring(1);
+    return trimSpecial(k);
+  } else {
+    return '';
+  };
+};
+
+var chords;
+var contAbc = [];
+var contYear = [];
+function xmlOnLoad( xmlData, strStatus ){
+
+  chords = $( xmlData );
+  var track = chords.find( 'track' );
+
+  track.each(function(){
+    var id = $(this).attr('id');
+    var title = $(this).find('title').text();
+    var year = $(this).find('year').text();
+    var titleAlt1 = $(this).find('title-alt1').text();
+    var titleAlt2 = $(this).find('title-alt2').text();
+
+    contAbc.push('<li><a href="#' +id+ '" data-year="' +year+ '">' +title+ '</a></li>');
+    if (titleAlt1) {
+      contAbc.push('<li><a href="#' +id+ '" data-year="' +year+ '">' +titleAlt1+ ' (' +title+ ')</a></li>');
+    };
+    if (titleAlt2) {
+      contAbc.push('<li><a href="#' +id+ '" data-year="' +year+ '">' +titleAlt2+ ' (' +title+ ')</a></li>');
+    };
+  });
+
+  contAbc.sort(function(a, b) {
+    a1 = trimSpecial($(a).text());
+    b1 = trimSpecial($(b).text());
+
+    return a1.toUpperCase().localeCompare(b1.toUpperCase());
+  });
+  var contDds = [];
+  var prev_char = '';
+
+  $.each(contAbc, function(idx, itm) {
+    var cur_char = trimSpecial($(itm).text()).toUpperCase()[0]
+    if (cur_char.match(/^[0-9]/)) {
+      cur_char = '0…9';
+    } else if (cur_char.match(/^[a-zA-Z]/)) {
+      cur_char = 'A…Z';
+    };
+
+    if (prev_char == cur_char){
+      contDds.push(itm)
+    } else {
+      prev_char = cur_char;
+      if ( prev_char != ''){
+        contDds.push('</ul></dd>');
+      }
+      contDds.push('<dt><a>' +cur_char+ '</a></dt>');
+      contDds.push('<dd><ul>')
+      contDds.push(itm);
+    }
+  })
+
+  var res = contDds.join('')
+  $('.content-contents').append(res);
+
+  abcIndex();
+  goToLetter();
+};
 
 function activateChords(thisObj) {
   if (thisObj) {
-    currTrack = thisObj.attr('href').substring(1);
+    currTrackId = thisObj.attr('href').substring(1);
   }
   else if (document.location.hash.length > 3 && document.location.hash != '#top') {
-    currTrack = document.location.hash.substring(1);
+    currTrackId = document.location.hash.substring(1);
   }
   else {
     $.modal().close();
     return false;
   }
-  var currChords = $('.display .chords_text[data-chords-id="' + currTrack +'"]').clone();
-  $('.modal').empty().html(currChords);
+  var currTrackText = '<div class="chords_text">' + chords.find('track[id="' +currTrackId+'"]').find('text').text() + '</div>';
+  $('.modal').empty().html(currTrackText);
   $('.modal').modal().open();
   $.modal({
     onClose: function(){
@@ -101,6 +177,6 @@ function activateChords(thisObj) {
 
 var clearAddress = function() {
   // document.location.hash = "";
-  currTrack = "";
+  currTrackId = "";
   history.pushState('', '', window.location.href.split('#')[0]);
 };
