@@ -96,8 +96,16 @@ a:hover, a.hover {
 
 .page_title { margin-bottom: 0; }
 .abc_index {
-  margin-left: -.25em;
   margin-bottom: 3em;
+}
+.abc_index ul {
+  padding: 0;
+  margin: 0;
+  margin-left: -.25em;
+}
+.abc_index li {
+  display: inline;
+  list-style-type: none;
 }
 .abc_index a, .abc_index a:visited {
   font-weight: bold;
@@ -112,8 +120,11 @@ dt { margin-top: 3em; }
     font-weight: bold;
     text-decoration: none;
     color: #ccc;
+    width: 2em;
     padding: .5em;
     margin: -.5em;
+    margin-left: -.7em;
+    text-align: right;
     outline: none;
   }
   dt > a:hover { color: #f87; }
@@ -130,3 +141,9 @@ dd {
   .chords_title {}
   .chords_subtitle {}
   .chords_year {}
+
+.sorting_toggler {
+  color: #aaa;
+  cursor: pointer;
+  border-bottom: 1px dashed rgba(170,170,170,.35);
+}
