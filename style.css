@@ -11,14 +11,14 @@ body {
 a {
   color: #3641cc;
   text-decoration: none;
-  transition: color 0.12s ease-out, background 0.12s ease-out, box-shadow 0.12s ease-out;
+  transition: color 0.12s ease-out, border-color 0.12s ease-out;
 }
 a:visited {
   color: #743787;
 }
 a:hover, a.hover {
   color: #c83700;
-  transition: color 0s, background 0s, box-shadow 0s;
+  transition: color 0s, border-color 0s;
 }
 
 .modal {
@@ -143,7 +143,17 @@ dd {
   .chords_year {}
 
 .sorting_toggler {
-  color: #aaa;
-  cursor: pointer;
-  border-bottom: 1px dashed rgba(170,170,170,.35);
+  font-weight: bold;
 }
+  .sorting_toggler span.active {
+    font-weight: normal;
+    color: #3641cc;
+    border-bottom: 1px dashed rgba(54, 65, 204, 0.35);
+    cursor: pointer;
+    transition: color 0.12s ease-out, border-color 0.12s ease-out;
+  }
+  .sorting_toggler span.active:hover {
+    color: #c83700;
+    border-bottom-color: rgba(200, 55, 0, 0.35);
+    transition: color 0s, border-color 0s;
+  }

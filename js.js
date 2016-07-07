@@ -127,7 +127,7 @@ function chordsCreation() {
     });
 
     sortedByYearHtml = sortedByYear.join('');
-    $('.abc_index').append('<span class="sorting_toggler"></span>');
+    $('.abc_index').append('<span class="sorting_toggler by-abc"><span class="active">по алфавиту</span> / <span>по годам</span></span>');
     $('.sorting_toggler').click( sortToggle );
     prevCharYear = '';
 
@@ -144,13 +144,13 @@ function chordsCreation() {
 };
 
 function sortToggle() {
-    if ( $('.sorting_toggler').text() == 'по годам') {
+    if ( $('.sorting_toggler .active').text() == 'по годам' ) {
+        $('.sorting_toggler span').toggleClass('active');
         $('.content_contents').empty().append(sortedByYearHtml);
-        $('.sorting_toggler').text('по алфавиту');
         Cookies.set('sorting','year');
     } else {
+        $('.sorting_toggler span').toggleClass('active');
         $('.content_contents').empty().append(sortedByAbcHtml);
-        $('.sorting_toggler').text('по годам');
         Cookies.set('sorting','abc');
     }
 };
