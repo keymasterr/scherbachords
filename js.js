@@ -23,6 +23,8 @@ function activateChords(thisObj) {
     var currTrackText = '<div class="chords_text">' + chords.find('track[id="' +currTrackId+'"]').find('text').text() + '</div>';
     $('.modal').empty().html(currTrackText);
     $('.modal').modal().open();
+    $(document).prop('title',  chords.find('track[id="' +currTrackId+'"]').find('title').text() + ' — Щербаккорды');
+
     $.modal({
         onClose: function(){
            clearAddress();
@@ -34,6 +36,7 @@ function activateChords(thisObj) {
 var clearAddress = function() {
   // document.location.hash = "";
   currTrackId = "";
+  $(document).prop('title', 'Щербаккорды');
   history.pushState('', '', window.location.href.split('#')[0]);
 };
 
@@ -127,7 +130,7 @@ function chordsCreation() {
     });
 
     sortedByYearHtml = sortedByYear.join('');
-    $('.abc_index').append('<span class="sorting_toggler by-abc"><span class="active">по алфавиту</span> / <span>по годам</span></span>');
+    $('.page_title').append('<span class="sorting_toggler by-abc"><span class="active">по алфавиту</span> / <span>по годам</span></span>');
     $('.sorting_toggler').click( sortToggle );
     prevCharYear = '';
 

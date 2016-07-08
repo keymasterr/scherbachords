@@ -126,6 +126,11 @@ dt { margin-top: 3em; }
     margin-left: -.7em;
     text-align: right;
     outline: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
   }
   dt > a:hover { color: #f87; }
 
@@ -143,14 +148,30 @@ dd {
   .chords_year {}
 
 .sorting_toggler {
-  font-weight: bold;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
+  .sorting_toggler span {
+    -webkit-user-select: auto;
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+    -o-user-select: auto;
+    user-select: auto;
+  }
   .sorting_toggler span.active {
     font-weight: normal;
     color: #3641cc;
-    border-bottom: 1px dashed rgba(54, 65, 204, 0.35);
+    border-bottom: 2px dashed rgba(54, 65, 204, 0.35);
     cursor: pointer;
     transition: color 0.12s ease-out, border-color 0.12s ease-out;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
   }
   .sorting_toggler span.active:hover {
     color: #c83700;
