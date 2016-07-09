@@ -57,12 +57,12 @@ function chordsCreation() {
         var titleAlt1 = $(this).find('title-alt1').text();
         var titleAlt2 = $(this).find('title-alt2').text();
 
-        byAbc.push('<li><a href="#' +id+ '" data-year="' +year+ '">' +title+ '</a></li>');
+        byAbc.push('<li><a href="#' +id+ '" data-year="' +year+ '">' +firstQuote(title)+ '</a></li>');
         if (titleAlt1) {
-            byAbc.push('<li><a href="#' +id+ '" data-year="' +year+ '">' +titleAlt1+ ' (' +title+ ')</a></li>');
+            byAbc.push('<li><a href="#' +id+ '" data-year="' +year+ '">' +firstQuote(titleAlt1)+ ' (' +title+ ')</a></li>');
         };
         if (titleAlt2) {
-            byAbc.push('<li><a href="#' +id+ '" data-year="' +year+ '">' +titleAlt2+ ' (' +title+ ')</a></li>');
+            byAbc.push('<li><a href="#' +id+ '" data-year="' +year+ '">' +firstQuote(titleAlt2)+ ' (' +title+ ')</a></li>');
         };
 
         var match = year.match(/\d{4}/g);
@@ -145,6 +145,14 @@ function chordsCreation() {
       activateChords();
     })
 };
+
+// Hanging quote mark if it is first character
+function firstQuote(text) {
+    if (text[0] == '«') {
+        text = '<span style="margin-left:-.6em;">«</span>' + text.substring(1);
+    };
+    return text;
+}
 
 function sortToggle() {
     if ( $('.sorting_toggler .active').text() == 'по годам' ) {
