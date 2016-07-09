@@ -131,7 +131,11 @@ function chordsCreation() {
 
     sortedByYearHtml = sortedByYear.join('');
     $('.page_title').append('<span class="sorting_toggler by-abc"><span class="active">по алфавиту</span> / <span>по годам</span></span>');
-    $('.sorting_toggler').click( sortToggle );
+    $('.sorting_toggler span').click(function() {
+        if ($(this).hasClass('active')) {
+            sortToggle();
+        }
+    });
     prevCharYear = '';
 
     $('body').append('<div class="modal" tabindex="1"></div>');
