@@ -39,6 +39,9 @@ a:hover, a.hover {
     opacity: 1;
     /*transition: all .5s;*/
   }
+  .themodal-overlay {
+    backdrop-filter: blur(4px);
+  }
 
 .content {
   position: relative;
@@ -118,6 +121,9 @@ a:hover, a.hover {
 }
 .abc_index a:hover { color: #f87; }
 dl.content_contents {}
+dl.content_contents li a {
+  padding: 5px 0;
+}
 
 dt {}
   dt > a, dt > a:visited {
@@ -187,6 +193,7 @@ dd {
 /* TESTING */
   body { position: relative; }
   .wip-toggle {
+    display: block !important;
     position: fixed;
     right: 10px;
     top: 10px;
@@ -276,5 +283,5 @@ dd {
     background-position: center;
     background-repeat: repeat-y;
   }
-  .wip-toggle:checked + .wip-guides { display: block; }
+  .wip-toggle:checked + .wip-guides { display: block !important; }
 /* TESTING END */

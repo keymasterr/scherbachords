@@ -1,6 +1,6 @@
 $(document).ready(function() {
     chordsCreation();
-    doubleHover();
+    doubleHover('a','hover');
     $(window).hashchange();
 });
 
@@ -21,8 +21,7 @@ function activateChords(thisObj) {
         return false;
     }
     var currTrackText = '<div class="chords_text">' + chords.find('track[id="' +currTrackId+'"]').find('text').text() + '</div>';
-    $('.modal').empty().html(currTrackText);
-    $('.modal').modal().open();
+    $('.modal').empty().html(currTrackText).modal().open();
     $(document).prop('title',  chords.find('track[id="' +currTrackId+'"]').find('title').text() + ' — Щербаккорды');
 
     $.modal({
