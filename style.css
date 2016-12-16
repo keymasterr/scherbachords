@@ -149,7 +149,7 @@ dd {
   margin-left: 44px;
   margin-bottom: 24px;
 }
-.chords_text {
+.chords_text, .subtitle {
   display: block;
   unicode-bidi: embed;
   white-space: pre;

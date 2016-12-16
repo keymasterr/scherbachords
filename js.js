@@ -20,14 +20,19 @@ function activateChords(thisObj) {
         $.modal().close();
         return false;
     }
-    var currTrackText = '<div class="chords_text">' + chords.find('track[id="' +currTrackId+'"]').find('text').text() + '</div>';
-    $('.modal').empty().html(currTrackText).modal().open();
+    var currChords = chords.find('track[id="' +currTrackId+'"]');
+
+    var currTrackHeader = '<div class="chords_header"><h2>' +currChords.find('title').text()+ '</h2><h3>' +currChords.find('title-alt2').text()+ '</h3><h4>' +currChords.find('year').text()+ '</h4><p class="subtitle">' +currChords.find('subtitle').text()+ '</p></div>';
+    var currTrackText = '<div class="chords_text">' + currChords.find('text').text() + '</div>';
+    var currTrack = currTrackHeader + currTrackText;
+
+    $('.modal').empty().html(currTrack).modal().open();
     $(document).prop('title',  chords.find('track[id="' +currTrackId+'"]').find('title').text() + ' — Щербаккорды');
 
     $.modal({
         onClose: function(){
-           clearAddress();
-      }
+            clearAddress();
+        }
     });
     $('.modal').focus();
 };
@@ -199,9 +204,9 @@ function trimSpecial(t) {
 
 // «doubleHover» by artpolikarpov
 var doubleHover = function(selector, hoverClass) {
-  $(document).on('mouseover mouseout', selector, function(e) {
-    $(selector)
-      .filter('[href="' + $(this).attr('href') + '"]')
-      .toggleClass(hoverClass, e.type == 'mouseover');
-  });
+    $(document).on('mouseover mouseout', selector, function(e) {
+        $(selector)
+            .filter('[href="' + $(this).attr('href') + '"]')
+            .toggleClass(hoverClass, e.type == 'mouseover');
+    });
 };

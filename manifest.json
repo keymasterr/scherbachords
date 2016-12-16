@@ -1,0 +1,12 @@
+{
+  "name": "Щербаккорды",
+  "icons": [
+    {
+      "src": "\/apple-touch-icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image\/png"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "display": "standalone"
+}
