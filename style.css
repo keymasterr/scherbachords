@@ -57,10 +57,10 @@ a:hover, a.hover {
     margin: 0;
     max-width: 75em;
 
-    -webkit-column-gap: 2em;
-    -moz-column-gap: 2em;
-    -o-column-gap: 2em;
-    column-gap: 2em;
+    -webkit-column-gap: 3em;
+    -moz-column-gap: 3em;
+    -o-column-gap: 3em;
+    column-gap: 3em;
     -webkit-column-width: 36em;
     -moz-column-width: 36em;
     -o-column-width: 36em;
@@ -188,6 +188,41 @@ dd {
     color: #c83700;
     border-bottom-color: rgba(200, 55, 0, 0.35);
     transition: color 0s, border-color 0s;
+  }
+
+.track_starred-star {
+  display: inline-block;
+  font-size: .8em;
+  width: 1em;
+  padding-right: .35em;
+  margin-left: -1.35em;
+  text-align: right;
+  cursor: pointer;
+  color: #ccc;
+  vertical-align: top;
+
+  opacity: 0;
+  transition: color 0.12s ease-out, opacity 0.12s ease-out;
+}
+  h2 > .track_starred-star {
+    opacity: .35;
+  }
+  .track_starred > .track_starred-star {
+    opacity: 1;
+    color: #000;
+  }
+  .track_starred > .track_starred-star:hover {
+    color: #c83700;
+  }
+  a:hover > .track_starred-star, h2:hover > .track_starred-star {
+    /*opacity: 1;*/
+    transition: color 0s, opacity 0s;
+  }
+  h2:hover > .track_starred-star {
+    opacity: 1;
+  }
+  .track_starred-star:hover {
+    color: #f87;
   }
 
 /* TESTING */

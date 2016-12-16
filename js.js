@@ -9,6 +9,8 @@ var sortedByAbcHtml;
 var sortedByYearHtml;
 var currTrackId;
 
+var starray;
+
 function activateChords(thisObj) {
     if (thisObj) {
         currTrackId = thisObj.attr('href').substring(1);
@@ -22,16 +24,19 @@ function activateChords(thisObj) {
     }
     var currChords = chords.find('track[id="' +currTrackId+'"]');
 
-    var currTrackHeader = '<div class="chords_header"><h2>' +currChords.find('title').text()+ '</h2><h3>' +currChords.find('title-alt2').text()+ '</h3><h4>' +currChords.find('year').text()+ '</h4><p class="subtitle">' +currChords.find('subtitle').text()+ '</p></div>';
+    var currTrackHeader = '<div class="chords_header"><h2 href="#' +currTrackId+ '"><span class="track_starred-star">&#9733;</span>' +currChords.find('title').text()+ '</h2><h3>' +currChords.find('title-alt2').text()+ '</h3><h4>' +currChords.find('year').text()+ '</h4><p class="subtitle">' +currChords.find('subtitle').text()+ '</p></div>';
     var currTrackText = '<div class="chords_text">' + currChords.find('text').text() + '</div>';
     var currTrack = currTrackHeader + currTrackText;
 
     $('.modal').empty().html(currTrack).modal().open();
     $(document).prop('title',  chords.find('track[id="' +currTrackId+'"]').find('title').text() + ' — Щербаккорды');
 
+    setStarred();
+
     $.modal({
-        onClose: function(){
+        onClose: function() {
             clearAddress();
+            setStarred();
         }
     });
     $('.modal').focus();
@@ -54,7 +59,7 @@ function chordsCreation() {
     var prevCharAbc  = '';
     var prevCharYear = '';
 
-    track.each(function(){
+    track.each(function() {
         var id        = $(this).attr('id');
         var title     = $(this).find('title').text();
         var year      = $(this).find('year').text();
@@ -96,11 +101,11 @@ function chordsCreation() {
             curChar = 'A…Z';
         };
 
-        if (prevCharAbc == curChar){
+        if (prevCharAbc == curChar) {
             sortedByAbc.push(itm)
         } else {
             prevCharAbc = curChar;
-            if ( prevCharAbc != ''){
+            if ( prevCharAbc != '') {
                 sortedByAbc.push('</ul></dd>');
             }
             sortedByAbc.push('<dt><a>' +curChar+ '</a></dt>');
@@ -120,11 +125,11 @@ function chordsCreation() {
 
     $.each(byYear, function(idx, itm) {
         var curChar = trimSpecial($('a', itm).data('yearSort'));
-        if (prevCharYear == curChar){
+        if (prevCharYear == curChar) {
             sortedByYear.push(itm)
         } else {
             prevCharYear = curChar;
-            if ( prevCharYear != ''){
+            if ( prevCharYear != '') {
                 sortedByYear.push('</ul></dd>');
             }
             sortedByYear.push('<dt><a>' +$('a', itm).data('yearSort')+ '</a></dt>');
@@ -148,10 +153,40 @@ function chordsCreation() {
     };
     sortToggle();
 
+    setStarred();
 
-    $(window).hashchange( function(){
+
+    $(window).hashchange( function() {
       activateChords();
     })
+};
+
+function setStarred() {
+    if (typeof starray === 'undefined') {
+        starray = [];
+        $('.content_contents li a').prepend('<span class="track_starred-star">&#9733;</span>');
+    };
+    if (typeof Cookies('sch_starred') !== 'undefined') {
+        starray = JSON.parse(Cookies.get('sch_starred'));
+    };
+    $('.track_starred').removeClass('track_starred');
+    for (var i = 0; i < starray.length; i++) {
+        $('a[href="#' +starray[i]+ '"], h2[href="#' +starray[i]+ '"]').addClass('track_starred');
+    };
+    $('.track_starred-star').click(function(e) {
+        e.preventDefault();
+        var par = $(this).parent();
+        var id = par.attr('href').substring(1);
+        var n = $.inArray(id, starray);
+        if (n != -1) {
+            par.removeClass('track_starred');
+            starray.splice(n, 1);
+        } else {
+            par.addClass('track_starred');
+            starray.push(id);
+        };
+        Cookies.set('sch_starred', JSON.stringify(starray));
+    });
 };
 
 // Hanging quote mark if it is first character
@@ -172,6 +207,8 @@ function sortToggle() {
         $('.content_contents').empty().append(sortedByAbcHtml);
         Cookies.set('sorting','abc');
     }
+    starray = undefined;
+    setStarred();
 };
 
 function getXML() {
