@@ -96,8 +96,8 @@ function chordsCreation() {
     });
 
     byAbc.sort(function(a, b) {
-        a = trimSpecial($(a).text());
-        b = trimSpecial($(b).text());
+        a = trimSpecial($(a).find('a').text());
+        b = trimSpecial($(b).find('a').text());
         return a.toUpperCase().localeCompare(b.toUpperCase());
     });
 
@@ -240,10 +240,13 @@ function getXML() {
     return XML;
 };
 
-// Delete unwanted first symbols from string
+// Delete unwanted first and last symbols from string
 function trimSpecial(t) {
     if (typeof t !== 'undefined') {
         t = t + '';
+        if (t.match(/[\u{2605}]$/igmu)) {
+            t = t.slice(0, -1);
+        };
         if (t.match(/^[0-9a-zA-Zа-яёА-ЯЁ]/)) {
             return t;
         } else {
