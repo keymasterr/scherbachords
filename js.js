@@ -126,9 +126,14 @@ function chordsCreation() {
     prevCharAbc = '';
 
     byYear.sort(function(a, b) {
-        a = trimSpecial($('a',a).data('yearSort'));
-        b = trimSpecial($('a',b).data('yearSort'));
-        return a.localeCompare(b);
+        var ay = $(a).find('a').data('yearSort') + '',
+            by = $(b).find('a').data('yearSort') + '';
+        if (ay != by) {
+            return ay - by;
+        };
+        a = trimSpecial($(a).text());
+        b = trimSpecial($(b).text());
+        return a.toUpperCase().localeCompare(b.toUpperCase());
     });
 
     $.each(byYear, function(idx, itm) {

@@ -191,7 +191,7 @@ dd {
   }
 
 .track_starred-star {
-  display: inline-block;
+  display: none;
   font-size: .65em;
   width: 1em;
   padding-left: .385em;
@@ -200,10 +200,12 @@ dd {
   opacity: 0;
 }
   h2 .track_starred-star {
+    display: inline-block;
     opacity: .2;
     transition: color 0.12s ease-out, opacity 0.12s ease-out;
   }
   .track_starred > .track_starred-star {
+    display: inline-block;
     opacity: .9;
   }
   h2 .track_starred-star:hover {
