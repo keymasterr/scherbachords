@@ -4,12 +4,11 @@ $(document).ready(function() {
     $(window).hashchange();
 });
 
-var chords;
-var sortedByAbcHtml;
-var sortedByYearHtml;
-var currTrackId;
-
-var starray;
+var chords,
+    sortedByAbcHtml,
+    sortedByYearHtml,
+    currTrackId,
+    starray;
 
 function activateChords(thisObj) {
     if (thisObj) {
@@ -24,7 +23,7 @@ function activateChords(thisObj) {
     }
     var currChords = chords.find('track[id="' +currTrackId+'"]');
 
-    var currTrackHeader = '<div class="chords_header"><h2 href="#' +currTrackId+ '"><span class="track_starred-star">&#9733;</span>' +currChords.find('title').text()+ '</h2><h3>' +currChords.find('title-alt2').text()+ '</h3><h4>' +currChords.find('year').text()+ '</h4><p class="subtitle">' +currChords.find('subtitle').text()+ '</p></div>';
+    var currTrackHeader = '<div class="chords_header"><h2 href="#' +currTrackId+ '">' +currChords.find('title').text()+ '<span class="track_starred-star">&#9733;</span></h2><h3>' +currChords.find('title-alt2').text()+ '</h3><h4>' +currChords.find('year').text()+ '</h4><p class="subtitle">' +currChords.find('subtitle').text()+ '</p></div>';
     var currTrackText = '<div class="chords_text">' + currChords.find('text').text() + '</div>';
     var currTrack = currTrackHeader + currTrackText;
 
@@ -51,38 +50,39 @@ var clearAddress = function() {
 
 function chordsCreation() {
     chords = $( getXML() );
-    var track  = chords.find( 'track' );
-    var byAbc  = [];
-    var byYear = [];
-    var sortedByAbc  = [];
-    var sortedByYear = [];
-    var prevCharAbc  = '';
-    var prevCharYear = '';
+    var track  = chords.find( 'track' ),
+        byAbc  = [],
+        byYear = [],
+        sortedByAbc  = [],
+        sortedByYear = [],
+        prevCharAbc  = '',
+        prevCharYear = '';
 
     track.each(function() {
-        var id        = $(this).attr('id');
-        var title     = $(this).find('title').text();
-        var year      = $(this).find('year').text();
-        var titleAlt1 = $(this).find('title-alt1').text();
-        var titleAlt2 = $(this).find('title-alt2').text();
+        var id        = $(this).attr('id'),
+            title     = $(this).find('title').text(),
+            year      = $(this).find('year').text(),
+            titleAlt1 = $(this).find('title-alt1').text(),
+            titleAlt2 = $(this).find('title-alt2').text(),
+            liTemplate = '<li><a <span class="track_starred-star">&#9733;</span></a></li>';
 
-        byAbc.push('<li><a href="#' +id+ '" data-year="' +year+ '">' +firstQuote(title)+ '</a></li>');
+        byAbc.push(liTemplate.splice(7, 0, 'href="#' +id+ '" data-year="' +year+ '">' +firstQuote(title)));
         if (titleAlt1) {
-            byAbc.push('<li><a href="#' +id+ '" data-year="' +year+ '">' +firstQuote(titleAlt1)+ ' (' +title+ ')</a></li>');
+            byAbc.push(liTemplate.splice(7, 0, 'href="#' +id+ '" data-year="' +year+ '">' +firstQuote(titleAlt1)+ ' (' +title+ ')'));
         };
         if (titleAlt2) {
-            byAbc.push('<li><a href="#' +id+ '" data-year="' +year+ '">' +firstQuote(titleAlt2)+ ' (' +title+ ')</a></li>');
+            byAbc.push(liTemplate.splice(7, 0, 'href="#' +id+ '" data-year="' +year+ '">' +firstQuote(titleAlt2)+ ' (' +title+ ')'));
         };
 
         var match = year.match(/\d{4}/g);
         $.each(match, function(idx, itm) {
             var sortYear = itm + '';
             if (titleAlt1 && titleAlt2) {
-                byYear.push('<li><a href="#' +id+ '" data-year-sort="' +sortYear+ '">' +title+ ', ' +titleAlt2+ ' (' +titleAlt1+ ')</a></li>');
+                byYear.push(liTemplate.splice(7, 0, 'href="#' +id+ '" data-year-sort="' +sortYear+ '">' +title+ ', ' +titleAlt2+ ' (' +titleAlt1+ ')'));
             } else if (titleAlt1) {
-                byYear.push('<li><a href="#' +id+ '" data-year-sort="' +sortYear+ '">' +title+ ' (' +titleAlt1+ ')</a></li>');
+                byYear.push(liTemplate.splice(7, 0, 'href="#' +id+ '" data-year-sort="' +sortYear+ '">' +title+ ' (' +titleAlt1+ ')'));
             } else {
-                byYear.push('<li><a href="#' +id+ '" data-year-sort="' +sortYear+ '">' +title+ '</a></li>');
+                byYear.push(liTemplate.splice(7, 0, 'href="#' +id+ '" data-year-sort="' +sortYear+ '">' +title+ ''));
             };
         });
     });
@@ -162,30 +162,33 @@ function chordsCreation() {
 };
 
 function setStarred() {
+    var starClass = 'track_starred',
+        starCookie = 'sch_starred';
+
     if (typeof starray === 'undefined') {
         starray = [];
-        $('.content_contents li a').prepend('<span class="track_starred-star">&#9733;</span>');
     };
-    if (typeof Cookies('sch_starred') !== 'undefined') {
-        starray = JSON.parse(Cookies.get('sch_starred'));
+    if (typeof Cookies(starCookie) !== 'undefined') {
+        starray = JSON.parse(Cookies.get(starCookie));
     };
-    $('.track_starred').removeClass('track_starred');
+
+    $('.' + starClass).removeClass(starClass);
     for (var i = 0; i < starray.length; i++) {
-        $('a[href="#' +starray[i]+ '"], h2[href="#' +starray[i]+ '"]').addClass('track_starred');
+        $('a[href="#' +starray[i]+ '"], h2[href="#' +starray[i]+ '"]').addClass(starClass);
     };
-    $('.track_starred-star').click(function(e) {
-        e.preventDefault();
-        var par = $(this).parent();
-        var id = par.attr('href').substring(1);
-        var n = $.inArray(id, starray);
+
+    $('h2 .track_starred-star').click(function() {
+        var par = $(this).parent(),
+            id = par.attr('href').substring(1),
+            n = $.inArray(id, starray);
         if (n != -1) {
-            par.removeClass('track_starred');
+            par.removeClass(starClass);
             starray.splice(n, 1);
         } else {
-            par.addClass('track_starred');
+            par.addClass(starClass);
             starray.push(id);
         };
-        Cookies.set('sch_starred', JSON.stringify(starray));
+        Cookies.set(starCookie, JSON.stringify(starray));
     });
 };
 
@@ -247,3 +250,22 @@ var doubleHover = function(selector, hoverClass) {
             .toggleClass(hoverClass, e.type == 'mouseover');
     });
 };
+
+// http://stackoverflow.com/a/4314050/5423515
+if (!String.prototype.splice) {
+    /**
+     * {JSDoc}
+     *
+     * The splice() method changes the content of a string by removing a range of
+     * characters and/or adding new characters.
+     *
+     * @this {String}
+     * @param {number} start Index at which to start changing the string.
+     * @param {number} delCount An integer indicating the number of old chars to remove.
+     * @param {string} newSubStr The String that is spliced in.
+     * @return {string} A new string with the spliced substring.
+     */
+    String.prototype.splice = function(start, delCount, newSubStr) {
+        return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount));
+    };
+}
