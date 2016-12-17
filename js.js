@@ -64,25 +64,33 @@ function chordsCreation() {
             year      = $(this).find('year').text(),
             titleAlt1 = $(this).find('title-alt1').text(),
             titleAlt2 = $(this).find('title-alt2').text(),
-            liTemplate = '<li><a <span class="track_starred-star">&#9733;</span></a></li>';
+            liTempl   = '<li><a %%<span class="track_starred-star">&#9733;</span></a></li>';
 
-        byAbc.push(liTemplate.splice(7, 0, 'href="#' +id+ '" data-year="' +year+ '">' +firstQuote(title)));
-        if (titleAlt1) {
-            byAbc.push(liTemplate.splice(7, 0, 'href="#' +id+ '" data-year="' +year+ '">' +firstQuote(titleAlt1)+ ' (' +title+ ')'));
-        };
-        if (titleAlt2) {
-            byAbc.push(liTemplate.splice(7, 0, 'href="#' +id+ '" data-year="' +year+ '">' +firstQuote(titleAlt2)+ ' (' +title+ ')'));
-        };
+        byAbc.push(liTempl.splice(7, 2,
+            'href="#' +id+ '" data-year="' +year+ '">' +firstQuote(title)
+        ));
+        titleAlt1 && byAbc.push(liTempl.splice(7, 2,
+            'href="#' +id+ '" data-year="' +year+ '">' +firstQuote(titleAlt1)+ ' (' +title+ ')'
+        ));
+        titleAlt2 && byAbc.push(liTempl.splice(7, 2,
+            'href="#' +id+ '" data-year="' +year+ '">' +firstQuote(titleAlt2)+ ' (' +title+ ')'
+        ));
 
         var match = year.match(/\d{4}/g);
         $.each(match, function(idx, itm) {
             var sortYear = itm + '';
             if (titleAlt1 && titleAlt2) {
-                byYear.push(liTemplate.splice(7, 0, 'href="#' +id+ '" data-year-sort="' +sortYear+ '">' +title+ ', ' +titleAlt2+ ' (' +titleAlt1+ ')'));
+                byYear.push(liTempl.splice(7, 2,
+                    'href="#' +id+ '" data-year-sort="' +sortYear+ '">' +title+ ', ' +titleAlt2+ ' (' +titleAlt1+ ')'
+                ));
             } else if (titleAlt1) {
-                byYear.push(liTemplate.splice(7, 0, 'href="#' +id+ '" data-year-sort="' +sortYear+ '">' +title+ ' (' +titleAlt1+ ')'));
+                byYear.push(liTempl.splice(7, 2,
+                    'href="#' +id+ '" data-year-sort="' +sortYear+ '">' +title+ ' (' +titleAlt1+ ')'
+                ));
             } else {
-                byYear.push(liTemplate.splice(7, 0, 'href="#' +id+ '" data-year-sort="' +sortYear+ '">' +title+ ''));
+                byYear.push(liTempl.splice(7, 2,
+                    'href="#' +id+ '" data-year-sort="' +sortYear+ '">' +title
+                ));
             };
         });
     });

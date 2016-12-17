@@ -208,6 +208,7 @@ dd {
   }
   h2 .track_starred-star:hover {
     color: #c83700;
+    opacity: .9;
     transition: color 0s, opacity 0s;
   }
 
