@@ -1,9 +1,16 @@
+* {
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+html {
+  font-size: 12px;
+}
+
 body {
   padding: 20px 40px 60px 30px;
   min-width: 730px;
   margin: 0;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 1rem;
+  line-height: 1.3333333rem;
   font-family: 'PT Mono', monospace;
 
 }
@@ -106,8 +113,9 @@ a:hover, a.hover {
   margin-bottom: 36px;
 }
 .abc_index ul {
-  padding: 0 0 12px 0;
-  margin: 0 0 0 -.25em;
+  padding: .1em 0 1.1em 0;
+  margin: 0 0 0 -.35em;
+  height: 1em;
 }
 .abc_index li {
   display: inline;
@@ -116,10 +124,12 @@ a:hover, a.hover {
 .abc_index a, .abc_index a:visited {
   font-weight: bold;
   text-decoration: none;
-  color: #aaa;
-  padding: .1em .25em;
+  color: #bbb;
+  padding: .1em .35em;
 }
-.abc_index a:hover { color: #f87; }
+.abc_index a:hover {
+  color: #c83700;
+}
 dl.content_contents {}
 dl.content_contents li a {
   padding: 5px 0;
@@ -130,10 +140,10 @@ dt {}
     position: absolute;
     font-weight: bold;
     text-decoration: none;
-    color: #ccc;
+    color: #bbb;
     width: 2em;
-    padding: .5em;
-    margin: -.5em;
+    padding: 2em .5em .5em;
+    margin: -2em -.5em -.5em;
     margin-left: -.7em;
     text-align: right;
     outline: none;
@@ -143,7 +153,9 @@ dt {}
     -o-user-select: none;
     user-select: none;
   }
-  dt > a:hover { color: #f87; }
+  dt > a:hover {
+    color: #c83700;
+  }
 
 dd {
   margin-left: 44px;

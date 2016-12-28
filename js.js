@@ -167,6 +167,7 @@ function chordsCreation() {
     sortToggle();
 
     setStarred();
+    goToLetter();
 
 
     $(window).hashchange( function() {
@@ -205,6 +206,116 @@ function setStarred() {
     });
 };
 
+function abcIndex() {
+  var aabb = {
+    'А' : 'a',
+    'Б' : 'b',
+    'В' : 'v',
+    'Г' : 'g',
+    'Д' : 'd',
+    'Е' : 'e',
+    'Ж' : 'zh',
+    'З' : 'z',
+    'И' : 'i',
+    'К' : 'k',
+    'Л' : 'l',
+    'М' : 'm',
+    'Н' : 'n',
+    'О' : 'o',
+    'П' : 'p',
+    'Р' : 'r',
+    'С' : 's',
+    'Т' : 't',
+    'У' : 'u',
+    'Ф' : 'f',
+    'Х' : 'x',
+    'Ц' : 'c',
+    'Ч' : 'ch',
+    'Ш' : 'sh',
+    'Щ' : 'w',
+    'Э' : 'eh',
+    'Ю' : 'ju',
+    'Я' : 'ja'
+  };
+
+  $('.abc_index ul').empty();
+
+  if (Cookies.get('sorting') == 'abc') $('dl.content_contents dt a').each(function(){
+
+    var l = $(this).text().toUpperCase();
+    $(this).attr('name', function() {
+      if (l in aabb) return aabb[l]
+      else if (/^[a-zA-Z]/.test(l)) return 'a…z'
+      else if (/^[0-9]/.test(l)) return '0…9'
+      else return '';
+    }).attr('href', '#top');
+
+    $('.abc_index ul').append('<li><a href="#' + $(this).attr('name') + '">' + l + '</a></li>');
+  });
+};
+
+function goToLetter() {
+  var a = {
+    48  : 'top',
+    49  : 'top',
+    50  : 'top',
+    51  : 'top',
+    52  : 'top',
+    53  : 'top',
+    54  : 'top',
+    55  : 'top',
+    56  : 'top',
+    57  : 'top',
+    192 : 'top',
+    70  : 'a',
+    188 : 'b',
+    68  : 'v',
+    85  : 'g',
+    76  : 'd',
+    84  : 'e',
+    186 : 'zh',
+    80  : 'z',
+    66  : 'i',
+    82  : 'k',
+    75  : 'l',
+    86  : 'm',
+    89  : 'n',
+    74  : 'o',
+    71  : 'p',
+    72  : 'r',
+    67  : 's',
+    78  : 't',
+    69  : 'u',
+    65  : 'f',
+    219 : 'x',
+    87  : 'c',
+    88  : 'ch',
+    73  : 'sh',
+    79  : 'w',
+    222 : 'eh',
+    190 : 'ju',
+    90  : 'ja'
+  }
+
+  var keys = {};
+
+  $(document).keydown(function(e) {
+    var k = a[e.which];
+    if (JSON.stringify(keys).length <= 2 && Cookies.get('sorting') == 'abc') {
+      keys[e.which] = true;
+
+      if (k) {
+        location.hash = "#" + k;
+      }
+    }
+  });
+
+  $(document).keyup(function (e) {
+      delete keys[e.which];
+  });
+
+}
+
 // Hanging quote mark if it is first character
 function firstQuote(text) {
     if (text[0] == '«') {
@@ -225,6 +336,7 @@ function sortToggle() {
     }
     starray = undefined;
     setStarred();
+    abcIndex();
 };
 
 function getXML() {
