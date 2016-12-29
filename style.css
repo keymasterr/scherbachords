@@ -128,7 +128,7 @@ a:hover, a.hover {
   padding: .1em .35em;
 }
 .abc_index a:hover {
-  color: #c83700;
+  color: #CB4A23;
 }
 dl.content_contents {}
 dl.content_contents li a {
@@ -154,7 +154,7 @@ dt {}
     user-select: none;
   }
   dt > a:hover {
-    color: #c83700;
+    color: #CB4A23;
   }
 
 dd {

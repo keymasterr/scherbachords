@@ -14,7 +14,7 @@ function activateChords(thisObj) {
     if (thisObj) {
         currTrackId = thisObj.attr('href').substring(1);
     }
-    else if (document.location.hash.length > 3 && document.location.hash != '#top') {
+    else if (document.location.hash.length > 3 && ['#top', '#a…z', '#0…9'].indexOf(document.location.hash) <= -1) {
       currTrackId = document.location.hash.substring(1);
     }
     else {
@@ -255,7 +255,8 @@ function abcIndex() {
 };
 
 function goToLetter() {
-  var a = {
+  var keys = {},
+      a = {
     48  : 'top',
     49  : 'top',
     50  : 'top',
@@ -295,9 +296,8 @@ function goToLetter() {
     222 : 'eh',
     190 : 'ju',
     90  : 'ja'
-  }
+  };
 
-  var keys = {};
 
   $(document).keydown(function(e) {
     var k = a[e.which];
@@ -307,7 +307,7 @@ function goToLetter() {
       if (k) {
         location.hash = "#" + k;
       }
-    }
+    };
   });
 
   $(document).keyup(function (e) {
