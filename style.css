@@ -1,5 +1,6 @@
 * {
   -webkit-font-smoothing: subpixel-antialiased;
+  box-sizing: border-box;
 }
 html {
   font-size: 12px;
@@ -30,25 +31,17 @@ a:hover, a.hover {
 
 .modal {
   display: none;
-  width: 60em;
-  margin: 0 auto 6em;
-  margin-top: 2.5em;
+  width: 90vw;
+  max-width: 80em;
+  margin: 4em auto 6em;
   padding: 4em 6em 6em 5em;
   font-size: 11px;
   background: #f6f5f3;
   outline: none;
-  /*box-shadow: 0px 35px 70px -35px #afa9a0;*/
-  opacity: .9;
-  /*transition: all 0;*/
+  box-shadow: 0px 35px 70px -35px #afa9a0;
 }
-  .themodal-lock .modal {
-    margin-top: 2em;
-    opacity: 1;
-    /*transition: all .5s;*/
-  }
-  .themodal-overlay {
-    backdrop-filter: blur(4px);
-  }
+  .themodal-lock .modal {}
+  .themodal-overlay {}
 
 .content {
   position: relative;
@@ -141,7 +134,7 @@ dt {}
     font-weight: bold;
     text-decoration: none;
     color: #bbb;
-    width: 2em;
+    width: 3em;
     padding: 2em .5em .5em;
     margin: -2em -.5em -.5em;
     margin-left: -.7em;
@@ -205,7 +198,6 @@ dd {
 .track_starred-star {
   display: none;
   font-size: .65em;
-  width: 1em;
   padding-left: .385em;
   margin: -.5em -1.385em -.5em 0;
   cursor: pointer;
