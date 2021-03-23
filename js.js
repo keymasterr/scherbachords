@@ -1,106 +1,111 @@
-$(document).ready(function() {
-    chordsCreation();
-    doubleHover('a', 'hover');
-    $(window).hashchange();
-});
+const cont = document.querySelector('.content_contents');
+let chordsMain,
+    chordsByAbcHtml = [],
+    chordsByYearHtml = [],
+    chordsByAlbumHtml = [],
+    sorting = '',
+    currTrackId;
 
-var chords,
-    sortedByAbcHtml,
-    sortedByYearHtml,
-    currTrackId,
-    starray;
-
-function activateChords(thisObj) {
-    if (thisObj) {
-        currTrackId = thisObj.attr('href').substring(1);
-    } else if (document.location.hash.length > 3 && ['#top', '#a…z', '#0…9'].indexOf(document.location.hash) <= -1) {
-        currTrackId = document.location.hash.substring(1);
-    } else {
-        $.modal().close();
-        return false;
-    }
-    var currChords = chords.find('track[id="' + currTrackId + '"]');
-
-    var currTrackHeader = '<div class="chords_header"><h2 href="#' + currTrackId + '">' + currChords.find('title').text() + '<span class="track_starred-star">&#9733;</span></h2><h3>' + currChords.find('title-alt2').text() + '</h3><h4>' + currChords.find('year').text() + '</h4><p class="subtitle">' + currChords.find('subtitle').text() + '</p></div>';
-    var currTrackText = '<div class="chords_text">' + currChords.find('text').text() + '</div>';
-    var currTrack = currTrackHeader + currTrackText;
-
-    $('.modal').empty().html(currTrack).modal().open();
-    $(document).prop('title', chords.find('track[id="' + currTrackId + '"]').find('title').text() + ' — Щербаккорды');
-
-    setStarred();
-
-    $.modal({
-        onClose: function() {
-            clearAddress();
-            setStarred();
-        }
-    });
-    $('.modal').focus();
-}
-
-var clearAddress = function() {
-    // document.location.hash = "";
-    currTrackId = "";
-    $(document).prop('title', 'Щербаккорды');
-    history.pushState('', '', window.location.href.split('#')[0]);
+const albumNames = {
+    'shanson': 'Шансон',
+    'vishnevoe_varene': 'Вишнёвое варенье',
+    'kovcheg_1': 'Ковчег неутомимый 1',
+    'kovcheg_neutomimyy_2': 'Ковчег неутомимый 2',
+    'balagan_2': 'Балаган 2',
+    'vozdvig_ya_pamyatnik': 'Воздвиг я памятник',
+    'eto_dolzhno_sluchitsya': 'Это должно случиться…',
+    'drugaya_zhizn': 'Другая жизнь',
+    'zaklinanie': 'Заклинание',
+    'predpolozhim_': 'Предположим…',
+    'peshkom_s_vostoka': 'Пешком с востока',
+    'gorod_gorod': 'Город Город',
+    'once': 'Once',
+    'tseloe_leto': 'Целое лето',
+    'lozhnyy_shag': 'Ложный шаг',
+    'izbrannoe_chast_1': 'Избранное. Часть 1',
+    'izbrannoe_chast_2': 'Избранное. Часть 2',
+    'd_j': 'Déjà',
+    'esli': 'Если',
+    'raytsentr': 'Райцентр',
+    'chuzhaya_muzyka_1': 'Чужая музыка и не только. Часть 1',
+    'chuzhaya_muzyka_2': 'Чужая музыка и не только. Часть 2',
+    'chuzhaya_muzyka_3': 'Чужая музыка и не только. Часть 3',
+    'khorovod': 'Хоровод',
+    'po_motivam': 'По мотивам'
 };
 
-function chordsCreation() {
-    chords = $(getXML());
-    var track = chords.find('track'),
-        byAbc = [],
-        byYear = [],
-        sortedByAbc = [],
-        sortedByYear = [],
+getStateFromStorage();
+getXmlMain('chords.xml');
+parseChords(chordsMain);
+showContents();
+sortToggle();
+keyListener();
+
+
+
+function getXmlMain(file) {
+    let Connect = new XMLHttpRequest();
+    Connect.open('GET', file, false);
+    Connect.setRequestHeader('Content-Type', 'text/xml');
+    Connect.send(null);
+    chordsMain = Connect.responseXML.getElementsByTagName('track');
+    document.querySelector('.chords_number').innerHTML = chordsMain.length;
+
+    activateTrack();
+    window.onhashchange = activateTrack;
+}
+
+function parseChords(chords) {
+    let chordsByAbc = [],
+        chordsByYear = [],
+        chordsByAlbum = [],
         prevCharAbc = '',
-        prevCharYear = '';
+        prevCharYear = '',
+        prevCharAlbum = '',
+        liTempl = '<li><a %%<span class="track_starred-star">&#9733;</span></a></li>';
 
-    track.each(function() {
-        var id = $(this).attr('id'),
-            title = $(this).find('title').text(),
-            year = $(this).find('year').text(),
-            titleAlt1 = $(this).find('title-alt1').text(),
-            titleAlt2 = $(this).find('title-alt2').text(),
-            liTempl = '<li><a %%<span class="track_starred-star">&#9733;</span></a></li>';
-
-        byAbc.push(liTempl.splice(7, 2,
-            'href="#' + id + '" data-year="' + year + '">' + firstQuote(title)
-        ));
-        titleAlt1 && byAbc.push(liTempl.splice(7, 2,
-            'href="#' + id + '" data-year="' + year + '">' + firstQuote(titleAlt1) + ' (' + title + ')'
-        ));
-        titleAlt2 && byAbc.push(liTempl.splice(7, 2,
-            'href="#' + id + '" data-year="' + year + '">' + firstQuote(titleAlt2) + ' (' + title + ')'
-        ));
-
-        var match = year.match(/\d{4}/g);
-        $.each(match, function(idx, itm) {
-            var sortYear = itm + '';
-            if (titleAlt1 && titleAlt2) {
-                byYear.push(liTempl.splice(7, 2,
-                    'href="#' + id + '" data-year-sort="' + sortYear + '">' + title + ', ' + titleAlt2 + ' (' + titleAlt1 + ')'
-                ));
-            } else if (titleAlt1) {
-                byYear.push(liTempl.splice(7, 2,
-                    'href="#' + id + '" data-year-sort="' + sortYear + '">' + title + ' (' + titleAlt1 + ')'
-                ));
-            } else {
-                byYear.push(liTempl.splice(7, 2,
-                    'href="#' + id + '" data-year-sort="' + sortYear + '">' + title
-                ));
+    for (let el of chords) {
+        const titles = el.getElementsByTagName('title');
+        for (let i = 0; i < titles.length; i++) {
+            let link = document.createElement('a');
+            link.setAttribute('href', '#' + el.id);
+            link.innerHTML = italization(titles[i].textContent);
+            if (i > 0) {
+                link.innerHTML +=  ' (' + italization(titles[0].textContent) + ')';
             }
-        });
-    });
+            chordsByAbc.push(link);
+        }
 
-    byAbc.sort(function(a, b) {
-        a = trimSpecial($(a).find('a').text());
-        b = trimSpecial($(b).find('a').text());
+        const year = el.getElementsByTagName('year')[0].textContent;
+        year.match(/\d{4}/g).forEach(itm => {
+            const sortYear = itm;
+            let link = document.createElement('a');
+            link.setAttribute('href', '#' + el.id);
+            link.setAttribute('data-year-sort', sortYear);
+            link.innerHTML = italization(titles[0].textContent);
+            chordsByYear.push(link);
+        });
+
+        const albums = el.getElementsByTagName('album');
+        for (let i = 0; i < albums.length; i++) {
+            let link = document.createElement('a');
+            link.setAttribute('href', '#' + el.id);
+            link.setAttribute('data-album', albums[i].textContent);
+            link.setAttribute('data-album-year', albums[i].getAttribute('year'));
+            link.setAttribute('data-album-tracknum', albums[i].getAttribute('tracknum'));
+            link.setAttribute('data-album-albumnum', albums[i].getAttribute('albumnum'));
+            link.innerHTML = italization(titles[0].textContent);
+            chordsByAlbum.push(link);
+        };
+    }
+
+    chordsByAbc.sort(function(a, b) {
+        a = trimSpecial(a.textContent);
+        b = trimSpecial(b.textContent);
         return a.toUpperCase().localeCompare(b.toUpperCase());
     });
-
-    $.each(byAbc, function(idx, itm) {
-        var curChar = trimSpecial($(itm).text()).toUpperCase()[0];
+    chordsByAbc.forEach(itm => {
+        let curChar = trimSpecial(itm.textContent).toUpperCase()[0];
         if (curChar.match(/^[0-9]/)) {
             curChar = '0…9';
         } else if (curChar.match(/^[a-zA-Z]/)) {
@@ -108,104 +113,367 @@ function chordsCreation() {
         }
 
         if (prevCharAbc == curChar) {
-            sortedByAbc.push(itm);
+            chordsByAbcHtml.push('<li>' + firstQuote(itm).outerHTML + '</li>');
         } else {
             prevCharAbc = curChar;
             if (prevCharAbc != '') {
-                sortedByAbc.push('</ul></dd>');
+                chordsByAbcHtml.push('</ul></dd>');
             }
-            sortedByAbc.push('<dt><a>' + curChar + '</a></dt>');
-            sortedByAbc.push('<dd><ul>');
-            sortedByAbc.push(itm);
+            chordsByAbcHtml.push('<dt><a>' + curChar + '</a></dt>');
+            chordsByAbcHtml.push('<dd><ul>');
+            chordsByAbcHtml.push('<li>' + firstQuote(itm).outerHTML + '</li>');
         }
     });
-
-    sortedByAbcHtml = sortedByAbc.join('');
     prevCharAbc = '';
 
-    byYear.sort(function(a, b) {
-        var ay = $(a).find('a').data('yearSort') + '',
-            by = $(b).find('a').data('yearSort') + '';
+    chordsByYear.sort(function(a, b) {
+        const ay = a.getAttribute('data-year-sort'),
+            by = b.getAttribute('data-year-sort');
         if (ay != by) {
             return ay - by;
         }
-        a = trimSpecial($(a).text());
-        b = trimSpecial($(b).text());
+        a = trimSpecial(a.textContent);
+        b = trimSpecial(b.textContent);
         return a.toUpperCase().localeCompare(b.toUpperCase());
     });
 
-    $.each(byYear, function(idx, itm) {
-        var curChar = trimSpecial($('a', itm).data('yearSort'));
+    chordsByYear.forEach(itm => {
+        const curChar = trimSpecial(itm.getAttribute('data-year-sort'));
         if (prevCharYear == curChar) {
-            sortedByYear.push(itm);
+            chordsByYearHtml.push('<li>' + itm.outerHTML + '</li>');
         } else {
             prevCharYear = curChar;
             if (prevCharYear != '') {
-                sortedByYear.push('</ul></dd>');
+                chordsByYearHtml.push('</ul></dd>');
             }
-            sortedByYear.push('<dt><a>' + $('a', itm).data('yearSort') + '</a></dt>');
-            sortedByYear.push('<dd><ul>');
-            sortedByYear.push(itm);
-        }
-    });
-
-    sortedByYearHtml = sortedByYear.join('');
-    $('.page_title').append('<span class="sorting_toggler by-abc"><span class="active">по алфавиту</span> / <span>по годам</span></span>');
-    $('.sorting_toggler span').click(function() {
-        if ($(this).hasClass('active')) {
-            sortToggle();
+            chordsByYearHtml.push('<dt>' + curChar + '</dt>');
+            chordsByYearHtml.push('<dd><ul>');
+            chordsByYearHtml.push('<li>' + itm.outerHTML + '</li>');
         }
     });
     prevCharYear = '';
 
-    $('body').append('<div class="modal" tabindex="1"></div>');
-    if (Cookies.get('sorting') == 'year') {
-        sortToggle();
-    }
-    sortToggle();
-
-    setStarred();
-    goToLetter();
-
-
-    $(window).hashchange(function() {
-        activateChords();
+    chordsByAlbum.sort(function(a, b) {
+        const al = a.getAttribute('data-album'),
+              bl = b.getAttribute('data-album');
+        return al.toUpperCase().localeCompare(bl.toUpperCase());
     });
+    chordsByAlbum.sort(function(a, b) {
+        const aal = a.getAttribute('data-album-year'),
+              bal = b.getAttribute('data-album-year');
+        if (aal != bal) {
+            return aal.toUpperCase().localeCompare(bal.toUpperCase());
+        }
+
+        return -1;
+    });
+    chordsByAlbum.sort(function(a, b) {
+        const aaln = a.getAttribute('data-album-albumnum'),
+              baln = b.getAttribute('data-album-albumnum');
+        if (aaln != baln) {
+            return aaln - baln;
+        }
+
+        return -1;
+    });
+    chordsByAlbum.sort(function(a, b) {
+        const an = a.getAttribute('data-album-tracknum'),
+              bn = b.getAttribute('data-album-tracknum'),
+              al = a.getAttribute('data-album'),
+              bl = b.getAttribute('data-album');
+        if (an != bn && al == bl) {
+            return an - bn;
+        }
+        return -1;
+    });
+
+    chordsByAlbum.forEach(itm => {
+        const curChar = trimSpecial(itm.getAttribute('data-album'));
+        const tracknum = itm.getAttribute('data-album-tracknum');
+        const albumnum = itm.getAttribute('data-album-tracknum');
+        if (prevCharAlbum == curChar) {
+            chordsByAlbumHtml.push('<li>');
+            if (tracknum != 'null') {
+                chordsByAlbumHtml.push('<span class="tracknum">' + itm.getAttribute('data-album-tracknum') + '</span>');
+            }
+            chordsByAlbumHtml.push(itm.outerHTML);
+            chordsByAlbumHtml.push('</li>');
+        } else {
+            prevCharAlbum = curChar;
+            if (prevCharAlbum != '') {
+                chordsByAlbumHtml.push('</ul></dd>');
+            }
+            const albumLat = Object.keys(albumNames).find(key => albumNames[key] === curChar);
+            const albumYear = itm.getAttribute('data-album-year');
+
+            chordsByAlbumHtml.push('<dt>');
+            if (albumLat != undefined) {
+                chordsByAlbumHtml.push('<img class="albumart" src="./covers/' + albumLat + '.jpg"  onerror="this.style.display=\'none\'">');
+            }
+            // if (albumnum != 'null') {
+            //     chordsByAlbumHtml.push('<span class="albumnum">' + itm.getAttribute('data-album-albumnum') + ') </span>');
+            // }
+            chordsByAlbumHtml.push(curChar);
+            if (albumYear != 'null') {
+                chordsByAlbumHtml.push(' <span class="albumyear">' + albumYear + '</span>');
+            }
+            chordsByAlbumHtml.push('</dt>');
+
+
+            chordsByAlbumHtml.push('<dd><ul>');
+            chordsByAlbumHtml.push('<li>');
+            if (tracknum != 'null') {
+                chordsByAlbumHtml.push('<span class="tracknum">' + itm.getAttribute('data-album-tracknum') + '</span>');
+            }
+            chordsByAlbumHtml.push(itm.outerHTML);
+            chordsByAlbumHtml.push('</li>');
+        }
+    });
+    prevCharAlbum = '';
+
+
+    document.querySelector('.page_title').insertAdjacentHTML('beforeend', '<span class="sorting_toggler">'
+    + '<span class="sortToggle-abc active">по алфавиту</span>'
+    + ' / <span class="sortToggle-album">по альбомам</span>'
+    + ' / <span class="sortToggle-year">по годам</span>'
+    + '</span>');
+    const togglerYear = document.querySelector('.sortToggle-year');
+    togglerYear.addEventListener('click', function() {
+        if (!togglerYear.classList.contains('active')) {
+            sortToggle('year');
+        }
+    });
+    const togglerAbc = document.querySelector('.sortToggle-abc');
+    togglerAbc.addEventListener('click', function() {
+        if (!togglerAbc.classList.contains('active')) {
+            sortToggle('abc');
+        }
+    });
+    const togglerAlbum = document.querySelector('.sortToggle-album');
+    togglerAlbum.addEventListener('click', function() {
+        if (!togglerAlbum.classList.contains('active')) {
+            sortToggle('album');
+        }
+    });
+    prevCharYear = '';
 }
 
-function setStarred() {
-    var starClass = 'track_starred',
-        starCookie = 'sch_starred';
 
-    if (typeof starray === 'undefined') {
-        starray = [];
-    }
-    if (typeof Cookies(starCookie) !== 'undefined') {
-        starray = JSON.parse(Cookies.get(starCookie));
+function showContents() {
+    let aArray;
+
+    switch(sorting) {
+        case 'year':
+            aArray = chordsByYearHtml.join('');
+            break;
+        case 'album':
+            aArray = chordsByAlbumHtml.join('');
+            break;
+        default:
+            aArray = chordsByAbcHtml.join('');
     }
 
-    $('.' + starClass).removeClass(starClass);
-    for (var i = 0; i < starray.length; i++) {
-        $('a[href="#' + starray[i] + '"], h2[href="#' + starray[i] + '"]').addClass(starClass);
-    }
-
-    $('h2 .track_starred-star').click(function() {
-        var par = $(this).parent(),
-            id = par.attr('href').substring(1),
-            n = $.inArray(id, starray);
-        if (n != -1) {
-            par.removeClass(starClass);
-            starray.splice(n, 1);
-        } else {
-            par.addClass(starClass);
-            starray.push(id);
+    const el = document.body;
+    for (let i = el.classList.length - 1; i >= 0; i--) {
+        const className = el.classList[i];
+        if (className.startsWith('sorting-')) {
+            el.classList.remove(className);
         }
-        Cookies.set(starCookie, JSON.stringify(starray));
+    }
+    el.classList.add('sorting-' + sorting);
+
+    cont.innerHTML = aArray;
+    abcIndex();
+}
+
+
+function sortToggle(arg) {
+    const sortToggler = document.querySelector('.sorting_toggler');
+    switch (arg) {
+        case 'abc':
+            sorting = 'abc';
+            showContents();
+            break;
+        case 'year':
+            sorting = 'year';
+            showContents();
+            break;
+        case 'album':
+            sorting = 'album';
+            showContents();
+            break;
+        case '':
+            return
+        default:
+            if (sorting == '') {
+                return;
+            }
+            break;
+    }
+    sortToggler.querySelectorAll('span').forEach(span => {
+        span.classList.remove('active');
     });
+    sortToggler.querySelector('.sortToggle-' + sorting).classList.add('active');
+    localStorage.setItem('sorting', sorting);
+}
+
+
+
+
+// Delete unwanted first and last symbols from string
+function trimSpecial(t) {
+    if (typeof t !== 'undefined') {
+        t = t + '';
+        if (t.match(/[\u{2605}]$/igmu)) {
+            t = t.slice(0, -1);
+        }
+        if (t.match(/^[0-9a-zA-Zа-яёА-ЯЁ]/)) {
+            return t;
+        } else {
+            t = t.substring(1);
+            return trimSpecial(t);
+        }
+    } else {
+        return '';
+    }
+}
+
+// Hanging quote mark if it is first character
+function firstQuote(a) {
+    let text = a.innerHTML;
+    if (text[0] == '«') {
+        text = '<span style="margin-left:-.6em;">«</span>' + text.substring(1);
+    }
+    a.innerHTML = text;
+    return a;
+}
+
+// convert _text_ to italic
+function italization(str) {
+    const regex = /_(\S.*?\S)_([\s\,\.\:\-]|$)/g;
+    const subst = `<i>$1<\/i>$2`;
+    const result = str.replace(regex, subst);
+    return result;
+}
+
+function activateTrack() {
+    modal();
+    const modalContent = document.querySelector('.modal-content');
+
+    if (document.location.hash.length > 3 && ['#top', '#a…z', '#0…9'].indexOf(document.location.hash) <= -1) {
+        currTrackId = document.location.hash.substring(1);
+    } else {
+        modal('close');
+        return false;
+    }
+
+    const currChords = chordsMain[currTrackId];
+
+    const checkTitle = currChords.querySelectorAll('title')[0];
+    let currTrackTitle;
+    if (checkTitle) {
+        currTrackTitle = '<h2>' + italization(currChords.querySelector('title').textContent) + '<span class="track_starred-star">&#9733;</span></h2>';
+    } else currTrackTitle = '<h2>' + currTrackId + '<span class="track_starred-star">&#9733;</span></h2>';
+
+    const checkAltTitle = currChords.querySelectorAll('title')[2];
+    let currTrackAltTitle;
+    if (checkAltTitle) {
+        currTrackAltTitle = '<h3>' + checkAltTitle.textContent + '</h3>';
+    } else currTrackAltTitle = '';
+
+    const checkYear = currChords.querySelector('year');
+    let currTrackYear;
+    if (checkYear) {
+        currTrackYear = '<div class="year">' + checkYear.textContent + '</div>';
+    } else currTrackYear = '';
+
+    const checkAlbum = currChords.querySelectorAll('album');
+    let currTrackAlbum;
+    if (checkAlbum.length > 0) {
+        currTrackAlbum = '<ul class="albumlist"><li class="album">' + checkAlbum[0].textContent + '</li>';
+        for (let i = 1; i < checkAlbum.length; i++) {
+            currTrackAlbum += ', <li class="album">' + checkAlbum[i].textContent + '</li>';
+        }
+        currTrackAlbum += '</ul>';
+    } else currTrackAlbum = '';
+
+    const checkSubtitle = currChords.querySelector('subtitle');
+    let currTrackSubtitle;
+    if (checkSubtitle) {
+        currTrackSubtitle = '<p class="subtitle">' + checkSubtitle.textContent + '</p>';
+    } else currTrackSubtitle = '';
+
+
+    const currTrackHeader = '<div class="chords_header">'
+                            + currTrackTitle
+                            + currTrackAltTitle
+                            + currTrackSubtitle
+                            + currTrackAlbum
+                            + '</div>';
+    const currTrackText = '<div class="chords_text">' + currChords.querySelector('text').textContent + '</div>';
+    const currTrack = currTrackHeader + currTrackText + currTrackYear;
+
+
+    modalContent.innerHTML = currTrack;
+    modal('open');
+
+    document.title = currChords.querySelector('title').textContent + ' — Щербаккорды';
+}
+
+function clearAddress() {
+    // document.location.hash = "";
+    modal('close');
+    currTrackId = "";
+    document.title = 'Щербаккорды';
+    history.pushState('', '', window.location.href.split('#')[0]);
+}
+
+function modal(arg) {
+    const modal = document.querySelector('.modal');
+    if (!arg && (typeof(modal) == 'undefined' || modal == null)) {
+        document.body.insertAdjacentHTML('beforeend', '<div class="modal"><div class="modal-content" tabindex="1"></div></div>');
+    }
+
+    switch (arg) {
+        case 'open':
+            modal.style.display = 'block';
+            document.body.classList.add('modal-lock');
+            document.querySelector('.modal-content').focus();
+            scrollBorder();
+            break
+        case 'close':
+            // modal.innerHTML = '';
+            document.body.classList.remove('modal-lock');
+            modal.style.display = 'none';
+            break
+        default:
+            return;
+    }
+}
+
+document.addEventListener("click", (event) => {
+    if (!document.body.classList.contains('modal-lock')) { return; }
+
+    const flyoutElement = document.querySelector('.modal-content');
+    let targetElement = event.target;
+
+    do {
+        if (targetElement == flyoutElement) { return; }
+        targetElement = targetElement.parentNode;
+    } while (targetElement);
+
+    clearAddress();
+});
+
+function getStateFromStorage() {
+    const sort = localStorage.getItem('sorting');
+    if (sort) {
+        sorting = sort;
+    }
 }
 
 function abcIndex() {
-    var aabb = {
+    const aabb = {
         'А': 'a',
         'Б': 'b',
         'В': 'v',
@@ -236,162 +504,194 @@ function abcIndex() {
         'Я': 'ja'
     };
 
-    $('.abc_index ul').empty();
+    document.querySelector('.abc_index ul').innerHTML = '';
 
-    if (Cookies.get('sorting') == 'abc') $('dl.content_contents dt a').each(function() {
+    if (sorting == 'abc') {
+        document.querySelectorAll('dl.content_contents dt a').forEach(a => {
 
-        var l = $(this).text().toUpperCase();
-        $(this).attr('name', function() {
-            if (l in aabb) return aabb[l];
-            else if (/^[a-zA-Z]/.test(l)) return 'a…z';
-            else if (/^[0-9]/.test(l)) return '0…9';
-            else return '';
-        }).attr('href', '#top');
+            const l = a.textContent.toUpperCase();
+            let nameVal = '';
+                if (l in aabb) nameVal = aabb[l];
+                else if (/^[a-zA-Z]/.test(l)) nameVal = 'a…z';
+                else if (/^[0-9]/.test(l)) nameVal = '0…9';
+                else nameVal = '';
 
-        $('.abc_index ul').append('<li><a href="#' + $(this).attr('name') + '">' + l + '</a></li>');
-    });
-}
+            a.setAttribute('name', nameVal);
+            a.setAttribute('href', '#top');
 
-function goToLetter() {
-    var keys = {},
-        a = {
-            48: 'top',
-            49: 'top',
-            50: 'top',
-            51: 'top',
-            52: 'top',
-            53: 'top',
-            54: 'top',
-            55: 'top',
-            56: 'top',
-            57: 'top',
-            192: 'top',
-            70: 'a',
-            188: 'b',
-            68: 'v',
-            85: 'g',
-            76: 'd',
-            84: 'e',
-            186: 'zh',
-            80: 'z',
-            66: 'i',
-            82: 'k',
-            75: 'l',
-            86: 'm',
-            89: 'n',
-            74: 'o',
-            71: 'p',
-            72: 'r',
-            67: 's',
-            78: 't',
-            69: 'u',
-            65: 'f',
-            219: 'x',
-            87: 'c',
-            88: 'ch',
-            73: 'sh',
-            79: 'w',
-            222: 'eh',
-            190: 'ju',
-            90: 'ja'
-        };
+            document.querySelector('.abc_index ul').insertAdjacentHTML('beforeend', '<li><a href="#' + a.getAttribute('name') + '">' + l + '</a></li>');
+            document.querySelectorAll('.abc_index ul a').forEach(a => {
+                const link = a.getAttribute('href');
+                a.addEventListener('click', event => {
+                    event.preventDefault();
+                    let target = document.querySelector('a[name="' + link.substring(1) + '"]');
+                    target.scrollIntoView(true);
+                    target.classList.add('signal');
+                    function signaled() {
+                        target.classList.remove('signal');
+                    }
+                    window.setTimeout(signaled, 500);
+                });
+            });
 
+        });
+    };
+};
 
-    $(document).keydown(function(e) {
-        var k = a[e.which];
-        if (JSON.stringify(keys).length <= 2 && Cookies.get('sorting') == 'abc') {
-            keys[e.which] = true;
+function keyListener() {
+    let keys = {};
+    const a = {
+        48: 'top',
+        49: 'top',
+        50: 'top',
+        51: 'top',
+        52: 'top',
+        53: 'top',
+        54: 'top',
+        55: 'top',
+        56: 'top',
+        57: 'top',
+        192: 'top',
+        70: 'a',
+        188: 'b',
+        68: 'v',
+        85: 'g',
+        76: 'd',
+        84: 'e',
+        186: 'zh',
+        80: 'z',
+        66: 'i',
+        82: 'k',
+        75: 'l',
+        86: 'm',
+        89: 'n',
+        74: 'o',
+        71: 'p',
+        72: 'r',
+        67: 's',
+        78: 't',
+        69: 'u',
+        65: 'f',
+        219: 'x',
+        87: 'c',
+        88: 'ch',
+        73: 'sh',
+        79: 'w',
+        222: 'eh',
+        190: 'ju',
+        90: 'ja'
+    };
+
+    document.addEventListener('keydown', e => {
+        const   key = e.key,
+                k = a[e.keyCode];
+
+        if (key == 'Escape' && document.body.classList.contains('modal-lock')) {
+            clearAddress();
+        } else if (document.body.classList.contains('modal-lock')) return;
+
+        if (JSON.stringify(keys).length <= 2 && (sorting == 'abc' || sorting == '')) {
+            keys[e.keyCode] = true;
 
             if (k) {
-                location.hash = "#" + k;
+                if (k == 'top')
+                document.body.scrollIntoView(true);
+                else {
+                    let target = document.querySelector('a[name="' + k + '"]');
+
+                    target.scrollIntoView(true);
+                    target.classList.add('signal');
+                    function signaled() {
+                        target.classList.remove('signal');
+                    }
+                    window.setTimeout(signaled, 500);
+                }
             }
         }
     });
 
-    $(document).keyup(function(e) {
-        delete keys[e.which];
+
+    document.addEventListener('keyup', e => {
+        delete keys[e.keyCode];
     });
-
 }
 
-// Hanging quote mark if it is first character
-function firstQuote(text) {
-    if (text[0] == '«') {
-        text = '<span style="margin-left:-.6em;">«</span>' + text.substring(1);
-    }
-    return text;
-}
+function scrollBorder () {
+    const elName = 'scroll-border',
+          container = document.querySelector('.modal'),
+          timerTime = 700,
+          fadeTimerTime = 500;
+    let scrollA, scrollB, fadeEffect;
 
-function sortToggle() {
-    if ($('.sorting_toggler .active').text() == 'по годам') {
-        $('.sorting_toggler span').toggleClass('active');
-        $('.content_contents').empty().append(sortedByYearHtml);
-        Cookies.set('sorting', 'year');
-    } else {
-        $('.sorting_toggler span').toggleClass('active');
-        $('.content_contents').empty().append(sortedByAbcHtml);
-        Cookies.set('sorting', 'abc');
-    }
-    starray = undefined;
-    setStarred();
-    abcIndex();
-}
-
-function getXML() {
-    var XML = null;
-    $.ajax({
-        url: 'chords.xml',
-        dataType: 'xml',
-        async: false,
-        success: function(data) {
-            XML = data;
+    const elParent = getScrollParent(document.activeElement);
+    elParent.onscroll = function(e) {
+        if (!document.getElementById(elName)) {
+            scrollA = getScrollPos();
+            const el = document.createElement('div');
+            el.setAttribute('id', elName);
+            el.style.cssText = '';
+            el.style.top = scrollA;
+            // el.style.cssText += 'outline: 2px solid rgba(255,0,50,.2);'
+            container.appendChild(el);
         }
-    });
-    return XML;
-}
-
-// Delete unwanted first and last symbols from string
-function trimSpecial(t) {
-    if (typeof t !== 'undefined') {
-        t = t + '';
-        if (t.match(/[\u{2605}]$/igmu)) {
-            t = t.slice(0, -1);
-        }
-        if (t.match(/^[0-9a-zA-Zа-яёА-ЯЁ]/)) {
-            return t;
-        } else {
-            t = t.substring(1);
-            return trimSpecial(t);
-        }
-    } else {
-        return '';
-    }
-}
-
-// «doubleHover» by artpolikarpov
-var doubleHover = function(selector, hoverClass) {
-    $(document).on('mouseover mouseout', selector, function(e) {
-        $(selector)
-            .filter('[href="' + $(this).attr('href') + '"]')
-            .toggleClass(hoverClass, e.type == 'mouseover');
-    });
-};
-
-// http://stackoverflow.com/a/4314050/5423515
-if (!String.prototype.splice) {
-    /**
-     * {JSDoc}
-     *
-     * The splice() method changes the content of a string by removing a range of
-     * characters and/or adding new characters.
-     *
-     * @this {String}
-     * @param {number} start Index at which to start changing the string.
-     * @param {number} delCount An integer indicating the number of old chars to remove.
-     * @param {string} newSubStr The String that is spliced in.
-     * @return {string} A new string with the spliced substring.
-     */
-    String.prototype.splice = function(start, delCount, newSubStr) {
-        return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount));
     };
+
+    function scrollFadeOut(el) {
+        const fadeTarget = document.getElementById(el);
+        fadeEffect = setInterval(function () {
+            if (!fadeTarget.style.opacity) {
+                fadeTarget.style.opacity = 1;
+            }
+            if (fadeTarget.style.opacity > 0) {
+                if (fadeTarget.style.opacity > 1) {
+                    fadeTarget.style.opacity  = 1;
+                    fadeTarget.style.opacity -= 0.05;
+                }
+                fadeTarget.style.opacity -= 0.05;
+            } else {
+                clearInterval(fadeEffect);
+                fadeTarget.parentNode.removeChild(fadeTarget);
+                isScrolling = scrollA = scrollB = undefined;
+            }
+        }, (fadeTimerTime / 20));
+    }
+
+    function scrollFadeIn(el) {
+        const fadeTarget = document.getElementById(el);
+        scrollB = getScrollPos();
+        varScrollDif = Math.abs(scrollA - scrollB);
+        if (!fadeTarget.style.opacity) {
+            fadeTarget.style.opacity = 0;
+        }
+        if (fadeTarget.style.opacity < 1) {
+            fadeTarget.style.opacity = varScrollDif * 0.004;
+        }
+    }
+
+    let isScrolling;
+    container.addEventListener('scroll', function ( event ) {
+        clearInterval(fadeEffect);
+        scrollFadeIn(elName);
+        window.clearTimeout( isScrolling );
+        isScrolling = setTimeout(function() {
+            scrollFadeOut(elName);
+        }, timerTime);
+    }, false);
+
+    function getScrollParent(node) {
+        if (node == null) {
+            return null;
+        }
+        if (node.scrollHeight > node.clientHeight) {
+            return node;
+        } else {
+            return getScrollParent(node.parentNode);
+        }
+    }
+
+    function getScrollPos() {
+        // var el = document.scrollingElement || document.documentElement;
+        const el = getScrollParent(document.activeElement);
+        return el.scrollTop;
+    }
 }
