@@ -233,9 +233,9 @@ function parseChords(chords) {
 
 
     document.querySelector('.page_title').insertAdjacentHTML('beforeend', '<span class="sorting_toggler">'
-    + '<span class="sortToggle-abc active">по алфавиту</span>'
-    + ' / <span class="sortToggle-album">по альбомам</span>'
-    + ' / <span class="sortToggle-year">по годам</span>'
+    + 'по <span class="sortToggle-abc active">алфавиту</span>'
+    + ' <span class="sortToggle-album">альбомам</span>'
+    + ' <span class="sortToggle-year">годам</span>'
     + '</span>');
     const togglerYear = document.querySelector('.sortToggle-year');
     togglerYear.addEventListener('click', function() {
@@ -439,6 +439,7 @@ function modal(arg) {
             modal.style.display = 'block';
             document.body.classList.add('modal-lock');
             document.querySelector('.modal-content').focus();
+            document.querySelector('.modal-content').scrollIntoView(true);
             scrollBorder();
             break
         case 'close':
@@ -650,7 +651,7 @@ function scrollBorder () {
                 fadeTarget.style.opacity -= 0.05;
             } else {
                 clearInterval(fadeEffect);
-                fadeTarget.parentNode.removeChild(fadeTarget);
+                if (fadeTarget) fadeTarget.remove();
                 isScrolling = scrollA = scrollB = undefined;
             }
         }, (fadeTimerTime / 20));

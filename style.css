@@ -30,10 +30,10 @@ html {
 
 body {
   padding: 20px 40px 60px 30px;
-  min-width: 730px;
+  /* min-width: 730px; */
   margin: 0;
   font-size: 1rem;
-  line-height: 1.3333333rem;
+  line-height: 1.33333;
   font-family: 'font', monospace;
   color: var(--text);
 }
@@ -62,36 +62,37 @@ a:hover, a.hover {
 
 .chords_number {
   position: absolute;
-  bottom: 22px;
+  top: 2.75rem;
   font-size: 0.3em;
   line-height: 1em;
   color: var(--gray);
 }
 
-.sorting_toggler span {
+.sorting_toggler{}
+.sorting_toggler span:not(.active) {
   color: var(--link);
   cursor: pointer;
+  font-weight: 200;
 }
-.sorting_toggler span:hover {
+.sorting_toggler span:not(.active):hover {
   color: var(--link-hover);
 }
 .sorting_toggler span.active {
-  color: var(--text);
-  cursor: default;
   pointer-events: none;
 }
 
 .abc_index {
-  font-size: 1.25em;
+  font-size: 1.25rem;
   font-weight: 500;
 }
   .abc_index ul {
-    margin: 0 -.5em;
+    margin: 0 -.5em -1rem;
     padding: 0;
     list-style-type: none;
   }
   .abc_index ul li {
     display: inline-block;
+    margin-bottom: 1rem;
   }
   .abc_index ul li a {
     padding: .5em;
@@ -140,6 +141,7 @@ body.sorting-album dt .albumart {
   display: block;
   height: 116px;
   margin-left: -140px;
+  margin-bottom: 1rem;
 }
 body.sorting-album dd {
   margin-left: 140px;
@@ -262,5 +264,26 @@ body.modal-lock .content img {
   10% {
     color: var(--link-hover);
     text-shadow: 0 0 2px currentColor;
+  }
+}
+
+
+@media screen and (max-width: 730px) {
+  body {}
+  dd {
+    margin-left: 1.8rem;
+  }
+  body.sorting-album dt {
+    margin-left: 0;
+  }
+  body.sorting-album dt .albumart {
+    position: relative;
+    margin-left: 0;
+  }
+  body.sorting-album dd {
+    margin-left: 0;
+  }
+  .modal-content {
+    padding: 2rem 1rem 3rem 2rem;
   }
 }
