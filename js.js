@@ -37,8 +37,8 @@ const albumNames = {
 getStateFromStorage();
 getXmlMain('chords.xml');
 parseChords(chordsMain);
-showContents();
 sortToggle();
+showContents();
 keyListener();
 
 
@@ -102,7 +102,7 @@ function parseChords(chords) {
     chordsByAbc.sort(function(a, b) {
         a = trimSpecial(a.textContent);
         b = trimSpecial(b.textContent);
-        return a.toUpperCase().localeCompare(b.toUpperCase());
+        return a.localeCompare(b, undefined, {numeric: true, sensivity: 'base'});
     });
     chordsByAbc.forEach(itm => {
         let curChar = trimSpecial(itm.textContent).toUpperCase()[0];
@@ -129,12 +129,11 @@ function parseChords(chords) {
     chordsByYear.sort(function(a, b) {
         const ay = a.getAttribute('data-year-sort'),
             by = b.getAttribute('data-year-sort');
-        if (ay != by) {
-            return ay - by;
-        }
+        if (ay != by) return ay - by;
+
         a = trimSpecial(a.textContent);
         b = trimSpecial(b.textContent);
-        return a.toUpperCase().localeCompare(b.toUpperCase());
+        return a.localeCompare(b, undefined, {numeric: true, sensivity: 'base'});
     });
 
     chordsByYear.forEach(itm => {
@@ -156,35 +155,32 @@ function parseChords(chords) {
     chordsByAlbum.sort(function(a, b) {
         const al = a.getAttribute('data-album'),
               bl = b.getAttribute('data-album');
-        return al.toUpperCase().localeCompare(bl.toUpperCase());
+              return al.localeCompare(bl, undefined, {numeric: true, sensivity: 'base'});
     });
     chordsByAlbum.sort(function(a, b) {
         const aal = a.getAttribute('data-album-year'),
               bal = b.getAttribute('data-album-year');
-        if (aal != bal) {
-            return aal.toUpperCase().localeCompare(bal.toUpperCase());
-        }
-
-        return -1;
+        if (aal != bal) return bal < aal ? 1 : -1;
+        return 1;
     });
     chordsByAlbum.sort(function(a, b) {
         const aaln = a.getAttribute('data-album-albumnum'),
               baln = b.getAttribute('data-album-albumnum');
-        if (aaln != baln) {
-            return aaln - baln;
-        }
-
-        return -1;
+        return aaln.localeCompare(baln, undefined, {numeric: true, sensivity: 'base'});
     });
     chordsByAlbum.sort(function(a, b) {
-        const an = a.getAttribute('data-album-tracknum'),
-              bn = b.getAttribute('data-album-tracknum'),
+        const an = parseInt(a.getAttribute('data-album-tracknum')),
+              bn = parseInt(b.getAttribute('data-album-tracknum')),
               al = a.getAttribute('data-album'),
               bl = b.getAttribute('data-album');
-        if (an != bn && al == bl) {
-            return an - bn;
+        console.debug('123', an, bn);
+        if (al == bl) {
+            if (an == bn) {
+                return 1
+            } else {
+                return bn < an ? 1 : -1;
+            }
         }
-        return -1;
     });
 
     chordsByAlbum.forEach(itm => {
@@ -302,10 +298,9 @@ function sortToggle(arg) {
             sorting = 'album';
             showContents();
             break;
-        case '':
-            return
         default:
             if (sorting == '') {
+                sorting = 'abc'
                 return;
             }
             break;
