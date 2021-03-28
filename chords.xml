@@ -1,9 +1,8 @@
 <chords>
 <track id="n1990">
-<titles>
+<author>Михаил Щербаков</author>
 <title>1990</title>
 <title>Как варяг, наблюдающий нравы славян…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="16">Воздвиг я памятник</album>
 <album albumnum="18" year="2004" tracknum="14">Пешком с востока</album>
 <year>1990</year>
@@ -48,10 +47,9 @@
 </track>
 
 <track id="fevr">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Февраль</title>
 <title>Как варяг, наблюдающий нравы славян…</title>
-</titles>
 <album albumnum="10" year="1999" tracknum="1">Шансон</album>
 <album year="1981" tracknum="3">Дорожный календарь, или Монологи Cтранствующего Рыцаря</album>
 <year>1981</year>
@@ -124,10 +122,9 @@
 </track>
 
 <track id="n1991">
-<titles>
+<author>Михаил Щербаков</author>
 <title>1991</title>
 <title>О, город слез!</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="18">Воздвиг я памятник</album>
 <year>1991</year>
 <text>
@@ -194,10 +191,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="n1992">
-<titles>
+<author>Михаил Щербаков</author>
 <title>1992</title>
 <title>Ближе к селенью, там, где река…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="10">Другая жизнь</album>
 <album albumnum="14" year="2000" tracknum="20">Избранное. Часть 2</album>
 <album albumnum="3" year="2001" tracknum="25">Балаган 2</album>
@@ -236,10 +232,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="n1995">
-<titles>
+<author>Михаил Щербаков</author>
 <title>1995</title>
 <title>В то время, как нефть на нуле…</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="6">Заклинание</album>
 <album albumnum="18" year="2004" tracknum="24">Пешком с востока</album>
 <year>1995</year>
@@ -306,10 +301,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="adleucon">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Ad Leuconoen</title>
 <title>Не кричи, глашатай, не труби сбора…</title>
-</titles>
 <album albumnum="1" year="1994" tracknum="3">Вишнёвое варенье</album>
 <album albumnum="14" year="2000" tracknum="11">Избранное. Часть 2</album>
 <album albumnum="15" year="2001" tracknum="3">Ковчег неутомимый 1</album>
@@ -346,10 +340,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="aerodrom">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Аэродром</title>
 <title>Мы видим, как из стеклянных врат…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="6">Другая жизнь</album>
 <album albumnum="13" year="1999" tracknum="7">Избранное. Часть 1</album>
 <album albumnum="19" year="2004" tracknum="17">Предположим…</album>
@@ -413,9 +406,8 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="akoekto">
-<titles>
+<author>Михаил Щербаков</author>
 <title>А кое-кто по костям моим…</title>
-</titles>
 <album albumnum="14" year="2000" tracknum="12">Избранное. Часть 2</album>
 <album albumnum="16" year="2001" tracknum="17">Ковчег неутомимый 2</album>
 <year>1988</year>
@@ -500,9 +492,8 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="akogdago">
-<titles>
+<author>Михаил Щербаков</author>
 <title>А когда, государь, ты умрешь…</title>
-</titles>
 <year>1986</year>
 <text>
 А когда, государь, ты умрёшь,                F#m D7
@@ -555,10 +546,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="allegord">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Аллегория для голоса с хором</title>
 <title>На приволье в здоровом теле…</title>
-</titles>
 <album albumnum="3" year="2001" tracknum="15">Балаган 2</album>
 <year>1989</year>
 <text>
@@ -621,10 +611,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="allegro">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Аллегро</title>
 <title>В девять начало опыта, в семь подъём…</title>
-</titles>
 <album albumnum="11" year="2000" tracknum="11">Déjà</album>
 <year>2000</year>
 <text>
@@ -681,10 +670,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="alliluja">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Аллилуйя</title>
 <title>Помнишь, как оно бывало…</title>
-</titles>
 <album albumnum="1" year="1994" tracknum="10">Вишнёвое варенье</album>
 <album albumnum="13" year="1999" tracknum="4">Избранное. Часть 1</album>
 <album albumnum="16" year="2001" tracknum="4">Ковчег неутомимый 2</album>
@@ -730,10 +718,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="andante">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Анданте</title>
 <title>Как тот легионер, что, чуть стерев песок и кровь…</title>
-</titles>
 <album albumnum="11" year="2000" tracknum="10">Déjà</album>
 <year>2000</year>
 <text>
@@ -781,10 +768,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="aneta">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Анета</title>
 <title>Хороших нет вестей…</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="5">Заклинание</album>
 <album albumnum="18" year="2004" tracknum="21">Пешком с востока</album>
 <year>1995</year>
@@ -934,10 +920,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="aprel">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Апрель</title>
 <title>Секунды сделали свое…</title>
-</titles>
 <album year="1981" tracknum="7">Дорожный календарь, или Монологи Cтранствующего Рыцаря</album>
 <year>1981, 1986</year>
 <text>
@@ -992,10 +977,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="atlantic">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Атлантический океан</title>
 <title>То ли мука, то ли скука…</title>
-</titles>
 <album albumnum="10" year="1999" tracknum="14">Шансон</album>
 <year>1982</year>
 <text>
@@ -1085,10 +1069,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="avstrali">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Австралия</title>
 <title>Мотор подъехал чужеземный…</title>
-</titles>
 <album albumnum="4" year="1996" tracknum="4">Город Город</album>
 <album albumnum="13" year="1999" tracknum="20">Избранное. Часть 1</album>
 <album albumnum="12" year="2002" tracknum="9">Once</album>
@@ -1143,10 +1126,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="avtoparo">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Автопародия</title>
 <title>Не жалко двуногих…</title>
-</titles>
 <album albumnum="4" year="1996" tracknum="14">Город Город</album>
 <album albumnum="12" year="2002" tracknum="11">Once</album>
 <year>1993</year>
@@ -1186,9 +1168,8 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="axpochem">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Ах, почему, господа…</title>
-</titles>
 <year>1978</year>
 <text>
 Ах, почему, господа,                             D
@@ -1254,10 +1235,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="babelman">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Баб-эль-Мандебский пролив</title>
 <title>А что везете, капитаны…</title>
-</titles>
 <album albumnum="10" year="1999" tracknum="8">Шансон</album>
 <year>1982</year>
 <text>
@@ -1359,10 +1339,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="balagan1">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Балаган 1</title>
 <title>В одних садах цветет миндаль…</title>
-</titles>
 <album albumnum="1" year="1994" tracknum="17">Вишнёвое варенье</album>
 <album albumnum="15" year="2001" tracknum="14">Ковчег неутомимый 1</album>
 <year>1987</year>
@@ -1400,10 +1379,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="balagan2">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Балаган 2</title>
 <title>За тот же самый горизонт…</title>
-</titles>
 <album albumnum="3" year="2001" tracknum="20">Балаган 2</album>
 <album albumnum="16" year="2001" tracknum="32">Ковчег неутомимый 2</album>
 <year>1989</year>
@@ -1475,10 +1453,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="ballada">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Баллада</title>
 <title>Известно стало, что вблизи от города…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="20">Другая жизнь</album>
 <album albumnum="19" year="2004" tracknum="18">Предположим…</album>
 <year>1993</year>
@@ -1525,10 +1502,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="balladao">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Баллада о справедливости</title>
 <title>Вот сижу, себя жалею…</title>
-</titles>
 <year>1980</year>
 <text>
 Вот сижу, себя жалею,                       Dm
@@ -1687,10 +1663,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="baltijsk">
-<titles>
+<author>Михаил Щербаков</author>
 <title>«Балтийские волны»</title>
 <title>Норд-вест, гудки, синева…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="14">Другая жизнь</album>
 <album albumnum="13" year="1999" tracknum="15">Избранное. Часть 1</album>
 <album albumnum="18" year="2004" tracknum="9">Пешком с востока</album>
@@ -1724,9 +1699,8 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="baritono">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Баритоном ржавым…</title>
-</titles>
 <year>1980</year>
 <text>
 Баритоном ржавым кто-то за окном               Am   Dm   E7   Am
@@ -1759,10 +1733,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="bereg">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Белый берег</title>
 <title>Был берег бел как снег…</title>
-</titles>
 <album albumnum="17" year="2003" tracknum="4">Если</album>
 <album albumnum="23" year="2015" tracknum="15">Чужая музыка и не только. Часть 3</album>
 <year>2002</year>
@@ -1802,10 +1775,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="bezhenc0">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песня беженцев (вар. 1981)</title>
 <title>Кругом туман, впереди туман…</title>
-</titles>
 <year>1981</year>
 <text>
 Кругом туман, впереди туман,                Am
@@ -1846,10 +1818,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="bezhence">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песня беженцев (вар. 1987)</title>
 <title>Кругом туман, впереди туман…</title>
-</titles>
 <year>1981, 1987</year>
 <text>
 Кругом туман, впереди туман,                 Am
@@ -1887,10 +1858,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="billy">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Билли</title>
 <title>Где-то в горах высоких…</title>
-</titles>
 <album albumnum="14" year="2000" tracknum="4">Избранное. Часть 2</album>
 <album albumnum="3" year="2001" tracknum="22">Балаган 2</album>
 <year>1982, 1985</year>
@@ -1949,10 +1919,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="bolero1">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Болеро 1</title>
 <title>Не зря ли я взывал до хрипоты…</title>
-</titles>
 <album albumnum="1" year="1994" tracknum="5">Вишнёвое варенье</album>
 <album albumnum="15" year="2001" tracknum="4">Ковчег неутомимый 1</album>
 <year>1985</year>
@@ -1992,10 +1961,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="bolero2">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Болеро 2</title>
 <title>Кто-то громко пел из последних сил…</title>
-</titles>
 <year>1985</year>
 <subtitle>Памяти А. Галича</subtitle>
 <text>
@@ -2047,10 +2015,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="brodjagi">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Бродяги</title>
 <title>Пёс их знает, бродяг…</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="16">Заклинание</album>
 <album albumnum="14" year="2000" tracknum="22">Избранное. Часть 2</album>
 <year>1992</year>
@@ -2083,9 +2050,8 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="bulvary">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Бульвары дрожали…</title>
-</titles>
 <year>1979</year>
 <text>
 Бульвары дрожали, и стоны звучали глухие,                   D     A
@@ -2131,10 +2097,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="burja">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Буря на море</title>
 <title>Конечно — гибель поначалу…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="9">Воздвиг я памятник</album>
 <album albumnum="16" year="2001" tracknum="9">Ковчег неутомимый 2</album>
 <album albumnum="19" year="2004" tracknum="14">Предположим…</album>
@@ -2180,10 +2145,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="bystrov">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Быстров</title>
 <title>Неправда, что Быстров…</title>
-</titles>
 <album albumnum="17" year="2003" tracknum="13">Если</album>
 <album albumnum="21" year="2010" tracknum="13">Чужая музыка и не только. Часть 1</album>
 <year>2001</year>
@@ -2246,10 +2210,9 @@ e|------4-----|2-----2-----|7-----------|------------|------------|
 </track>
 
 <track id="celoelet">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Целое лето</title>
 <title>Что изменилось в эти двенадцать месяцев…</title>
-</titles>
 <album albumnum="8" year="2005" tracknum="11">Целое лето</album>
 <year>1996</year>
 <text>
@@ -2318,9 +2281,8 @@ nos encontramos…
 </track>
 
 <track id="chasov">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Часов промчится череда…</title>
-</titles>
 <year>1980</year>
 <text>
                                                      D7 G
@@ -2372,10 +2334,9 @@ nos encontramos…
 </track>
 
 <track id="chastush">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Частушки</title>
 <title>О чем молчишь ты снова…</title>
-</titles>
 <album albumnum="10" year="1999" tracknum="2">Шансон</album>
 <year>1982</year>
 <text>
@@ -2439,9 +2400,8 @@ nos encontramos…
 </track>
 
 <track id="chepuxa">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Чепуха, чепуха…</title>
-</titles>
 <album albumnum="8" year="2005" tracknum="16">Целое лето</album>
 <year>1996</year>
 <text>
@@ -2487,10 +2447,9 @@ nos encontramos…
 </track>
 
 <track id="chinatow">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Chinatown</title>
 <title>Нет заглавной буквы…</title>
-</titles>
 <album albumnum="4" year="1996" tracknum="11">Город Город</album>
 <album albumnum="12" year="2002" tracknum="10">Once</album>
 <year>1994</year>
@@ -2555,9 +2514,8 @@ nos encontramos…
 </track>
 
 <track id="chtotako">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Что такое есть я…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="11">Воздвиг я памятник</album>
 <year>1990</year>
 <text>
@@ -2628,10 +2586,9 @@ homo homini est.                                   G7   Cm
 </track>
 
 <track id="chtozane">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Паром</title>
 <title>Что за недуг — прямо беда…</title>
-</titles>
 <album albumnum="20" year="2006" tracknum="13">Райцентр</album>
 <year>2005</year>
 <text>
@@ -2673,10 +2630,9 @@ homo homini est.                                   G7   Cm
 </track>
 
 <track id="chuzhaj1">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Чужая музыка 1</title>
 <title>Кроме тебя, Дункан…</title>
-</titles>
 <album albumnum="9" year="1999" tracknum="1">Ложный шаг</album>
 <year>1997</year>
 <text>
@@ -2717,10 +2673,9 @@ homo homini est.                                   G7   Cm
 </track>
 
 <track id="chuzhaj2">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Чужая музыка 2</title>
 <title>Всё сбылось, кроме двух там, трёх…</title>
-</titles>
 <album albumnum="9" year="1999" tracknum="10">Ложный шаг</album>
 <year>1997</year>
 <text>
@@ -2777,10 +2732,9 @@ homo homini est.                                   G7   Cm
 </track>
 
 <track id="chuzhaj3">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Чужая музыка 3</title>
 <title>На двухколёсном, небезопасном…</title>
-</titles>
 <album albumnum="22" year="2013" tracknum="8">Чужая музыка и не только. Часть 2</album>
 <year>2012</year>
 <text>
@@ -2837,10 +2791,9 @@ x|---|---|---|     x|---|---|---|     x|---|---|---|      |(■)|---|---|
 </track>
 
 <track id="cirkachk">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Циркачка</title>
 <title>Дрожь унялась, казнь миновала…</title>
-</titles>
 <album albumnum="13" year="1999" tracknum="21">Избранное. Часть 1</album>
 <album albumnum="8" year="2005" tracknum="5">Целое лето</album>
 <year>1996</year>
@@ -2886,9 +2839,8 @@ x|---|---|---|     x|---|---|---|     x|---|---|---|      |(■)|---|---|
 </track>
 
 <track id="davajte">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Давайте, други милые…</title>
-</titles>
 <year>1982</year>
 <text>
                                                         Dm B  Dm B  Dm
@@ -2951,10 +2903,9 @@ x|---|---|---|     x|---|---|---|     x|---|---|---|      |(■)|---|---|
 </track>
 
 <track id="deja">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Déjà</title>
 <title>Не может быть, весна, весна…</title>
-</titles>
 <album albumnum="11" year="2000" tracknum="3">Déjà</album>
 <year>2000</year>
 <text>
@@ -3027,10 +2978,9 @@ x|---|---|---|     x|---|---|---|     x|---|---|---|      |(■)|---|---|
 </track>
 
 <track id="deklarac">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Декларация</title>
 <title>Мы, жители социума, не могущего без войны…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="13">Воздвиг я памятник</album>
 <album albumnum="14" year="2000" tracknum="16">Избранное. Часть 2</album>
 <album albumnum="3" year="2001" tracknum="23">Балаган 2</album>
@@ -3065,9 +3015,8 @@ x|---|---|---|     x|---|---|---|     x|---|---|---|      |(■)|---|---|
 </track>
 
 <track id="deloshlo">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Дело шло к рассвету, вьюги бушевали…</title>
-</titles>
 <album albumnum="15" year="2001" tracknum="21">Ковчег неутомимый 1</album>
 <year>1985</year>
 <text>
@@ -3111,10 +3060,9 @@ x|---|---|---|     x|---|---|---|     x|---|---|---|      |(■)|---|---|
 </track>
 
 <track id="dendensk">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Седьмой трамвай</title>
 <title>День-деньской жара в Москве…</title>
-</titles>
 <album albumnum="11" year="2000" tracknum="5">Déjà</album>
 <year>1998</year>
 <text>
@@ -3154,10 +3102,9 @@ x|---|---|---|     x|---|---|---|     x|---|---|---|      |(■)|---|---|
 </track>
 
 <track id="descensu">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Descensus ad inferos</title>
 <title>Вот изобретенная не мною…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="2">Другая жизнь</album>
 <album albumnum="19" year="2004" tracknum="16">Предположим…</album>
 <year>1990</year>
@@ -3214,10 +3161,9 @@ x|---|---|---|     x|---|---|---|     x|---|---|---|      |(■)|---|---|
 </track>
 
 <track id="diktant">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Диктант</title>
 <title>Профан по всем остальным наукам…</title>
-</titles>
 <album albumnum="4" year="1996" tracknum="13">Город Город</album>
 <album albumnum="13" year="1999" tracknum="19">Избранное. Часть 1</album>
 <album albumnum="12" year="2002" tracknum="16">Once</album>
@@ -3269,10 +3215,9 @@ x|---|---|---|     x|---|---|---|     x|---|---|---|      |(■)|---|---|
 </track>
 
 <track id="doroga">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Дорога</title>
 <title>Далеко до срока…</title>
-</titles>
 <album albumnum="15" year="2001" tracknum="22">Ковчег неутомимый 1</album>
 <year>1985</year>
 <text>
@@ -3320,9 +3265,8 @@ x|---|---|---|     x|---|---|---|     x|---|---|---|      |(■)|---|---|
 </track>
 
 <track id="drugajaz">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Другая жизнь</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="1">Другая жизнь</album>
 <album albumnum="19" year="2004" tracknum="27">Предположим…</album>
 <year>1992</year>
@@ -3371,10 +3315,9 @@ Warum, pourquoi, perche?                                 G
 </track>
 
 <track id="drugoe">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Другое обращение к герою</title>
 <title>Проживи, как я, хоть двести…</title>
-</titles>
 <album albumnum="4" year="1996" tracknum="8">Город Город</album>
 <album albumnum="12" year="2002" tracknum="8">Once</album>
 <year>1993</year>
@@ -3470,9 +3413,8 @@ Warum, pourquoi, perche?                                 G
 </track>
 
 <track id="druzjamo">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Друзья-мореходы…</title>
-</titles>
 <year>1986</year>
 <text>
 Друзья-мореходы, творцы-корабелы,              Cm   D7   G    Cm
@@ -3508,10 +3450,9 @@ Warum, pourquoi, perche?                                 G
 </track>
 
 <track id="duet">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Дуэт</title>
 <title>Сердцу все в Испании мило…</title>
-</titles>
 <album albumnum="4" year="1996" tracknum="2">Город Город</album>
 <album albumnum="12" year="2002" tracknum="3">Once</album>
 <year>1993</year>
@@ -3631,10 +3572,9 @@ Warum, pourquoi, perche?                                 G
 </track>
 
 <track id="dusha">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Душа</title>
 <title>Оставлю всех, пройду повсюду…</title>
-</titles>
 <album albumnum="1" year="1994" tracknum="6">Вишнёвое варенье</album>
 <album albumnum="14" year="2000" tracknum="5">Избранное. Часть 2</album>
 <album albumnum="15" year="2001" tracknum="5">Ковчег неутомимый 1</album>
@@ -3670,10 +3610,9 @@ Warum, pourquoi, perche?                                 G
 </track>
 
 <track id="eccehomo">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Ecce homo</title>
 <title>А ну-ка, выпьем, храбрые вояки…</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="3">Заклинание</album>
 <album albumnum="18" year="2004" tracknum="17">Пешком с востока</album>
 <year>1990</year>
@@ -3725,9 +3664,8 @@ Warum, pourquoi, perche?                                 G
 </track>
 
 <track id="ej28let">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Ей 28 лет…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="24">Это должно случиться…</album>
 <year>1991</year>
 <text>
@@ -3775,10 +3713,9 @@ Warum, pourquoi, perche?                                 G
 </track>
 
 <track id="emigrant">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песенка эмигранта</title>
 <title>Ах, платочек, ах, тесьма…</title>
-</titles>
 <year>1981</year>
 <text>
     Ах, платочек, ах, тесьма,                 Em  Hm
@@ -3833,10 +3770,9 @@ Warum, pourquoi, perche?                                 G
 </track>
 
 <track id="epilog">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Эпилог</title>
 <title>Не выхожу на связь…</title>
-</titles>
 <album albumnum="11" year="2000" tracknum="16">Déjà</album>
 <year>1999</year>
 <text>
@@ -3892,9 +3828,8 @@ Warum, pourquoi, perche?                                 G
 </track>
 
 <track id="eschemla">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Ещё младенцем…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="13">Это должно случиться…</album>
 <album albumnum="14" year="2000" tracknum="21">Избранное. Часть 2</album>
 <year>1992</year>
@@ -3943,10 +3878,9 @@ Warum, pourquoi, perche?                                 G
 </track>
 
 <track id="eschezak">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Ещё заклинание</title>
 <title>Длятся стансы, шьются…</title>
-</titles>
 <album albumnum="8" year="2005" tracknum="8">Целое лето</album>
 <year>1996</year>
 <text>
@@ -4001,10 +3935,9 @@ Warum, pourquoi, perche?                                 G
 </track>
 
 <track id="esli">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Если</title>
 <title>Если пойдёшь ты пешком…</title>
-</titles>
 <album albumnum="17" year="2003" tracknum="9">Если</album>
 <album albumnum="21" year="2010" tracknum="12">Чужая музыка и не только. Часть 1</album>
 <year>2001</year>
@@ -4058,10 +3991,9 @@ Warum, pourquoi, perche?                                 G
 </track>
 
 <track id="etiglaza">
-<titles>
+<author>Михаил Щербаков</author>
 <title>«Эти глаза напротив»</title>
 <title>Видал бы кто, каким я львом…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="11">Это должно случиться…</album>
 <album albumnum="18" year="2004" tracknum="18">Пешком с востока</album>
 <year>1992</year>
@@ -4161,9 +4093,8 @@ Warum, pourquoi, perche?                                 G
 </track>
 
 <track id="etodolzh">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Это должно случиться</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="17">Это должно случиться…</album>
 <album albumnum="14" year="2000" tracknum="25">Избранное. Часть 2</album>
 <year>1992</year>
@@ -4204,10 +4135,9 @@ Warum, pourquoi, perche?                                 G
 </track>
 
 <track id="etoja">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Это я</title>
 <title>Это я, а не ты, соглядатай…</title>
-</titles>
 <album albumnum="3" year="2001" tracknum="7">Балаган 2</album>
 <year>1993</year>
 <text>
@@ -4258,10 +4188,9 @@ Warum, pourquoi, perche?                                 G
 </track>
 
 <track id="etoneja">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Это не я</title>
 <title>Неосторожно взяв почин…</title>
-</titles>
 <album albumnum="8" year="2005" tracknum="2">Целое лето</album>
 <year>1996</year>
 <text>
@@ -4358,10 +4287,9 @@ Warum, pourquoi, perche?                                 G
 </track>
 
 <track id="farewell">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Farewell</title>
 <title>Всё. Хватит мук, довольно склок…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="20">Это должно случиться…</album>
 <year>1991</year>
 <text>
@@ -4400,58 +4328,56 @@ Warum, pourquoi, perche?                                 G
 </track>
 
 <track id="farmacev">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Фармацевт</title>
 <title>Волнуйся, знахарь, о травах, почве…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="11">Другая жизнь</album>
 <album albumnum="14" year="2000" tracknum="23">Избранное. Часть 2</album>
 <album albumnum="19" year="2004" tracknum="24">Предположим…</album>
 <year>1992</year>
 <text>
-Волнуйся, знахарь, о травах, почве, камнях, золе.         Em
-Снабжай сигнатурой склянку, словно ларец ключом.          A
-Пекись о добротном тигле, об огневом котле.               Am  Em
-О звонких весах заботься. Более ни о чём.                 Hm  Am  G
+Волнуйся, знахарь, о травах, почве, камнях, золе.      Em
+Снабжай сигнатурой склянку, словно ларец ключом.       A
+Пекись о добротном тигле, об огневом котле.            Am  Em
+О звонких весах заботься. Более ни о чём.              Hm  Am  G
 
-Сто тысяч лиц исказятся, гневно задрав носы:              Hm  G
-мол, стрелок ты не следишь и эпохи пульс потерял.         E   A
-Меж тем вот палец твой, он на пульсе. А вот часы,         Am  Em
-они идут, и довольно быстро, я проверял.                  Am  Em  H7
+Сто тысяч лиц исказятся, гневно задрав носы:           Hm  G
+мол, стрелок ты не следишь и эпохи пульс потерял.      E   A
+Меж тем вот палец твой, он на пульсе. А вот часы,      Am  Em
+они идут, и довольно быстро, я проверял.               Am  Em  H7
 
-Сто тысяч глаз, то есть, двести тысяч, берём вдвойне,     Em
-на зелье твоё посмотрят, как на исчадье зла.              A
-А ты доверься ни в коей мере не им, но мне.               Am  Em
-Я первый приду отведать из твоего котла.                  Hm  Am  G
+Сто тысяч глаз, то есть, двести тысяч, берём вдвойне,  Em
+на зелье твоё посмотрят, как на исчадье зла.           A
+А ты доверься ни в коей мере не им, но мне.            Am  Em
+Я первый приду отведать из твоего котла.               Hm  Am  G
 
-Сто тысяч ртов напрягутся, как только я и ты              Hm  G
-бальзам разольём по чаркам, даже не дав остыть.           E   A
-«Не пейте, вам станет плохо!» — запричитают рты.          Am  Em
-А нам и так уже плохо, что ж мы будем не пить?            Am  Em  H7
+Сто тысяч ртов напрягутся, как только я и ты           Hm  G
+бальзам разольём по чаркам, даже не дав остыть.        E   A
+«Не пейте, вам станет плохо!» — запричитают рты.       Am  Em
+А нам и так уже плохо, что ж мы будем не пить?         Am  Em  H7
 
-Сто тысяч лбов, начинённых мудростью лет и зим,           Em
-замрут, не решив, как быть, едва лишь я намекну,          A
-что даже отдыха ради ты отойдёшь не к ним,                Am  Em
-а к сыну Ночи и брату Смерти, то есть ко Сну.             Hm  Am  G
+Сто тысяч лбов, начинённых мудростью лет и зим,        Em
+замрут, не решив, как быть, едва лишь я намекну,       A
+что даже отдыха ради ты отойдёшь не к ним,             Am  Em
+а к сыну Ночи и брату Смерти, то есть ко Сну.          Hm  Am  G
 
-Кому же и спать-то сладко, как не тебе, врачу?            Hm  G
-Дремли, покуда в котле твоём, закипая в срок,             E   A
-бурлит лекарство от государства, пей не хочу,             Am  Em
-оно же средство от людоедства, рубль пузырёк.             Am  Em  H7
+Кому же и спать-то сладко, как не тебе, врачу?         Hm  G
+Дремли, покуда в котле твоём, закипая в срок,          E   A
+бурлит лекарство от государства, пей не хочу,          Am  Em
+оно же средство от людоедства, рубль пузырёк.          Am  Em  H7
 
-Я сам бы спал, да бальзам гудит, аромат плывёт,           Hm  G
-объяв район, а также примкнувший к нему пустырь,          E   A
-плывут индийские перцы, гвоздика, шафран и мёд,           Am  Em
-мускатный цвет, кардамон, орехи, изюм, имбирь…            Am  Em  H7
+Я сам бы спал, да бальзам гудит, аромат плывёт,        Hm  G
+объяв район, а также примкнувший к нему пустырь,       E   A
+плывут индийские перцы, гвоздика, шафран и мёд,        Am  Em
+мускатный цвет, кардамон, орехи, изюм, имбирь…         Am  Em  H7
 </text>
 </track>
 
 <track id="fialkovy">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Фиалковый букет</title>
 <title>Я очень ясно вижу…</title>
 <title>Парижанка</title>
-</titles>
 <album albumnum="10" year="1999" tracknum="15">Шансон</album>
 <year>1983</year>
 <text>
@@ -4504,91 +4430,89 @@ Warum, pourquoi, perche?                                 G
 </track>
 
 <track id="fontanka">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Фонтанка</title>
 <title>Вместо того, чтоб гнить в глуши…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="3">Другая жизнь</album>
 <album albumnum="19" year="2004" tracknum="9">Предположим…</album>
 <year>1992</year>
 <text>
-Вместо того чтоб гнить в глуши,                 Am      Dm
-дыры латать, считать гроши,                     E7      Am
-можно, пожалуй, шутки ради                      C  A7/B A7 Dm
-что-нибудь сделать от души.                     Am E    Am
+Вместо того чтоб гнить в глуши,      Am      Dm
+дыры латать, считать гроши,          E7      Am
+можно, пожалуй, шутки ради           C  A7/B A7 Dm
+что-нибудь сделать от души.          Am E    Am
 
-Во изумленье стад земных,                       Am      Dm
-пастырей их и всех иных,                        E7      Am
-скажем, начать с высот астральных,              C  A7/B A7 Dm
-благо рукой подать до них.                      Am E    Am
+Во изумленье стад земных,            Am      Dm
+пастырей их и всех иных,             E7      Am
+скажем, начать с высот астральных,   C  A7/B A7 Dm
+благо рукой подать до них.           Am E    Am
 
-Сев на каком-нибудь плато,                      Cm      Fm
-небо измерить от и до                           G7      Cm
-и заключить, что звездочёты                     Eb C7   Fm
-врали веками чёрт-те что.                       Cm G    Cm
+Сев на каком-нибудь плато,           Cm      Fm
+небо измерить от и до                G7      Cm
+и заключить, что звездочёты          Eb C7   Fm
+врали веками чёрт-те что.            Cm G    Cm
 
-Или в пробирке, как в саду,                     Cm      Fm
-вырастить новую еду —                           G7      Cm
-и применять взамен обычной                      Eb C7   Fm
-или с обычной наряду.                           Cm G    Cm
+Или в пробирке, как в саду,          Cm      Fm
+вырастить новую еду —                G7      Cm
+и применять взамен обычной           Eb C7   Fm
+или с обычной наряду.                Cm G    Cm
 
-Также невредно, ясным днём                      Am      Dm
-междоусобный слыша гром,                        E7      Am
-в планы враждующих проникнуть                   C  A7/B A7 Dm
-телепатическим путём.                           Am E    Am
+Также невредно, ясным днём           Am      Dm
+междоусобный слыша гром,             E7      Am
+в планы враждующих проникнуть        C  A7/B A7 Dm
+телепатическим путём.                Am E    Am
 
-А уж разведав что к чему,                       Am      Dm
-кровопролитную чуму                             E7      Am
-предотвратить — и с гордым видом                C  A7/B A7 Dm
-за шпионаж пойти в тюрьму.                      Am E    Am
+А уж разведав что к чему,            Am      Dm
+кровопролитную чуму                  E7      Am
+предотвратить — и с гордым видом     C  A7/B A7 Dm
+за шпионаж пойти в тюрьму.           Am E    Am
 
-Или уж впрямь, назло властям,                   Cm      Fm
-по городам и областям                           G7      Cm
-тронуться маршем, раздавая                      Eb C7   Fm
-каждому по потребностям:                        Cm G    Cm
+Или уж впрямь, назло властям,        Cm      Fm
+по городам и областям                G7      Cm
+тронуться маршем, раздавая           Eb C7   Fm
+каждому по потребностям:             Cm G    Cm
 
-вот тебе, бабка, Юрьев день,                    Cm      Fm
-вот тебе, шапка, твой бекрень,                  G7      Cm
-вот тебе, друг степей и джунглей,               Eb C7   Fm
-твой бюллетень, пельмень, женьшень…             Cm G    Cm
+вот тебе, бабка, Юрьев день,         Cm      Fm
+вот тебе, шапка, твой бекрень,       G7      Cm
+вот тебе, друг степей и джунглей,    Eb C7   Fm
+твой бюллетень, пельмень, женьшень…  Cm G    Cm
 
-Горе лишь в том, что друг степей                Am      Dm
-счастье своё сочтёт скорей                      E7      Am
-чудом каких-то сил надмирных,                   C  A7/B A7 Dm
-нежели доблести моей.                           Am E    Am
+Горе лишь в том, что друг степей     Am      Dm
+счастье своё сочтёт скорей           E7      Am
+чудом каких-то сил надмирных,        C  A7/B A7 Dm
+нежели доблести моей.                Am E    Am
 
-Наоборот, чуть где какой                        Am      Dm
-неурожай, разбой, застой —                      E7      Am
-всякий решит, что будь он проклят,              C  A7/B A7 Dm
-если не я тому виной.                           Am E    Am
+Наоборот, чуть где какой             Am      Dm
+неурожай, разбой, застой —           E7      Am
+всякий решит, что будь он проклят,   C  A7/B A7 Dm
+если не я тому виной.                Am E    Am
 
-Вот, например, не так давно                     Cm      Fm
-шторм небывалый, как в кино,                    G7      Cm
-снёс, понимаешь, Нидерланды,                    Eb C7   Fm
-прямо вот напрочь смыл на дно.                  Cm G    Cm
+Вот, например, не так давно          Cm      Fm
+шторм небывалый, как в кино,         G7      Cm
+снёс, понимаешь, Нидерланды,         Eb C7   Fm
+прямо вот напрочь смыл на дно.       Cm G    Cm
 
-И, натурально, все вокруг                       Cm      Fm
-сразу, едва прошёл испуг,                       G7      Cm
-хором сочли каприз Нептуна                      Eb C7   Fm
-делом моих несчастных рук.                      Cm G    Cm
+И, натурально, все вокруг            Cm      Fm
+сразу, едва прошёл испуг,            G7      Cm
+хором сочли каприз Нептуна           Eb C7   Fm
+делом моих несчастных рук.           Cm G    Cm
 
-Я же про этот шторм и шквал                     Am      Dm
-ведать не ведал, знать не знал.                 E7      Am
-Я в это время по Фонтанке                       C  A7/B A7 Dm
-в белой рубашечке гулял.                        Am E    Am
+Я же про этот шторм и шквал          Am      Dm
+ведать не ведал, знать не знал.      E7      Am
+Я в это время по Фонтанке            C  A7/B A7 Dm
+в белой рубашечке гулял.             Am E    Am
 
-В левой руке моей была                          Am      Dm
-провинциалка из села.                           E7      Am
-В правой руке моей фиалка                       C  A7/B A7 Dm
-благоухала и цвела.                             Am E    Am
+В левой руке моей была               Am      Dm
+провинциалка из села.                E7      Am
+В правой руке моей фиалка            C  A7/B A7 Dm
+благоухала и цвела.                  Am E    Am
 </text>
 </track>
 
 <track id="gimndzhe">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Гимн Джека Хэллидея</title>
 <title>Малыш, немного стало нас…</title>
-</titles>
 <year>1979</year>
 <text>
 Малыш, немного стало нас.                           Am    E7    Am
@@ -4662,10 +4586,9 @@ Hам надлежит владеть своей судьбой —             
 </track>
 
 <track id="gorestn1">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Горестный романс 1</title>
 <title>Несчитанные дни, немыслимые дали…</title>
-</titles>
 <year>1983</year>
 <text>
 Несчитанные дни, немыслимые дали                       D  Em A7  G  D
@@ -4708,10 +4631,9 @@ Hам надлежит владеть своей судьбой —             
 </track>
 
 <track id="gorestn2">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Горестный романс 2</title>
 <title>Поржавело наше стремя…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="2">Воздвиг я памятник</album>
 <album albumnum="16" year="2001" tracknum="5">Ковчег неутомимый 2</album>
 <year>1986</year>
@@ -4741,9 +4663,8 @@ Hам надлежит владеть своей судьбой —             
 </track>
 
 <track id="gostinic">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Гостиница</title>
-</titles>
 <album albumnum="11" year="2000" tracknum="9">Déjà</album>
 <year>2000</year>
 <text>
@@ -4815,10 +4736,9 @@ Hам надлежит владеть своей судьбой —             
 </track>
 
 <track id="inicialy">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Инициалы</title>
 <title>Аменхотеп! Ты помнишь тот мотив…</title>
-</titles>
 <album albumnum="8" year="2005" tracknum="12">Целое лето</album>
 <year>1996</year>
 <text>
@@ -4870,10 +4790,9 @@ E----------------------)-5--------------------
 </track>
 
 <track id="instrukc">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Инструкция</title>
 <title>Когда в хлеву обезьяньем…</title>
-</titles>
 <album albumnum="4" year="1996" tracknum="18">Город Город</album>
 <album albumnum="12" year="2002" tracknum="4">Once</album>
 <year>1994</year>
@@ -4923,10 +4842,9 @@ E----------------------)-5--------------------
 </track>
 
 <track id="interme1">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Интермедия 1</title>
 <title>Свой век, не ярче кривых стенных…</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="4">Заклинание</album>
 <album albumnum="18" year="2004" tracknum="10">Пешком с востока</album>
 <year>1995</year>
@@ -4973,10 +4891,9 @@ E----------------------)-5--------------------
 </track>
 
 <track id="interme3">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Интермедия 3</title>
 <title>Где ты был, когда разведка…</title>
-</titles>
 <album albumnum="8" year="2005" tracknum="14">Целое лето</album>
 <year>1996</year>
 <text>
@@ -5034,10 +4951,9 @@ bass d-c#-b-a-b-a-g-a-a (*2)
 </track>
 
 <track id="interme4">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Интермедия 4</title>
 <title>Спроси меня, зачем казнили гения…</title>
-</titles>
 <album albumnum="9" year="1999" tracknum="13">Ложный шаг</album>
 <year>1998</year>
 <text>
@@ -5130,10 +5046,9 @@ bass d-c#-b-a-b-a-g-a-a (*2)
 </track>
 
 <track id="ispokojn">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Тоска по родине</title>
 <title>И спокойный в душе, и тверезый…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="17">Воздвиг я памятник</album>
 <album albumnum="16" year="2001" tracknum="25">Ковчег неутомимый 2</album>
 <year>1985</year>
@@ -5162,10 +5077,9 @@ bass d-c#-b-a-b-a-g-a-a (*2)
 </track>
 
 <track id="istorija">
-<titles>
+<author>Михаил Щербаков</author>
 <title>История любви</title>
 <title>Сначала я…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="1">Воздвиг я памятник</album>
 <album albumnum="19" year="2004" tracknum="4">Предположим…</album>
 <year>1990</year>
@@ -5206,10 +5120,9 @@ bass d-c#-b-a-b-a-g-a-a (*2)
 </track>
 
 <track id="itakdruz">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песня министров</title>
 <title>Итак, друзья, какие будут мнения…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="8">Это должно случиться…</album>
 <album albumnum="16" year="2001" tracknum="18">Ковчег неутомимый 2</album>
 <year>1989</year>
@@ -5267,9 +5180,8 @@ bass d-c#-b-a-b-a-g-a-a (*2)
 </track>
 
 <track id="izdaleka">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Издалека вернувшись…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="10">Это должно случиться…</album>
 <album albumnum="13" year="1999" tracknum="9">Избранное. Часть 1</album>
 <album albumnum="19" year="2004" tracknum="5">Предположим…</album>
@@ -5309,9 +5221,8 @@ bass d-c#-b-a-b-a-g-a-a (*2)
 </track>
 
 <track id="jachashu">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Я чашу свою осушил до предела…</title>
-</titles>
 <album albumnum="14" year="2000" tracknum="10">Избранное. Часть 2</album>
 <album albumnum="3" year="2001" tracknum="21">Балаган 2</album>
 <year>1986</year>
@@ -5338,10 +5249,9 @@ bass d-c#-b-a-b-a-g-a-a (*2)
 </track>
 
 <track id="jaekzoti">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Я — экзотик</title>
 <title>Я фланирую над миром…</title>
-</titles>
 <year>1980</year>
 <text>
 Я фланирую над миром                   Dm
@@ -5446,9 +5356,8 @@ bass d-c#-b-a-b-a-g-a-a (*2)
 </track>
 
 <track id="jaispoln">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Я исполняю все…</title>
-</titles>
 <album albumnum="15" year="2001" tracknum="20">Ковчег неутомимый 1</album>
 <year>1985</year>
 <text>
@@ -5480,9 +5389,8 @@ bass d-c#-b-a-b-a-g-a-a (*2)
 </track>
 
 <track id="jatakxot">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Я так хотел…</title>
-</titles>
 <year>1978</year>
 <text>
 Я так хотел отречься от себя,                       Am6   Am    Em
@@ -5538,10 +5446,9 @@ bass d-c#-b-a-b-a-g-a-a (*2)
 </track>
 
 <track id="jim">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Джим</title>
 <title>Двадцать лет, свирель, котомка…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="19">Другая жизнь</album>
 <album albumnum="18" year="2004" tracknum="25">Пешком с востока</album>
 <year>1994</year>
@@ -5586,10 +5493,9 @@ bass d-c#-b-a-b-a-g-a-a (*2)
 </track>
 
 <track id="jubilej0">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Юбилейная (вар. 1984)</title>
 <title>А нас ещё осудят…</title>
-</titles>
 <year>1985</year>
 <text>
 А нас ещё осудят, а мы ещё ответим,                 Cm      F   Fm
@@ -5622,10 +5528,9 @@ bass d-c#-b-a-b-a-g-a-a (*2)
 </track>
 
 <track id="jubilejn">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Юбилейная (вар. 1985)</title>
 <title>А нас ещё осудят…</title>
-</titles>
 <album albumnum="1" year="1994" tracknum="16">Вишнёвое варенье</album>
 <album albumnum="15" year="2001" tracknum="11">Ковчег неутомимый 1</album>
 <year>1985</year>
@@ -5660,9 +5565,8 @@ bass d-c#-b-a-b-a-g-a-a (*2)
 </track>
 
 <track id="juzhnyj">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Южный ветер, дальний путь…</title>
-</titles>
 <album albumnum="10" year="1999" tracknum="11">Шансон</album>
 <year>1982</year>
 <text>
@@ -5710,10 +5614,9 @@ bass d-c#-b-a-b-a-g-a-a (*2)
 </track>
 
 <track id="kadril">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Кадриль</title>
 <title>Никакой жасмин под окном не пах…</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="18">Заклинание</album>
 <album albumnum="13" year="1999" tracknum="13">Избранное. Часть 1</album>
 <album albumnum="18" year="2004" tracknum="5">Пешком с востока</album>
@@ -5781,9 +5684,8 @@ bass d-c#-b-a-b-a-g-a-a (*2)
 </track>
 
 <track id="kakojkos">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Какой кошмар…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="4">Другая жизнь</album>
 <album albumnum="19" year="2004" tracknum="8">Предположим…</album>
 <year>1993</year>
@@ -5840,10 +5742,9 @@ bass d-c#-b-a-b-a-g-a-a (*2)
 </track>
 
 <track id="kalejdos">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Калейдоскоп детский</title>
 <title>Не угодно ль вот…</title>
-</titles>
 <album albumnum="3" year="2001" tracknum="3">Балаган 2</album>
 <year>1993</year>
 <text>
@@ -5886,10 +5787,9 @@ Ergo: мною можешь пренебречь,                      b  h  b  
 </track>
 
 <track id="kapitan">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Капитан бравый</title>
 <title>Всё куда-то рвался…</title>
-</titles>
 <album albumnum="10" year="1999" tracknum="7">Шансон</album>
 <year>1982</year>
 <text>
@@ -5947,10 +5847,9 @@ Ergo: мною можешь пренебречь,                      b  h  b  
 </track>
 
 <track id="karavan">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Караван</title>
 <title>Школяр в объятьях младой Гертруды…</title>
-</titles>
 <album albumnum="4" year="1996" tracknum="5">Город Город</album>
 <album albumnum="12" year="2002" tracknum="5">Once</album>
 <year>1995</year>
@@ -6002,10 +5901,9 @@ Ergo: мною можешь пренебречь,                      b  h  b  
 </track>
 
 <track id="kariatid">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Кариатиды</title>
 <title>Что-то где-то происходит…</title>
-</titles>
 <album albumnum="10" year="1999" tracknum="13">Шансон</album>
 <year>1982</year>
 <text>
@@ -6062,10 +5960,9 @@ Ergo: мною можешь пренебречь,                      b  h  b  
 </track>
 
 <track id="karnaval">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Карнавальная баллада</title>
 <title>Ты помнишь, как веселый страж…</title>
-</titles>
 <year>1979</year>
 <text>
 Ты помнишь, как весёлый страж       Am
@@ -6125,10 +6022,9 @@ Ergo: мною можешь пренебречь,                      b  h  b  
 </track>
 
 <track id="kibitka">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Кибитка</title>
 <title>Всё скрылось, отошло, и больше не начнётся…</title>
-</titles>
 <album albumnum="1" year="1994" tracknum="9">Вишнёвое варенье</album>
 <album albumnum="14" year="2000" tracknum="1">Избранное. Часть 2</album>
 <album albumnum="15" year="2001" tracknum="13">Ковчег неутомимый 1</album>
@@ -6164,10 +6060,9 @@ Ergo: мною можешь пренебречь,                      b  h  b  
 </track>
 
 <track id="kinemat1">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Кинематограф 1</title>
 <title>Не потому ли, что пыль рутины…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="10">Воздвиг я памятник</album>
 <album albumnum="14" year="2000" tracknum="15">Избранное. Часть 2</album>
 <year>1990</year>
@@ -6227,10 +6122,9 @@ Ergo: мною можешь пренебречь,                      b  h  b  
 </track>
 
 <track id="kinemat2">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Кинематограф 2</title>
 <title>Если эта светотень…</title>
-</titles>
 <album albumnum="8" year="2005" tracknum="9">Целое лето</album>
 <year>1996</year>
 <text>
@@ -6285,10 +6179,9 @@ Ergo: мною можешь пренебречь,                      b  h  b  
 </track>
 
 <track id="kladbis0">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песня кладбищенских сторожей (вар. 1980)</title>
 <title>Под пылью миров, под светилами…</title>
-</titles>
 <year>1980</year>
 <text>
 Под пылью миров, под светилами,                Em        D7   G
@@ -6321,10 +6214,9 @@ Ergo: мною можешь пренебречь,                      b  h  b  
 </track>
 
 <track id="kladbisc">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песня кладбищенских сторожей (вар. 1986)</title>
 <title>Под пылью миров, под светилами…</title>
-</titles>
 <year>1980, 1986</year>
 <text>
     Под пылью миров, под светилами,             Em        D7   G
@@ -6351,10 +6243,9 @@ Ergo: мною можешь пренебречь,                      b  h  b  
 </track>
 
 <track id="kogdaby">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Когда бы ты была великой королевой…</title>
 <album albumnum="15" year="2001" tracknum="16">Ковчег неутомимый 1</album>
-</titles>
 <year>1985</year>
 <text>
 Когда бы ты была великой королевой,               F#7 Hm A  Hm    C     Hm
@@ -6397,9 +6288,8 @@ Ergo: мною можешь пренебречь,                      b  h  b  
 </track>
 
 <track id="kogdajab">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Когда я был помоложе…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="5">Это должно случиться…</album>
 <album albumnum="16" year="2001" tracknum="19">Ковчег неутомимый 2</album>
 <year>1989</year>
@@ -6459,9 +6349,8 @@ Ergo: мною можешь пренебречь,                      b  h  b  
 </track>
 
 <track id="kogoljub">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Кого люблю, того не встречу…</title>
-</titles>
 <album albumnum="4" year="1996" tracknum="16">Город Город</album>
 <album albumnum="12" year="2002" tracknum="17">Once</album>
 <year>1994</year>
@@ -6508,10 +6397,9 @@ Ergo: мною можешь пренебречь,                      b  h  b  
 </track>
 
 <track id="kolesa">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Колёса</title>
 <title>Скрипят колеса под телегою моею…</title>
-</titles>
 <album albumnum="8" year="2005" tracknum="17">Целое лето</album>
 <year>1980</year>
 <text>
@@ -6549,10 +6437,9 @@ Ergo: мною можешь пренебречь,                      b  h  b  
 </track>
 
 <track id="kollazh">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Коллаж</title>
 <title>У церкви стояла карета…</title>
-</titles>
 <album albumnum="8" year="2005" tracknum="13">Целое лето</album>
 <year>1996</year>
 <text>
@@ -6604,10 +6491,9 @@ Ergo: мною можешь пренебречь,                      b  h  b  
 </track>
 
 <track id="kolybelb">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Колыбельная безумца</title>
 <title>Спите, мои благородные предки…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="4">Это должно случиться…</album>
 <album albumnum="16" year="2001" tracknum="27">Ковчег неутомимый 2</album>
 <year>1990</year>
@@ -6742,10 +6628,9 @@ Coda:
 </track>
 
 <track id="kolybeln">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Колыбельная</title>
 <title>Спит Гавана, спят Афины…</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="1">Заклинание</album>
 <album albumnum="10" year="1999" tracknum="5">Шансон</album>
 <album albumnum="19" year="2004" tracknum="1">Предположим…</album>
@@ -6798,10 +6683,9 @@ Coda:
 </track>
 
 <track id="konecned">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Конец недели</title>
 <title>День словно в стороне висел…</title>
-</titles>
 <album albumnum="8" year="2005" tracknum="15">Целое лето</album>
 <year>1996</year>
 <text>
@@ -6843,10 +6727,9 @@ Coda:
 </track>
 
 <track id="konivvag">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Кони в вагоне</title>
 <title>И в штилях, и в штормах…</title>
-</titles>
 <album albumnum="1" year="1994" tracknum="11">Вишнёвое варенье</album>
 <album albumnum="15" year="2001" tracknum="7">Ковчег неутомимый 1</album>
 <year>1985</year>
@@ -6882,10 +6765,9 @@ Coda:
 </track>
 
 <track id="kontrrev">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Контрреволюционный этюд</title>
 <title>Куплю билет в СССР…</title>
-</titles>
 <album albumnum="16" year="2001" tracknum="20">Ковчег неутомимый 2</album>
 <year>1989</year>
 <subtitle>Не ехать же, думаю, в Америку. &#10;&lt;em>Зощенко&lt;/em></subtitle>
@@ -6970,10 +6852,9 @@ Coda:
 </track>
 
 <track id="korablik">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Кораблик</title>
 <title>Кончался август, был туман…</title>
-</titles>
 <album albumnum="13" year="1999" tracknum="1">Избранное. Часть 1</album>
 <album albumnum="10" year="1999" tracknum="3">Шансон</album>
 <album albumnum="19" year="2004" tracknum="10">Предположим…</album>
@@ -7010,10 +6891,9 @@ Coda:
 </track>
 
 <track id="korchma">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Корчма</title>
 <title>Ни сном, ни духом…</title>
-</titles>
 <album albumnum="4" year="1996" tracknum="9">Город Город</album>
 <album albumnum="13" year="1999" tracknum="18">Избранное. Часть 1</album>
 <album albumnum="12" year="2002" tracknum="12">Once</album>
@@ -7062,10 +6942,9 @@ Coda:
 </track>
 
 <track id="kordebal">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Кордебалет</title>
 <title>Плохо кочилась атака…</title>
-</titles>
 <album albumnum="8" year="2005" tracknum="7">Целое лето</album>
 <year>1996</year>
 <text>
@@ -7109,10 +6988,9 @@ Coda:
 </track>
 
 <track id="kovcheg">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Ковчег неутомимый</title>
 <title>Надежды прочь, сомнения долой…</title>
-</titles>
 <album albumnum="1" year="1994" tracknum="14">Вишнёвое варенье</album>
 <album albumnum="14" year="2000" tracknum="13">Избранное. Часть 2</album>
 <album albumnum="15" year="2001" tracknum="10">Ковчег неутомимый 1</album>
@@ -7148,10 +7026,9 @@ Coda:
 </track>
 
 <track id="krajzeml">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Край земли</title>
 <title>Там, где шелестят, оседая…</title>
-</titles>
 <year>1986</year>
 <text>
 Там, где шелестят, оседая,                    D Em
@@ -7185,10 +7062,9 @@ Coda:
 </track>
 
 <track id="krechi">
-<titles>
+<author>Михаил Щербаков</author>
 <title>К речи</title>
 <title>Прямо сейчас, до торгов…</title>
-</titles>
 <album albumnum="9" year="1999" tracknum="14">Ложный шаг</album>
 <year>1998</year>
 <text>
@@ -7233,10 +7109,9 @@ Coda:
 </track>
 
 <track id="krym1">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Крым 1</title>
 <title>Ой, ну право же, провал у пилигрима…</title>
-</titles>
 <album albumnum="10" year="1999" tracknum="10">Шансон</album>
 <year>1981–1982</year>
 <text>
@@ -7329,10 +7204,9 @@ Coda:
 </track>
 
 <track id="krym2">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Крым 2</title>
 <title>Ни на чью не посягну честь…</title>
-</titles>
 <year>1985</year>
 <text>
 Ни на чью не посягну честь,                 Dm   B    Dm   E
@@ -7383,10 +7257,9 @@ Coda:
 </track>
 
 <track id="ksorokon">
-<titles>
+<author>Михаил Щербаков</author>
 <title>К сороконожке</title>
 <title>Я сделал графики упадка царств…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="23">Это должно случиться…</album>
 <album albumnum="13" year="1999" tracknum="16">Избранное. Часть 1</album>
 <album albumnum="19" year="2004" tracknum="11">Предположим…</album>
@@ -7453,10 +7326,9 @@ Coda:
 </track>
 
 <track id="kuznechiki">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Сверчки-кузнечики</title>
 <title>То ли дело прежде: Крым, Кавказ…</title>
-</titles>
 <album albumnum="17" year="2003" tracknum="3">Если</album>
 <album albumnum="21" year="2010" tracknum="14">Чужая музыка и не только. Часть 1</album>
 <year>2000</year>
@@ -7518,9 +7390,8 @@ Coda:
 </track>
 
 <track id="ljubov">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Любовь, как истина, темна…</title>
-</titles>
 <album albumnum="3" year="2001" tracknum="18">Балаган 2</album>
 <year>1990</year>
 <subtitle>Любить… не стоит труда. &#10;&lt;em>Лермонтов&lt;/em></subtitle>
@@ -7558,10 +7429,9 @@ Coda:
 </track>
 
 <track id="ljudisu0">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Люди сухопутья (вар. 1978)</title>
 <title>А в море плавают медузы…</title>
-</titles>
 <year>1978</year>
 <text>
 Ммммммммммммм…                                Hm          A7
@@ -7618,10 +7488,9 @@ Coda:
 </track>
 
 <track id="ljudisux">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Люди сухопутья (вар. 1982)</title>
 <title>А в море плавают медузы…</title>
-</titles>
 <album albumnum="10" year="1999" tracknum="4">Шансон</album>
 <year>1979, 1982</year>
 <text>
@@ -7672,10 +7541,9 @@ Coda:
 </track>
 
 <track id="lunnaja">
-<titles>
+<author>Михаил Щербаков</author>
 <title>«Лунная соната»</title>
 <title>Всё хорошо, не надо краше…</title>
-</titles>
 <album albumnum="11" year="2000" tracknum="2">Déjà</album>
 <year>1998</year>
 <text>
@@ -7747,10 +7615,9 @@ Coda:
 </track>
 
 <track id="maj">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Май</title>
 <title>Ах, я, точно тополь, рос…</title>
-</titles>
 <album albumnum="15" year="2001" tracknum="24">Ковчег неутомимый 1</album>
 <year>1981, 1986</year>
 <text>
@@ -7811,10 +7678,9 @@ Coda:
 </track>
 
 <track id="malenkaj">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Маленькая хозяйка</title>
 <title>Никто из нас не знал надёжнее лазейки…</title>
-</titles>
 <album albumnum="1" year="1994" tracknum="7">Вишнёвое варенье</album>
 <album albumnum="15" year="2001" tracknum="12">Ковчег неутомимый 1</album>
 <year>1984</year>
@@ -7859,10 +7725,9 @@ Coda:
 </track>
 
 <track id="marija">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Мария</title>
 <title>Столько разных людей утешала ты…</title>
-</titles>
 <album albumnum="1" year="1994" tracknum="13">Вишнёвое варенье</album>
 <album albumnum="14" year="2000" tracknum="3">Избранное. Часть 2</album>
 <album albumnum="15" year="2001" tracknum="8">Ковчег неутомимый 1</album>
@@ -7893,10 +7758,9 @@ Coda:
 </track>
 
 <track id="marshkro">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Марш кротов</title>
 <title>Альт и бас дают петуха, моргнув…</title>
-</titles>
 <album albumnum="4" year="1996" tracknum="12">Город Город</album>
 <album albumnum="13" year="1999" tracknum="14">Избранное. Часть 1</album>
 <album albumnum="12" year="2002" tracknum="15">Once</album>
@@ -7946,9 +7810,8 @@ Coda:
 </track>
 
 <track id="mchisnad">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Мчись над волной, смелый…</title>
-</titles>
 <album albumnum="10" year="1999" tracknum="12">Шансон</album>
 <year>1982</year>
 <text>
@@ -8010,10 +7873,9 @@ Coda:
 </track>
 
 <track id="menuet">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Менуэт</title>
 <title>На берегу, что прян и цветист…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="5">Другая жизнь</album>
 <album albumnum="19" year="2004" tracknum="7">Предположим…</album>
 <year>1991</year>
@@ -8083,9 +7945,8 @@ Coda:
 </track>
 
 <track id="mezhetim">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Меж этим пределом и тем…</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="8">Заклинание</album>
 <album albumnum="16" year="2001" tracknum="21">Ковчег неутомимый 2</album>
 <year>1989</year>
@@ -8145,10 +8006,9 @@ Coda:
 </track>
 
 <track id="mimoletn">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Мимолётное, или посвящение Люсьен</title>
 <title>Целуй его…</title>
-</titles>
 <year>1979</year>
 <text>
 Целуй его, пока никто не видит.                 Em      Hm
@@ -8182,9 +8042,8 @@ Coda:
 </track>
 
 <track id="mneniche">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Мне ничего не надо…</title>
-</titles>
 <year>2003</year>
 <text>
 Ммммм…                                                       Em  F#7 Hm
@@ -8234,9 +8093,8 @@ Coda:
 </track>
 
 <track id="mneobesc">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Мне обещали…</title>
-</titles>
 <year>1979</year>
 <text>
 Мне обещали прощать и надеяться,              Dm
@@ -8302,10 +8160,9 @@ Coda:
 </track>
 
 <track id="moekoro1">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Мое королевство 1</title>
 <title>По осенним годам тяжела тишина…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="1">Это должно случиться…</album>
 <album albumnum="16" year="2001" tracknum="22">Ковчег неутомимый 2</album>
 <year>1986</year>
@@ -8359,10 +8216,9 @@ Coda:
 </track>
 
 <track id="moekoro2">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Мое королевство 2</title>
 <title>О Боже, благодарствуй…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="2">Это должно случиться…</album>
 <album albumnum="14" year="2000" tracknum="7">Избранное. Часть 2</album>
 <album albumnum="16" year="2001" tracknum="23">Ковчег неутомимый 2</album>
@@ -8415,10 +8271,9 @@ Coda:
 </track>
 
 <track id="moekoro3">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Мое королевство 3</title>
 <title>Ах, король, ты вождь вождей…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="18">Это должно случиться…</album>
 <album albumnum="18" year="2004" tracknum="8">Пешком с востока</album>
 <year>1990</year>
@@ -8498,10 +8353,9 @@ Coda:
 </track>
 
 <track id="moiraket">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Мои ракеты</title>
 <title>Что, что, что, что ещё такое…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="16">Это должно случиться…</album>
 <album albumnum="18" year="2004" tracknum="26">Пешком с востока</album>
 <year>1994</year>
@@ -8566,10 +8420,9 @@ Coda:
 </track>
 
 <track id="mojarabo">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Моя работа</title>
 <title>Я помню север, я помню юг…</title>
-</titles>
 <album albumnum="15" year="2001" tracknum="23">Ковчег неутомимый 1</album>
 <year>1985, 1986</year>
 <text>
@@ -8603,9 +8456,8 @@ Coda:
 </track>
 
 <track id="mojgordy">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Мой гордый дух под звёздным кровом…</title>
-</titles>
 <year>1985</year>
 <text>
 Мой гордый дух под звёздным кровом,               Dm  Gm    Dm  Gm
@@ -8638,10 +8490,9 @@ Coda:
 </track>
 
 <track id="molitva">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Молитва безумца</title>
 <title>Кто бы и где бы я ни был…</title>
-</titles>
 <album albumnum="16" year="2001" tracknum="30">Ковчег неутомимый 2</album>
 <album albumnum="3" year="2001" tracknum="2">Балаган 2</album>
 <year>1990</year>
@@ -8684,10 +8535,9 @@ Coda:
 </track>
 
 <track id="muzhajsj">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Мужайся</title>
 <title>Пока не грянул горн и залп не прозвучал…</title>
-</titles>
 <album albumnum="3" year="2001" tracknum="5">Балаган 2</album>
 <year>1987</year>
 <text>
@@ -8714,10 +8564,9 @@ Coda:
 </track>
 
 <track id="nadpis">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Надпись</title>
 <title>Прежде, чем вовсе откажет рука…</title>
-</titles>
 <album albumnum="8" year="2005" tracknum="6">Целое лето</album>
 <year>1996</year>
 <text>
@@ -8791,10 +8640,9 @@ Coda:
 </track>
 
 <track id="nastasja">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Настасья</title>
 <title>Как тебя он лупит…</title>
-</titles>
 <year>1983</year>
 <text>
 Как тебя он лупит! Как тебя он бьёт!                Dm  Dm6 Dm Gm6
@@ -8828,10 +8676,9 @@ Coda:
 </track>
 
 <track id="natura">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Natura non facit saltus</title>
 <title>Изгнав меня…</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="14">Заклинание</album>
 <album albumnum="18" year="2004" tracknum="22">Пешком с востока</album>
 <year>1995</year>
@@ -8897,9 +8744,8 @@ Coda:
 </track>
 
 <track id="navescha">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Навещая знакомый берег…</title>
-</titles>
 <album albumnum="16" year="2001" tracknum="26">Ковчег неутомимый 2</album>
 <album albumnum="7" year="1996" tracknum="28">Воздвиг я памятник</album>
 <year>1988</year>
@@ -8981,10 +8827,9 @@ Coda:
 </track>
 
 <track id="navsejz1">
-<titles>
+<author>Михаил Щербаков</author>
 <title>На всей земле 1</title>
 <title>Без цели, без дорог…</title>
-</titles>
 <album albumnum="3" year="2001" tracknum="13">Балаган 2</album>
 <year>1985–1986</year>
 <text>
@@ -9013,10 +8858,9 @@ Coda:
 </track>
 
 <track id="navsejz2">
-<titles>
+<author>Михаил Щербаков</author>
 <title>На всей земле 2</title>
 <title>В ночи моргали огоньки…</title>
-</titles>
 <year>1986</year>
 <text>
 В ночи моргали огоньки, и двигались вагоны              Am   A#   Am
@@ -9066,10 +8910,9 @@ Coda:
 </track>
 
 <track id="nazimnej">
-<titles>
+<author>Михаил Щербаков</author>
 <title>На зимней авеню</title>
 <title>Далек небесный суд…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="15">Другая жизнь</album>
 <year>1987</year>
 <text>
@@ -9113,9 +8956,8 @@ Coda:
 </track>
 
 <track id="neostavt">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Не оставьте меня после смерти…</title>
-</titles>
 <year>1979</year>
 <text>
 Не оставьте меня после смерти            Am    F7
@@ -9166,10 +9008,9 @@ Coda:
 </track>
 
 <track id="nerazmen">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Неразменная бабочка</title>
 <title>Не нарушать бы вихрю эту тишь…</title>
-</titles>
 <album albumnum="14" year="2000" tracknum="29">Избранное. Часть 2</album>
 <album albumnum="11" year="2000" tracknum="4">Déjà</album>
 <year>1999</year>
@@ -9230,9 +9071,8 @@ Coda:
 </track>
 
 <track id="nesoschi">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Не сосчитать ступеней всех…</title>
-</titles>
 <year>1978</year>
 <text>
 Не сосчитать ступеней всех,         Dm    Gm6
@@ -9298,9 +9138,8 @@ Coda:
 </track>
 
 <track id="netnet">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Нет, нет!..</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="15">Заклинание</album>
 <album albumnum="16" year="2001" tracknum="12">Ковчег неутомимый 2</album>
 <year>1990</year>
@@ -9348,9 +9187,8 @@ Coda:
 </track>
 
 <track id="neznajuk">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Не знаю, как там ландыш…</title>
-</titles>
 <album albumnum="8" year="2005" tracknum="4">Целое лето</album>
 <year>1995</year>
 <text>
@@ -9406,9 +9244,8 @@ Coda:
 </track>
 
 <track id="nichemu">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Ничему не поверю, ничем не прельщусь…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="12">Это должно случиться…</album>
 <album albumnum="16" year="2001" tracknum="13">Ковчег неутомимый 2</album>
 <year>1989</year>
@@ -9464,10 +9301,9 @@ Coda:
 </track>
 
 <track id="nochnoj">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Ночной дозор</title>
 <title>Набок бы теперь и наповал…</title>
-</titles>
 <album albumnum="9" year="1999" tracknum="4">Ложный шаг</album>
 <year>1998</year>
 <text>
@@ -9516,10 +9352,9 @@ Coda:
 </track>
 
 <track id="novyjgen">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Новый гений</title>
 <title>Неведомых значений ища в промозглой мгле…</title>
-</titles>
 <album albumnum="15" year="2001" tracknum="25">Ковчег неутомимый 1</album>
 <year>1981, 1987</year>
 <text>
@@ -9553,10 +9388,9 @@ Coda:
 </track>
 
 <track id="obrasche">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Обращение к герою</title>
 <title>Я подарил тебе прескверную страну…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="7">Это должно случиться…</album>
 <album albumnum="16" year="2001" tracknum="16">Ковчег неутомимый 2</album>
 <year>1989</year>
@@ -9604,9 +9438,8 @@ Coda:
 </track>
 
 <track id="ochnulsj">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Очнулся утром…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="9">Другая жизнь</album>
 <album albumnum="13" year="1999" tracknum="12">Избранное. Часть 1</album>
 <album albumnum="18" year="2004" tracknum="15">Пешком с востока</album>
@@ -9656,9 +9489,8 @@ Coda:
 </track>
 
 <track id="odnazhdy">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Однажды думал, думал…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="7">Воздвиг я памятник</album>
 <year>1991</year>
 <text>
@@ -9699,10 +9531,9 @@ Coda:
 </track>
 
 <track id="ogerojax">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песня о героях</title>
 <title>За суетность и тщетность наших лет пустынных…</title>
-</titles>
 <album albumnum="15" year="2001" tracknum="17">Ковчег неутомимый 1</album>
 <year>1986</year>
 <text>
@@ -9744,9 +9575,8 @@ Coda:
 </track>
 
 <track id="ojdachto">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Ой, да что ж это такое…</title>
-</titles>
 <album albumnum="10" year="1999" tracknum="16">Шансон</album>
 <year>1982</year>
 <text>
@@ -9801,10 +9631,9 @@ f|0---------------|
 </track>
 
 <track id="okean">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Океан</title>
 <title>Ну, здравствуй, бог зыби…</title>
-</titles>
 <album albumnum="3" year="2001" tracknum="12">Балаган 2</album>
 <year>1992</year>
 <text>
@@ -9835,10 +9664,9 @@ f|0---------------|
 </track>
 
 <track id="onceinou">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Once in our lives</title>
 <title>Мы прах, мы явный прах…</title>
-</titles>
 <album albumnum="12" year="2002" tracknum="19">Once</album>
 <year>1995</year>
 <subtitle>(H. Purcell)</subtitle>
@@ -9886,10 +9714,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="opilki">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Опилки</title>
 <title>Ведь вот как жизнь у нас идёт…</title>
-</titles>
 <album albumnum="10" year="1999" tracknum="18">Шансон</album>
 <year>1983</year>
 <subtitle>Если я чешу в затылке — не беда! &#10;В голове моей опилки, да-да-да!</subtitle>
@@ -9926,9 +9753,8 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="opjatteb">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Опять тебя со мною нет…</title>
-</titles>
 <year>1978</year>
 <text>
                                      D
@@ -9981,10 +9807,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="orodine">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песня о Родине</title>
 <title>У меня претензий нет…</title>
-</titles>
 <year>1994</year>
 <text>
 У меня претензий нет, амбиций ноль, эмоций тоже.                   Hm
@@ -10040,10 +9865,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="ostrova">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Острова</title>
 <title>Сын мой…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="25">Воздвиг я памятник</album>
 <year>1990</year>
 <text>
@@ -10107,10 +9931,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="otchego1">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Отчего в России мало авторских талантов? 1</title>
 <title>Мой несчастный друг, господин Н. Н…</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="10">Заклинание</album>
 <album albumnum="16" year="2001" tracknum="10">Ковчег неутомимый 2</album>
 <year>1989</year>
@@ -10169,10 +9992,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="otchego2">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Отчего в России мало авторских талантов? 2</title>
 <title>Призвав решительность и строгость…</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="11">Заклинание</album>
 <album albumnum="16" year="2001" tracknum="11">Ковчег неутомимый 2</album>
 <year>1989</year>
@@ -10250,9 +10072,8 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="otomirec">
-<titles>
+<author>Михаил Щербаков</author>
 <title>О том и речь, что мгла и тишина…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="3">Воздвиг я памятник</album>
 <year>1990</year>
 <text>
@@ -10284,10 +10105,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="otryvok">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Отрывок из забытого марша</title>
 <title>Когда бы песни сочинять…</title>
-</titles>
 <year>1980</year>
 <text>
                                       e d# d h g# e   Am
@@ -10354,9 +10174,8 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="otynezna">
-<titles>
+<author>Михаил Щербаков</author>
 <title>О ты, не знающий сна…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="15">Воздвиг я памятник</album>
 <year>1990</year>
 <text>
@@ -10404,11 +10223,10 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="oxrany">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песня охранников</title>
 <title>День за днём терпеть мытарства…</title>
 <title>Песня внутренней службы охраны</title>
-</titles>
 <year>1984</year>
 <text>
 День за днём терпеть мытарства —     (Dm)  E      A7    Dm  Gm
@@ -10459,10 +10277,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="pamjativ">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Памяти всех</title>
 <title>Что в чужом краю, что в отчем…</title>
-</titles>
 <album albumnum="11" year="2000" tracknum="8">Déjà</album>
 <year>1999</year>
 <subtitle>(на музыку Нино Рота)</subtitle>
@@ -10521,10 +10338,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="panorama">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Панорама</title>
 <title>Первым номером будешь, скорей всего ты…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="21">Это должно случиться…</album>
 <album albumnum="14" year="2000" tracknum="17">Избранное. Часть 2</album>
 <year>1991</year>
@@ -10572,10 +10388,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="paris">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Paris</title>
 <title>Странно, но с первых шагов нетвердых…</title>
-</titles>
 <album albumnum="4" year="1996" tracknum="7">Город Город</album>
 <album albumnum="12" year="2002" tracknum="7">Once</album>
 <year>1995</year>
@@ -10627,10 +10442,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="pazh">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песня пажа (вар. 1986)</title>
 <title>Вот так пропел небесный шансонье…</title>
-</titles>
 <year>1980, 1986</year>
 <text>
 Вот так пропел небесный шансонье,             Am      H7
@@ -10681,11 +10495,10 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="pazh0">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песня пажа (вар. 1980)</title>
 <title>Вот так пропел небесный шансонье…</title>
 <title>Песня казненного пажа</title>
-</titles>
 <year>1980</year>
 <text>
 Вот так пропел небесный шансонье,          Am      H7
@@ -10736,10 +10549,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="pesenka">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песенка</title>
 <title>В походных своих забавах…</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="9">Заклинание</album>
 <album albumnum="16" year="2001" tracknum="24">Ковчег неутомимый 2</album>
 <album albumnum="19" year="2004" tracknum="23">Предположим…</album>
@@ -10778,10 +10590,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="pesenkao">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песенка о молодости</title>
 <title>Ой, чистое окно…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="23">Воздвиг я памятник</album>
 <album albumnum="18" year="2004" tracknum="12">Пешком с востока</album>
 <year>1990</year>
@@ -10852,9 +10663,8 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="peshkom">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Пешком с востока…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="25">Это должно случиться…</album>
 <album albumnum="18" year="2004" tracknum="11">Пешком с востока</album>
 <year>1991</year>
@@ -10904,10 +10714,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="peterbur">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Петербург</title>
 <title>В городе, где задушен был император Павел…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="19">Это должно случиться…</album>
 <album albumnum="18" year="2004" tracknum="20">Пешком с востока</album>
 <year>1993</year>
@@ -10965,10 +10774,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="piesa">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Пьеса</title>
 <title>Снова Она и Он…</title>
-</titles>
 <album albumnum="4" year="1996" tracknum="3">Город Город</album>
 <album albumnum="14" year="2000" tracknum="27">Избранное. Часть 2</album>
 <album albumnum="12" year="2002" tracknum="2">Once</album>
@@ -11012,10 +10820,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="piter">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Тарантелла</title>
 <title>Есть на планете город Питер…</title>
-</titles>
 <album albumnum="20" year="2006" tracknum="6">Райцентр</album>
 <subtitle>(на музыку Нино Рота)</subtitle>
 <year>2004</year>
@@ -11088,11 +10895,10 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="podrosto">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Подросток</title>
 <title>Трехвековой губернский гонор…</title>
 <title>Ты сам изрек…</title>
-</titles>
 <album albumnum="4" year="1996" tracknum="6">Город Город</album>
 <album albumnum="12" year="2002" tracknum="6">Once</album>
 <year>1994</year>
@@ -11141,9 +10947,8 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="podzname">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Под знаменем Фортуны…</title>
-</titles>
 <album albumnum="13" year="1999" tracknum="5">Избранное. Часть 1</album>
 <album albumnum="7" year="1996" tracknum="26">Воздвиг я памятник</album>
 <album albumnum="16" year="2001" tracknum="7">Ковчег неутомимый 2</album>
@@ -11193,10 +10998,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="poletval">
-<titles>
+<author>Михаил Щербаков</author>
 <title>«Полёт валькирий»</title>
 <title>Скандал, однако! Вновь позавчера две тонны мака…</title>
-</titles>
 <album albumnum="11" year="2000" tracknum="6">Déjà</album>
 <year>2000</year>
 <text>
@@ -11253,10 +11057,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="popovodu">
-<titles>
+<author>Михаил Щербаков</author>
 <title>По поводу очередных реформ</title>
 <title>Как-то раз на собраньи партейном…</title>
-</titles>
 <year>1985</year>
 <text>
                                                 Em Hm Em F# Hm
@@ -11308,10 +11111,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="popravte">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Застольная</title>
 <title>Поправьте пюпитры…</title>
-</titles>
 <year>1983</year>
 <text>
 Поправьте пюпитры, закончен антракт.                   D Em A7   D
@@ -11342,10 +11144,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="posesche">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Посещение</title>
 <title>Не усердствуй, на этих трёхстах стелажах…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="15">Это должно случиться…</album>
 <album albumnum="19" year="2004" tracknum="22">Предположим…</album>
 <year>1993</year>
@@ -11395,10 +11196,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="poshlyj">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Пошлый романс</title>
 <title>Наклоняясь к изголовью…</title>
-</titles>
 <album albumnum="10" year="1999" tracknum="19">Шансон</album>
 <album albumnum="3" year="2001" tracknum="8">Балаган 2</album>
 <year>1983</year>
@@ -11450,10 +11250,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="posledet">
-<titles>
+<author>Михаил Щербаков</author>
 <title>После детства</title>
 <title>Почти не помню себя, но помню…</title>
-</titles>
 <album albumnum="11" year="2000" tracknum="14">Déjà</album>
 <year>2000</year>
 <text>
@@ -11538,10 +11337,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="posledne">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Последнее посвящение</title>
 <title>Ах, куда девалась нежность…</title>
-</titles>
 <year>1980</year>
 <text>
                                    Am  Am7 D   F   C   E7  Am
@@ -11612,9 +11410,8 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="poslexol">
-<titles>
+<author>Михаил Щербаков</author>
 <title>После холодности безбрежной…</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="17">Заклинание</album>
 <album albumnum="14" year="2000" tracknum="24">Избранное. Часть 2</album>
 <year>1992</year>
@@ -11679,10 +11476,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="povodyr">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Поводырь</title>
 <title>Право, пора, поводырь…</title>
-</titles>
 <album albumnum="8" year="2005" tracknum="1">Целое лето</album>
 <year>1995</year>
 <text>
@@ -11724,9 +11520,8 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="predpolo">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Предположим…</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="7">Заклинание</album>
 <album albumnum="19" year="2004" tracknum="12">Предположим…</album>
 <year>1995</year>
@@ -11820,10 +11615,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="prenebre">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песня безумца</title>
 <title>Пренебреги приятностью обряда…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="22">Это должно случиться…</album>
 <album albumnum="14" year="2000" tracknum="18">Избранное. Часть 2</album>
 <year>1991</year>
@@ -11867,10 +11661,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="pronenad">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Про ненадетые браслеты</title>
 <title>Куда мне деться, Бога ради…</title>
-</titles>
 <year>1980, 1981</year>
 <text>
 Куда мне деться, Бога ради,              Em Em6
@@ -11936,10 +11729,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="propadu">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Флейтист</title>
 <title>Пропаду ни за что…</title>
-</titles>
 <album albumnum="11" year="2000" tracknum="13">Déjà</album>
 <year>1998</year>
 <text>
@@ -11972,10 +11764,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="prosba">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Просьба</title>
 <title>Не умирай в камышах…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="21">Другая жизнь</album>
 <album albumnum="18" year="2004" tracknum="19">Пешком с востока</album>
 <year>1993</year>
@@ -12023,10 +11814,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="proscha1">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Прощальная 1</title>
 <title>Вы нам простите, если что…</title>
-</titles>
 <album albumnum="1" year="1994" tracknum="8">Вишнёвое варенье</album>
 <album albumnum="15" year="2001" tracknum="6">Ковчег неутомимый 1</album>
 <album albumnum="8" year="2005" tracknum="19">Целое лето</album>
@@ -12063,10 +11853,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="proscha2">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Прощальная 2</title>
 <title>Вчера, и сегодня, и завтра, и после…</title>
-</titles>
 <album albumnum="1" year="1994" tracknum="15">Вишнёвое варенье</album>
 <album albumnum="13" year="1999" tracknum="3">Избранное. Часть 1</album>
 <album albumnum="15" year="2001" tracknum="9">Ковчег неутомимый 1</album>
@@ -12112,10 +11901,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="proscha3">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Прощальная 3</title>
 <title>В конце концов — всему свой час…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="6">Воздвиг я памятник</album>
 <year>1988</year>
 <text>
@@ -12164,10 +11952,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="proschan">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Прощание славянки</title>
 <title>Когда надежды поют, как трубы…</title>
-</titles>
 <album albumnum="3" year="2001" tracknum="14">Балаган 2</album>
 <year>1987</year>
 <text>
@@ -12210,9 +11997,8 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="proshuvn">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Прошу вниманья, государь…</title>
-</titles>
 <year>1986</year>
 <text>
 Прошу вниманья, государь!                  Hm G7 Hm
@@ -12278,9 +12064,8 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="prosypaj">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Просыпаюсь, и гложет стыд…</title>
-</titles>
 <year>1986</year>
 <text>
 Просыпаюсь, и гложет стыд —                         Dm
@@ -12353,10 +12138,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="puskaj">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Пускай</title>
 <title>Ты возьми, геометр, из казны…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="14">Это должно случиться…</album>
 <album albumnum="19" year="2004" tracknum="26">Предположим…</album>
 <year>1993</year>
@@ -12389,9 +12173,8 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="pustye">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Пустые бочки вином наполню…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="3">Это должно случиться…</album>
 <album albumnum="14" year="2000" tracknum="8">Избранное. Часть 2</album>
 <album albumnum="16" year="2001" tracknum="1">Ковчег неутомимый 2</album>
@@ -12466,10 +12249,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="risunok">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Рисунок</title>
 <title>На холсте рисунок, сделанный углем…</title>
-</titles>
 <album albumnum="10" year="1999" tracknum="9">Шансон</album>
 <year>1982</year>
 <subtitle>(детская песенка)</subtitle>
@@ -12507,9 +12289,8 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="rodljuds">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Род людской…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="18">Другая жизнь</album>
 <album albumnum="19" year="2004" tracknum="6">Предположим…</album>
 <year>1994</year>
@@ -12553,10 +12334,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="romans">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Романс</title>
 <title>Вряд ли собой хороша…</title>
-</titles>
 <album albumnum="1" year="1994" tracknum="2">Вишнёвое варенье</album>
 <album albumnum="4" year="1996" tracknum="10">Город Город</album>
 <album albumnum="12" year="2002" tracknum="13">Once</album>
@@ -12604,10 +12384,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="romans1">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Романс 1</title>
 <title>Давным-давно, мой бедный брат…</title>
-</titles>
 <album albumnum="15" year="2001" tracknum="2">Ковчег неутомимый 1</album>
 <year>1985</year>
 <text>
@@ -12645,10 +12424,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="romans2">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Романс 2</title>
 <title>Что отнято судьбой, а что подарено…</title>
-</titles>
 <album albumnum="14" year="2000" tracknum="6">Избранное. Часть 2</album>
 <album albumnum="7" year="1996" tracknum="5">Воздвиг я памятник</album>
 <album albumnum="16" year="2001" tracknum="8">Ковчег неутомимый 2</album>
@@ -12693,10 +12471,9 @@ and drink, drink, drink till he fall.                            Em   H7   Em
 </track>
 
 <track id="romansma">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Романс-марш</title>
 <title>Порою давней…</title>
-</titles>
 <album albumnum="3" year="2001" tracknum="17">Балаган 2</album>
 <year>1990</year>
 <text>
@@ -12739,10 +12516,9 @@ Auf Wiedersehen! Auf Wiedersehen! Auf Wiedersehen!  H7  Am
 </track>
 
 <track id="rozhdest">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Рождество</title>
 <title>От начальной, навязчиво ноющей ноты…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="12">Другая жизнь</album>
 <album albumnum="13" year="1999" tracknum="11">Избранное. Часть 1</album>
 <album albumnum="18" year="2004" tracknum="7">Пешком с востока</album>
@@ -12808,9 +12584,8 @@ Auf Wiedersehen! Auf Wiedersehen! Auf Wiedersehen!  H7  Am
 </track>
 
 <track id="rusalka">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Русалка, цыганка, цикада…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="7">Другая жизнь</album>
 <album albumnum="19" year="2004" tracknum="21">Предположим…</album>
 <year>1992</year>
@@ -12857,10 +12632,9 @@ Auf Wiedersehen! Auf Wiedersehen! Auf Wiedersehen!  H7  Am
 </track>
 
 <track id="ryba">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Рыба</title>
 <title>Дожил, изник в товаре…</title>
-</titles>
 <album albumnum="9" year="1999" tracknum="6">Ложный шаг</album>
 <album albumnum="14" year="2000" tracknum="28">Избранное. Часть 2</album>
 <year>1997</year>
@@ -12895,10 +12669,9 @@ Auf Wiedersehen! Auf Wiedersehen! Auf Wiedersehen!  H7  Am
 </track>
 
 <track id="rybakov">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песня рыбаков Флориды</title>
 <title>По нам — хоть реки вспять…</title>
-</titles>
 <album albumnum="10" year="1999" tracknum="6">Шансон</album>
 <year>1982</year>
 <text>
@@ -12944,10 +12717,9 @@ Auf Wiedersehen! Auf Wiedersehen! Auf Wiedersehen!  H7  Am
 </track>
 
 <track id="sancho">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песенка Санчо Пансы</title>
 <title>Плачь, красавица, уезжаю я…</title>
-</titles>
 <year>1979</year>
 <text>
 Плачь, красавица, уезжаю я,                   Dm   Gm6
@@ -12983,10 +12755,9 @@ Auf Wiedersehen! Auf Wiedersehen! Auf Wiedersehen!  H7  Am
 </track>
 
 <track id="schitime">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Щит и меч</title>
 <title>Казалось мне, что так велел…</title>
-</titles>
 <album albumnum="15" year="2001" tracknum="19">Ковчег неутомимый 1</album>
 <year>1985</year>
 <text>
@@ -13041,10 +12812,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="sentenci">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Сентенциозные куплеты</title>
 <title>Слава тебе Господи, хорошая погода…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="19">Воздвиг я памятник</album>
 <album albumnum="18" year="2004" tracknum="23">Пешком с востока</album>
 <year>1990</year>
@@ -13089,10 +12859,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="serdcean">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Сердце ангела</title>
 <title>В календари не занесен…</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="2">Заклинание</album>
 <album albumnum="19" year="2004" tracknum="13">Предположим…</album>
 <year>1995</year>
@@ -13150,10 +12919,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="serenada">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Серенада</title>
 <title>Горный озон прохладной тучей…</title>
-</titles>
 <album albumnum="17" year="2003" tracknum="1">Если</album>
 <album albumnum="23" year="2015" tracknum="16">Чужая музыка и не только. Часть 3</album>
 <year>1999–2000</year>
@@ -13213,10 +12981,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="sezondoz">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Сезон дождей</title>
 <title>Юго-Восток — ненастная страна</title>
-</titles>
 <album albumnum="3" year="2001" tracknum="9">Балаган 2</album>
 <year>1987</year>
 <text>
@@ -13257,10 +13024,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="shanson">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Шансон</title>
 <title>Вершит народ дела свои…</title>
-</titles>
 <album albumnum="10" year="1999" tracknum="21">Шансон</album>
 <album albumnum="18" year="2004" tracknum="2">Пешком с востока</album>
 <year>1982</year>
@@ -13314,10 +13080,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="sharmans">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Шарманщик</title>
 <title>Мало ли чем представлялся…</title>
-</titles>
 <album albumnum="3" year="2001" tracknum="19">Балаган 2</album>
 <year>1991</year>
 <text>
@@ -13354,10 +13119,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="sheja">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Шея</title>
 <title>Для кого чего важнее…</title>
-</titles>
 <year>1983</year>
 <text>
 Для кого чего важнее — это пусть решает свет.              D  Em
@@ -13394,10 +13158,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="shkolat1">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Школа танцев 1</title>
 <title>Возьмите остров у края света…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="8">Другая жизнь</album>
 <album albumnum="13" year="1999" tracknum="8">Избранное. Часть 1</album>
 <album albumnum="19" year="2004" tracknum="3">Предположим…</album>
@@ -13477,10 +13240,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="shkolat2">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Школа танцев 2</title>
 <title>Я не сказал бы, что во время сна люблю…</title>
-</titles>
 <album albumnum="4" year="1996" tracknum="15">Город Город</album>
 <album albumnum="12" year="2002" tracknum="14">Once</album>
 <year>1995</year>
@@ -13553,10 +13315,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="skerco">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Скерцо</title>
 <title>Хотите — верьте, не хотите — ваша воля…</title>
-</titles>
 <album albumnum="11" year="2000" tracknum="12">Déjà</album>
 <year>2000</year>
 <text>
@@ -13605,10 +13366,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="smertdon">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Смерть Дон Жуана</title>
 <title>О, напишите кто-нибудь о Дон Жуане…</title>
-</titles>
 <year>1980</year>
 <text>
                                                   Em   Am   C   H7
@@ -13652,11 +13412,10 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="sredneg1">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песня среднего человека 1</title>
 <title>Я точно знаю, что значит «масса»…</title>
 <album albumnum="15" year="2001" tracknum="15">Ковчег неутомимый 1</album>
-</titles>
 <year>1984</year>
 <text>
 Я точно знаю, что значит масса,                Em   E7   Am   Em
@@ -13696,10 +13455,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="sredneg2">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песня среднего человека 2</title>
 <title>Державный кесарь мечет и рвёт…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="17">Другая жизнь</album>
 <album albumnum="16" year="2001" tracknum="6">Ковчег неутомимый 2</album>
 <year>1984, 1986</year>
@@ -13738,10 +13496,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="stixiopr">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Стихи о прекрасной даме</title>
 <title>Для тех несчастных…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="8">Воздвиг я памятник</album>
 <year>1990</year>
 <text>
@@ -13788,10 +13545,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="stodruze">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Сто друзей</title>
 <title>Ах, не имейте сто рублей…</title>
-</titles>
 <album albumnum="10" year="1999" tracknum="20">Шансон</album>
 <year>1983</year>
 <text>
@@ -13836,9 +13592,8 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="suhumi">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Москва — Сухуми</title>
-</titles>
 <album albumnum="17" year="2003" tracknum="10">Если</album>
 <album albumnum="23" year="2015" tracknum="14">Чужая музыка и не только. Часть 3</album>
 <year>2001</year>
@@ -13882,10 +13637,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="sustavy">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Суставы</title>
 <title>Есть дамы…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="12">Воздвиг я памятник</album>
 <year>1990</year>
 <text>
@@ -13934,9 +13688,8 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="svecha">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Свеча погасла на столе…</title>
-</titles>
 <year>1978</year>
 <text>
 Свеча погасла на столе,               Am
@@ -14009,10 +13762,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="svidanie">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Свидание с полковником</title>
 <title>Здравствуйте, полковник…</title>
-</titles>
 <album albumnum="16" year="2001" tracknum="31">Ковчег неутомимый 2</album>
 <album albumnum="3" year="2001" tracknum="16">Балаган 2</album>
 <year>1990</year>
@@ -14060,10 +13812,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="switzerl">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Switzerland</title>
 <title>Чуть свет, на днях Борей…</title>
-</titles>
 <album albumnum="8" year="2005" tracknum="3">Целое лето</album>
 <year>1996</year>
 <text>
@@ -14107,10 +13858,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="temapoko">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Тема покоя</title>
 <title>Как ни горды мы, как ни ранимы…</title>
-</titles>
 <album albumnum="3" year="2001" tracknum="1">Балаган 2</album>
 <year>1987</year>
 <text>
@@ -14138,10 +13888,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="temapoleta">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Тема полета</title>
 <title>Ни даже в самом тайном подполье…</title>
-</titles>
 <album albumnum="17" year="2003" tracknum="11">Если</album>
 <album albumnum="23" year="2015" tracknum="13">Чужая музыка и не только. Часть 3</album>
 <year>2002</year>
@@ -14174,10 +13923,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="theraven">
-<titles>
+<author>Михаил Щербаков</author>
 <title>The Raven</title>
 <title>Птица, птица, что делать…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="13">Другая жизнь</album>
 <album albumnum="13" year="1999" tracknum="17">Избранное. Часть 1</album>
 <album albumnum="19" year="2004" tracknum="19">Предположим…</album>
@@ -14258,9 +14006,8 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="tochtoxo">
-<titles>
+<author>Михаил Щербаков</author>
 <title>То, что хотел бы я высказать…</title>
-</titles>
 <album albumnum="4" year="1996" tracknum="1">Город Город</album>
 <album albumnum="12" year="2002" tracknum="1">Once</album>
 <year>1993</year>
@@ -14316,10 +14063,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="tolpaxud">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Толпа — художнику</title>
 <title>Ты — художник, мы — толпа…</title>
-</titles>
 <album albumnum="15" year="2001" tracknum="26">Ковчег неутомимый 1</album>
 <year>1987</year>
 <text>
@@ -14354,10 +14100,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="tolpy">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песня толпы</title>
 <title>Мы строптивость расточали…</title>
-</titles>
 <year>1984</year>
 <text>
 Мы строптивость расточали,                              C  G
@@ -14409,10 +14154,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="traviata">
-<titles>
+<author>Михаил Щербаков</author>
 <title>«Травиата»</title>
 <title>Юность кончилась — и чудесно…</title>
-</titles>
 <album albumnum="17" year="2003" tracknum="8">Если</album>
 <album albumnum="22" year="2013" tracknum="13">Чужая музыка и не только. Часть 2</album>
 <year>2002</year>
@@ -14464,10 +14208,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="trojka">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песня о тройке</title>
 <title>Резвы кони, быстроноги…</title>
-</titles>
 <album albumnum="13" year="1999" tracknum="2">Избранное. Часть 1</album>
 <album albumnum="10" year="1999" tracknum="17">Шансон</album>
 <album albumnum="18" year="2004" tracknum="3">Пешком с востока</album>
@@ -14519,10 +14262,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="trubach">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Трубач</title>
 <title>Ах, ну почему наши дела так унылы…</title>
-</titles>
 <album albumnum="1" year="1994" tracknum="12">Вишнёвое варенье</album>
 <album albumnum="13" year="1999" tracknum="6">Избранное. Часть 1</album>
 <album albumnum="16" year="2001" tracknum="3">Ковчег неутомимый 2</album>
@@ -14566,10 +14308,9 @@ Am6(4 лад) (1 стр.- a,g#,g,g# a)
 </track>
 
 <track id="ubykagol">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Эпиграф</title>
 <title>У быка голова крепка…</title>
-</titles>
 <album albumnum="11" year="2000" tracknum="1">Déjà</album>
 <year>1999</year>
 <text>
@@ -14614,10 +14355,9 @@ C#7 F#m   H7      E      A   F#m6   G#7   C#m
 </track>
 
 <track id="udachny">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Без названия</title>
 <title>У меня был удачный день…</title>
-</titles>
 <album albumnum="17" year="2003" tracknum="5">Если</album>
 <album albumnum="21" year="2010" tracknum="15">Чужая музыка и не только. Часть 1</album>
 <year>2001</year>
@@ -14671,9 +14411,8 @@ C#7 F#m   H7      E      A   F#m6   G#7   C#m
 </track>
 
 <track id="udverej">
-<titles>
+<author>Михаил Щербаков</author>
 <title>У дверей прозвеня…</title>
-</titles>
 <year>1979</year>
 <text>
 У дверей прозвеня,                  Dm
@@ -14739,9 +14478,8 @@ C#7 F#m   H7      E      A   F#m6   G#7   C#m
 </track>
 
 <track id="teplyj">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Теплый дом, сытный стол…</title>
-</titles>
 <year>1985</year>
 <text>
 Тёплый дом, сытный стол, брудершафт с поцелуем -     Am  Dm  Am
@@ -14766,9 +14504,8 @@ C#7 F#m   H7      E      A   F#m6   G#7   C#m
 </track>
 
 <track id="unasopj0">
-<titles>
+<author>Михаил Щербаков</author>
 <title>У нас опять зима… (вар. 1980)</title>
-</titles>
 <album albumnum="8" year="2005" tracknum="18">Целое лето</album>
 <year>1980</year>
 <text>
@@ -14802,9 +14539,8 @@ C#7 F#m   H7      E      A   F#m6   G#7   C#m
 </track>
 
 <track id="unasopja">
-<titles>
+<author>Михаил Щербаков</author>
 <title>У нас опять зима… (вар. 1986)</title>
-</titles>
 <album albumnum="15" year="2001" tracknum="29">Ковчег неутомимый 1</album>
 <year>1980, 1986</year>
 <text>
@@ -14841,10 +14577,9 @@ C#7 F#m   H7      E      A   F#m6   G#7   C#m
 </track>
 
 <track id="vademecu">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Вадемекум</title>
 <title>Если вы у нас впервые…</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="19">Заклинание</album>
 <album albumnum="14" year="2000" tracknum="26">Избранное. Часть 2</album>
 <year>1993</year>
@@ -14892,10 +14627,9 @@ C#7 F#m   H7      E      A   F#m6   G#7   C#m
 </track>
 
 <track id="varjete">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Варьете</title>
 <title>Буквально только что, буквально в вестибюле…</title>
-</titles>
 <album albumnum="9" year="1999" tracknum="11">Ложный шаг</album>
 <year>1998</year>
 <text>
@@ -15000,9 +14734,8 @@ C#7 F#m   H7      E      A   F#m6   G#7   C#m
 </track>
 
 <track id="vbelojmg">
-<titles>
+<author>Михаил Щербаков</author>
 <title>В белой мгле ледяных высот…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="27">Воздвиг я памятник</album>
 <album albumnum="14" year="2000" tracknum="19">Избранное. Часть 2</album>
 <album albumnum="3" year="2001" tracknum="26">Балаган 2</album>
@@ -15052,10 +14785,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="vechnoe">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Вечное слово</title>
 <title>Из руин и забвенья…</title>
-</titles>
 <album albumnum="2" year="1994" tracknum="16">Другая жизнь</album>
 <album albumnum="16" year="2001" tracknum="29">Ковчег неутомимый 2</album>
 <year>1988</year>
@@ -15103,9 +14835,8 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="vechnoot">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Вечно открытый Божьему гневу…</title>
-</titles>
 <album albumnum="15" year="2001" tracknum="27">Ковчег неутомимый 1</album>
 <year>1987</year>
 <text>
@@ -15171,9 +14902,8 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="vekaplyv">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Века плывут, подобно китам…</title>
-</titles>
 <album albumnum="16" year="2001" tracknum="34">Ковчег неутомимый 2</album>
 <album albumnum="3" year="2001" tracknum="4">Балаган 2</album>
 <year>1990</year>
@@ -15204,10 +14934,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="veter">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Ветер</title>
 <title>Ковыляет по курганам…</title>
-</titles>
 <year>1980</year>
 <text>
 Ковыляет по курганам колымага за конём.               Am   Dm    E7   Am
@@ -15234,10 +14963,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="vexifata">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Вехи фатализма</title>
 <title>Исповедь не в моде. Спутаны дороги…</title>
-</titles>
 <year>1979</year>
 <text>
 Исповедь не в моде. Спутаны дороги.              Am   F7   E7   Am
@@ -15295,10 +15023,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="vishnevo">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Вишнёвое варенье</title>
 <title>Теперь на пристани толпа…</title>
-</titles>
 <album albumnum="1" year="1994" tracknum="4">Вишнёвое варенье</album>
 <album albumnum="14" year="2000" tracknum="2">Избранное. Часть 2</album>
 <album albumnum="16" year="2001" tracknum="2">Ковчег неутомимый 2</album>
@@ -15363,9 +15090,8 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="vjuga">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Вьюга замолчит, заря окрасит…</title>
-</titles>
 <album albumnum="3" year="2001" tracknum="11">Балаган 2</album>
 <year>1992</year>
 <text>
@@ -15454,10 +15180,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="volhonka">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Волхонка</title>
 <title>Душа в ухабах, денег ни гроша…</title>
-</titles>
 <album albumnum="17" year="2003" tracknum="2">Если</album>
 <album albumnum="22" year="2013" tracknum="14">Чужая музыка и не только. Часть 2</album>
 <year>2001</year>
@@ -15505,10 +15230,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="volk">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Волк</title>
 <title>Ты — черный волк…</title>
-</titles>
 <album albumnum="8" year="2005" tracknum="10">Целое лето</album>
 <year>1996</year>
 <text>
@@ -15549,9 +15273,8 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="voslavu">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Во славу Греции твоей…</title>
-</titles>
 <album albumnum="16" year="2001" tracknum="33">Ковчег неутомимый 2</album>
 <album albumnum="3" year="2001" tracknum="6">Балаган 2</album>
 <year>1989</year>
@@ -15581,10 +15304,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="vospomin">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Воспоминания в Соборе Парижской Богоматери</title>
 <title>На лодке через Ниагарский водопад…</title>
-</titles>
 <year>1978</year>
 <text>
 На лодке через Ниагарский водопад                Em     F#7
@@ -15650,10 +15372,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="vostoch1">
-<titles>
+<author>Михаил Щербаков</author>
 <title>«Восточная» песня 1</title>
 <title>Двенадцать лун на знамени моём…</title>
-</titles>
 <album albumnum="16" year="2001" tracknum="14">Ковчег неутомимый 2</album>
 <album albumnum="7" year="1996" tracknum="20">Воздвиг я памятник</album>
 <year>1990</year>
@@ -15717,10 +15438,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="vostoch2">
-<titles>
+<author>Михаил Щербаков</author>
 <title>«Восточная» песня 2</title>
 <title>Слушай, мальчик…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="21">Воздвиг я памятник</album>
 <album albumnum="18" year="2004" tracknum="27">Пешком с востока</album>
 <year>1990</year>
@@ -15803,10 +15523,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="vostochr">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Восточный романс</title>
 <title>Моим словам едва ты внемлешь…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="24">Воздвиг я памятник</album>
 <year>1987</year>
 <text>
@@ -15849,9 +15568,8 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="vosxodja">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Восходя дорогой горной…</title>
-</titles>
 <album albumnum="1" year="1994" tracknum="1">Вишнёвое варенье</album>
 <album albumnum="14" year="2000" tracknum="9">Избранное. Часть 2</album>
 <album albumnum="15" year="2001" tracknum="1">Ковчег неутомимый 1</album>
@@ -15881,9 +15599,8 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="votpodni">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Вот — поднимается ветер…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="9">Это должно случиться…</album>
 <album albumnum="16" year="2001" tracknum="15">Ковчег неутомимый 2</album>
 <year>1989</year>
@@ -15923,10 +15640,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="vozdvig">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Воздвиг я памятник</title>
 <title>Позабывши, где я, кто я…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="14">Воздвиг я памятник</album>
 <year>1990</year>
 <text>
@@ -15998,10 +15714,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="vozvrasc">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Возвращение</title>
 <title>Эй, южные страны…</title>
-</titles>
 <album albumnum="3" year="2001" tracknum="10">Балаган 2</album>
 <year>1985</year>
 <text>
@@ -16038,10 +15753,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="vseravno">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Всё равно не по себе</title>
 <title>Такие ясные глаза…</title>
-</titles>
 <album albumnum="15" year="2001" tracknum="2">Ковчег неутомимый 1</album>
 <year>1984</year>
 <text>
@@ -16073,9 +15787,8 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="vtornik">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Вторник, второе августа…</title>
-</titles>
 <album albumnum="4" year="1996" tracknum="17">Город Город</album>
 <album albumnum="12" year="2002" tracknum="18">Once</album>
 <year>1994</year>
@@ -16119,10 +15832,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="xramsvja">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Храм Святого Владимира</title>
 <title>То ли ведьмы наворожили…</title>
-</titles>
 <year>1980</year>
 <text>
 То ли ведьмы наворожили,                  Am
@@ -16238,10 +15950,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="zaklinan">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Заклинание</title>
 <title>Не ангел я, но врать не буду…</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="12">Заклинание</album>
 <album albumnum="13" year="1999" tracknum="10">Избранное. Часть 1</album>
 <album albumnum="18" year="2004" tracknum="6">Пешком с востока</album>
@@ -16310,10 +16021,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="zakonxod">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Закон ходьбы</title>
 <title>Порядок вечный мне незнаком…</title>
-</titles>
 <year>1986</year>
 <text>
 Порядок вечный мне незнаком,                Dm  E7
@@ -16382,10 +16092,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="zaliv">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Залив</title>
 <title>Душа, каких похвал…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="4">Воздвиг я памятник</album>
 <album albumnum="14" year="2000" tracknum="14">Избранное. Часть 2</album>
 <album albumnum="3" year="2001" tracknum="24">Балаган 2</album>
@@ -16424,10 +16133,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="zastolnaya">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Застольная</title>
 <title>Долго ли, коротко случай судил…</title>
-</titles>
 <album albumnum="17" year="2003" tracknum="6">Если</album>
 <album albumnum="22" year="2013" tracknum="15">Чужая музыка и не только. Часть 2</album>
 <year>2001</year>
@@ -16483,9 +16191,8 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="zatemzhe">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Затем же, зачем рыжий клоун рыж…</title>
-</titles>
 <album albumnum="5" year="1996" tracknum="6">Это должно случиться…</album>
 <album albumnum="16" year="2001" tracknum="28">Ковчег неутомимый 2</album>
 <year>1989</year>
@@ -16518,10 +16225,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="zavescha">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Завещание безумца</title>
 <title>Спешите видеть…</title>
-</titles>
 <album albumnum="7" year="1996" tracknum="22">Воздвиг я памятник</album>
 <album albumnum="19" year="2004" tracknum="25">Предположим…</album>
 <year>1990</year>
@@ -16565,10 +16271,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="zhizn">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Жизнь прекрасна</title>
 <title>Достиг вершин член-корр какой-нибудь главный врач…</title>
-</titles>
 <album albumnum="17" year="2003" tracknum="15">Если</album>
 <album albumnum="23" year="2015" tracknum="10">Чужая музыка и не только. Часть 3</album>
 <year>2001</year>
@@ -16609,9 +16314,8 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="znamja">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Знамя наше на древке… (новый вариант)</title>
-</titles>
 <album albumnum="15" year="2001" tracknum="18">Ковчег неутомимый 1</album>
 <year>1985</year>
 <text>
@@ -16660,10 +16364,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="zvezdoch">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Звездочет</title>
 <title>Пернатым легче — наук не знай, воркуй да каркай…</title>
-</titles>
 <album albumnum="9" year="1999" tracknum="8">Ложный шаг</album>
 <year>1998</year>
 <text>
@@ -16739,10 +16442,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="skripach">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Скрипач и конка</title>
 <title>Когда не долг бы…</title>
-</titles>
 <album albumnum="20" year="2006" tracknum="14">Райцентр</album>
 <year>2005</year>
 <text>
@@ -16794,10 +16496,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="zvezdyip">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Звёзды и полосы</title>
 <title>Насчет судьбы не верьте, барышня…</title>
-</titles>
 <album albumnum="22" year="2013" tracknum="6">Чужая музыка и не только. Часть 2</album>
 <year>2012</year>
 <text>
@@ -16844,9 +16545,8 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="neuzheli">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Неужели свершилось?..</title>
-</titles>
 <year>2014</year>
 <text>
 Неужели свершилось? Вместо пятен возникли черты.           D#7 G#
@@ -16944,10 +16644,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="netlubez">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Хоровод</title>
 <title>Нет, любезный родич…</title>
-</titles>
 <album albumnum="24" year="2017" tracknum="10">Хоровод</album>
 <year>2015</year>
 <text>
@@ -17052,10 +16751,9 @@ in a looking-glass, in a looking-glass».        Am E
 </track>
 
 <track id="treska">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Треска</title>
 <title>Станешь после выдумывать…</title>
-</titles>
 <album albumnum="20" year="2006" tracknum="5">Райцентр</album>
 <year>2005</year>
 <text>
@@ -17131,10 +16829,9 @@ x|---|---|---|     x|---|---|---|     x|---|---|---|     x|---|---|---|      |--
 </track>
 
 <track id="interme5">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Интермедия 5</title>
 <title>Не в архиве при лампаде…</title>
-</titles>
 <album albumnum="17" year="2003" tracknum="7">Если</album>
 <album albumnum="23" year="2015" tracknum="12">Чужая музыка и не только. Часть 3</album>
 <year>2002</year>
@@ -17170,10 +16867,9 @@ x|---|---|---|     x|---|---|---|     x|---|---|---|     x|---|---|---|      |--
 </track>
 
 <track id="interme2">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Интермедия 2</title>
 <title>Знобит ли, свело ли поясницу…</title>
-</titles>
 <album albumnum="6" year="1996" tracknum="13">Заклинание</album>
 <album albumnum="18" year="2004" tracknum="13">Пешком с востока</album>
 <year>1995</year>
@@ -17223,10 +16919,9 @@ x|---|---|---|     x|---|---|---|     x|---|---|---|     x|---|---|---|      |--
 </track>
 
 <track id="privelse1">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Интермедия 6</title>
 <title>Привёл себя в упадок…</title>
-</titles>
 <album albumnum="20" year="2006" tracknum="7">Райцентр</album>
 <year>2003</year>
 <text>
@@ -17273,10 +16968,9 @@ x|---|---|---|     x|---|---|---|     x|---|---|---|     x|---|---|---|      |--
 </text>
 </track>
 <!-- <track id="interme6">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Интермедия 6</title>
 <title>Привёл себя в упадок…</title>
-</titles>
 <year>2005</year>
 <text>
                                             вст. (= пр.) Dm    Gm
@@ -17346,10 +17040,9 @@ x|---|---|---|     x|---|---|---|     x|---|---|---|     x|---|---|---|      |--
 </text>
 </track> -->
 <track id="interme7">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Интермедия 7</title>
 <title>Гони сто сорок вёрст…</title>
-</titles>
 <album albumnum="21" year="2010" tracknum="7">Чужая музыка и не только. Часть 1</album>
 <year>2008</year>
 <text>
@@ -17394,10 +17087,9 @@ x|---|---|---|     x|---|---|---|     x|---|---|---|     x|---|---|---|      |--
 </track>
 
 <track id="interme8">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Интермедия 8</title>
 <title>Между прочим, чтоб в Австралию попасть…</title>
-</titles>
 <album albumnum="22" year="2013" tracknum="4">Чужая музыка и не только. Часть 2</album>
 <year>2011</year>
 <text>
@@ -17467,10 +17159,9 @@ x|---|---|---|     x|---|---|---|     x|---|---|---|     x|---|---|---|      |--
 </track>
 
 <track id="interme9">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Интермедия 9</title>
 <title>Не забывал бы ты зимы…</title>
-</titles>
 <album albumnum="24" year="2017" tracknum="11">Хоровод</album>
 <year>2011</year>
 <text>
@@ -17516,10 +17207,9 @@ x|---|---|---|     0|---|---|---|
 </track>
 
 <track id="uzhenera">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Интермедия 10</title>
 <title>Уже не раз…</title>
-</titles>
 <album albumnum="24" year="2017" tracknum="6">Хоровод</album>
 <year>2017</year>
 <text>
@@ -17593,10 +17283,9 @@ x|---|---|---|     0|---|---|---|
 </track>
 
 <track id="opyattor">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Как будто</title>
 <title>Опять торговец бумажным счастьем…</title>
-</titles>
 <album albumnum="22" year="2013" tracknum="5">Чужая музыка и не только. Часть 2</album>
 <year>2011</year>
 <text>
@@ -17659,10 +17348,9 @@ x|---|---|---|   |---|-■-|---|
 </track>
 
 <track id="chibis">
-<titles>
+<author>Михаил Щербаков</author>
 <title>У дороги чибис</title>
 <title>Пальмы опять с фонтанами…</title>
-</titles>
 <album albumnum="20" year="2006" tracknum="12">Райцентр</album>
 <year>2004</year>
 <text>
@@ -17739,10 +17427,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="desyatpe">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Надо было</title>
 <title>Десять первых лет…</title>
-</titles>
 <album albumnum="21" year="2010" tracknum="8">Чужая музыка и не только. Часть 1</album>
 <year>2007</year>
 <text>
@@ -17785,10 +17472,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="krasnye">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Красные ворота</title>
 <title>То галопом, то вверх тормашками…</title>
-</titles>
 <album albumnum="9" year="1999" tracknum="5">Ложный шаг</album>
 <year>1997</year>
 <text>
@@ -17832,10 +17518,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="cirkach">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Циркач</title>
 <title>Сном называй, ворожбой, искушеньем…</title>
-</titles>
 <album albumnum="9" year="1999" tracknum="2">Ложный шаг</album>
 <year>1997</year>
 <text>
@@ -17887,10 +17572,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="lozhnyj">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Ложный шаг</title>
 <title>На причале ни души…</title>
-</titles>
 <album albumnum="9" year="1999" tracknum="3">Ложный шаг</album>
 <year>1998</year>
 <text>
@@ -17936,10 +17620,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="dvaslova">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Два слова рыбыг</title>
 <title>Кошки черны в ночи…</title>
-</titles>
 <album albumnum="9" year="1999" tracknum="7">Ложный шаг</album>
 <year>1998</year>
 <text>
@@ -17998,10 +17681,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="otrozhde">
-<titles>
+<author>Михаил Щербаков</author>
 <title>От Рождества</title>
 <title>Не ниже, не строже…</title>
-</titles>
 <album albumnum="9" year="1999" tracknum="9">Ложный шаг</album>
 <year>1998</year>
 <text>
@@ -18045,10 +17727,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="otrozhde">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Жалоба</title>
 <title>Когда б не сто вольт…</title>
-</titles>
 <album albumnum="9" year="1999" tracknum="12">Ложный шаг</album>
 <year>1998</year>
 <text>
@@ -18100,10 +17781,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="slezazol">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Тирренское море</title>
 <title>Слеза золотая…</title>
-</titles>
 <album albumnum="11" year="2000" tracknum="7">Déjà</album>
 <year>1999</year>
 <text>
@@ -18150,10 +17830,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="nebyvaet">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Не бывает</title>
 <title>Среди тех, кто танцует взахлёб…</title>
-</titles>
 <album albumnum="11" year="2000" tracknum="15">Déjà</album>
 <year>2000</year>
 <text>
@@ -18208,10 +17887,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="london">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Лондон</title>
 <title>Думал я, что Лондон сер, как слон…</title>
-</titles>
 <album albumnum="17" year="2003" tracknum="12">Если</album>
 <album albumnum="23" year="2015" tracknum="11">Чужая музыка и не только. Часть 3</album>
 <year>2002</year>
@@ -18268,10 +17946,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="nemo">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Nemo</title>
 <title>Пока я был никто…</title>
-</titles>
 <album albumnum="17" year="2003" tracknum="14">Если</album>
 <album albumnum="21" year="2010" tracknum="16">Чужая музыка и не только. Часть 1</album>
 <year>2002</year>
@@ -18339,10 +18016,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="eastcoast">
-<titles>
+<author>Михаил Щербаков</author>
 <title>East coast</title>
 <title>Налево, на восток…</title>
-</titles>
 <album albumnum="20" year="2006" tracknum="1">Райцентр</album>
 <year>2005</year>
 <text>
@@ -18415,10 +18091,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="mneniche">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Райцентр</title>
 <title>Мне ничего не надо…</title>
-</titles>
 <album albumnum="20" year="2006" tracknum="2">Райцентр</album>
 <year>2003</year>
 <text>
@@ -18469,10 +18144,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="uchitel">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Воробьёвы горы</title>
 <title>Учитель алгебры…</title>
-</titles>
 <album albumnum="20" year="2006" tracknum="3">Райцентр</album>
 <year>2004</year>
 <text>
@@ -18554,10 +18228,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="fridrih">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Фридрих идёт</title>
 <title>Айн-цвай-драй…</title>
-</titles>
 <album albumnum="20" year="2006" tracknum="4">Райцентр</album>
 <year>2005</year>
 <text>
@@ -18619,10 +18292,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="opyatpar">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Paris encore</title>
 <title>Потом, не завтра, нет…</title>
-</titles>
 <album albumnum="20" year="2006" tracknum="8">Райцентр</album>
 <year>2004</year>
 <text>
@@ -18683,9 +18355,8 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="dopoezda">
-<titles>
+<author>Михаил Щербаков</author>
 <title>До поезда</title>
-</titles>
 <album albumnum="20" year="2006" tracknum="9">Райцентр</album>
 <year>2004</year>
 <text>
@@ -18714,10 +18385,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="kinometr">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Кино-метро</title>
 <title>Когда, закончив школу…</title>
-</titles>
 <album albumnum="20" year="2006" tracknum="10">Райцентр</album>
 <year>2004</year>
 <text>
@@ -18789,9 +18459,8 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="proscha4">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Напоследок</title>
-</titles>
 <album albumnum="20" year="2006" tracknum="11">Райцентр</album>
 <year>2004</year>
 <text>
@@ -18835,10 +18504,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="lhomme">
-<titles>
+<author>Михаил Щербаков</author>
 <title>L'homme a la moto</title>
 <title>Заносчив был угонщик…</title>
-</titles>
 <album albumnum="20" year="2006" tracknum="15">Райцентр</album>
 <year>2005</year>
 <text>
@@ -18934,9 +18602,8 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="pochtich">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Почти</title>
-</titles>
 <album albumnum="21" year="2010" tracknum="1">Чужая музыка и не только. Часть 1</album>
 <year>2006</year>
 <text>
@@ -18977,10 +18644,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="bezvyxod">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Завтра, _вчера_, всегда</title>
 <title>Без выходных, в три смены…</title>
-</titles>
 <album albumnum="21" year="2010" tracknum="2">Чужая музыка и не только. Часть 1</album>
 <year>2007</year>
 <text>
@@ -19024,10 +18690,9 @@ Joshua fit the battle of Jericho and the walls came tumblin' down…            
 </track>
 
 <track id="neumeesh">
-<titles>
+<author>Михаил Щербаков</author>
 <title>_Завтра_, вчера, всегда</title>
 <title>Не умеешь ты, туземец…</title>
-</titles>
 <album albumnum="21" year="2010" tracknum="6">Чужая музыка и не только. Часть 1</album>
 <year>2008</year>
 <text>
@@ -19130,10 +18795,9 @@ x|---|---|       |---|-■-|       |---|-■-|       |---|-■-|
 </track>
 
 <track id="vgorodev">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Завтра, вчера, _всегда_</title>
 <title>В городе вчера…</title>
-</titles>
 <album albumnum="21" year="2010" tracknum="10">Чужая музыка и не только. Часть 1</album>
 <year>2009</year>
 <text>
@@ -19177,9 +18841,8 @@ Cлишком что-то много стало совпадений.      Cm6
 </track>
 
 <track id="nenadoby">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Не надо было</title>
-</titles>
 <album albumnum="21" year="2010" tracknum="3">Чужая музыка и не только. Часть 1</album>
 <year>2007</year>
 <text>
@@ -19220,10 +18883,9 @@ Cлишком что-то много стало совпадений.      Cm6
 </track>
 
 <track id="natrinad">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Песнь о Неведенье</title>
 <title>На тринадцатый день…</title>
-</titles>
 <album albumnum="21" year="2010" tracknum="4">Чужая музыка и не только. Часть 1</album>
 <year>2007</year>
 <text>
@@ -19285,10 +18947,9 @@ Cлишком что-то много стало совпадений.      Cm6
 </track>
 
 <track id="bystrov2">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Примечание к «Быстрову»</title>
 <title>В апреле, да, но был этот весь сыр-бор…</title>
-</titles>
 <album albumnum="21" year="2010" tracknum="5">Чужая музыка и не только. Часть 1</album>
 <year>2009</year>
 <text>
@@ -19320,10 +18981,9 @@ Cлишком что-то много стало совпадений.      Cm6
 </track>
 
 <track id="chtobyat">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Тоже пародия</title>
 <title>Чтоб я так жил…</title>
-</titles>
 <album albumnum="21" year="2010" tracknum="9">Чужая музыка и не только. Часть 1</album>
 <year>2006</year>
 <text>
@@ -19385,10 +19045,9 @@ Cлишком что-то много стало совпадений.      Cm6
 </track>
 
 <track id="otbagazh">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Конец 1-й части</title>
 <title>От багажа избавившись…</title>
-</titles>
 <album albumnum="21" year="2010" tracknum="11">Чужая музыка и не только. Часть 1</album>
 <year>2010</year>
 <text>
@@ -19443,10 +19102,9 @@ Cлишком что-то много стало совпадений.      Cm6
 </track>
 
 <track id="kogdamen">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Конец 2-й части</title>
 <title>Когда меня разжалуют…</title>
-</titles>
 <album albumnum="22" year="2013" tracknum="12">Чужая музыка и не только. Часть 2</album>
 <year>2011</year>
 <text>
@@ -19505,9 +19163,8 @@ Cлишком что-то много стало совпадений.      Cm6
 </track>
 
 <track id="proschalm">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Тогда и там</title>
-</titles>
 <album albumnum="22" year="2013" tracknum="1">Чужая музыка и не только. Часть 2</album>
 <year>2009</year>
 <text>
@@ -19557,10 +19214,9 @@ x|---|---|---|  x|---|---|---|    |---|---|-■-   x|---|-     |-■-|---|    |-
 </track>
 
 <track id="n2001">
-<titles>
+<author>Михаил Щербаков</author>
 <title>2001</title>
 <title>Не только мою конкретную цель…</title>
-</titles>
 <album albumnum="22" year="2013" tracknum="2">Чужая музыка и не только. Часть 2</album>
 <year>2008</year>
 <text>
@@ -19658,10 +19314,9 @@ x|---|---|---|    0|---|---|---|
 </track>
 
 <track id="sokolnik">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Сокольники</title>
 <title>Помедлив, пускался рейсовый в разбег…</title>
-</titles>
 <album albumnum="22" year="2013" tracknum="3">Чужая музыка и не только. Часть 2</album>
 <year>2009</year>
 <text>
@@ -19744,10 +19399,9 @@ A|-B-|-H-|-C-|     A|-B-|---|---|
 </track>
 
 <track id="schastli">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Ривьера</title>
 <title>Счастлив, несчастлив, то в ярость впадает…</title>
-</titles>
 <album albumnum="22" year="2013" tracknum="7">Чужая музыка и не только. Часть 2</album>
 <year>2012</year>
 <text>
@@ -19854,10 +19508,9 @@ x|---|(■)|---|      |-■-|---|---|
 </track>
 
 <track id="rydaytru">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Там же, тогда же</title>
 <title>Рыдай, труба…</title>
-</titles>
 <album albumnum="22" year="2013" tracknum="9">Чужая музыка и не только. Часть 2</album>
 <year>2012</year>
 <text>
@@ -19979,9 +19632,8 @@ x|---|---|---|   |---|-■-   x|---|-     |-■-|---|
 </track>
 
 <track id="cybin">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Цыбин</title>
-</titles>
 <album albumnum="22" year="2013" tracknum="10">Чужая музыка и не только. Часть 2</album>
 <year>2006</year>
 <text>
@@ -20072,10 +19724,9 @@ x|---|---|---|   |---|-■-   x|---|-     |-■-|---|
 </track>
 
 <track id="skazhuse">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Не только</title>
 <title>Скажу себе, не возводи к Эдему и Адаму…</title>
-</titles>
 <album albumnum="22" year="2013" tracknum="11">Чужая музыка и не только. Часть 2</album>
 <year>2013</year>
 <text>
@@ -20131,10 +19782,9 @@ x|---|---|---|   |---|-■-   x|---|-     |-■-|---|
 </track>
 
 <track id="vkoncevr">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Сейчас и здесь</title>
 <title>В конце времён, в похмелье карнавальном…</title>
-</titles>
 <album albumnum="22" year="2013" tracknum="16">Чужая музыка и не только. Часть 2</album>
 <year>2012</year>
 <text>
@@ -20186,10 +19836,9 @@ x|---|---|---|  x|---|---|---|    |(■)|---|-■-    |-■-|---|---|
 </track>
 
 <track id="nadeyus">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Смотри</title>
 <title>Надеюсь, близорукость моя была…</title>
-</titles>
 <album albumnum="23" year="2015" tracknum="1">Чужая музыка и не только. Часть 3</album>
 <year>2012</year>
 <text>
@@ -20233,10 +19882,9 @@ x|---|---|---|  x|---|---|---|    |(■)|---|-■-    |-■-|---|---|
 </track>
 
 <track id="tirbayard">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Тир «Боярд»</title>
 <title>Хорошо было Жан-Поль Сартру…</title>
-</titles>
 <album albumnum="23" year="2015" tracknum="2">Чужая музыка и не только. Часть 3</album>
 <year>2006</year>
 <text>
@@ -20311,10 +19959,9 @@ x|---|---|---|  x|---|---|---|    |(■)|---|-■-    |-■-|---|---|
 </track>
 
 <track id="ktosamgo">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Теперь и прежде</title>
 <title>Кто сам головой не понял…</title>
-</titles>
 <album albumnum="23" year="2015" tracknum="3">Чужая музыка и не только. Часть 3</album>
 <year>2011</year>
 <text>
@@ -20392,10 +20039,9 @@ x|---|---|---|  x|---|---|---|    |(■)|---|-■-    |-■-|---|---|
 </track>
 
 <track id="neskify">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Не скифы</title>
 <title>Как предок наш раздражал когда-то…</title>
-</titles>
 <album albumnum="23" year="2015" tracknum="4">Чужая музыка и не только. Часть 3</album>
 <year>2015</year>
 <text>
@@ -20444,10 +20090,9 @@ x|---|---|---|  x|---|---|---|    |(■)|---|-■-    |-■-|---|---|
 </track>
 
 <track id="escheya">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Рецензия</title>
 <title>Ещё я утром веки еле разнял…</title>
-</titles>
 <album albumnum="23" year="2015" tracknum="6">Чужая музыка и не только. Часть 3</album>
 <year>2015</year>
 <text>
@@ -20532,10 +20177,9 @@ x|---|---|---|  x|---|---|---|    |(■)|---|-■-    |-■-|---|---|
 </track>
 
 <track id="pavlovsk">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Павловск</title>
 <title>И полдень, и вокзал, и справочная…</title>
-</titles>
 <album albumnum="23" year="2015" tracknum="7">Чужая музыка и не только. Часть 3</album>
 <year>2013</year>
 <text>
@@ -20579,10 +20223,9 @@ x|---|---|---|  x|---|---|---|    |(■)|---|-■-    |-■-|---|---|
 </track>
 
 <track id="konspekt">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Конспект</title>
 <title>Тщетны были кровь и обида войн и оплеух…</title>
-</titles>
 <album albumnum="23" year="2015" tracknum="8">Чужая музыка и не только. Часть 3</album>
 <year>2015</year>
 <text>
@@ -20629,10 +20272,9 @@ x|---|---|---|  x|---|---|---|    |(■)|---|-■-    |-■-|---|---|
 </track>
 
 <track id="uzhesli">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Конец 3-й части</title>
 <title>Уж если хотя бы в округе…</title>
-</titles>
 <album albumnum="23" year="2015" tracknum="9">Чужая музыка и не только. Часть 3</album>
 <year>2013</year>
 <text>
@@ -20682,10 +20324,9 @@ x|---|---|---|  x|---|---|---|    |(■)|---|-■-    |-■-|---|---|
 </track>
 
 <track id="vsetvoic">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Гадалка и ворон</title>
 <title>Все твои, цыганка, я слова знаю…</title>
-</titles>
 <album albumnum="24" year="2017" tracknum="1">Хоровод</album>
 <year>2010</year>
 <text>
@@ -20737,10 +20378,9 @@ x|---|---|---|  x|---|---|---|    |(■)|---|-■-    |-■-|---|---|
 </track>
 
 <track id="vpotokah">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Босфор</title>
 <title>В потоках пролива…</title>
-</titles>
 <album albumnum="24" year="2017" tracknum="2">Хоровод</album>
 <year>2014</year>
 <text>
@@ -20802,10 +20442,9 @@ x|---|---|---|   0|---|---|---|    0|---|---|---|
 </track>
 
 <track id="shestsem">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Разминка</title>
 <title>Шесть, семь, восемь…</title>
-</titles>
 <album albumnum="24" year="2017" tracknum="3">Хоровод</album>
 <year>2015</year>
 <text>
@@ -20868,10 +20507,9 @@ x|---|---|---|   0|---|---|---|    0|---|---|---|
 </track>
 
 <track id="nesmogna">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Поездом</title>
 <title>Не смог на крыльях взмыть…</title>
-</titles>
 <album albumnum="24" year="2017" tracknum="4">Хоровод</album>
 <year>2015</year>
 <text>
@@ -20912,10 +20550,9 @@ x|---|---|---|      |---|---|-■-|      |---|-■-|---|
 </track>
 
 <track id="neradisp">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Филёвский парк</title>
 <title>Не ради спорта перед сном…</title>
-</titles>
 <album albumnum="24" year="2017" tracknum="5">Хоровод</album>
 <year>2015</year>
 <text>
@@ -20978,10 +20615,9 @@ x|---|---|---|      |---|---|-■-|      |---|-■-|---|
 </track>
 
 <track id="neradisp">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Пункт М</title>
 <title>Наивно поверив…</title>
-</titles>
 <album albumnum="24" year="2017" tracknum="7">Хоровод</album>
 <year>2016</year>
 <text>
@@ -21039,10 +20675,9 @@ x|---|---|      x|---|---|      x|---|---|      x|---|---|     x|---|---|    x|-
 </track>
 
 <track id="gdetytep">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Ничья сторона</title>
 <title>Где ты теперь, говорящая рыба?..</title>
-</titles>
 <album albumnum="24" year="2017" tracknum="8">Хоровод</album>
 <year>2016</year>
 <text>
@@ -21102,10 +20737,9 @@ x|---|---|---        0|---|---|---
 </track>
 
 <track id="pochtina">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Ровесник</title>
 <title>Почти на склоне, так сказать…</title>
-</titles>
 <album albumnum="24" year="2017" tracknum="9">Хоровод</album>
 <year>2015</year>
 <text>
@@ -21183,10 +20817,9 @@ x|---|---|---        0|---|---|---
 </track>
 
 <track id="bezotvet">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Без ответа</title>
 <title>Огорчу поневоле…</title>
-</titles>
 <album albumnum="24" year="2017" tracknum="12">Хоровод</album>
 <year>2017</year>
 <text>
@@ -21316,10 +20949,9 @@ x|---|---|---        0|---|---|---
 </track>
 
 <track id="stenyusv">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Тень</title>
 <title>С тенью свыкся…</title>
-</titles>
 <album albumnum="24" year="2017" tracknum="13">Хоровод</album>
 <year>2017</year>
 <text>
@@ -21373,10 +21005,9 @@ x|---|---|---|
 </track>
 
 <track id="godshel">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Черёмушки</title>
 <title>Год шёл 2013 к концу…</title>
-</titles>
 <album albumnum="24" year="2017" tracknum="14">Хоровод</album>
 <year>2014</year>
 <text>
@@ -21479,10 +21110,9 @@ x|---|---|---|
 </track>
 
 <track id="totosego">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Впрок</title>
 <title>То-то сегодня впрок я себе помогу…</title>
-</titles>
 <album albumnum="24" year="2017" tracknum="15">Хоровод</album>
 <year>2016</year>
 <text>
@@ -21522,10 +21152,9 @@ x|---|---|---   0|---|-    x|---|---|
 </track>
 
 <track id="razvecht">
-<titles>
+<author>Михаил Щербаков</author>
 <title>Служба</title>
 <title>Разве что залпом лишний кубок…</title>
-</titles>
 <album albumnum="25" year="2019" tracknum="1">По мотивам</album>
 <year>2018</year>
 <text>
