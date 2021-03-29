@@ -1,9 +1,10 @@
-:root {
-  --bg: #fff;
+:root:not(.daynight-night) {
   /* --bg: #f6f5f3; */
+  --bg: #fff;
+  --bg-rgb: 255, 255, 255;
   --text: #000;
   --text-rgb: 0, 0, 0;
-  --gray: #bbb;
+  --gray: #bbbbbb;
   --gray-rgb: 187, 187, 187;
   --icon-gray: #888;
   --icon-gray-rgb: 136, 136, 136;
@@ -13,6 +14,40 @@
   --link-visited-rgb: 116, 55, 135;
   --link-hover: #c83700;
   --link-hover-rgb: 200, 55, 0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not(.daynight-day) {
+    --bg: #000;
+    --bg-rgb: 0, 0, 0;
+    --text: #e2e2e2;
+    --text-rgb: 226, 226, 226;
+    --gray: #7a7a7a;
+    --gray-rgb: 122, 122, 122;
+    --icon-gray: #bbb;
+    --icon-gray-rgb: 187, 187, 187;
+    --link: #61d2ff;
+    --link-rgb: 97, 210, 255;
+    --link-visited: #f4a8ff;
+    --link-visited-rgb: 244, 168, 255;
+    --link-hover: #ff6a30;
+    --link-hover-rgb: 255, 106, 48;
+  }
+}
+:root.daynight-night {
+  --bg: #000;
+  --bg-rgb: 0, 0, 0;
+  --text: #e2e2e2;
+  --text-rgb: 226, 226, 226;
+  --gray: #7a7a7a;
+  --gray-rgb: 122, 122, 122;
+  --icon-gray: #bbb;
+  --icon-gray-rgb: 187, 187, 187;
+  --link: #61d2ff;
+  --link-rgb: 97, 210, 255;
+  --link-visited: #f4a8ff;
+  --link-visited-rgb: 244, 168, 255;
+  --link-hover: #ff6a30;
+  --link-hover-rgb: 255, 106, 48;
 }
 
 @font-face {
@@ -35,6 +70,7 @@ body {
   font-size: 1rem;
   line-height: 1.33333;
   font-family: 'font', monospace;
+  background-color: var(--bg);
   color: var(--text);
 }
 
@@ -51,13 +87,22 @@ a:hover, a.hover {
   transition: color 0s, border-color 0s;
 }
 
+p {
+  margin: 0 0 .75em 0;
+}
+
+
 /* HEADER */
+.header {
+  position: relative;
+}
+
 .page_title {
   position: relative;
   margin: 5px 0 11px;
   font-size: 24px;
   line-height: 32px;
-  font-weight: normal;
+  font-weight: 500;
 }
 
 .chords_number {
@@ -142,6 +187,7 @@ body.sorting-album dt .albumart {
   height: 116px;
   margin-left: -140px;
   margin-bottom: 1rem;
+  user-select: none;
 }
 body.sorting-album dd {
   margin-left: 140px;
@@ -180,7 +226,7 @@ dl.content_contents li {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #0004;
+  background-color: rgba(var(--gray-rgb), .5);
   overflow: auto;
 }
 .modal-content {
@@ -191,6 +237,7 @@ dl.content_contents li {
   font-size: 11px;
   background: var(--bg);
   outline: none;
+  user-select: auto;
 }
 .chords_text {
   white-space: pre-wrap;
@@ -202,12 +249,13 @@ body.modal-lock {
 body.modal-lock .content,
 body.modal-lock .content *
 {
-  color: #e0e0e0 !important;
+  color: var(--gray) !important;
   border-color: currentColor !important;
   transition: none !important;
+  user-select: none;
 }
 body.modal-lock .content img {
-  filter: contrast(.25) brightness(1.55) saturate(0);
+  filter: opacity(.5) contrast(.5) grayscale(1);
 }
 
 
@@ -218,7 +266,7 @@ body.modal-lock .content img {
 
 .modal-content ul.albumlist {
   padding: 0;
-  margin: 0;
+  margin: 0em 0 2em;
 }
 .modal-content li.album {
   display: inline;
@@ -234,9 +282,51 @@ body.modal-lock .content img {
   bottom: -.5px;
   color: var(--icon-gray);
 }
+
+.modal-content .tracktitle {
+  margin-bottom: 0;
+}
+.modal-content .tracktitle-alt {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: normal;
+}
+.modal-content .tracktitle-alt::before {
+  content: '=';
+  display: inline-block;
+  text-align: right;
+  width: .6em;
+  margin-left: -.9em;
+  margin-right: .3em;
+  color: var(--gray);
+}
+
 .modal-content .year {
   margin-top: 2em;
   color: var(--icon-gray);
+}
+
+
+.day-night-switch {
+  position: absolute;
+  right: -20px;
+  top: 7px;
+  width: 20px;
+  height: 20px;
+  mask-image: url(./day-night-icon.svg);
+  mask-size: cover;
+  mask-position: center;
+  cursor: pointer;
+  color: var(--gray);
+  background-color: currentColor;
+}
+.day-night-switch.night {
+  mask-position: center right;
+  color: var(--text);
+}
+.day-night-switch.day {
+  mask-position: center left;
+  color: var(--text);
 }
 
 
@@ -251,7 +341,7 @@ body.modal-lock .content img {
   box-sizing: border-box;
   background-clip: content-box;
   border: 20px solid transparent;
-  background: rgba(0, 50, 255, .1);
+  background: rgba(var(--link-rgb), .1);
 }
 
 

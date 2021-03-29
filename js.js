@@ -40,6 +40,7 @@ parseChords(chordsMain);
 sortToggle();
 showContents();
 keyListener();
+daynight('.day-night-switch');
 
 
 
@@ -173,7 +174,6 @@ function parseChords(chords) {
               bn = parseInt(b.getAttribute('data-album-tracknum')),
               al = a.getAttribute('data-album'),
               bl = b.getAttribute('data-album');
-        console.debug('123', an, bn);
         if (al == bl) {
             if (an == bn) {
                 return 1
@@ -367,20 +367,20 @@ function activateTrack() {
     const checkTitle = currChords.querySelectorAll('title')[0];
     let currTrackTitle;
     if (checkTitle) {
-        currTrackTitle = '<h2>' + italization(currChords.querySelector('title').textContent) + '<span class="track_starred-star">&#9733;</span></h2>';
-    } else currTrackTitle = '<h2>' + currTrackId + '<span class="track_starred-star">&#9733;</span></h2>';
+        currTrackTitle = '<h2 class="tracktitle">' + italization(currChords.querySelector('title').textContent) + '<span class="track_starred-star">&#9733;</span></h2>';
+    } else currTrackTitle = '<h2 class="tracktitle">' + currTrackId + '<span class="track_starred-star">&#9733;</span></h2>';
 
     const checkAltTitle = currChords.querySelectorAll('title')[2];
     let currTrackAltTitle;
     if (checkAltTitle) {
-        currTrackAltTitle = '<h3>' + checkAltTitle.textContent + '</h3>';
+        currTrackAltTitle = '<h2 class="tracktitle-alt">' + checkAltTitle.textContent + '</h2>';
     } else currTrackAltTitle = '';
 
-    const checkYear = currChords.querySelector('year');
-    let currTrackYear;
-    if (checkYear) {
-        currTrackYear = '<div class="year">' + checkYear.textContent + '</div>';
-    } else currTrackYear = '';
+    const checkSubtitle = currChords.querySelector('subtitle');
+    let currTrackSubtitle;
+    if (checkSubtitle) {
+        currTrackSubtitle = '<div class="subtitle">' + checkSubtitle.textContent + '</div>';
+    } else currTrackSubtitle = '';
 
     const checkAlbum = currChords.querySelectorAll('album');
     let currTrackAlbum;
@@ -392,19 +392,19 @@ function activateTrack() {
         currTrackAlbum += '</ul>';
     } else currTrackAlbum = '';
 
-    const checkSubtitle = currChords.querySelector('subtitle');
-    let currTrackSubtitle;
-    if (checkSubtitle) {
-        currTrackSubtitle = '<p class="subtitle">' + checkSubtitle.textContent + '</p>';
-    } else currTrackSubtitle = '';
+    const checkYear = currChords.querySelector('year');
+    let currTrackYear;
+    if (checkYear) {
+        currTrackYear = '<div class="year">' + checkYear.textContent + '</div>';
+    } else currTrackYear = '';
 
 
     const currTrackHeader = '<div class="chords_header">'
-                            + currTrackTitle
-                            + currTrackAltTitle
-                            + currTrackSubtitle
-                            + currTrackAlbum
-                            + '</div>';
+    + currTrackAlbum
+    + currTrackTitle
+    + currTrackAltTitle
+    + currTrackSubtitle
+    + '</div>';
     const currTrackText = '<div class="chords_text">' + currChords.querySelector('text').textContent + '</div>';
     const currTrack = currTrackHeader + currTrackText + currTrackYear;
 
@@ -434,7 +434,7 @@ function modal(arg) {
             modal.style.display = 'block';
             document.body.classList.add('modal-lock');
             document.querySelector('.modal-content').focus();
-            document.querySelector('.modal-content').scrollIntoView(true);
+            document.querySelector('.modal').scrollTo(0, 0);
             scrollBorder();
             break
         case 'close':
@@ -690,4 +690,37 @@ function scrollBorder () {
         const el = getScrollParent(document.activeElement);
         return el.scrollTop;
     }
+}
+
+function daynight(selector) {
+    const switches = document.querySelectorAll(selector);
+    let colorTheme = localStorage.getItem('colorTheme');
+    if (!colorTheme) colorTheme = 'default';
+
+    function changeState() {
+        switches.forEach(el => {
+           el.classList.remove('default', 'day', 'night');
+           el.classList.add(colorTheme);
+        });
+        localStorage.setItem('colorTheme', colorTheme);
+        document.querySelector('html').classList.remove('daynight-default', 'daynight-day', 'daynight-night');
+        document.querySelector('html').classList.add('daynight-' + colorTheme);
+    }
+
+    changeState();
+    switches.forEach(el => {
+        el.addEventListener('click', () => {
+            switch(colorTheme) {
+                case 'night':
+                    colorTheme = 'day';
+                    break;
+                case 'day':
+                    colorTheme = 'default';
+                    break;
+                default:
+                    colorTheme = 'night';
+            }
+            changeState();
+        });
+    });
 }
