@@ -314,18 +314,23 @@ body.modal-lock .content img {
   width: 20px;
   height: 20px;
   mask-image: url(./day-night-icon.svg);
+  -webkit-mask-image: url(./day-night-icon.svg);
   mask-size: cover;
+  -webkit-mask-size: cover;
   mask-position: center;
+  -webkit-mask-position: center;
   cursor: pointer;
   color: var(--gray);
   background-color: currentColor;
 }
 .day-night-switch.night {
   mask-position: center right;
+  -webkit-mask-position: center right;
   color: var(--text);
 }
 .day-night-switch.day {
   mask-position: center left;
+  -webkit-mask-position: center left;
   color: var(--text);
 }
 
