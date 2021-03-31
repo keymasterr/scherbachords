@@ -76,11 +76,7 @@ function parseChords(chords) {
         liTempl = '<li><a %%<span class="track_starred-star">&#9733;</span></a></li>';
 
     for (let el of chords) {
-        let textFirstLine = '';
-        el.getElementsByTagName('text')[0].innerHTML.split('\n').some(line => {
-            textFirstLine = line.trim().split('  ')[0];
-            return /[а-яА-Я]+/.test(line);
-        });
+        let textFirstLine = el.getElementsByTagName('title')[1]?.textContent || '';
 
         const titles = el.getElementsByTagName('title');
         for (let i = 0; i < titles.length; i++) {
