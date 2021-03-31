@@ -66,14 +66,22 @@ function parseChords(chords) {
         liTempl = '<li><a %%<span class="track_starred-star">&#9733;</span></a></li>';
 
     for (let el of chords) {
+        let textFirstLine = '';
+        el.getElementsByTagName('text')[0].innerHTML.split('\n').some(line => {
+            textFirstLine = line.trim().split('  ')[0];
+            return /[а-яА-Я]+/.test(line);
+        });
+
         const titles = el.getElementsByTagName('title');
         for (let i = 0; i < titles.length; i++) {
             let link = document.createElement('a');
             link.setAttribute('href', '#' + el.id);
+            link.setAttribute('title', textFirstLine);
             link.innerHTML = italization(titles[i].textContent);
             if (i > 0) {
                 link.innerHTML +=  ' (' + italization(titles[0].textContent) + ')';
             }
+            if (i === 1) link.removeAttribute('title');
             chordsByAbc.push(link);
         }
 
@@ -83,6 +91,7 @@ function parseChords(chords) {
             let link = document.createElement('a');
             link.setAttribute('href', '#' + el.id);
             link.setAttribute('data-year-sort', sortYear);
+            link.setAttribute('title', textFirstLine);
             link.innerHTML = italization(titles[0].textContent);
             chordsByYear.push(link);
         });
@@ -95,6 +104,7 @@ function parseChords(chords) {
             link.setAttribute('data-album-year', albums[i].getAttribute('year'));
             link.setAttribute('data-album-tracknum', albums[i].getAttribute('tracknum'));
             link.setAttribute('data-album-albumnum', albums[i].getAttribute('albumnum'));
+            link.setAttribute('title', textFirstLine);
             link.innerHTML = italization(titles[0].textContent);
             chordsByAlbum.push(link);
         };
