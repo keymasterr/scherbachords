@@ -52,6 +52,16 @@ function getXmlMain(file) {
     chordsMain = Connect.responseXML.getElementsByTagName('track');
     document.querySelector('.chords_number').innerHTML = chordsMain.length;
 
+    let dupArr = [];
+    for (let i of chordsMain) {
+        if (dupArr.indexOf(i.id) === -1) {
+            dupArr.push(i.id);
+        } else {
+            console.error('Duplicate track id:', i.id);
+        }
+    };
+    delete dupArr;
+
     activateTrack();
     window.onhashchange = activateTrack;
 }
