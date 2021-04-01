@@ -545,7 +545,12 @@ function abcIndex() {
                     window.setTimeout(signaled, 500);
                 });
             });
-
+            document.querySelectorAll('dt a').forEach(a => {
+                a.addEventListener('click', event => {
+                    event.preventDefault();
+                    document.body.scrollTo(0, 0);
+                });
+            });
         });
     };
 };
