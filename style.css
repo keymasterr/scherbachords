@@ -176,7 +176,7 @@ dt {
 
 dd {
   margin-left: 44px;
-  margin-bottom: 24px;
+  margin-bottom: 2em;
 }
 
 body.sorting-album dt {
@@ -197,8 +197,8 @@ body.sorting-album dt .albumart {
 body.sorting-album dd {
   margin-left: 140px;
   min-height: 76px;
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin-top: 1.5em;
+  margin-bottom: 4em;
 }
 body.sorting-album .tracknum {
   display: inline-block;
