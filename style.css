@@ -146,6 +146,11 @@ p {
     color: var(--gray);
   }
 
+/* FOOTER */
+.footer {
+  margin-top: 80px;
+  margin-bottom: -40px;
+}
 
 /* LIST */
 dl.content_contents {
