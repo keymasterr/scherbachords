@@ -34,13 +34,16 @@ const albumNames = {
     'po_motivam': 'По мотивам'
 };
 
+daynight('.day-night-switch');
 getStateFromStorage();
 getXmlMain('chords.xml');
 parseChords(chordsMain);
 sortToggle();
 showContents();
 keyListener();
-daynight('.day-night-switch');
+
+activateTrack();
+window.onhashchange = activateTrack;
 
 
 
@@ -61,9 +64,6 @@ function getXmlMain(file) {
         }
     };
     delete dupArr;
-
-    activateTrack();
-    window.onhashchange = activateTrack;
 }
 
 function parseChords(chords) {
@@ -296,6 +296,7 @@ function showContents() {
 
     cont.innerHTML = aArray;
     abcIndex();
+    linksWeightInit('dd a', 'linksWeight');
 }
 
 
@@ -429,6 +430,8 @@ function activateTrack() {
     modal('open');
 
     document.title = currChords.querySelector('title').textContent + ' — Щербаккорды';
+
+    linksWeightChange('#' + currTrackId, 'linksWeight');
 }
 
 function clearAddress() {
@@ -744,4 +747,127 @@ function daynight(selector) {
             changeState();
         });
     });
+}
+
+function linksWeightInit(selector, locStorItem) {
+    const links = document.querySelectorAll(selector);
+    let linksWeight = JSON.parse(localStorage.getItem(locStorItem));
+    let dateCurr = new Date().toDateString();
+
+    if (!linksWeight) {
+        linksWeight = new Object();
+        linksWeight.dateChanged = dateCurr;
+        linksWeight.list = [];
+
+        links.forEach(el => {
+            const trackLink = el.getAttribute('href');
+            let obj = new Object();
+            obj.id = trackLink;
+            obj.weight = 400;
+            obj.dateChanged = dateCurr;
+            obj.changesToday = 0;
+            obj.isFavorite = false;
+
+            if (!linksWeight.list.some(e => e.id === trackLink)) {
+                linksWeight.list.push(obj);
+            }
+        });
+
+        localStorage.setItem(locStorItem, JSON.stringify(linksWeight));
+    }
+
+    if (!isToday(new Date(linksWeight.dateChanged))) {
+        linksWeight.dateChanged = dateCurr;
+        linksWeight.list.forEach(track => {
+            if (!track.isFavorite) {
+                track.weight -= 1;
+            }
+        });
+
+        localStorage.setItem(locStorItem, JSON.stringify(linksWeight));
+    }
+
+    linksWeight.list.forEach(track => {
+        document.querySelectorAll('a[href="' + track.id + '"]').forEach(link => {
+            link.style.fontVariationSettings = '"wght" ' + weightCalc(track.weight);
+            if (track.isFavorite === true) {
+                link.setAttribute('data-favorite', true);
+            }
+            let favicon = document.createElement('span');
+            favicon.classList.add('track-favicon');
+            favicon.textContent = '⭑';
+            // favicon.addEventListener('click', function(){favTrack(track.id);});
+            link.append(favicon);
+        });
+    });
+
+    console.debug('linksWeightInit', linksWeight);
+}
+
+function linksWeightChange(id, locStorItem) {
+    let linksWeight = JSON.parse(localStorage.getItem(locStorItem));
+    if (!linksWeight) return false;
+    let track = linksWeight.list.find(e => e.id === id);
+
+    if (track.changesToday < 5) {
+        if (!isToday(new Date(track.dateChanged))) {
+            track.dateChanged = new Date().toDateString();
+            console.debug(track.dateChanged);
+            track.changesToday = 0;
+        }
+        track.weight += 5 - track.changesToday;
+        track.changesToday++;
+
+        if (track.weight < 400) { track.weight = 405 };
+        if (track.weight > 800) {
+            track.weight = 800;
+            track.isFavorite = true;
+        };
+
+        document.querySelectorAll('a[href="' + id + '"]').forEach(link => {
+            link.style.fontVariationSettings = '"wght" ' + weightCalc(track.weight);
+        })
+
+        localStorage.setItem(locStorItem, JSON.stringify(linksWeight));
+    }
+
+    console.debug('linksWeightChange', linksWeight);
+}
+
+function weightCalc(num) {
+    result = num;
+    // result = -0.0015 * num * num + 1.9 * num + 200;
+    return result;
+}
+
+function favTrack(id) {
+    locStorItem = 'linksWeight';
+    let linksWeight = JSON.parse(localStorage.getItem(locStorItem));
+    if (!linksWeight) return false;
+    let track = linksWeight.list.find(e => e.id === id);
+    let links = document.querySelectorAll('a[href="' + id + '"]');
+
+    if (track.isFavorite === true) {
+        links.forEach(link => {
+            track.isFavorite = false;
+            link.removeAttribute('data-favorite');
+        });
+        if (track.weight >= 800) {
+            track.weight = 600;
+        }
+    } else {
+        links.forEach(link => {
+            track.isFavorite = true;
+            link.setAttribute('data-favorite', true);
+        });
+    }
+    localStorage.setItem(locStorItem, JSON.stringify(linksWeight));
+}
+
+
+function isToday(someDate) {
+    const today = new Date()
+    return someDate.getDate() == today.getDate() &&
+      someDate.getMonth() == today.getMonth() &&
+      someDate.getFullYear() == today.getFullYear()
 }

@@ -1,5 +1,9 @@
+/* --bg: #f6f5f3; */
+:root {
+  --transition: .12s ease-out;
+}
+
 :root:not(.daynight-night) {
-  /* --bg: #f6f5f3; */
   --bg: #fff;
   --bg-rgb: 255, 255, 255;
   --text: #000;
@@ -15,6 +19,22 @@
   --link-hover: #c83700;
   --link-hover-rgb: 200, 55, 0;
 }
+/* :root:not(.daynight-night) {
+  --bg: #ffde7a;
+  --bg-rgb: 255, 222, 122;
+  --text: #433925;
+  --text-rgb: 67, 57, 37;
+  --gray: #c79343;
+  --gray-rgb: 199, 147, 67;
+  --icon-gray: #8d7749;
+  --icon-gray-rgb: 141, 119, 73;
+  --link: #000;
+  --link-rgb: 0, 0, 0;
+  --link-visited: #5d5d5d;
+  --link-visited-rgb: 93, 93, 93;
+  --link-hover: #c83700;
+  --link-hover-rgb: 200, 55, 0;
+} */
 @media (prefers-color-scheme: dark) {
   :root:not(.daynight-day) {
     --bg: #000;
@@ -77,7 +97,7 @@ body {
 a {
   color: var(--link);
   text-decoration: none;
-  transition: color 0.12s ease-out, border-color 0.12s ease-out;
+  transition: color var(--transition), border-color var(--transition);
 }
 a:visited {
   color: var(--link-visited);
@@ -174,9 +194,33 @@ dt {
     color: var(--gray);
   }
 
+
 dd {
   margin-left: 44px;
   margin-bottom: 2em;
+}
+
+.track-favicon {
+  position: absolute;
+  display: none;
+  /* margin-top: -.5px; */
+  margin-left: .406em;
+  user-select: none;
+}
+a[data-favorite] .track-favicon {
+  display: inline-block;
+}
+a[data-favorite] {
+  font-variation-settings: "wght" 800 !important;
+}
+
+.track-favicon-toggler {
+  cursor: pointer;
+  transition: color var(--transition);
+}
+.track-favicon-toggler:hover {
+  color: var(--link-hover);
+  transition: color 0s;
 }
 
 body.sorting-album dt {
