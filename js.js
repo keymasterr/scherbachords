@@ -815,10 +815,10 @@ function linksWeightChange(id, locStorItem) {
             console.debug(track.dateChanged);
             track.changesToday = 0;
         }
-        track.weight += 5 - track.changesToday;
+        track.weight += Math.ceil(Math.pow(5 - track.changesToday, 3) / 16);
         track.changesToday++;
 
-        if (track.weight < 400) { track.weight = 405 };
+        if (track.weight < 400) { track.weight = 408 };
         if (track.weight > 800) {
             track.weight = 800;
             track.isFavorite = true;
@@ -835,8 +835,22 @@ function linksWeightChange(id, locStorItem) {
 }
 
 function weightCalc(num) {
-    result = num;
+    // result = num;
     // result = -0.0015 * num * num + 1.9 * num + 200;
+    switch (true) {
+        case (num < 200):
+            result = 200;
+            break;
+        case (num < 400):
+            result = num;
+            break;
+        case (num <= 800):
+            const x = num - 400;
+            result = Math.floor(x * (Math.pow((400 - x), 1.8) * .00004 + 1) + 400);
+            break
+        default:
+            result = 800;
+    }
     return result;
 }
 
