@@ -431,3 +431,36 @@ body.modal-lock .content img {
     padding: 2rem 1rem 3rem 2rem;
   }
 }
+
+@media print {
+  @page {
+    margin: 12mm;
+  }
+  .abc_index,
+  .footer,
+  .sorting_toggler :not(.active)
+  {
+    display: none;
+  }
+
+  body.modal-lock {
+    overflow: initial;
+    padding: 0;
+  }
+  body.modal-lock .content,
+  body.modal-lock .footer
+  {
+    display: none;
+  }
+  body.modal-lock .modal {
+    position: relative;
+    overflow: initial;
+    background: none;
+  }
+  body.modal-lock .modal-content {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    max-width: inherit;
+  }
+}
