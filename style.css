@@ -181,6 +181,7 @@ dl.content_contents li a {
 }
 
 dt {
+  position: relative;
   font-weight: 500;
   font-size: 1.25em;
   margin-bottom: 0.2em;
@@ -441,6 +442,10 @@ body.modal-lock .content img {
   .sorting_toggler :not(.active)
   {
     display: none;
+  }
+
+  dd a {
+    font-variation-settings: "wght" 400 !important;
   }
 
   body.modal-lock {
