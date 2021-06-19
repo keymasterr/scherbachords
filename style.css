@@ -3,23 +3,7 @@
   --transition: .12s ease-out;
 }
 
-:root:not(.daynight-night) {
-  --bg: #fff;
-  --bg-rgb: 255, 255, 255;
-  --text: #000;
-  --text-rgb: 0, 0, 0;
-  --gray: #bbbbbb;
-  --gray-rgb: 187, 187, 187;
-  --icon-gray: #888;
-  --icon-gray-rgb: 136, 136, 136;
-  --link: #3641cc;
-  --link-rgb: 54, 65, 204;
-  --link-visited: #743787;
-  --link-visited-rgb: 116, 55, 135;
-  --link-hover: #c83700;
-  --link-hover-rgb: 200, 55, 0;
-}
-/* :root:not(.daynight-night) {
+/* :root:not([data-theme="dark"]) {
   --bg: #ffde7a;
   --bg-rgb: 255, 222, 122;
   --text: #433925;
@@ -35,8 +19,24 @@
   --link-hover: #c83700;
   --link-hover-rgb: 200, 55, 0;
 } */
+:root:not([data-theme="dark"]) {
+  --bg: #fff;
+  --bg-rgb: 255, 255, 255;
+  --text: #000;
+  --text-rgb: 0, 0, 0;
+  --gray: #bbbbbb;
+  --gray-rgb: 187, 187, 187;
+  --icon-gray: #888;
+  --icon-gray-rgb: 136, 136, 136;
+  --link: #3641cc;
+  --link-rgb: 54, 65, 204;
+  --link-visited: #743787;
+  --link-visited-rgb: 116, 55, 135;
+  --link-hover: #c83700;
+  --link-hover-rgb: 200, 55, 0;
+}
 @media (prefers-color-scheme: dark) {
-  :root:not(.daynight-day) {
+  :root:not([data-theme="light"]) {
     --bg: #000;
     --bg-rgb: 0, 0, 0;
     --text: #e2e2e2;
@@ -53,7 +53,7 @@
     --link-hover-rgb: 255, 106, 48;
   }
 }
-:root.daynight-night {
+:root[data-theme="dark"] {
   --bg: #000;
   --bg-rgb: 0, 0, 0;
   --text: #e2e2e2;
@@ -297,7 +297,8 @@ body.modal-lock {
   overflow: hidden;
 }
 body.modal-lock .content,
-body.modal-lock .content *
+body.modal-lock .content *,
+body.modal-lock .footer
 {
   color: var(--gray) !important;
   border-color: currentColor !important;
@@ -373,12 +374,12 @@ body.modal-lock .content img {
   color: var(--gray);
   background-color: currentColor;
 }
-.day-night-switch.night {
+:root[data-theme="dark"] .day-night-switch {
   mask-position: center right;
   -webkit-mask-position: center right;
   color: var(--text);
 }
-.day-night-switch.day {
+:root[data-theme="light"] .day-night-switch {
   mask-position: center left;
   -webkit-mask-position: center left;
   color: var(--text);

@@ -245,9 +245,9 @@ function parseChords(chords) {
 
 
     document.querySelector('.page_title').insertAdjacentHTML('beforeend', '<span class="sorting_toggler">'
-    + 'по <span class="sortToggle-abc active">алфавиту</span>'
-    + ' <span class="sortToggle-album">альбомам</span>'
-    + ' <span class="sortToggle-year">годам</span>'
+    + 'по<span class="sortToggle-abc active"> алфавиту</span>'
+    + '<span class="sortToggle-album"> альбомам</span>'
+    + '<span class="sortToggle-year"> годам</span>'
     + '</span>');
     const togglerYear = document.querySelector('.sortToggle-year');
     togglerYear.addEventListener('click', function() {
@@ -718,31 +718,25 @@ function scrollBorder () {
 
 function daynight(selector) {
     const switches = document.querySelectorAll(selector);
-    let colorTheme = localStorage.getItem('colorTheme');
-    if (!colorTheme) colorTheme = 'default';
+    let colorTheme = localStorage.getItem('colorTheme') || 'system';
 
     function changeState() {
-        switches.forEach(el => {
-           el.classList.remove('default', 'day', 'night');
-           el.classList.add(colorTheme);
-        });
         localStorage.setItem('colorTheme', colorTheme);
-        document.querySelector('html').classList.remove('daynight-default', 'daynight-day', 'daynight-night');
-        document.querySelector('html').classList.add('daynight-' + colorTheme);
+        document.documentElement.setAttribute('data-theme', colorTheme);
     }
-
     changeState();
+
     switches.forEach(el => {
         el.addEventListener('click', () => {
             switch(colorTheme) {
-                case 'night':
-                    colorTheme = 'day';
-                    break;
-                case 'day':
-                    colorTheme = 'default';
-                    break;
+                case 'dark':
+                    colorTheme = 'light';
+                    break
+                case 'light':
+                    colorTheme = 'system';
+                    break
                 default:
-                    colorTheme = 'night';
+                    colorTheme = 'dark';
             }
             changeState();
         });
