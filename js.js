@@ -1,10 +1,10 @@
 const cont = document.querySelector('.content_contents');
-let chordsMain,
-    chordsByAbcHtml = [],
-    chordsByYearHtml = [],
-    chordsByAlbumHtml = [],
-    sorting = '',
-    currTrackId;
+let chordsMain;
+let chordsByAbcHtml = [];
+let chordsByYearHtml = [];
+let chordsByAlbumHtml = [];
+let sorting = '';
+let currTrackId;
 
 const albumNames = {
     'shanson': 'Шансон',
@@ -48,32 +48,34 @@ window.onhashchange = activateTrack;
 
 
 function getXmlMain(file) {
-    let Connect = new XMLHttpRequest();
-    Connect.open('GET', file, false);
-    Connect.setRequestHeader('Content-Type', 'text/xml');
-    Connect.send(null);
-    chordsMain = Connect.responseXML.getElementsByTagName('track');
-    document.querySelector('.chords_number').innerHTML = chordsMain.length;
+    const request = new XMLHttpRequest();
+    request.open('GET', file, false);
+    request.setRequestHeader('Content-Type', 'text/xml');
+    request.send();
 
-    let dupArr = [];
-    for (let i of chordsMain) {
-        if (dupArr.indexOf(i.id) === -1) {
-            dupArr.push(i.id);
+    chordsMain = request.responseXML.getElementsByTagName('track');
+    document.querySelector('.chords_number').textContent = chordsMain.length;
+
+    const trackIds = new Set();
+    [...chordsMain].forEach(track => {
+        const trackId = track.id;
+        if (trackIds.has(trackId)) {
+            console.error(`Duplicate track id: ${trackId}`);
         } else {
-            console.error('Duplicate track id:', i.id);
+            trackIds.add(trackId);
         }
-    };
-    delete dupArr;
+    });
 }
 
+
 function parseChords(chords) {
-    let chordsByAbc = [],
-        chordsByYear = [],
-        chordsByAlbum = [],
-        prevCharAbc = '',
-        prevCharYear = '',
-        prevCharAlbum = '',
-        liTempl = '<li><a %%<span class="track_starred-star">&#9733;</span></a></li>';
+    let chordsByAbc = [];
+    let chordsByYear = [];
+    let chordsByAlbum = [];
+    let prevCharAbc = '';
+    let prevCharYear = '';
+    let prevCharAlbum = '';
+    let liTempl = '<li><a %%<span class="track_starred-star">&#9733;</span></a></li>';
 
     for (let el of chords) {
         let textFirstLine = el.getElementsByTagName('title')[1]?.textContent || '';
@@ -81,11 +83,11 @@ function parseChords(chords) {
         const titles = el.getElementsByTagName('title');
         for (let i = 0; i < titles.length; i++) {
             let link = document.createElement('a');
-            link.setAttribute('href', '#' + el.id);
+            link.setAttribute('href', `#${el.id}`);
             link.setAttribute('title', textFirstLine);
             link.innerHTML = italization(titles[i].textContent);
             if (i > 0) {
-                link.innerHTML +=  ' (' + italization(titles[0].textContent) + ')';
+                link.innerHTML +=  ` (${italization(titles[0].textContent)})`;
             }
             if (i === 1) link.removeAttribute('title');
             chordsByAbc.push(link);
@@ -95,7 +97,7 @@ function parseChords(chords) {
         year.match(/\d{4}/g).forEach(itm => {
             const sortYear = itm;
             let link = document.createElement('a');
-            link.setAttribute('href', '#' + el.id);
+            link.setAttribute('href', `#${el.id}`);
             link.setAttribute('data-year-sort', sortYear);
             link.setAttribute('title', textFirstLine);
             link.innerHTML = italization(titles[0].textContent);
@@ -105,7 +107,7 @@ function parseChords(chords) {
         const albums = el.getElementsByTagName('album');
         for (let i = 0; i < albums.length; i++) {
             let link = document.createElement('a');
-            link.setAttribute('href', '#' + el.id);
+            link.setAttribute('href', `#${el.id}`);
             link.setAttribute('data-album', albums[i].textContent);
             link.setAttribute('data-album-year', albums[i].getAttribute('year'));
             link.setAttribute('data-album-tracknum', albums[i].getAttribute('tracknum'));
@@ -129,24 +131,24 @@ function parseChords(chords) {
             curChar = 'A…Z';
         }
 
-        if (prevCharAbc == curChar) {
-            chordsByAbcHtml.push('<li>' + firstQuote(itm).outerHTML + '</li>');
+        if (prevCharAbc === curChar) {
+            chordsByAbcHtml.push(`<li>${firstQuote(itm).outerHTML}</li>`);
         } else {
             prevCharAbc = curChar;
-            if (prevCharAbc != '') {
+            if (prevCharAbc !== '') {
                 chordsByAbcHtml.push('</ul></dd>');
             }
-            chordsByAbcHtml.push('<dt><a>' + curChar + '</a></dt>');
+            chordsByAbcHtml.push(`<dt><a>${curChar}</a></dt>`);
             chordsByAbcHtml.push('<dd><ul>');
-            chordsByAbcHtml.push('<li>' + firstQuote(itm).outerHTML + '</li>');
+            chordsByAbcHtml.push(`<li>${firstQuote(itm).outerHTML}</li>`);
         }
     });
     prevCharAbc = '';
 
     chordsByYear.sort(function(a, b) {
-        const ay = a.getAttribute('data-year-sort'),
-            by = b.getAttribute('data-year-sort');
-        if (ay != by) return ay - by;
+        const ay = a.getAttribute('data-year-sort');
+        const by = b.getAttribute('data-year-sort');
+        if (ay !== by) return ay - by;
 
         a = trimSpecial(a.textContent);
         b = trimSpecial(b.textContent);
@@ -155,43 +157,43 @@ function parseChords(chords) {
 
     chordsByYear.forEach(itm => {
         const curChar = trimSpecial(itm.getAttribute('data-year-sort'));
-        if (prevCharYear == curChar) {
-            chordsByYearHtml.push('<li>' + itm.outerHTML + '</li>');
+        if (prevCharYear === curChar) {
+            chordsByYearHtml.push(`<li>${itm.outerHTML}</li>`);
         } else {
             prevCharYear = curChar;
-            if (prevCharYear != '') {
+            if (prevCharYear !== '') {
                 chordsByYearHtml.push('</ul></dd>');
             }
-            chordsByYearHtml.push('<dt>' + curChar + '</dt>');
+            chordsByYearHtml.push(`<dt>${curChar}</dt>`);
             chordsByYearHtml.push('<dd><ul>');
-            chordsByYearHtml.push('<li>' + itm.outerHTML + '</li>');
+            chordsByYearHtml.push(`<li>${itm.outerHTML}</li>`);
         }
     });
     prevCharYear = '';
 
     chordsByAlbum.sort(function(a, b) {
-        const al = a.getAttribute('data-album'),
-              bl = b.getAttribute('data-album');
-              return al.localeCompare(bl, undefined, {numeric: true, sensivity: 'base'});
+        const al = a.getAttribute('data-album');
+        const bl = b.getAttribute('data-album');
+        return al.localeCompare(bl, undefined, {numeric: true, sensivity: 'base'});
     });
     chordsByAlbum.sort(function(a, b) {
-        const aal = a.getAttribute('data-album-year'),
-              bal = b.getAttribute('data-album-year');
-        if (aal != bal) return bal < aal ? 1 : -1;
+        const aal = a.getAttribute('data-album-year');
+        const bal = b.getAttribute('data-album-year');
+        if (aal !== bal) return bal < aal ? 1 : -1;
         return 1;
     });
     chordsByAlbum.sort(function(a, b) {
-        const aaln = a.getAttribute('data-album-albumnum'),
-              baln = b.getAttribute('data-album-albumnum');
+        const aaln = a.getAttribute('data-album-albumnum');
+        const baln = b.getAttribute('data-album-albumnum');
         return aaln.localeCompare(baln, undefined, {numeric: true, sensivity: 'base'});
     });
     chordsByAlbum.sort(function(a, b) {
-        const an = parseInt(a.getAttribute('data-album-tracknum')),
-              bn = parseInt(b.getAttribute('data-album-tracknum')),
-              al = a.getAttribute('data-album'),
-              bl = b.getAttribute('data-album');
-        if (al == bl) {
-            if (an == bn) {
+        const an = parseInt(a.getAttribute('data-album-tracknum'));
+        const bn = parseInt(b.getAttribute('data-album-tracknum'));
+        const al = a.getAttribute('data-album');
+        const bl = b.getAttribute('data-album');
+        if (al === bl) {
+            if (an === bn) {
                 return 1
             } else {
                 return bn < an ? 1 : -1;
@@ -203,39 +205,39 @@ function parseChords(chords) {
         const curChar = trimSpecial(itm.getAttribute('data-album'));
         const tracknum = itm.getAttribute('data-album-tracknum');
         const albumnum = itm.getAttribute('data-album-tracknum');
-        if (prevCharAlbum == curChar) {
+        if (prevCharAlbum === curChar) {
             chordsByAlbumHtml.push('<li>');
-            if (tracknum != 'null') {
-                chordsByAlbumHtml.push('<span class="tracknum">' + itm.getAttribute('data-album-tracknum') + '</span>');
+            if (tracknum !== 'null') {
+                chordsByAlbumHtml.push(`<span class="tracknum">${itm.getAttribute('data-album-tracknum')}</span>`);
             }
             chordsByAlbumHtml.push(itm.outerHTML);
             chordsByAlbumHtml.push('</li>');
         } else {
             prevCharAlbum = curChar;
-            if (prevCharAlbum != '') {
+            if (prevCharAlbum !== '') {
                 chordsByAlbumHtml.push('</ul></dd>');
             }
             const albumLat = Object.keys(albumNames).find(key => albumNames[key] === curChar);
             const albumYear = itm.getAttribute('data-album-year');
 
             chordsByAlbumHtml.push('<dt>');
-            if (albumLat != undefined) {
-                chordsByAlbumHtml.push('<img class="albumart" src="./covers/' + albumLat + '.jpg"  onerror="this.style.display=\'none\'">');
+            if (albumLat !== undefined) {
+                chordsByAlbumHtml.push(`<img class="albumart" src="./covers/${albumLat}.jpg"  onerror="this.style.display=\'none\'">`);
             }
             // if (albumnum != 'null') {
             //     chordsByAlbumHtml.push('<span class="albumnum">' + itm.getAttribute('data-album-albumnum') + ') </span>');
             // }
             chordsByAlbumHtml.push(curChar);
-            if (albumYear != 'null') {
-                chordsByAlbumHtml.push(' <span class="albumyear">' + albumYear + '</span>');
+            if (albumYear !== 'null') {
+                chordsByAlbumHtml.push(` <span class="albumyear">${albumYear}</span>`);
             }
             chordsByAlbumHtml.push('</dt>');
 
 
             chordsByAlbumHtml.push('<dd><ul>');
             chordsByAlbumHtml.push('<li>');
-            if (tracknum != 'null') {
-                chordsByAlbumHtml.push('<span class="tracknum">' + itm.getAttribute('data-album-tracknum') + '</span>');
+            if (tracknum !== 'null') {
+                chordsByAlbumHtml.push(`<span class="tracknum">${itm.getAttribute('data-album-tracknum')}</span>`);
             }
             chordsByAlbumHtml.push(itm.outerHTML);
             chordsByAlbumHtml.push('</li>');
@@ -245,10 +247,11 @@ function parseChords(chords) {
 
 
     document.querySelector('.page_title').insertAdjacentHTML('beforeend', '<span class="sorting_toggler">'
-    + 'по<span class="sortToggle-abc active"> алфавиту</span>'
-    + '<span class="sortToggle-album"> альбомам</span>'
-    + '<span class="sortToggle-year"> годам</span>'
-    + '</span>');
+        + 'по<span class="sortToggle-abc active"> алфавиту</span>'
+        + '<span class="sortToggle-album"> альбомам</span>'
+        + '<span class="sortToggle-year"> годам</span>'
+        + '</span>'
+        + '<input type="search" class="search-input" placeholder="Искать">');
     const togglerYear = document.querySelector('.sortToggle-year');
     togglerYear.addEventListener('click', function() {
         if (!togglerYear.classList.contains('active')) {
@@ -292,7 +295,7 @@ function showContents() {
             el.classList.remove(className);
         }
     }
-    el.classList.add('sorting-' + sorting);
+    el.classList.add(`sorting-${sorting}`);
 
     cont.innerHTML = aArray;
     abcIndex();
@@ -316,7 +319,7 @@ function sortToggle(arg) {
             showContents();
             break;
         default:
-            if (sorting == '') {
+            if (sorting === '') {
                 sorting = 'abc'
                 return;
             }
@@ -325,7 +328,7 @@ function sortToggle(arg) {
     sortToggler.querySelectorAll('span').forEach(span => {
         span.classList.remove('active');
     });
-    sortToggler.querySelector('.sortToggle-' + sorting).classList.add('active');
+    sortToggler.querySelector(`.sortToggle-${sorting}`).classList.add('active');
     localStorage.setItem('sorting', sorting);
 }
 
@@ -335,7 +338,7 @@ function sortToggle(arg) {
 // Delete unwanted first and last symbols from string
 function trimSpecial(t) {
     if (typeof t !== 'undefined') {
-        t = t + '';
+        t = `${t}`;
         if (t.match(/[\u{2605}]$/igmu)) {
             t = t.slice(0, -1);
         }
@@ -353,8 +356,8 @@ function trimSpecial(t) {
 // Hanging quote mark if it is first character
 function firstQuote(a) {
     let text = a.innerHTML;
-    if (text[0] == '«') {
-        text = '<span style="margin-left:-.6em;">«</span>' + text.substring(1);
+    if (text[0] === '«') {
+        text = `<span style="margin-left:-.6em;">«</span>${text.substring(1)}`;
     }
     a.innerHTML = text;
     return a;
@@ -362,77 +365,47 @@ function firstQuote(a) {
 
 // convert _text_ to italic
 function italization(str) {
-    const regex = /_(\S.*?\S)_([\s\,\.\:\-]|$)/g;
-    const subst = `<i>$1<\/i>$2`;
-    const result = str.replace(regex, subst);
-    return result;
+    const regex = /_(\S.*?\S)_(?=[\s.,:;-]|$)/g;
+    const subst = "<i>$1</i>";
+    return str.replace(regex, subst);
 }
 
 function activateTrack() {
     modal();
     const modalContent = document.querySelector('.modal-content');
-
-    if (document.location.hash.length > 3 && ['#top', '#a…z', '#0…9'].indexOf(document.location.hash) <= -1) {
-        currTrackId = document.location.hash.substring(1);
-    } else {
-        modal('close');
-        return false;
+    const trackId = document.location.hash.substring(1);
+    const currChords = chordsMain[trackId];
+    if (!currChords) {
+      modal('close');
+      return false;
     }
 
-    const currChords = chordsMain[currTrackId];
+    const title = currChords.querySelector('title')?.textContent || trackId;
+    const star = '<span class="track_starred-star">&#9733;</span>';
+    const trackTitle = `<h2 class="tracktitle">${italization(title)}${star}</h2>`;
 
-    const checkTitle = currChords.querySelectorAll('title')[0];
-    let currTrackTitle;
-    if (checkTitle) {
-        currTrackTitle = '<h2 class="tracktitle">' + italization(currChords.querySelector('title').textContent) + '<span class="track_starred-star">&#9733;</span></h2>';
-    } else currTrackTitle = '<h2 class="tracktitle">' + currTrackId + '<span class="track_starred-star">&#9733;</span></h2>';
+    const altTitle = currChords.querySelectorAll('title')[2]?.textContent || '';
+    const trackAltTitle = altTitle ? `<h2 class="tracktitle-alt">${altTitle}</h2>` : '';
 
-    const checkAltTitle = currChords.querySelectorAll('title')[2];
-    let currTrackAltTitle;
-    if (checkAltTitle) {
-        currTrackAltTitle = '<h2 class="tracktitle-alt">' + checkAltTitle.textContent + '</h2>';
-    } else currTrackAltTitle = '';
+    const subtitle = currChords.querySelector('subtitle')?.textContent || '';
+    const trackSubtitle = subtitle ? `<div class="subtitle">${subtitle}</div>` : '';
 
-    const checkSubtitle = currChords.querySelector('subtitle');
-    let currTrackSubtitle;
-    if (checkSubtitle) {
-        currTrackSubtitle = '<div class="subtitle">' + checkSubtitle.textContent + '</div>';
-    } else currTrackSubtitle = '';
+    const album = Array.from(currChords.querySelectorAll('album')).map(a => `<li class="album">${a.textContent}</li>`).join(', ');
+    const trackAlbum = album ? `<ul class="albumlist">${album}</ul>` : '';
 
-    const checkAlbum = currChords.querySelectorAll('album');
-    let currTrackAlbum;
-    if (checkAlbum.length > 0) {
-        currTrackAlbum = '<ul class="albumlist"><li class="album">' + checkAlbum[0].textContent + '</li>';
-        for (let i = 1; i < checkAlbum.length; i++) {
-            currTrackAlbum += ', <li class="album">' + checkAlbum[i].textContent + '</li>';
-        }
-        currTrackAlbum += '</ul>';
-    } else currTrackAlbum = '';
+    const year = currChords.querySelector('year')?.textContent || '';
+    const trackYear = year ? `<div class="year">${year}</div>` : '';
 
-    const checkYear = currChords.querySelector('year');
-    let currTrackYear;
-    if (checkYear) {
-        currTrackYear = '<div class="year">' + checkYear.textContent + '</div>';
-    } else currTrackYear = '';
-
-
-    const currTrackHeader = '<div class="chords_header">'
-    + currTrackAlbum
-    + currTrackTitle
-    + currTrackAltTitle
-    + currTrackSubtitle
-    + '</div>';
-    const currTrackText = '<div class="chords_text">' + currChords.querySelector('text').textContent + '</div>';
-    const currTrack = currTrackHeader + currTrackText + currTrackYear;
-
+    const currTrackHeader = `<div class="chords_header">${trackAlbum}${trackTitle}${trackAltTitle}${trackSubtitle}</div>`;
+    const currTrackText = `<div class="chords_text">${currChords.querySelector('text').textContent}</div>`;
+    const currTrack = currTrackHeader + currTrackText + trackYear;
 
     modalContent.innerHTML = currTrack;
     modal('open');
-
-    document.title = currChords.querySelector('title').textContent + ' — Щербаккорды';
-
-    linksWeightChange('#' + currTrackId, 'linksWeight');
+    document.title = `${title} — Щербаккорды`;
+    linksWeightChange(`#${trackId}`, 'linksWeight');
 }
+
 
 function clearAddress() {
     // document.location.hash = "";
@@ -444,7 +417,7 @@ function clearAddress() {
 
 function modal(arg) {
     const modal = document.querySelector('.modal');
-    if (!arg && (typeof(modal) == 'undefined' || modal == null)) {
+    if (!(arg || modal)) {
         document.body.insertAdjacentHTML('beforeend', '<div class="modal"><div class="modal-content" tabindex="1"></div></div>');
     }
 
@@ -455,36 +428,32 @@ function modal(arg) {
             document.querySelector('.modal-content').focus();
             document.querySelector('.modal').scrollTo(0, 0);
             scrollBorder();
-            break
+            break;
         case 'close':
-            // modal.innerHTML = '';
             document.body.classList.remove('modal-lock');
             modal.style.display = 'none';
-            break
+            break;
         default:
             return;
     }
 }
 
+
 document.addEventListener("click", (event) => {
-    if (!document.body.classList.contains('modal-lock')) { return; }
-
-    const flyoutElement = document.querySelector('.modal-content');
-    let targetElement = event.target;
-
-    do {
-        if (targetElement == flyoutElement) { return; }
-        targetElement = targetElement.parentNode;
-    } while (targetElement);
-
-    clearAddress();
+    if (document.body.classList.contains('modal-lock')) {
+        const flyoutElement = document.querySelector('.modal-content');
+        if (!flyoutElement.contains(event.target)) {
+            clearAddress();
+        }
+    }
 });
 
 function getStateFromStorage() {
     const sort = localStorage.getItem('sorting');
     if (sort) {
-        sorting = sort;
+      return sort;
     }
+    return null;
 }
 
 function abcIndex() {
@@ -521,7 +490,7 @@ function abcIndex() {
 
     document.querySelector('.abc_index ul').innerHTML = '';
 
-    if (sorting == 'abc') {
+    if (sorting === 'abc') {
         document.querySelectorAll('dl.content_contents dt a').forEach(a => {
 
             const l = a.textContent.toUpperCase();
@@ -534,12 +503,12 @@ function abcIndex() {
             a.setAttribute('name', nameVal);
             a.setAttribute('href', '#top');
 
-            document.querySelector('.abc_index ul').insertAdjacentHTML('beforeend', '<li><a href="#' + a.getAttribute('name') + '">' + l + '</a></li>');
+            document.querySelector('.abc_index ul').insertAdjacentHTML('beforeend', `<li><a href="#${a.getAttribute('name')}">${l}</a></li>`);
             document.querySelectorAll('.abc_index ul a').forEach(a => {
                 const link = a.getAttribute('href');
                 a.addEventListener('click', event => {
                     event.preventDefault();
-                    let target = document.querySelector('a[name="' + link.substring(1) + '"]');
+                    let target = document.querySelector(`a[name="${link.substring(1)}"]`);
                     target.scrollIntoView(true);
                     target.classList.add('signal');
                     function signaled() {
@@ -558,8 +527,89 @@ function abcIndex() {
     };
 };
 
+
+function searchText(searchString) {
+    const regConent = document.querySelector(".content_contents");
+    const resultDiv = document.querySelector(".content_search");
+    const searchRegex = new RegExp(searchString, "gi");
+    let results = [];
+
+    if (searchString.length < 2) {
+      searchString = '';
+      results = [];
+      resultDiv.style.display = "none";
+      regConent.style.display = "block";
+      return;
+    }
+
+    for (let i = 0; i < chordsMain.length; i++) {
+      const title = chordsMain[i].querySelector('title').textContent;
+      const text = chordsMain[i].querySelector('text').textContent;
+      const lines = text.split(/\r?\n/).map(line => line.replace(/[\s]{2,}.*/g, ''));
+      const matchingLines = lines.filter(line => searchRegex.test(line));
+      const matchingTitle = searchRegex.test(title);
+      if (matchingLines.length > 0 || matchingTitle) {
+        const result = {
+            id: chordsMain[i].getAttribute("id"),
+            title: title,
+            lines: matchingLines,
+            year: chordsMain[i].querySelector('year').textContent.match(/\d{4}/g)[0]
+        };
+        results.push(result);
+      }
+    }
+
+    if (results.length > 0) {
+      if (sorting === 'year') {
+        // Sort results by year
+        results.sort((a, b) => {
+          const yearA = a.year;
+          const yearB = b.year;
+          if (yearA && yearB) {
+            return yearB - yearA;
+          } else {
+            return a.title.localeCompare(b.title, undefined, {
+              numeric: true,
+              sensitivity: 'base'
+            });
+          }
+        });
+      } else {
+        // Sort results alphabetically by title
+        results.sort((a, b) => trimSpecial(a.title).localeCompare(trimSpecial(b.title), undefined, {
+          numeric: true,
+          sensitivity: 'base'
+        }));
+      }
+
+      let resultHtml = "";
+      for (let i = 0; i < results.length; i++) {
+        resultHtml += `<li><a href="#${results[i].id}">${results[i].title.replace(searchRegex, '<span class="highlight">$&</span>')}</a>`;
+        resultHtml += "<ul>";
+        for (let j = 0; j < results[i].lines.length; j++) {
+          const line = results[i].lines[j].replace(searchRegex, '<span class="highlight">$&</span>');
+          resultHtml += `<li>${line}</li>`;
+        }
+        resultHtml += "</ul></li>";
+      }
+      resultDiv.innerHTML = resultHtml;
+      regConent.style.display = "none";
+      resultDiv.style.display = "block";
+    } else {
+      resultDiv.style.display = "none";
+      regConent.style.display = "block";
+    }
+  }
+
+
+const searchInput = document.querySelector(".search-input");
+searchInput.addEventListener("input", (event) => {
+    const searchString = event.target.value.trim().toLowerCase();
+    searchText(searchString);
+});
+
+
 function keyListener() {
-    let keys = {};
     const a = {
         48: 'top',
         49: 'top',
@@ -601,47 +651,48 @@ function keyListener() {
         190: 'ju',
         90: 'ja'
     };
+    const keys = {};
 
     document.addEventListener('keydown', e => {
-        const   key = e.key,
-                k = a[e.keyCode];
+        const key = e.key;
+        const k = a[e.keyCode];
+        const targetElement = e.target;
+        if (!(targetElement.matches('[contenteditable], input, textarea') || (e.ctrlKey || e.altKey || e.metaKey))) {
+            if (!document.body.classList.contains('modal-lock')) {
 
-        if (key == 'Escape' && document.body.classList.contains('modal-lock')) {
-            clearAddress();
-        } else if (document.body.classList.contains('modal-lock')) return;
+                if (Object.keys(keys).length <= 2 && (sorting === 'abc' || sorting === '')) {
+                    keys[e.keyCode] = true;
 
-        if (JSON.stringify(keys).length <= 2 && (sorting == 'abc' || sorting == '')) {
-            keys[e.keyCode] = true;
-
-            if (k) {
-                if (k == 'top')
-                document.body.scrollIntoView(true);
-                else {
-                    let target = document.querySelector('a[name="' + k + '"]');
-
-                    target.scrollIntoView(true);
-                    target.classList.add('signal');
-                    function signaled() {
-                        target.classList.remove('signal');
+                    if (k) {
+                        if (k === 'top') {
+                            document.body.scrollIntoView(true);
+                        } else {
+                            const targetAnchor = document.querySelector(`a[name="${k}"]`);
+                            targetAnchor.scrollIntoView(true);
+                            targetAnchor.classList.add('signal');
+                            window.setTimeout(() => {targetAnchor.classList.remove('signal')}, 500);
+                        }
                     }
-                    window.setTimeout(signaled, 500);
                 }
-            }
+
+            } else if (key === 'Escape') clearAddress();
         }
     });
 
-
-    document.addEventListener('keyup', e => {
+    document.addEventListener('keyup', (e) => {
+        // rome-ignore lint/performance/noDelete:
         delete keys[e.keyCode];
     });
 }
 
 function scrollBorder () {
-    const elName = 'scroll-border',
-          container = document.querySelector('.modal'),
-          timerTime = 700,
-          fadeTimerTime = 500;
-    let scrollA, scrollB, fadeEffect;
+    const elName = 'scroll-border';
+    const container = document.querySelector('.modal');
+    const timerTime = 700;
+    const fadeTimerTime = 500;
+    let scrollA;
+    let scrollB;
+    let fadeEffect;
 
     const elParent = getScrollParent(document.activeElement);
     elParent.onscroll = function(e) {
@@ -782,8 +833,8 @@ function linksWeightInit(selector, locStorItem) {
     }
 
     linksWeight.list.forEach(track => {
-        document.querySelectorAll('a[href="' + track.id + '"]').forEach(link => {
-            link.style.fontVariationSettings = '"wght" ' + weightCalc(track.weight);
+        document.querySelectorAll(`a[href="${track.id}"]`).forEach(link => {
+            link.style.fontVariationSettings = `"wght" ${weightCalc(track.weight)}`;
             if (track.isFavorite === true) {
                 link.setAttribute('data-favorite', true);
             }
@@ -818,14 +869,14 @@ function linksWeightChange(id, locStorItem) {
             track.isFavorite = true;
         };
 
-        document.querySelectorAll('a[href="' + id + '"]').forEach(link => {
-            link.style.fontVariationSettings = '"wght" ' + weightCalc(track.weight);
+        document.querySelectorAll(`a[href="${id}"]`).forEach(link => {
+            link.style.fontVariationSettings = `"wght" ${weightCalc(track.weight)}`;
         })
 
         localStorage.setItem(locStorItem, JSON.stringify(linksWeight));
     }
 
-    console.debug('linksWeightChange', linksWeight);
+    // console.debug('linksWeightChange', linksWeight);
 }
 
 function weightCalc(num) {
@@ -853,7 +904,7 @@ function favTrack(id) {
     let linksWeight = JSON.parse(localStorage.getItem(locStorItem));
     if (!linksWeight) return false;
     let track = linksWeight.list.find(e => e.id === id);
-    let links = document.querySelectorAll('a[href="' + id + '"]');
+    let links = document.querySelectorAll(`a[href="${id}"]`);
 
     if (track.isFavorite === true) {
         links.forEach(link => {
@@ -875,7 +926,7 @@ function favTrack(id) {
 
 function isToday(someDate) {
     const today = new Date()
-    return someDate.getDate() == today.getDate() &&
-      someDate.getMonth() == today.getMonth() &&
-      someDate.getFullYear() == today.getFullYear()
+    return someDate.getDate() === today.getDate() &&
+        someDate.getMonth() === today.getMonth() &&
+        someDate.getFullYear() === today.getFullYear()
 }
