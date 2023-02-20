@@ -38,6 +38,9 @@ daynight('.day-night-switch');
 getStateFromStorage();
 getXmlMain('chords.xml');
 parseChords(chordsMain);
+
+const searchInput = document.querySelector(".search-input");
+
 sortToggle();
 showContents();
 keyListener();
@@ -254,19 +257,19 @@ function parseChords(chords) {
         + '<input type="search" class="search-input" placeholder="Искать">');
     const togglerYear = document.querySelector('.sortToggle-year');
     togglerYear.addEventListener('click', function() {
-        if (!togglerYear.classList.contains('active')) {
+        if (!togglerYear.classList.contains('active') || document.body.classList.contains('searching')) {
             sortToggle('year');
         }
     });
     const togglerAbc = document.querySelector('.sortToggle-abc');
     togglerAbc.addEventListener('click', function() {
-        if (!togglerAbc.classList.contains('active')) {
+        if (!togglerAbc.classList.contains('active') || document.body.classList.contains('searching')) {
             sortToggle('abc');
         }
     });
     const togglerAlbum = document.querySelector('.sortToggle-album');
     togglerAlbum.addEventListener('click', function() {
-        if (!togglerAlbum.classList.contains('active')) {
+        if (!togglerAlbum.classList.contains('active') || document.body.classList.contains('searching')) {
             sortToggle('album');
         }
     });
@@ -275,6 +278,7 @@ function parseChords(chords) {
 
 
 function showContents() {
+    clearSearch();
     let aArray;
 
     switch(sorting) {
@@ -333,6 +337,94 @@ function sortToggle(arg) {
 }
 
 
+function searchText(searchString = "") {
+    const regConent = document.querySelector(".content_contents");
+    const resultDiv = document.querySelector(".content_search");
+    const searchRegex = new RegExp(searchString, "gi");
+    let results = [];
+
+    document.body.scrollTo(0, 0);
+
+    if (searchString.length < 2) {
+        searchString = '';
+        results = [];
+        resultDiv.style.display = "none";
+        regConent.style.display = "block";
+        document.body.classList.remove('searching');
+        return;
+    }
+
+    for (let i = 0; i < chordsMain.length; i++) {
+        const title = chordsMain[i].querySelector('title').textContent;
+        const text = chordsMain[i].querySelector('text').textContent;
+        const lines = text.split(/\r?\n/).map(line => line.replace(/[\s]{2,}.*/g, ''));
+        const matchingLines = lines.filter(line => searchRegex.test(line));
+        const matchingTitle = searchRegex.test(title);
+        if (matchingLines.length > 0 || matchingTitle) {
+            const result = {
+                id: chordsMain[i].getAttribute("id"),
+                title: title,
+                lines: matchingLines,
+                year: chordsMain[i].querySelector('year').textContent.match(/\d{4}/g)[0]
+            };
+            results.push(result);
+        }
+    }
+
+    if (results.length > 0) {
+        if (sorting === 'year') {
+            // Sort results by year
+            results.sort((a, b) => {
+                const yearA = a.year;
+                const yearB = b.year;
+                if (yearA && yearB) {
+                    return yearA - yearB;
+                } else {
+                    return a.title.localeCompare(b.title, undefined, {
+                        numeric: true,
+                        sensitivity: 'base'
+                    });
+                }
+            });
+        } else {
+            // Sort results alphabetically by title
+            results.sort((a, b) => trimSpecial(a.title).localeCompare(trimSpecial(b.title), undefined, {
+                numeric: true,
+                sensitivity: 'base'
+            }));
+        }
+
+        let resultHtml = "";
+        for (let i = 0; i < results.length; i++) {
+            resultHtml += `<li><a href="#${results[i].id}">${results[i].title.replace(searchRegex, '<span class="highlight">$&</span>').replace(/^[«]/, '<span style="margin-left:-.6em;">«</span>')}</a>`;
+            resultHtml += "<ul>";
+            for (let j = 0; j < results[i].lines.length; j++) {
+                const line = results[i].lines[j].replace(searchRegex, '<span class="highlight">$&</span>');
+                resultHtml += `<li>${line}</li>`;
+            }
+            resultHtml += "</ul></li>";
+        }
+        resultDiv.innerHTML = resultHtml;
+        document.body.classList.add('searching');
+        regConent.style.display = "none";
+        resultDiv.style.display = "block";
+    } else {
+        document.body.classList.remove('searching');
+        resultDiv.style.display = "none";
+        regConent.style.display = "block";
+    }
+}
+
+
+searchInput.addEventListener("input", (event) => {
+    const searchString = event.target.value.trim().toLowerCase();
+    searchText(searchString);
+});
+
+function clearSearch() {
+    searchInput.value = "";
+    searchText();
+}
 
 
 // Delete unwanted first and last symbols from string
@@ -528,87 +620,6 @@ function abcIndex() {
 };
 
 
-function searchText(searchString) {
-    const regConent = document.querySelector(".content_contents");
-    const resultDiv = document.querySelector(".content_search");
-    const searchRegex = new RegExp(searchString, "gi");
-    let results = [];
-
-    if (searchString.length < 2) {
-        searchString = '';
-        results = [];
-        resultDiv.style.display = "none";
-        regConent.style.display = "block";
-        return;
-    }
-
-    for (let i = 0; i < chordsMain.length; i++) {
-        const title = chordsMain[i].querySelector('title').textContent;
-        const text = chordsMain[i].querySelector('text').textContent;
-        const lines = text.split(/\r?\n/).map(line => line.replace(/[\s]{2,}.*/g, ''));
-        const matchingLines = lines.filter(line => searchRegex.test(line));
-        const matchingTitle = searchRegex.test(title);
-        if (matchingLines.length > 0 || matchingTitle) {
-            const result = {
-                id: chordsMain[i].getAttribute("id"),
-                title: title,
-                lines: matchingLines,
-                year: chordsMain[i].querySelector('year').textContent.match(/\d{4}/g)[0]
-            };
-            results.push(result);
-        }
-    }
-
-    if (results.length > 0) {
-        if (sorting === 'year') {
-            // Sort results by year
-            results.sort((a, b) => {
-                const yearA = a.year;
-                const yearB = b.year;
-                if (yearA && yearB) {
-                    return yearA - yearB;
-                } else {
-                    return a.title.localeCompare(b.title, undefined, {
-                        numeric: true,
-                        sensitivity: 'base'
-                    });
-                }
-            });
-        } else {
-            // Sort results alphabetically by title
-            results.sort((a, b) => trimSpecial(a.title).localeCompare(trimSpecial(b.title), undefined, {
-                numeric: true,
-                sensitivity: 'base'
-            }));
-        }
-
-        let resultHtml = "";
-        for (let i = 0; i < results.length; i++) {
-            resultHtml += `<li><a href="#${results[i].id}">${results[i].title.replace(searchRegex, '<span class="highlight">$&</span>')}</a>`;
-            resultHtml += "<ul>";
-            for (let j = 0; j < results[i].lines.length; j++) {
-                const line = results[i].lines[j].replace(searchRegex, '<span class="highlight">$&</span>');
-                resultHtml += `<li>${line}</li>`;
-            }
-            resultHtml += "</ul></li>";
-        }
-        resultDiv.innerHTML = resultHtml;
-        regConent.style.display = "none";
-        resultDiv.style.display = "block";
-    } else {
-        resultDiv.style.display = "none";
-        regConent.style.display = "block";
-    }
-}
-
-
-const searchInput = document.querySelector(".search-input");
-searchInput.addEventListener("input", (event) => {
-    const searchString = event.target.value.trim().toLowerCase();
-    searchText(searchString);
-});
-
-
 function keyListener() {
     const a = {
         48: 'top',
@@ -685,69 +696,51 @@ function keyListener() {
     });
 }
 
-function scrollBorder () {
+function scrollBorder() {
     const elName = 'scroll-border';
     const container = document.querySelector('.modal');
-    const timerTime = 700;
     const fadeTimerTime = 500;
-    let scrollA;
-    let scrollB;
+
+    let scrollPos = 0;
     let fadeEffect;
 
     const elParent = getScrollParent(document.activeElement);
-    elParent.onscroll = function(e) {
+
+    function createBorder() {
         if (!document.getElementById(elName)) {
-            scrollA = getScrollPos();
             const el = document.createElement('div');
             el.setAttribute('id', elName);
-            el.style.cssText = '';
-            el.style.top = scrollA;
-            // el.style.cssText += 'outline: 2px solid rgba(255,0,50,.2);'
             container.appendChild(el);
         }
-    };
+    }
 
-    function scrollFadeOut(el) {
-        const fadeTarget = document.getElementById(el);
-        fadeEffect = setInterval(function () {
-            if (!fadeTarget.style.opacity) {
-                fadeTarget.style.opacity = 1;
-            }
-            if (fadeTarget.style.opacity > 0) {
-                if (fadeTarget.style.opacity > 1) {
-                    fadeTarget.style.opacity  = 1;
-                    fadeTarget.style.opacity -= 0.05;
-                }
-                fadeTarget.style.opacity -= 0.05;
-            } else {
+    function updateBorderOpacity() {
+        const borderEl = document.getElementById(elName);
+        const scrollDiff = Math.abs(scrollPos - elParent.scrollTop);
+        const opacity = scrollDiff * 0.004;
+        borderEl.style.opacity = opacity;
+    }
+
+    function fadeOutBorder() {
+        const borderEl = document.getElementById(elName);
+        fadeEffect = setInterval(() => {
+            let opacity = parseFloat(borderEl.style.opacity);
+            opacity -= 0.05;
+            borderEl.style.opacity = opacity;
+            if (opacity <= 0) {
                 clearInterval(fadeEffect);
-                if (fadeTarget) fadeTarget.remove();
-                isScrolling = scrollA = scrollB = undefined;
+                borderEl.remove();
             }
-        }, (fadeTimerTime / 20));
+        }, fadeTimerTime / 20);
     }
 
-    function scrollFadeIn(el) {
-        const fadeTarget = document.getElementById(el);
-        scrollB = getScrollPos();
-        varScrollDif = Math.abs(scrollA - scrollB);
-        if (!fadeTarget.style.opacity) {
-            fadeTarget.style.opacity = 0;
-        }
-        if (fadeTarget.style.opacity < 1) {
-            fadeTarget.style.opacity = varScrollDif * 0.004;
-        }
-    }
-
-    let isScrolling;
-    container.addEventListener('scroll', function ( event ) {
-        clearInterval(fadeEffect);
-        scrollFadeIn(elName);
-        window.clearTimeout( isScrolling );
-        isScrolling = setTimeout(function() {
-            scrollFadeOut(elName);
-        }, timerTime);
-    }, false);
+    elParent.addEventListener('scroll', () => {
+        createBorder();
+        updateBorderOpacity();
+        clearTimeout(fadeEffect);
+        fadeEffect = setTimeout(fadeOutBorder, 700);
+        scrollPos = elParent.scrollTop;
+    });
 
     function getScrollParent(node) {
         if (node == null) {
@@ -759,13 +752,8 @@ function scrollBorder () {
             return getScrollParent(node.parentNode);
         }
     }
-
-    function getScrollPos() {
-        // var el = document.scrollingElement || document.documentElement;
-        const el = getScrollParent(document.activeElement);
-        return el.scrollTop;
-    }
 }
+  
 
 function daynight(selector) {
     const switches = document.querySelectorAll(selector);
@@ -796,30 +784,24 @@ function daynight(selector) {
 
 function linksWeightInit(selector, locStorItem) {
     const links = document.querySelectorAll(selector);
-    let linksWeight = JSON.parse(localStorage.getItem(locStorItem));
-    let dateCurr = new Date().toDateString();
+    let linksWeight = JSON.parse(localStorage.getItem(locStorItem)) || {
+        dateChanged: new Date().toDateString(),
+        list: [],
+    };
+    const dateCurr = new Date().toDateString();
 
-    if (!linksWeight) {
-        linksWeight = new Object();
-        linksWeight.dateChanged = dateCurr;
-        linksWeight.list = [];
-
-        links.forEach(el => {
-            const trackLink = el.getAttribute('href');
-            let obj = new Object();
-            obj.id = trackLink;
-            obj.weight = 400;
-            obj.dateChanged = dateCurr;
-            obj.changesToday = 0;
-            obj.isFavorite = false;
-
-            if (!linksWeight.list.some(e => e.id === trackLink)) {
-                linksWeight.list.push(obj);
-            }
-        });
-
-        localStorage.setItem(locStorItem, JSON.stringify(linksWeight));
-    }
+    links.forEach(el => {
+        const trackLink = el.getAttribute('href');
+        if (!linksWeight.list.some(e => e.id === trackLink)) {
+            linksWeight.list.push({
+                id: trackLink,
+                weight: 400,
+                dateChanged: dateCurr,
+                changesToday: 0,
+                isFavorite: false,
+            });
+        }
+    });
 
     if (!isToday(new Date(linksWeight.dateChanged))) {
         linksWeight.dateChanged = dateCurr;
@@ -828,8 +810,6 @@ function linksWeightInit(selector, locStorItem) {
                 track.weight -= 1;
             }
         });
-
-        localStorage.setItem(locStorItem, JSON.stringify(linksWeight));
     }
 
     linksWeight.list.forEach(track => {
@@ -838,7 +818,7 @@ function linksWeightInit(selector, locStorItem) {
             if (track.isFavorite === true) {
                 link.setAttribute('data-favorite', true);
             }
-            let favicon = document.createElement('span');
+            const favicon = document.createElement('span');
             favicon.classList.add('track-favicon');
             favicon.textContent = '⭑';
             // favicon.addEventListener('click', function(){favTrack(track.id);});
@@ -846,13 +826,16 @@ function linksWeightInit(selector, locStorItem) {
         });
     });
 
+    localStorage.setItem(locStorItem, JSON.stringify(linksWeight));
     console.debug('linksWeightInit', linksWeight);
 }
 
 function linksWeightChange(id, locStorItem) {
-    let linksWeight = JSON.parse(localStorage.getItem(locStorItem));
-    if (!linksWeight) return false;
-    let track = linksWeight.list.find(e => e.id === id);
+    const linksWeight = JSON.parse(localStorage.getItem(locStorItem));
+    if (!linksWeight) {
+        return false;
+    }
+    const track = linksWeight.list.find(e => e.id === id);
 
     if (track.changesToday < 5) {
         if (!isToday(new Date(track.dateChanged))) {
@@ -863,15 +846,17 @@ function linksWeightChange(id, locStorItem) {
         track.weight += Math.ceil(Math.pow(5 - track.changesToday, 3) / 16);
         track.changesToday++;
 
-        if (track.weight < 400) { track.weight = 408 };
+        if (track.weight < 400) {
+            track.weight = 408;
+        }
         if (track.weight > 800) {
             track.weight = 800;
             track.isFavorite = true;
-        };
+        }
 
         document.querySelectorAll(`a[href="${id}"]`).forEach(link => {
             link.style.fontVariationSettings = `"wght" ${weightCalc(track.weight)}`;
-        })
+        });
 
         localStorage.setItem(locStorItem, JSON.stringify(linksWeight));
     }
@@ -880,21 +865,12 @@ function linksWeightChange(id, locStorItem) {
 }
 
 function weightCalc(num) {
-    // result = num;
-    // result = -0.0015 * num * num + 1.9 * num + 200;
-    switch (true) {
-        case (num < 200):
-            result = 200;
-            break;
-        case (num < 400):
-            result = num;
-            break;
-        case (num <= 800):
-            const x = num - 400;
-            result = Math.floor(x * (Math.pow((400 - x), 1.8) * .00004 + 1) + 400);
-            break
-        default:
-            result = 800;
+    let result = 400;
+    if (num < 200) {
+        result = 200;
+    } else if (num <= 800) {
+        const x = num - 400;
+        result = Math.floor(x * (Math.pow((400 - x), 1.8) * 0.00004 + 1) + 400);
     }
     return result;
 }

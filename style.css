@@ -143,15 +143,19 @@ p {
 .sorting_toggler {
   margin-right: .8em;
 }
-.sorting_toggler span:not(.active) {
+.sorting_toggler span:not(.active),
+body.searching .sorting_toggler span
+{
   color: var(--link);
   cursor: pointer;
   font-weight: 200;
 }
-.sorting_toggler span:not(.active):hover {
+.sorting_toggler span:not(.active):hover,
+body.searching .sorting_toggler span:hover
+{
   color: var(--link-hover);
 }
-.sorting_toggler span.active {
+body:not(.searching) .sorting_toggler span.active {
   pointer-events: none;
 }
 
@@ -166,10 +170,15 @@ p {
   font-family: inherit;
   width: 11em;
   margin-top: .25em;
+  outline: none;
 }
 .search-input::placeholder {
   color: var(--gray);
   opacity: 1;
+}
+body.searching .search-input {
+  outline: 2px solid var(--text);
+  outline-offset: -2px;
 }
 
 .abc_index {
