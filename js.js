@@ -535,71 +535,71 @@ function searchText(searchString) {
     let results = [];
 
     if (searchString.length < 2) {
-      searchString = '';
-      results = [];
-      resultDiv.style.display = "none";
-      regConent.style.display = "block";
-      return;
+        searchString = '';
+        results = [];
+        resultDiv.style.display = "none";
+        regConent.style.display = "block";
+        return;
     }
 
     for (let i = 0; i < chordsMain.length; i++) {
-      const title = chordsMain[i].querySelector('title').textContent;
-      const text = chordsMain[i].querySelector('text').textContent;
-      const lines = text.split(/\r?\n/).map(line => line.replace(/[\s]{2,}.*/g, ''));
-      const matchingLines = lines.filter(line => searchRegex.test(line));
-      const matchingTitle = searchRegex.test(title);
-      if (matchingLines.length > 0 || matchingTitle) {
-        const result = {
-            id: chordsMain[i].getAttribute("id"),
-            title: title,
-            lines: matchingLines,
-            year: chordsMain[i].querySelector('year').textContent.match(/\d{4}/g)[0]
-        };
-        results.push(result);
-      }
+        const title = chordsMain[i].querySelector('title').textContent;
+        const text = chordsMain[i].querySelector('text').textContent;
+        const lines = text.split(/\r?\n/).map(line => line.replace(/[\s]{2,}.*/g, ''));
+        const matchingLines = lines.filter(line => searchRegex.test(line));
+        const matchingTitle = searchRegex.test(title);
+        if (matchingLines.length > 0 || matchingTitle) {
+            const result = {
+                id: chordsMain[i].getAttribute("id"),
+                title: title,
+                lines: matchingLines,
+                year: chordsMain[i].querySelector('year').textContent.match(/\d{4}/g)[0]
+            };
+            results.push(result);
+        }
     }
 
     if (results.length > 0) {
-      if (sorting === 'year') {
-        // Sort results by year
-        results.sort((a, b) => {
-          const yearA = a.year;
-          const yearB = b.year;
-          if (yearA && yearB) {
-            return yearB - yearA;
-          } else {
-            return a.title.localeCompare(b.title, undefined, {
-              numeric: true,
-              sensitivity: 'base'
+        if (sorting === 'year') {
+            // Sort results by year
+            results.sort((a, b) => {
+                const yearA = a.year;
+                const yearB = b.year;
+                if (yearA && yearB) {
+                    return yearA - yearB;
+                } else {
+                    return a.title.localeCompare(b.title, undefined, {
+                        numeric: true,
+                        sensitivity: 'base'
+                    });
+                }
             });
-          }
-        });
-      } else {
-        // Sort results alphabetically by title
-        results.sort((a, b) => trimSpecial(a.title).localeCompare(trimSpecial(b.title), undefined, {
-          numeric: true,
-          sensitivity: 'base'
-        }));
-      }
-
-      let resultHtml = "";
-      for (let i = 0; i < results.length; i++) {
-        resultHtml += `<li><a href="#${results[i].id}">${results[i].title.replace(searchRegex, '<span class="highlight">$&</span>')}</a>`;
-        resultHtml += "<ul>";
-        for (let j = 0; j < results[i].lines.length; j++) {
-          const line = results[i].lines[j].replace(searchRegex, '<span class="highlight">$&</span>');
-          resultHtml += `<li>${line}</li>`;
+        } else {
+            // Sort results alphabetically by title
+            results.sort((a, b) => trimSpecial(a.title).localeCompare(trimSpecial(b.title), undefined, {
+                numeric: true,
+                sensitivity: 'base'
+            }));
         }
-        resultHtml += "</ul></li>";
-      }
-      resultDiv.innerHTML = resultHtml;
-      regConent.style.display = "none";
-      resultDiv.style.display = "block";
+
+        let resultHtml = "";
+        for (let i = 0; i < results.length; i++) {
+            resultHtml += `<li><a href="#${results[i].id}">${results[i].title.replace(searchRegex, '<span class="highlight">$&</span>')}</a>`;
+            resultHtml += "<ul>";
+            for (let j = 0; j < results[i].lines.length; j++) {
+                const line = results[i].lines[j].replace(searchRegex, '<span class="highlight">$&</span>');
+                resultHtml += `<li>${line}</li>`;
+            }
+            resultHtml += "</ul></li>";
+        }
+        resultDiv.innerHTML = resultHtml;
+        regConent.style.display = "none";
+        resultDiv.style.display = "block";
     } else {
-      resultDiv.style.display = "none";
-      regConent.style.display = "block";
+        resultDiv.style.display = "none";
+        regConent.style.display = "block";
     }
-  }
+}
 
 
 const searchInput = document.querySelector(".search-input");

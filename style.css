@@ -316,7 +316,38 @@ dl.content_contents li {
   break-inside: avoid;
 }
 
+
+.day-night-switch {
+  position: absolute;
+  right: -20px;
+  top: 7px;
+  width: 20px;
+  height: 20px;
+  mask-image: url(./day-night-icon.svg);
+  -webkit-mask-image: url(./day-night-icon.svg);
+  mask-size: cover;
+  -webkit-mask-size: cover;
+  mask-position: center;
+  -webkit-mask-position: center;
+  cursor: pointer;
+  color: var(--gray);
+  background-color: currentColor;
+}
+:root[data-theme="dark"] .day-night-switch {
+  mask-position: center right;
+  -webkit-mask-position: center right;
+  color: var(--text);
+}
+:root[data-theme="light"] .day-night-switch {
+  mask-position: center left;
+  -webkit-mask-position: center left;
+  color: var(--text);
+}
+
 /* MODAL */
+body.modal-lock {
+  overflow: hidden;
+}
 .modal {
   display: none;
   position: fixed;
@@ -326,6 +357,7 @@ dl.content_contents li {
   left: 0;
   background-color: rgba(var(--gray-rgb), .5);
   overflow: auto;
+  backdrop-filter: grayscale(1) contrast(.25);
 }
 .modal-content {
   width: 90vw;
@@ -340,21 +372,9 @@ dl.content_contents li {
 .chords_text {
   white-space: pre-wrap;
 }
-
-body.modal-lock {
-  overflow: hidden;
-}
-body.modal-lock .content,
-body.modal-lock .content *,
-body.modal-lock .footer
-{
-  color: var(--gray) !important;
-  border-color: currentColor !important;
+body.modal-lock .content * {
   transition: none !important;
   user-select: none;
-}
-body.modal-lock .content img {
-  filter: opacity(.5) contrast(.5) grayscale(1);
 }
 
 
@@ -403,34 +423,6 @@ body.modal-lock .content img {
 .modal-content .year {
   margin-top: 2em;
   color: var(--icon-gray);
-}
-
-
-.day-night-switch {
-  position: absolute;
-  right: -20px;
-  top: 7px;
-  width: 20px;
-  height: 20px;
-  mask-image: url(./day-night-icon.svg);
-  -webkit-mask-image: url(./day-night-icon.svg);
-  mask-size: cover;
-  -webkit-mask-size: cover;
-  mask-position: center;
-  -webkit-mask-position: center;
-  cursor: pointer;
-  color: var(--gray);
-  background-color: currentColor;
-}
-:root[data-theme="dark"] .day-night-switch {
-  mask-position: center right;
-  -webkit-mask-position: center right;
-  color: var(--text);
-}
-:root[data-theme="light"] .day-night-switch {
-  mask-position: center left;
-  -webkit-mask-position: center left;
-  color: var(--text);
 }
 
 
