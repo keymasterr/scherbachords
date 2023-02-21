@@ -200,6 +200,9 @@ body.searching .search-input {
   .abc_index ul li a:not(:hover) {
     color: var(--gray);
   }
+  body.searching .abc_index {
+    display: none;
+  }
 
 /* FOOTER */
 .footer {
