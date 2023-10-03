@@ -490,6 +490,7 @@ body.modal-lock .content * {
   @page {
     margin: 12mm;
   }
+  .search-input,
   .abc_index,
   .footer,
   .sorting_toggler :not(.active)
