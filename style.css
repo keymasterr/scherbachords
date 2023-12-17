@@ -73,8 +73,8 @@
 }
 
 @font-face {
-  font-family: 'font';
-  src: url('./font.ttf');
+  font-family: 'FiraCode';
+  src: url('./FiraCode-VF.woff2');
 }
 
 * {
@@ -95,7 +95,7 @@ body {
   margin: 0;
   font-size: 1rem;
   line-height: 1.33333;
-  font-family: 'font', monospace;
+  font-family: 'FiraCode', monospace;
   background-color: var(--bg);
   color: var(--text);
 }

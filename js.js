@@ -268,6 +268,7 @@ function parseChords(chords) {
         + 'по<span class="sortToggle-abc active"> алфавиту</span>'
         + '<span class="sortToggle-album"> альбомам</span>'
         + '<span class="sortToggle-year"> годам</span>'
+        + '<span class="randomTrackBtn" title="Случайная песня"> ?</span>'
         + '</span>'
         + '<input type="search" class="search-input" placeholder="Искать">');
     const togglerYear = document.querySelector('.sortToggle-year');
@@ -520,6 +521,13 @@ function activateTrack() {
     document.title = `${title} — Щербаккорды`;
     linksWeightChange(`#${trackId}`, 'linksWeight');
 }
+
+
+function randomTrack() {
+    const rndId = chordsMain[~~(Math.random() * chordsMain.length)].id;
+    window.location.hash = rndId;
+};
+document.querySelector('.randomTrackBtn').addEventListener('click', randomTrack);
 
 
 function clearAddress() {
@@ -877,9 +885,9 @@ function linksWeightChange(id, locStorItem) {
 
 function weightCalc(num) {
     let result = 400;
-    if (num < 200) {
-        result = 200;
-    } else if (num <= 800) {
+    if (num < 300) {
+        result = 300;
+    } else if (num <= 700) {
         const x = num - 400;
         result = Math.floor(x * (Math.pow((400 - x), 1.8) * 0.00004 + 1) + 400);
     }
@@ -898,8 +906,8 @@ function favTrack(id) {
             track.isFavorite = false;
             link.removeAttribute('data-favorite');
         });
-        if (track.weight >= 800) {
-            track.weight = 600;
+        if (track.weight >= 700) {
+            track.weight = 700;
         }
     } else {
         links.forEach(link => {
