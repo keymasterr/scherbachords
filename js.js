@@ -687,6 +687,7 @@ function keyListener() {
         const key = e.key;
         const k = a[e.keyCode];
         const targetElement = e.target;
+        if (e.keyCode === 166 || 55) randomTrack();
         if (key === 'Escape' && !document.body.classList.contains('modal-lock') && document.body.classList.contains('searching')) clearSearch();
         if (!(targetElement.matches('[contenteditable], input, textarea') || (e.ctrlKey || e.altKey || e.metaKey))) {
             if (!document.body.classList.contains('modal-lock')) {
