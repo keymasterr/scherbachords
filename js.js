@@ -3,7 +3,7 @@ let chordsMain;
 let chordsByAbcHtml = [];
 let chordsByYearHtml = [];
 let chordsByAlbumHtml = [];
-let sorting = '';
+let sorting = localStorage.getItem('sorting') || '';
 let currTrackId;
 
 const albumNames = {
@@ -31,11 +31,11 @@ const albumNames = {
     'chuzhaya_muzyka_2': 'Чужая музыка и не только. Часть 2',
     'chuzhaya_muzyka_3': 'Чужая музыка и не только. Часть 3',
     'khorovod': 'Хоровод',
-    'po_motivam': 'По мотивам'
+    'po_motivam': 'По мотивам',
+    'aviapochta': 'Авиапочта'
 };
 
 daynight('.day-night-switch');
-getStateFromStorage();
 getXmlMain('chords.xml');
 parseChords(chordsMain);
 
@@ -70,6 +70,21 @@ function getXmlMain(file) {
     });
 }
 
+function goToAnchor(el) {
+    modal('close')
+    el.scrollIntoView(true);
+    el.classList.add('signal');
+    window.setTimeout(() => { el.classList.remove('signal') }, 500);
+}
+
+function goToAlbum(albumNameLat) {
+    sorting !== 'album' && sortToggle('album');
+    goToAnchor(document.querySelector(`#album-${albumNameLat}`));
+}
+
+function albumLat(albumNameCyr) {
+    return Object.keys(albumNames).find(key => albumNames[key] === albumNameCyr);
+}
 
 function parseChords(chords) {
     let chordsByAbc = [];
@@ -90,7 +105,7 @@ function parseChords(chords) {
             link.setAttribute('title', textFirstLine);
             link.innerHTML = italization(titles[i].textContent);
             if (i > 0) {
-                link.innerHTML +=  ` (${italization(titles[0].textContent)})`;
+                link.innerHTML += ` (${italization(titles[0].textContent)})`;
             }
             if (i === 1) link.removeAttribute('title');
             chordsByAbc.push(link);
@@ -121,10 +136,10 @@ function parseChords(chords) {
         };
     }
 
-    chordsByAbc.sort(function(a, b) {
+    chordsByAbc.sort(function (a, b) {
         a = trimSpecial(a.textContent);
         b = trimSpecial(b.textContent);
-        return a.localeCompare(b, undefined, {numeric: true, sensivity: 'base'});
+        return a.localeCompare(b, undefined, { numeric: true, sensivity: 'base' });
     });
     chordsByAbc.forEach(itm => {
         let curChar = trimSpecial(itm.textContent).toUpperCase()[0];
@@ -148,14 +163,14 @@ function parseChords(chords) {
     });
     prevCharAbc = '';
 
-    chordsByYear.sort(function(a, b) {
+    chordsByYear.sort(function (a, b) {
         const ay = a.getAttribute('data-year-sort');
         const by = b.getAttribute('data-year-sort');
         if (ay !== by) return ay - by;
 
         a = trimSpecial(a.textContent);
         b = trimSpecial(b.textContent);
-        return a.localeCompare(b, undefined, {numeric: true, sensivity: 'base'});
+        return a.localeCompare(b, undefined, { numeric: true, sensivity: 'base' });
     });
 
     chordsByYear.forEach(itm => {
@@ -174,23 +189,23 @@ function parseChords(chords) {
     });
     prevCharYear = '';
 
-    chordsByAlbum.sort(function(a, b) {
+    chordsByAlbum.sort(function (a, b) {
         const al = a.getAttribute('data-album');
         const bl = b.getAttribute('data-album');
-        return al.localeCompare(bl, undefined, {numeric: true, sensivity: 'base'});
+        return al.localeCompare(bl, undefined, { numeric: true, sensivity: 'base' });
     });
-    chordsByAlbum.sort(function(a, b) {
+    chordsByAlbum.sort(function (a, b) {
         const aal = a.getAttribute('data-album-year');
         const bal = b.getAttribute('data-album-year');
         if (aal !== bal) return bal < aal ? 1 : -1;
         return 1;
     });
-    chordsByAlbum.sort(function(a, b) {
+    chordsByAlbum.sort(function (a, b) {
         const aaln = a.getAttribute('data-album-albumnum');
         const baln = b.getAttribute('data-album-albumnum');
-        return aaln.localeCompare(baln, undefined, {numeric: true, sensivity: 'base'});
+        return aaln.localeCompare(baln, undefined, { numeric: true, sensivity: 'base' });
     });
-    chordsByAlbum.sort(function(a, b) {
+    chordsByAlbum.sort(function (a, b) {
         const an = parseInt(a.getAttribute('data-album-tracknum'));
         const bn = parseInt(b.getAttribute('data-album-tracknum'));
         const al = a.getAttribute('data-album');
@@ -220,12 +235,12 @@ function parseChords(chords) {
             if (prevCharAlbum !== '') {
                 chordsByAlbumHtml.push('</ul></dd>');
             }
-            const albumLat = Object.keys(albumNames).find(key => albumNames[key] === curChar);
+            const albumId = albumLat(curChar);
             const albumYear = itm.getAttribute('data-album-year');
 
-            chordsByAlbumHtml.push('<dt>');
-            if (albumLat !== undefined) {
-                chordsByAlbumHtml.push(`<img class="albumart" src="./covers/${albumLat}.jpg"  onerror="this.style.display=\'none\'">`);
+            chordsByAlbumHtml.push(`<dt id="album-${albumId || 'unknown'}">`);
+            if (albumId !== undefined) {
+                chordsByAlbumHtml.push(`<img class="albumart" src="./covers/${albumId}.jpg"  onerror="this.style.display=\'none\'">`);
             }
             // if (albumnum != 'null') {
             //     chordsByAlbumHtml.push('<span class="albumnum">' + itm.getAttribute('data-album-albumnum') + ') </span>');
@@ -256,19 +271,19 @@ function parseChords(chords) {
         + '</span>'
         + '<input type="search" class="search-input" placeholder="Искать">');
     const togglerYear = document.querySelector('.sortToggle-year');
-    togglerYear.addEventListener('click', function() {
+    togglerYear.addEventListener('click', function () {
         if (!togglerYear.classList.contains('active') || document.body.classList.contains('searching')) {
             sortToggle('year');
         }
     });
     const togglerAbc = document.querySelector('.sortToggle-abc');
-    togglerAbc.addEventListener('click', function() {
+    togglerAbc.addEventListener('click', function () {
         if (!togglerAbc.classList.contains('active') || document.body.classList.contains('searching')) {
             sortToggle('abc');
         }
     });
     const togglerAlbum = document.querySelector('.sortToggle-album');
-    togglerAlbum.addEventListener('click', function() {
+    togglerAlbum.addEventListener('click', function () {
         if (!togglerAlbum.classList.contains('active') || document.body.classList.contains('searching')) {
             sortToggle('album');
         }
@@ -281,7 +296,7 @@ function showContents() {
     clearSearch();
     let aArray;
 
-    switch(sorting) {
+    switch (sorting) {
         case 'year':
             aArray = chordsByYearHtml.join('');
             break;
@@ -325,7 +340,6 @@ function sortToggle(arg) {
         default:
             if (sorting === '') {
                 sorting = 'abc'
-                return;
             }
             break;
     }
@@ -396,7 +410,7 @@ function searchText(searchString = "") {
 
         let resultHtml = "";
         for (let i = 0; i < results.length; i++) {
-            resultHtml += `<li><a href="#${results[i].id}">${results[i].title.replace(searchRegex, '<span class="highlight">$&</span>').replace(/^[«]/, '<span style="margin-left:-.6em;">«</span>')}</a>`;
+            resultHtml += `<li><a href="#${results[i].id}">${italization(results[i].title.replace(searchRegex, '<span class="highlight">$&</span>').replace(/^[«]/, '<span style="margin-left:-.6em;">«</span>'))}</a>`;
             resultHtml += "<ul>";
             for (let j = 0; j < results[i].lines.length; j++) {
                 const line = results[i].lines[j].replace(searchRegex, '<span class="highlight">$&</span>');
@@ -466,10 +480,19 @@ function activateTrack() {
     modal();
     const modalContent = document.querySelector('.modal-content');
     const trackId = document.location.hash.substring(1);
+    console.log("Page # is", trackId);
+    if (trackId.startsWith('album-')) {
+        modal('close');
+        history.replaceState({}, document.title, window.location.pathname);
+        goToAlbum(trackId.substring(6));
+        return false;
+    }
+
     const currChords = chordsMain[trackId];
     if (!currChords) {
-      modal('close');
-      return false;
+        modal('close');
+        history.replaceState({}, document.title, window.location.pathname);
+        return false;
     }
 
     const title = currChords.querySelector('title')?.textContent || trackId;
@@ -482,7 +505,7 @@ function activateTrack() {
     const subtitle = currChords.querySelector('subtitle')?.textContent || '';
     const trackSubtitle = subtitle ? `<div class="subtitle">${subtitle}</div>` : '';
 
-    const album = Array.from(currChords.querySelectorAll('album')).map(a => `<li class="album">${a.textContent}</li>`).join(', ');
+    const album = Array.from(currChords.querySelectorAll('album')).map(a => `<li class="album"><a href="#album-${albumLat(a.textContent)}">${a.textContent}</a></li>`).join(', ');
     const trackAlbum = album ? `<ul class="albumlist">${album}</ul>` : '';
 
     const year = currChords.querySelector('year')?.textContent || '';
@@ -540,13 +563,6 @@ document.addEventListener("click", (event) => {
     }
 });
 
-function getStateFromStorage() {
-    const sort = localStorage.getItem('sorting');
-    if (sort) {
-      return sort;
-    }
-    return null;
-}
 
 function abcIndex() {
     const aabb = {
@@ -587,10 +603,10 @@ function abcIndex() {
 
             const l = a.textContent.toUpperCase();
             let nameVal = '';
-                if (l in aabb) nameVal = aabb[l];
-                else if (/^[a-zA-Z]/.test(l)) nameVal = 'a…z';
-                else if (/^[0-9]/.test(l)) nameVal = '0…9';
-                else nameVal = '';
+            if (l in aabb) nameVal = aabb[l];
+            else if (/^[a-zA-Z]/.test(l)) nameVal = 'a…z';
+            else if (/^[0-9]/.test(l)) nameVal = '0…9';
+            else nameVal = '';
 
             a.setAttribute('name', nameVal);
             a.setAttribute('href', '#top');
@@ -601,12 +617,7 @@ function abcIndex() {
                 a.addEventListener('click', event => {
                     event.preventDefault();
                     let target = document.querySelector(`a[name="${link.substring(1)}"]`);
-                    target.scrollIntoView(true);
-                    target.classList.add('signal');
-                    function signaled() {
-                        target.classList.remove('signal');
-                    }
-                    window.setTimeout(signaled, 500);
+                    goToAnchor(target);
                 });
             });
             document.querySelectorAll('dt a').forEach(a => {
@@ -680,9 +691,8 @@ function keyListener() {
                             document.body.scrollIntoView(true);
                         } else {
                             const targetAnchor = document.querySelector(`a[name="${k}"]`);
-                            targetAnchor.scrollIntoView(true);
-                            targetAnchor.classList.add('signal');
-                            window.setTimeout(() => {targetAnchor.classList.remove('signal')}, 500);
+                            goToAnchor(targetAnchor);
+
                         }
                     }
                 }
@@ -754,7 +764,7 @@ function scrollBorder() {
         }
     }
 }
-  
+
 
 function daynight(selector) {
     const switches = document.querySelectorAll(selector);
@@ -768,7 +778,7 @@ function daynight(selector) {
 
     switches.forEach(el => {
         el.addEventListener('click', () => {
-            switch(colorTheme) {
+            switch (colorTheme) {
                 case 'dark':
                     colorTheme = 'light';
                     break
@@ -817,7 +827,7 @@ function linksWeightInit(selector, locStorItem) {
         document.querySelectorAll(`a[href="${track.id}"]`).forEach(link => {
             link.style.fontVariationSettings = `"wght" ${weightCalc(track.weight)}`;
             if (track.isFavorite === true) {
-                link.setAttribute('data-favorite', true);
+                // link.setAttribute('data-favorite', true);
             }
             const favicon = document.createElement('span');
             favicon.classList.add('track-favicon');

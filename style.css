@@ -35,6 +35,7 @@
   --link-hover: #c83700;
   --link-hover-rgb: 200, 55, 0;
 }
+
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #000;
@@ -53,6 +54,7 @@
     --link-hover-rgb: 255, 106, 48;
   }
 }
+
 :root[data-theme="dark"] {
   --bg: #000;
   --bg-rgb: 0, 0, 0;
@@ -79,6 +81,7 @@
   -webkit-font-smoothing: subpixel-antialiased;
   box-sizing: border-box;
 }
+
 html {
   font-size: 12px;
 }
@@ -106,10 +109,13 @@ a {
   text-decoration: none;
   transition: color var(--transition), border-color var(--transition);
 }
+
 a:visited {
   color: var(--link-visited);
 }
-a:hover, a.hover {
+
+a:hover,
+a.hover {
   color: var(--link-hover);
   transition: color 0s, border-color 0s;
 }
@@ -129,7 +135,7 @@ p {
   margin: 5px 0 11px;
   font-size: 24px;
   line-height: 32px;
-  font-weight: 500;
+  font-variation-settings: "wght" 500;
 }
 
 .chords_number {
@@ -143,18 +149,19 @@ p {
 .sorting_toggler {
   margin-right: .8em;
 }
+
 .sorting_toggler span:not(.active),
-body.searching .sorting_toggler span
-{
+body.searching .sorting_toggler span {
   color: var(--link);
   cursor: pointer;
-  font-weight: 200;
+  font-variation-settings: "wght" 200;
 }
+
 .sorting_toggler span:not(.active):hover,
-body.searching .sorting_toggler span:hover
-{
+body.searching .sorting_toggler span:hover {
   color: var(--link-hover);
 }
+
 body:not(.searching) .sorting_toggler span.active {
   pointer-events: none;
 }
@@ -172,37 +179,45 @@ body:not(.searching) .sorting_toggler span.active {
   margin-top: .25em;
   outline: none;
 }
+
 .search-input::placeholder {
   color: var(--gray);
   opacity: 1;
 }
+
 body.searching .search-input {
   outline: 2px solid var(--text);
   outline-offset: -2px;
+  font-variation-settings: "wght" 600;
 }
 
 .abc_index {
   font-size: 1.25rem;
-  font-weight: 500;
+  font-variation-settings: "wght" 500;
 }
-  .abc_index ul {
-    margin: 0 -.5em -1rem;
-    padding: 0;
-    list-style-type: none;
-  }
-  .abc_index ul li {
-    display: inline-block;
-    margin-bottom: 1rem;
-  }
-  .abc_index ul li a {
-    padding: .5em;
-  }
-  .abc_index ul li a:not(:hover) {
-    color: var(--gray);
-  }
-  body.searching .abc_index {
-    display: none;
-  }
+
+.abc_index ul {
+  margin: 0 -.5em -1rem;
+  padding: 0;
+  list-style-type: none;
+}
+
+.abc_index ul li {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.abc_index ul li a {
+  padding: .5em;
+}
+
+.abc_index ul li a:not(:hover) {
+  color: var(--gray);
+}
+
+body.searching .abc_index {
+  display: none;
+}
 
 /* FOOTER */
 .footer {
@@ -221,13 +236,16 @@ ul.content_search {
   margin-top: 4em;
   list-style-type: none;
 }
+
 ul.content_search ul {
   padding: 0;
   list-style-type: none;
 }
-ul.content_search > li {
+
+ul.content_search>li {
   padding: 5px 0;
 }
+
 ul.content_search a {
   font-size: 1.25em;
 }
@@ -236,24 +254,27 @@ ul.content_search a {
 dl.content_contents {
   margin-top: 4em;
 }
+
 dl.content_contents li a {
   padding: 5px 0;
 }
 
 dt {
   position: relative;
-  font-weight: 500;
+  font-variation-settings: "wght" 500;
   font-size: 1.25em;
   margin-bottom: 0.2em;
   color: var(--gray);
 }
-  dt > a {
-    padding: 0.5em;
-    margin: -0.5em;
-  }
-  dt > a:not(:hover) {
-    color: var(--gray);
-  }
+
+dt>a {
+  padding: 0.5em;
+  margin: -0.5em;
+}
+
+dt>a:not(:hover) {
+  color: var(--gray);
+}
 
 
 dd {
@@ -268,9 +289,11 @@ dd {
   margin-left: .406em;
   user-select: none;
 }
+
 a[data-favorite] .track-favicon {
   display: inline-block;
 }
+
 a[data-favorite] {
   font-variation-settings: "wght" 800 !important;
 }
@@ -279,18 +302,27 @@ a[data-favorite] {
   cursor: pointer;
   transition: color var(--transition);
 }
+
 .track-favicon-toggler:hover {
   color: var(--link-hover);
   transition: color 0s;
 }
 
+body.sorting-album dl.content_contents {
+  margin-top: 4em;
+}
+
 body.sorting-album dt {
-  margin-left: 140px;
+  padding: .5em;
+  margin: -0.5em;
+  margin-left: calc(140px - .5em);
   color: var(--text);
 }
+
 body.sorting-album dt .albumyear {
   color: var(--gray);
 }
+
 body.sorting-album dt .albumart {
   position: absolute;
   display: block;
@@ -299,12 +331,14 @@ body.sorting-album dt .albumart {
   margin-bottom: 1rem;
   user-select: none;
 }
+
 body.sorting-album dd {
   margin-left: 140px;
   min-height: 76px;
   margin-top: 1.5em;
   margin-bottom: 4em;
 }
+
 body.sorting-album .tracknum {
   display: inline-block;
   width: 1.2em;
@@ -345,11 +379,13 @@ dl.content_contents li {
   color: var(--gray);
   background-color: currentColor;
 }
+
 :root[data-theme="dark"] .day-night-switch {
   mask-position: center right;
   -webkit-mask-position: center right;
   color: var(--text);
 }
+
 :root[data-theme="light"] .day-night-switch {
   mask-position: center left;
   -webkit-mask-position: center left;
@@ -360,6 +396,7 @@ dl.content_contents li {
 body.modal-lock {
   overflow: hidden;
 }
+
 .modal {
   display: none;
   position: fixed;
@@ -371,6 +408,7 @@ body.modal-lock {
   overflow: auto;
   backdrop-filter: grayscale(1) contrast(.25);
 }
+
 .modal-content {
   width: 90vw;
   max-width: 80em;
@@ -381,9 +419,11 @@ body.modal-lock {
   outline: none;
   user-select: auto;
 }
+
 .chords_text {
   white-space: pre-wrap;
 }
+
 body.modal-lock .content * {
   transition: none !important;
   user-select: none;
@@ -399,14 +439,21 @@ body.modal-lock .content * {
   padding: 0;
   margin: 0em 0 2em;
 }
+
 .modal-content li.album {
   display: inline;
   margin: 0;
   padding: 0;
 }
+
+.modal-content .album a:not(:hover) {
+  color: var(--text);
+}
+
 .modal-content .album::before {
   content: '\2299';
-  position: relative;;
+  position: relative;
+  ;
   font-size: 1.5em;
   margin-right: .25em;
   margin-left: -0.2125em;
@@ -417,11 +464,13 @@ body.modal-lock .content * {
 .modal-content .tracktitle {
   margin-bottom: 0;
 }
+
 .modal-content .tracktitle-alt {
   margin-top: 0;
   margin-bottom: 0;
-  font-weight: normal;
+  font-variation-settings: "wght" 400;
 }
+
 .modal-content .tracktitle-alt::before {
   content: '=';
   display: inline-block;
@@ -458,6 +507,7 @@ body.modal-lock .content * {
   animation-fill-mode: none;
   animation-duration: 1s;
 }
+
 @keyframes signal {
   10% {
     color: var(--link-hover);
@@ -468,19 +518,24 @@ body.modal-lock .content * {
 
 @media screen and (max-width: 730px) {
   body {}
+
   dd {
     margin-left: 1.8rem;
   }
+
   body.sorting-album dt {
     margin-left: 0;
   }
+
   body.sorting-album dt .albumart {
     position: relative;
     margin-left: 0;
   }
+
   body.sorting-album dd {
     margin-left: 0;
   }
+
   .modal-content {
     padding: 2rem 1rem 3rem 2rem;
   }
@@ -490,11 +545,11 @@ body.modal-lock .content * {
   @page {
     margin: 12mm;
   }
+
   .search-input,
   .abc_index,
   .footer,
-  .sorting_toggler :not(.active)
-  {
+  .sorting_toggler :not(.active) {
     display: none;
   }
 
@@ -506,16 +561,18 @@ body.modal-lock .content * {
     overflow: initial;
     padding: 0;
   }
+
   body.modal-lock .content,
-  body.modal-lock .footer
-  {
+  body.modal-lock .footer {
     display: none;
   }
+
   body.modal-lock .modal {
     position: relative;
     overflow: initial;
     background: none;
   }
+
   body.modal-lock .modal-content {
     margin: 0;
     padding: 0;
