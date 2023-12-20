@@ -7,6 +7,7 @@ let sorting = localStorage.getItem('sorting') || '';
 let currTrackId;
 
 const albumNames = {
+    'monologi': 'Дорожный календарь, или Монологи Cтранствующего Рыцаря',
     'shanson': 'Шансон',
     'vishnevoe_varene': 'Вишнёвое варенье',
     'kovcheg_1': 'Ковчег неутомимый 1',
@@ -80,6 +81,11 @@ function goToAnchor(el) {
 function goToAlbum(albumNameLat) {
     sorting !== 'album' && sortToggle('album');
     goToAnchor(document.querySelector(`#album-${albumNameLat}`));
+}
+
+function goToYear(year) {
+    sorting !== 'year' && sortToggle('year');
+    goToAnchor(document.querySelector(`#year-${year}`));
 }
 
 function albumLat(albumNameCyr) {
@@ -156,7 +162,7 @@ function parseChords(chords) {
             if (prevCharAbc !== '') {
                 chordsByAbcHtml.push('</ul></dd>');
             }
-            chordsByAbcHtml.push(`<dt><a>${curChar}</a></dt>`);
+            chordsByAbcHtml.push(`<dt id="abc-${curChar}"><a>${curChar}</a></dt>`);
             chordsByAbcHtml.push('<dd><ul>');
             chordsByAbcHtml.push(`<li>${firstQuote(itm).outerHTML}</li>`);
         }
@@ -182,7 +188,7 @@ function parseChords(chords) {
             if (prevCharYear !== '') {
                 chordsByYearHtml.push('</ul></dd>');
             }
-            chordsByYearHtml.push(`<dt>${curChar}</dt>`);
+            chordsByYearHtml.push(`<dt id="year-${curChar}">${curChar}</dt>`);
             chordsByYearHtml.push('<dd><ul>');
             chordsByYearHtml.push(`<li>${itm.outerHTML}</li>`);
         }
@@ -268,7 +274,7 @@ function parseChords(chords) {
         + 'по<span class="sortToggle-abc active"> алфавиту</span>'
         + '<span class="sortToggle-album"> альбомам</span>'
         + '<span class="sortToggle-year"> годам</span>'
-        + '<span class="randomTrackBtn" title="Случайная песня"> ?</span>'
+        + '<span class="randomTrackBtn" title="Случайная песня"> #?</span>'
         + '</span>'
         + '<input type="search" class="search-input" placeholder="Искать">');
     const togglerYear = document.querySelector('.sortToggle-year');
@@ -488,6 +494,12 @@ function activateTrack() {
         goToAlbum(trackId.substring(6));
         return false;
     }
+    if (trackId.startsWith('year-')) {
+        modal('close');
+        history.replaceState({}, document.title, window.location.pathname);
+        goToYear(trackId.substring(5));
+        return false;
+    }
 
     const currChords = chordsMain[trackId];
     if (!currChords) {
@@ -510,7 +522,8 @@ function activateTrack() {
     const trackAlbum = album ? `<ul class="albumlist">${album}</ul>` : '';
 
     const year = currChords.querySelector('year')?.textContent || '';
-    const trackYear = year ? `<div class="year">${year}</div>` : '';
+    const trackYear = year ? ('<div class="year">' + year.replace(/\b(\d{4})\b/g, '<a href="#year-$1">$1</a>') + '</div>') : '';
+
 
     const currTrackHeader = `<div class="chords_header">${trackAlbum}${trackTitle}${trackAltTitle}${trackSubtitle}</div>`;
     const currTrackText = `<div class="chords_text">${currChords.querySelector('text').textContent}</div>`;
@@ -687,8 +700,22 @@ function keyListener() {
         const key = e.key;
         const k = a[e.keyCode];
         const targetElement = e.target;
-        if (e.keyCode === 166 || e.keyCode === 55) randomTrack();
-        if (key === 'Escape' && !document.body.classList.contains('modal-lock') && document.body.classList.contains('searching')) clearSearch();
+        // 7? key
+        if (e.keyCode === 55 && !(targetElement.matches('[contenteditable], input, textarea') && !(e.ctrlKey || e.altKey || e.metaKey))) randomTrack();
+        // /? key
+        if (e.keyCode === 166 && document.activeElement !== searchInput && !(e.ctrlKey || e.altKey || e.metaKey)) {
+            clearAddress();
+            searchInput.focus();
+            e.preventDefault();
+        }
+        if (key === 'Escape'
+            && !document.body.classList.contains('modal-lock')
+            && (document.activeElement === searchInput
+                || document.body.classList.contains('searching'))
+        ) {
+            searchInput.blur();
+            clearSearch();
+        };
         if (!(targetElement.matches('[contenteditable], input, textarea') || (e.ctrlKey || e.altKey || e.metaKey))) {
             if (!document.body.classList.contains('modal-lock')) {
 
