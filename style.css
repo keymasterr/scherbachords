@@ -488,17 +488,16 @@ body.modal-lock .content * {
 
 
 #scroll-border {
-  position: absolute;
-  height: 100vh;
-  width: calc(100vw - 20px);
-  left: 10px;
+  position: fixed;
+  height: 100dvh;
+  width: 100%;
   opacity: 0;
   pointer-events: none;
   z-index: 9999;
   box-sizing: border-box;
   background-clip: content-box;
-  border: 20px solid transparent;
-  background: rgba(var(--link-rgb), .1);
+  /* border: 20px solid transparent; */
+  background: rgba(var(--link-rgb), .15);
 }
 
 

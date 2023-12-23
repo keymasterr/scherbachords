@@ -749,7 +749,8 @@ function scrollBorder() {
     const fadeTimerTime = 500;
 
     let scrollPos = 0;
-    let fadeEffect;
+    let fadingInterval;
+    let fadeStartTimeout;
 
     const elParent = getScrollParent(document.activeElement);
 
@@ -757,6 +758,7 @@ function scrollBorder() {
         if (!document.getElementById(elName)) {
             const el = document.createElement('div');
             el.setAttribute('id', elName);
+            el.style.top = `${scrollPos}px`;
             container.appendChild(el);
         }
     }
@@ -764,18 +766,18 @@ function scrollBorder() {
     function updateBorderOpacity() {
         const borderEl = document.getElementById(elName);
         const scrollDiff = Math.abs(scrollPos - elParent.scrollTop);
-        const opacity = scrollDiff * 0.004;
+        const opacity = Math.min(1, Math.log(scrollDiff + 1) / Math.log(800)); // Adjust the denominator as needed
         borderEl.style.opacity = opacity;
     }
 
     function fadeOutBorder() {
         const borderEl = document.getElementById(elName);
-        fadeEffect = setInterval(() => {
+        fadingInterval = setInterval(() => {
             let opacity = parseFloat(borderEl.style.opacity);
             opacity -= 0.05;
             borderEl.style.opacity = opacity;
             if (opacity <= 0) {
-                clearInterval(fadeEffect);
+                clearInterval(fadingInterval);
                 borderEl.remove();
             }
         }, fadeTimerTime / 20);
@@ -784,8 +786,8 @@ function scrollBorder() {
     elParent.addEventListener('scroll', () => {
         createBorder();
         updateBorderOpacity();
-        clearTimeout(fadeEffect);
-        fadeEffect = setTimeout(fadeOutBorder, 700);
+        clearTimeout(fadeStartTimeout);
+        fadeStartTimeout = setTimeout(fadeOutBorder, 700);
         scrollPos = elParent.scrollTop;
     });
 
