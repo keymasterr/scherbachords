@@ -378,7 +378,7 @@ function searchText(searchString = "") {
     for (let i = 0; i < chordsMain.length; i++) {
         const title = chordsMain[i].querySelector('title').textContent;
         const text = chordsMain[i].querySelector('text').textContent;
-        const lines = text.split(/\r?\n/).map(line => line.replace(/[\s]{2,}.*/g, ''));
+        const lines = text.split(/\r?\n/).map(line => line.replace(/[\s]*\u200C.*/g, ''));
         const matchingLines = lines.filter(line => searchRegex.test(line));
         const matchingTitle = searchRegex.test(title);
         if (matchingLines.length > 0 || matchingTitle) {
@@ -487,7 +487,7 @@ function activateTrack() {
     modal();
     const modalContent = document.querySelector('.modal-content');
     const trackId = document.location.hash.substring(1);
-    console.log("Page # is", trackId);
+    // console.log("Page # is", trackId);
     if (trackId.startsWith('album-')) {
         modal('close');
         history.replaceState({}, document.title, window.location.pathname);
@@ -524,15 +524,32 @@ function activateTrack() {
     const year = currChords.querySelector('year')?.textContent || '';
     const trackYear = year ? ('<div class="year">' + year.replace(/\b(\d{4})\b/g, '<a href="#year-$1">$1</a>') + '</div>') : '';
 
-
+    let text = currChords.querySelector('text').textContent;
+    let lines = text.split(/\r?\n/).map(line => line.split('\u200c'));
+    let htmlLines = lines.map(line => {
+        let lyricsPart = line[0] !== ''
+            ? `<div class="line-lyrics">${line[0].replace(/\s*$/, '')}<span class="trailing-spaces">${line[0].match(/(\s*)$/)[0]}</span></div>`
+            : '';
+    
+        let chordsPart = line[1] && line[1].trim() !== ''
+            ? `<div class="line-chords">${line[1].replace(/\s*$/, '')}</div>`
+            : '';
+    
+        return `<div class="line${(lyricsPart || chordsPart) ? '' : ' empty'}">${lyricsPart}${chordsPart}${(lyricsPart || chordsPart) ? '' : '\n'}</div>`;
+    });
+    
     const currTrackHeader = `<div class="chords_header">${trackAlbum}${trackTitle}${trackAltTitle}${trackSubtitle}</div>`;
-    const currTrackText = `<div class="chords_text">${currChords.querySelector('text').textContent}</div>`;
+    const currTrackText = `<div class="chords_text">${htmlLines.join('')}</div>`;
     const currTrack = currTrackHeader + currTrackText + trackYear;
 
     modalContent.innerHTML = currTrack;
+    modalContent.innerHTML += '<div class="chords-view-switch"></div>';
+    
     modal('open');
     document.title = `${title} — Щербаккорды`;
     linksWeightChange(`#${trackId}`, 'linksWeight');
+
+    chordsView(".chords-view-switch");
 }
 
 
@@ -831,6 +848,33 @@ function daynight(selector) {
     });
 }
 
+function chordsView(selector) {
+    const switches = document.querySelectorAll(selector);
+    let chordsView = localStorage.getItem('chordsView') || 'line';
+
+    function changeState() {
+        localStorage.setItem('chordsView', chordsView);
+        document.documentElement.setAttribute('data-chords-view', chordsView);
+    }
+    changeState();
+
+    switches.forEach(el => {
+        el.addEventListener('click', () => {
+            switch (chordsView) {
+                case 'block':
+                    chordsView = 'none';
+                    break
+                case 'none':
+                    chordsView = 'line';
+                    break
+                default:
+                    chordsView = 'block';
+            }
+            changeState();
+        });
+    });
+}
+
 function linksWeightInit(selector, locStorItem) {
     const links = document.querySelectorAll(selector);
     let linksWeight = JSON.parse(localStorage.getItem(locStorItem)) || {
@@ -876,7 +920,6 @@ function linksWeightInit(selector, locStorItem) {
     });
 
     localStorage.setItem(locStorItem, JSON.stringify(linksWeight));
-    console.debug('linksWeightInit', linksWeight);
 }
 
 function linksWeightChange(id, locStorItem) {
@@ -889,7 +932,7 @@ function linksWeightChange(id, locStorItem) {
     if (track.changesToday < 5) {
         if (!isToday(new Date(track.dateChanged))) {
             track.dateChanged = new Date().toDateString();
-            console.debug(track.dateChanged);
+            // console.debug(track.dateChanged);
             track.changesToday = 0;
         }
         track.weight += Math.ceil(Math.pow(5 - track.changesToday, 3) / 16);
