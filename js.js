@@ -5,6 +5,7 @@ let chordsByYearHtml = [];
 let chordsByAlbumHtml = [];
 let sorting = localStorage.getItem('sorting') || '';
 let currTrackId;
+let linkWeightChangeTimeout;
 
 const albumNames = {
     'monologi': 'Дорожный календарь, или Монологи Cтранствующего Рыцаря',
@@ -528,7 +529,7 @@ function activateTrack() {
     let lines = text.split(/\r?\n/).map(line => line.split('\u200c'));
     let htmlLines = lines.map(line => {
         let lyricsPart = line[0] !== ''
-            ? `<div class="line-lyrics">${line[0].replace(/\s*$/, '')}<span class="trailing-spaces">${line[0].match(/(\s*)$/)[0]}</span></div>`
+            ? `<div class="line-lyrics"><span class="lyrics-text">${line[0].replace(/\s*$/, '')}</span><span class="trailing-spaces">${line[0].match(/(\s*)$/)[0]}</span></div>`
             : '';
     
         let chordsPart = line[1] && line[1].trim() !== ''
@@ -547,9 +548,12 @@ function activateTrack() {
     
     modal('open');
     document.title = `${title} — Щербаккорды`;
-    linksWeightChange(`#${trackId}`, 'linksWeight');
-
     chordsView(".chords-view-switch");
+    
+    if (typeof linkWeightChangeTimeout !== 'undefined') {
+        clearTimeout(linkWeightChangeTimeout);
+    }
+    linkWeightChangeTimeout = setTimeout(linksWeightChange(`#${trackId}`, 'linksWeight'), 20000);
 }
 
 

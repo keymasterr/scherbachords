@@ -453,7 +453,7 @@ body.modal-lock {
   mask-position: center left;
   -webkit-mask-position: center left;
   cursor: pointer;
-  color: var(--gray);
+  color: var(--chords);
   background-color: currentColor;
 }
 :root[data-chords-view="block"] .chords-view-switch {
@@ -481,6 +481,12 @@ body.modal-lock {
 }
 :root[data-chords-view="none"] .chords_text .trailing-spaces {
   display: none;
+}
+
+:root[data-chords-view="none"] .chords_text {
+  .line-lyrics:has(.trailing-spaces:only-child),
+  .line:has(.line-chords:only-child)
+  { display: none; }
 }
 
 body.modal-lock .content * {
