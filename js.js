@@ -558,7 +558,10 @@ function activateTrack() {
 
 
 function randomTrack() {
-    const rndId = chordsMain[~~(Math.random() * chordsMain.length)].id;
+    let rndId;
+    do {
+        rndId = chordsMain[~~(Math.random() * chordsMain.length)].id;
+    } while (rndId === currTrackId);
     window.location.hash = rndId;
 };
 document.querySelector('.randomTrackBtn').addEventListener('click', randomTrack);
