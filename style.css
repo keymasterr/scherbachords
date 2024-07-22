@@ -107,9 +107,7 @@ body {
   color: var(--text);
 }
 
-.content {
-  flex-grow: 1;
-}
+main { flex-grow: 1; }
 
 a {
   color: var(--link);
@@ -131,6 +129,9 @@ p {
   margin: 0 0 .75em 0;
 }
 
+.hidden { display: none; }
+.interpunctum::after { content: attr(data-content); }
+
 
 /* HEADER */
 .header {
@@ -147,7 +148,6 @@ p {
 
 .chords_number {
   position: absolute;
-  top: 2.7rem;
   font-size: 0.3em;
   line-height: 1em;
   color: var(--gray);
@@ -237,7 +237,7 @@ span.highlight {
   background-color: #fada6280;
 }
 
-ul.content_search {
+.ul.content_search {
   display: none;
   padding: 0;
   margin-top: 4em;
@@ -360,6 +360,7 @@ dl.content_contents li {
   margin: 0 0 .5em 0;
   list-style: none;
   break-inside: avoid;
+  text-wrap: balance;
 }
 
 
@@ -489,7 +490,7 @@ body.modal-lock {
   { display: none; }
 }
 
-body.modal-lock .content * {
+body.modal-lock > :not(.modal) {
   transition: none !important;
   user-select: none;
 }
@@ -632,8 +633,7 @@ body.modal-lock .content * {
     padding: 0;
   }
 
-  body.modal-lock .content,
-  body.modal-lock .footer {
+  body.modal-lock > :not(.modal) {
     display: none;
   }
 

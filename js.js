@@ -59,7 +59,7 @@ function getXmlMain(file) {
     request.send();
 
     chordsMain = request.responseXML.getElementsByTagName('track');
-    document.querySelector('.chords_number').textContent = chordsMain.length;
+    document.querySelector('.chords_number').setAttribute('data-content', chordsMain.length);
 
     const trackIds = new Set();
     [...chordsMain].forEach(track => {
@@ -100,7 +100,6 @@ function parseChords(chords) {
     let prevCharAbc = '';
     let prevCharYear = '';
     let prevCharAlbum = '';
-    let liTempl = '<li><a %%<span class="track_starred-star">&#9733;</span></a></li>';
 
     for (let el of chords) {
         let textFirstLine = el.getElementsByTagName('title')[1]?.textContent || '';
@@ -272,10 +271,10 @@ function parseChords(chords) {
 
 
     document.querySelector('.page_title').insertAdjacentHTML('beforeend', '<span class="sorting_toggler">'
-        + 'по<span class="sortToggle-abc active"> алфавиту</span>'
-        + '<span class="sortToggle-album"> альбомам</span>'
+        + 'по<span class="sortToggle-abc active"> алфавиту<span class="hidden interpunctum"> /</span></span>'
+        + '<span class="sortToggle-album"> альбомам<span class="hidden interpunctum"> /</span></span>'
         + '<span class="sortToggle-year"> годам</span>'
-        + '<span class="randomTrackBtn" title="Случайная песня"> #?</span>'
+        + '<span class="randomTrackBtn interpunctum" title="Случайная песня" data-content=" #?"></span>'
         + '</span>'
         + '<input type="search" class="search-input" placeholder="Искать">');
     const togglerYear = document.querySelector('.sortToggle-year');
@@ -488,7 +487,6 @@ function activateTrack() {
     modal();
     const modalContent = document.querySelector('.modal-content');
     const trackId = document.location.hash.substring(1);
-    // console.log("Page # is", trackId);
     if (trackId.startsWith('album-')) {
         modal('close');
         history.replaceState({}, document.title, window.location.pathname);
@@ -510,7 +508,7 @@ function activateTrack() {
     }
 
     const title = currChords.querySelector('title')?.textContent || trackId;
-    const star = '<span class="track_starred-star">&#9733;</span>';
+    const star = '';
     const trackTitle = `<h2 class="tracktitle">${italization(title)}${star}</h2>`;
 
     const altTitle = currChords.querySelectorAll('title')[2]?.textContent || '';
@@ -568,7 +566,6 @@ document.querySelector('.randomTrackBtn').addEventListener('click', randomTrack)
 
 
 function clearAddress() {
-    // document.location.hash = "";
     modal('close');
     currTrackId = "";
     document.title = 'Щербаккорды';
@@ -762,7 +759,6 @@ function keyListener() {
     });
 
     document.addEventListener('keyup', (e) => {
-        // rome-ignore lint/performance/noDelete:
         delete keys[e.keyCode];
     });
 }
@@ -796,6 +792,7 @@ function scrollBorder() {
 
     function fadeOutBorder() {
         const borderEl = document.getElementById(elName);
+        if (borderEl == null) return;
         fadingInterval = setInterval(() => {
             let opacity = parseFloat(borderEl.style.opacity);
             opacity -= 0.05;
@@ -897,8 +894,7 @@ function linksWeightInit(selector, locStorItem) {
                 id: trackLink,
                 weight: 400,
                 dateChanged: dateCurr,
-                changesToday: 0,
-                isFavorite: false,
+                changesToday: 0
             });
         }
     });
@@ -906,23 +902,13 @@ function linksWeightInit(selector, locStorItem) {
     if (!isToday(new Date(linksWeight.dateChanged))) {
         linksWeight.dateChanged = dateCurr;
         linksWeight.list.forEach(track => {
-            if (!track.isFavorite) {
-                track.weight -= 1;
-            }
+            track.weight -= 1;
         });
     }
 
     linksWeight.list.forEach(track => {
         document.querySelectorAll(`a[href="${track.id}"]`).forEach(link => {
             link.style.fontVariationSettings = `"wght" ${weightCalc(track.weight)}`;
-            if (track.isFavorite === true) {
-                // link.setAttribute('data-favorite', true);
-            }
-            const favicon = document.createElement('span');
-            favicon.classList.add('track-favicon');
-            favicon.textContent = '⭑';
-            // favicon.addEventListener('click', function(){favTrack(track.id);});
-            link.append(favicon);
         });
     });
 
@@ -939,7 +925,6 @@ function linksWeightChange(id, locStorItem) {
     if (track.changesToday < 5) {
         if (!isToday(new Date(track.dateChanged))) {
             track.dateChanged = new Date().toDateString();
-            // console.debug(track.dateChanged);
             track.changesToday = 0;
         }
         track.weight += Math.ceil(Math.pow(5 - track.changesToday, 3) / 16);
@@ -950,7 +935,6 @@ function linksWeightChange(id, locStorItem) {
         }
         if (track.weight > 800) {
             track.weight = 800;
-            track.isFavorite = true;
         }
 
         document.querySelectorAll(`a[href="${id}"]`).forEach(link => {
@@ -959,8 +943,6 @@ function linksWeightChange(id, locStorItem) {
 
         localStorage.setItem(locStorItem, JSON.stringify(linksWeight));
     }
-
-    // console.debug('linksWeightChange', linksWeight);
 }
 
 function weightCalc(num) {
@@ -973,31 +955,6 @@ function weightCalc(num) {
     }
     return result;
 }
-
-function favTrack(id) {
-    locStorItem = 'linksWeight';
-    let linksWeight = JSON.parse(localStorage.getItem(locStorItem));
-    if (!linksWeight) return false;
-    let track = linksWeight.list.find(e => e.id === id);
-    let links = document.querySelectorAll(`a[href="${id}"]`);
-
-    if (track.isFavorite === true) {
-        links.forEach(link => {
-            track.isFavorite = false;
-            link.removeAttribute('data-favorite');
-        });
-        if (track.weight >= 700) {
-            track.weight = 700;
-        }
-    } else {
-        links.forEach(link => {
-            track.isFavorite = true;
-            link.setAttribute('data-favorite', true);
-        });
-    }
-    localStorage.setItem(locStorItem, JSON.stringify(linksWeight));
-}
-
 
 function isToday(someDate) {
     const today = new Date()
