@@ -6,6 +6,7 @@ let chordsByAlbumHtml = [];
 let sorting = localStorage.getItem('sorting') || '';
 let currTrackId;
 let linkWeightChangeTimeout;
+const pageTitle = 'Щербаккорды';
 
 const albumNames = {
     'monologi': 'Дорожный календарь, или Монологи Cтранствующего Рыцаря',
@@ -48,9 +49,57 @@ showContents();
 keyListener();
 
 activateTrack();
-window.onhashchange = activateTrack;
+window.addEventListener('popstate', activateTrack);
 
+// Add click event delegation for track links
+document.addEventListener('click', handleLinkClick);
 
+function extractToken(url = window.location.href) {
+    // Extract from hash first
+    if (url.includes('#')) {
+        return url.split('#').pop();
+    }
+    // Extract from pathname
+    const pathname = url.includes('://') ? new URL(url).pathname : url;
+    return pathname.split('/').pop() || '';
+}
+
+function handleLinkClick(event) {
+    const link = event.target.closest('a');
+    if (!link) return;
+    
+    const href = link.getAttribute('href');
+    if (!href) return;
+    
+    // Handle track links (./songs/... format)
+    if (href.startsWith('./songs/')) {
+        event.preventDefault();
+        const trackId = href.replace('./songs/', '');
+        if (chordsMain[trackId]) {
+            history.pushState(null, '', href);
+
+            activateTrack();
+        }
+        return;
+    }
+    
+    // Handle album/year links when modal is open
+    if (document.body.classList.contains('modal-lock') && href.startsWith('#')) {
+        event.preventDefault();
+        const token = href.substring(1);
+        
+        if (token.startsWith('album-')) {
+            clearAddress();
+            goToAlbum(token.substring(6));
+        } else if (token.startsWith('year-')) {
+            clearAddress();
+            goToYear(token.substring(5));
+        }
+        return;
+    }
+
+    // Let other links (anchors, external) work normally
+}
 
 function getXmlMain(file) {
     const request = new XMLHttpRequest();
@@ -60,6 +109,8 @@ function getXmlMain(file) {
 
     chordsMain = request.responseXML.getElementsByTagName('track');
     document.querySelector('.chords_number').setAttribute('data-content', chordsMain.length);
+
+    createStructuredData(chordsMain);
 
     const trackIds = new Set();
     [...chordsMain].forEach(track => {
@@ -73,7 +124,7 @@ function getXmlMain(file) {
 }
 
 function goToAnchor(el) {
-    modal('close')
+    clearAddress();
     el.scrollIntoView(true);
     el.classList.add('signal');
     window.setTimeout(() => { el.classList.remove('signal') }, 500);
@@ -107,7 +158,7 @@ function parseChords(chords) {
         const titles = el.getElementsByTagName('title');
         for (let i = 0; i < titles.length; i++) {
             let link = document.createElement('a');
-            link.setAttribute('href', `#${el.id}`);
+            link.setAttribute('href', `./songs/${el.id}`);
             link.setAttribute('title', textFirstLine);
             link.innerHTML = italization(titles[i].textContent);
             if (i > 0) {
@@ -121,7 +172,7 @@ function parseChords(chords) {
         year.match(/\d{4}/g).forEach(itm => {
             const sortYear = itm;
             let link = document.createElement('a');
-            link.setAttribute('href', `#${el.id}`);
+            link.setAttribute('href', `./songs/${el.id}`);
             link.setAttribute('data-year-sort', sortYear);
             link.setAttribute('title', textFirstLine);
             link.innerHTML = italization(titles[0].textContent);
@@ -131,7 +182,7 @@ function parseChords(chords) {
         const albums = el.getElementsByTagName('album');
         for (let i = 0; i < albums.length; i++) {
             let link = document.createElement('a');
-            link.setAttribute('href', `#${el.id}`);
+            link.setAttribute('href', `./songs/${el.id}`);
             link.setAttribute('data-album', albums[i].textContent);
             link.setAttribute('data-album-year', albums[i].getAttribute('year'));
             link.setAttribute('data-album-tracknum', albums[i].getAttribute('tracknum'));
@@ -417,7 +468,7 @@ function searchText(searchString = "") {
 
         let resultHtml = "";
         for (let i = 0; i < results.length; i++) {
-            resultHtml += `<li><a href="#${results[i].id}">${italization(results[i].title.replace(searchRegex, '<span class="highlight">$&</span>').replace(/^[«]/, '<span style="margin-left:-.6em;">«</span>'))}</a>`;
+            resultHtml += `<li><a href="./songs/${results[i].id}">${italization(results[i].title.replace(searchRegex, '<span class="highlight">$&</span>').replace(/^[«]/, '<span style="margin-left:-.6em;">«</span>'))}</a>`;
             resultHtml += "<ul>";
             for (let j = 0; j < results[i].lines.length; j++) {
                 const line = results[i].lines[j].replace(searchRegex, '<span class="highlight">$&</span>');
@@ -486,30 +537,28 @@ function italization(str) {
 function activateTrack() {
     modal();
     const modalContent = document.querySelector('.modal-content');
-    const trackId = document.location.hash.substring(1);
-    if (trackId.startsWith('album-')) {
-        modal('close');
-        history.replaceState({}, document.title, window.location.pathname);
-        goToAlbum(trackId.substring(6));
+    const token = extractToken();
+
+    if (token.startsWith('album-')) {
+        clearAddress();
+        goToAlbum(token.substring(6));
         return false;
     }
-    if (trackId.startsWith('year-')) {
-        modal('close');
-        history.replaceState({}, document.title, window.location.pathname);
-        goToYear(trackId.substring(5));
+    if (token.startsWith('year-')) {
+        clearAddress();
+        goToYear(token.substring(5));
         return false;
     }
 
-    const currChords = chordsMain[trackId];
+    if (chordsMain[token]) currTrackId = token;
+    const currChords = chordsMain[token];
     if (!currChords) {
         modal('close');
-        history.replaceState({}, document.title, window.location.pathname);
         return false;
     }
 
-    const title = currChords.querySelector('title')?.textContent || trackId;
-    const star = '';
-    const trackTitle = `<h2 class="tracktitle">${italization(title)}${star}</h2>`;
+    const title = currChords.querySelector('title')?.textContent || token;
+    const trackTitle = `<h2 class="tracktitle">${italization(title)}</h2>`;
 
     const altTitle = currChords.querySelectorAll('title')[2]?.textContent || '';
     const trackAltTitle = altTitle ? `<h2 class="tracktitle-alt">${altTitle}</h2>` : '';
@@ -545,13 +594,16 @@ function activateTrack() {
     modalContent.innerHTML += '<div class="chords-view-switch"></div>';
     
     modal('open');
-    document.title = `${title} — Щербаккорды`;
+
+    history.replaceState(null, '');
+    document.title = `${title} — ${pageTitle}`;
+
     chordsView(".chords-view-switch");
     
     if (typeof linkWeightChangeTimeout !== 'undefined') {
         clearTimeout(linkWeightChangeTimeout);
     }
-    linkWeightChangeTimeout = setTimeout(linksWeightChange(`#${trackId}`, 'linksWeight'), 20000);
+    linkWeightChangeTimeout = setTimeout(linksWeightChange(`#${token}`, 'linksWeight'), 20000);
 }
 
 
@@ -560,16 +612,20 @@ function randomTrack() {
     do {
         rndId = chordsMain[~~(Math.random() * chordsMain.length)].id;
     } while (rndId === currTrackId);
-    window.location.hash = rndId;
+
+    history.pushState(null, '', `./songs/${rndId}`);
+    activateTrack();
 };
 document.querySelector('.randomTrackBtn').addEventListener('click', randomTrack);
 
 
 function clearAddress() {
+    if (!currTrackId) return false;
+
     modal('close');
     currTrackId = "";
-    document.title = 'Щербаккорды';
-    history.pushState('', '', window.location.href.split('#')[0]);
+    history.pushState(null, '', window.location.pathname.split('#')[0].split('/songs/')[0] || './');
+    document.title = pageTitle;
 }
 
 function modal(arg) {
@@ -597,13 +653,13 @@ function modal(arg) {
 
 
 document.addEventListener("click", (event) => {
-    if (document.body.classList.contains('modal-lock')) {
-        const flyoutElement = document.querySelector('.modal-content');
-        if (!flyoutElement.contains(event.target)) {
-            clearAddress();
-        }
+    if (!document.body.classList.contains('modal-lock')) return;
+
+    const flyoutElement = document.querySelector('.modal-content');
+    if (!flyoutElement.contains(event.target)) {
+        clearAddress();
     }
-});
+}, true);
 
 
 function abcIndex() {
@@ -827,25 +883,25 @@ function scrollBorder() {
 
 function daynight(selector) {
     const switches = document.querySelectorAll(selector);
-    let colorTheme = localStorage.getItem('colorTheme') || 'system';
+    let currentColorTheme = localStorage.getItem('colorTheme') || 'system';
 
     function changeState() {
-        localStorage.setItem('colorTheme', colorTheme);
-        document.documentElement.setAttribute('data-theme', colorTheme);
+        localStorage.setItem('colorTheme', currentColorTheme);
+        document.documentElement.setAttribute('data-theme', currentColorTheme);
     }
     changeState();
 
     switches.forEach(el => {
         el.addEventListener('click', () => {
-            switch (colorTheme) {
+            switch (currentColorTheme) {
                 case 'dark':
-                    colorTheme = 'light';
-                    break
+                    currentColorTheme = 'light';
+                    break;
                 case 'light':
-                    colorTheme = 'system';
-                    break
+                    currentColorTheme = 'system';
+                    break;
                 default:
-                    colorTheme = 'dark';
+                    currentColorTheme = 'dark';
             }
             changeState();
         });
@@ -854,25 +910,25 @@ function daynight(selector) {
 
 function chordsView(selector) {
     const switches = document.querySelectorAll(selector);
-    let chordsView = localStorage.getItem('chordsView') || 'line';
+    let currentChordsView = localStorage.getItem('chordsView') || 'line';
 
     function changeState() {
-        localStorage.setItem('chordsView', chordsView);
-        document.documentElement.setAttribute('data-chords-view', chordsView);
+        localStorage.setItem('chordsView', currentChordsView);
+        document.documentElement.setAttribute('data-chords-view', currentChordsView);
     }
     changeState();
 
     switches.forEach(el => {
         el.addEventListener('click', () => {
-            switch (chordsView) {
+            switch (currentChordsView) {
                 case 'block':
-                    chordsView = 'none';
-                    break
+                    currentChordsView = 'none';
+                    break;
                 case 'none':
-                    chordsView = 'line';
-                    break
+                    currentChordsView = 'line';
+                    break;
                 default:
-                    chordsView = 'block';
+                    currentChordsView = 'block';
             }
             changeState();
         });
@@ -961,4 +1017,47 @@ function isToday(someDate) {
     return someDate.getDate() === today.getDate() &&
         someDate.getMonth() === today.getMonth() &&
         someDate.getFullYear() === today.getFullYear()
+}
+
+function createStructuredData(chords) {
+    const tracks = [...chords].map(track => ({
+        "@type": "MusicComposition",
+        "name": track.getElementsByTagName('title')[0].textContent,
+        "author": {
+            "@type": "Person",
+            "name": "Михаил Щербаков"
+        },
+        "inLanguage": "ru",
+        "includedInAlbum": {
+            "@type": "MusicAlbum",
+            "name": track.getElementsByTagName('album')[0]?.textContent || "Unknown Album"
+        },
+        "dateCreated": track.getElementsByTagName('year')[0].textContent,
+        "url": `${window.location.origin}/scherbakov/songs/${track.id}`,
+        "description": "Текст и аккорды песни"
+    }));
+
+    const jsonLD = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": pageTitle,
+        "url": `${window.location.origin}/scherbakov`,
+        "about": {
+            "@type": "Dataset",
+            "name": "Аккорды к песням Михаила Щербакова",
+            "description": "Коллекция текстов и аккордов песен",
+            "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+            "keywords": ["Михаил Щербаков", "аккорды", "песни", "тексты", "музыка", "авторская песня", "гитара"],
+            "creator": {
+                "@type": "Person",
+                "name": "Михаил Щербаков"
+            },
+            "hasPart": tracks
+        }
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    document.head.appendChild(script);
+    script.textContent = JSON.stringify(jsonLD, null, 2);
 }
