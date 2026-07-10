@@ -6,6 +6,7 @@ let chordsByAlbumHtml = [];
 let sorting = localStorage.getItem('sorting') || '';
 let currTrackId;
 let linkWeightChangeTimeout;
+let searchInput;
 const pageTitle = 'Щербаккорды';
 
 const albumNames = {
@@ -39,20 +40,35 @@ const albumNames = {
 };
 
 daynight('.day-night-switch');
-getXmlMain('chords.xml');
-parseChords(chordsMain);
+init();
 
-const searchInput = document.querySelector(".search-input");
+async function init() {
+    await getXmlMain('chords.xml');
+    parseChords(chordsMain);
 
-sortToggle();
-showContents();
-keyListener();
+    searchInput = document.querySelector('.search-input');
+    searchInput.addEventListener('input', (event) => {
+        searchText(event.target.value.trim().toLowerCase());
+    });
 
-activateTrack();
-window.addEventListener('popstate', activateTrack);
+    makeButton(document.querySelector('.randomTrackBtn'), 'Случайная песня', randomTrack);
 
-// Add click event delegation for track links
-document.addEventListener('click', handleLinkClick);
+    sortToggle();
+    showContents();
+    keyListener();
+
+    activateTrack();
+    window.addEventListener('popstate', activateTrack);
+
+    swipeLeftRandom(".modal-content");
+
+    // Add click event delegation for track links
+    document.addEventListener('click', handleLinkClick);
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js');
+    }
+}
 
 function extractToken(url = window.location.href) {
     // Extract from hash first
@@ -101,13 +117,12 @@ function handleLinkClick(event) {
     // Let other links (anchors, external) work normally
 }
 
-function getXmlMain(file) {
-    const request = new XMLHttpRequest();
-    request.open('GET', file, false);
-    request.setRequestHeader('Content-Type', 'text/xml');
-    request.send();
+async function getXmlMain(file) {
+    const response = await fetch(file);
+    const xmlText = await response.text();
+    const xmlDoc = new DOMParser().parseFromString(xmlText, 'text/xml');
 
-    chordsMain = request.responseXML.getElementsByTagName('track');
+    chordsMain = xmlDoc.getElementsByTagName('track');
     document.querySelector('.chords_number').setAttribute('data-content', chordsMain.length);
 
     createStructuredData(chordsMain);
@@ -124,6 +139,7 @@ function getXmlMain(file) {
 }
 
 function goToAnchor(el) {
+    if (!el) return;
     clearAddress();
     el.scrollIntoView(true);
     el.classList.add('signal');
@@ -196,7 +212,7 @@ function parseChords(chords) {
     chordsByAbc.sort(function (a, b) {
         a = trimSpecial(a.textContent);
         b = trimSpecial(b.textContent);
-        return a.localeCompare(b, undefined, { numeric: true, sensivity: 'base' });
+        return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
     });
     chordsByAbc.forEach(itm => {
         let curChar = trimSpecial(itm.textContent).toUpperCase()[0];
@@ -209,15 +225,18 @@ function parseChords(chords) {
         if (prevCharAbc === curChar) {
             chordsByAbcHtml.push(`<li>${firstQuote(itm).outerHTML}</li>`);
         } else {
-            prevCharAbc = curChar;
             if (prevCharAbc !== '') {
                 chordsByAbcHtml.push('</ul></dd>');
             }
+            prevCharAbc = curChar;
             chordsByAbcHtml.push(`<dt id="abc-${curChar}"><a>${curChar}</a></dt>`);
             chordsByAbcHtml.push('<dd><ul>');
             chordsByAbcHtml.push(`<li>${firstQuote(itm).outerHTML}</li>`);
         }
     });
+    if (prevCharAbc !== '') {
+        chordsByAbcHtml.push('</ul></dd>');
+    }
     prevCharAbc = '';
 
     chordsByYear.sort(function (a, b) {
@@ -227,7 +246,7 @@ function parseChords(chords) {
 
         a = trimSpecial(a.textContent);
         b = trimSpecial(b.textContent);
-        return a.localeCompare(b, undefined, { numeric: true, sensivity: 'base' });
+        return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
     });
 
     chordsByYear.forEach(itm => {
@@ -235,51 +254,42 @@ function parseChords(chords) {
         if (prevCharYear === curChar) {
             chordsByYearHtml.push(`<li>${itm.outerHTML}</li>`);
         } else {
-            prevCharYear = curChar;
             if (prevCharYear !== '') {
                 chordsByYearHtml.push('</ul></dd>');
             }
+            prevCharYear = curChar;
             chordsByYearHtml.push(`<dt id="year-${curChar}">${curChar}</dt>`);
             chordsByYearHtml.push('<dd><ul>');
             chordsByYearHtml.push(`<li>${itm.outerHTML}</li>`);
         }
     });
+    if (prevCharYear !== '') {
+        chordsByYearHtml.push('</ul></dd>');
+    }
     prevCharYear = '';
 
+    // Albums ordered by number > year > alphabet, tracks by tracknum within an album
     chordsByAlbum.sort(function (a, b) {
-        const al = a.getAttribute('data-album');
-        const bl = b.getAttribute('data-album');
-        return al.localeCompare(bl, undefined, { numeric: true, sensivity: 'base' });
-    });
-    chordsByAlbum.sort(function (a, b) {
-        const aal = a.getAttribute('data-album-year');
-        const bal = b.getAttribute('data-album-year');
-        if (aal !== bal) return bal < aal ? 1 : -1;
-        return 1;
-    });
-    chordsByAlbum.sort(function (a, b) {
-        const aaln = a.getAttribute('data-album-albumnum');
-        const baln = b.getAttribute('data-album-albumnum');
-        return aaln.localeCompare(baln, undefined, { numeric: true, sensivity: 'base' });
-    });
-    chordsByAlbum.sort(function (a, b) {
-        const an = parseInt(a.getAttribute('data-album-tracknum'));
-        const bn = parseInt(b.getAttribute('data-album-tracknum'));
-        const al = a.getAttribute('data-album');
-        const bl = b.getAttribute('data-album');
-        if (al === bl) {
-            if (an === bn) {
-                return 1
-            } else {
-                return bn < an ? 1 : -1;
-            }
+        const aAlbum = a.getAttribute('data-album');
+        const bAlbum = b.getAttribute('data-album');
+        if (aAlbum === bAlbum) {
+            return parseInt(a.getAttribute('data-album-tracknum')) - parseInt(b.getAttribute('data-album-tracknum'));
         }
+
+        const aNum = a.getAttribute('data-album-albumnum');
+        const bNum = b.getAttribute('data-album-albumnum');
+        if (aNum !== bNum) return aNum.localeCompare(bNum, undefined, { numeric: true, sensitivity: 'base' });
+
+        const aYear = a.getAttribute('data-album-year');
+        const bYear = b.getAttribute('data-album-year');
+        if (aYear !== bYear) return aYear < bYear ? -1 : 1;
+
+        return aAlbum.localeCompare(bAlbum, undefined, { numeric: true, sensitivity: 'base' });
     });
 
     chordsByAlbum.forEach(itm => {
         const curChar = trimSpecial(itm.getAttribute('data-album'));
         const tracknum = itm.getAttribute('data-album-tracknum');
-        const albumnum = itm.getAttribute('data-album-tracknum');
         if (prevCharAlbum === curChar) {
             chordsByAlbumHtml.push('<li>');
             if (tracknum !== 'null') {
@@ -288,10 +298,10 @@ function parseChords(chords) {
             chordsByAlbumHtml.push(itm.outerHTML);
             chordsByAlbumHtml.push('</li>');
         } else {
-            prevCharAlbum = curChar;
             if (prevCharAlbum !== '') {
                 chordsByAlbumHtml.push('</ul></dd>');
             }
+            prevCharAlbum = curChar;
             const albumId = albumLat(curChar);
             const albumYear = itm.getAttribute('data-album-year');
 
@@ -318,6 +328,9 @@ function parseChords(chords) {
             chordsByAlbumHtml.push('</li>');
         }
     });
+    if (prevCharAlbum !== '') {
+        chordsByAlbumHtml.push('</ul></dd>');
+    }
     prevCharAlbum = '';
 
 
@@ -412,26 +425,30 @@ function sortToggle(arg) {
 function searchText(searchString = "") {
     const regConent = document.querySelector(".content_contents");
     const resultDiv = document.querySelector(".content_search");
-    const searchRegex = new RegExp(searchString, "gi");
     let results = [];
 
-    document.body.scrollTo(0, 0);
+    window.scrollTo(0, 0);
 
     if (searchString.length < 2) {
-        searchString = '';
-        results = [];
         resultDiv.style.display = "none";
         regConent.style.display = "block";
         document.body.classList.remove('searching');
         return;
     }
 
+    // Escape regex special characters in user input.
+    // The matching regex must not carry the "g" flag: test() would then
+    // track lastIndex across calls and skip matches.
+    const escapedString = searchString.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const matchRegex = new RegExp(escapedString, "i");
+    const searchRegex = new RegExp(escapedString, "gi");
+
     for (let i = 0; i < chordsMain.length; i++) {
         const title = chordsMain[i].querySelector('title').textContent;
         const text = chordsMain[i].querySelector('text').textContent;
         const lines = text.split(/\r?\n/).map(line => line.replace(/[\s]*\u200C.*/g, ''));
-        const matchingLines = lines.filter(line => searchRegex.test(line));
-        const matchingTitle = searchRegex.test(title);
+        const matchingLines = lines.filter(line => matchRegex.test(line));
+        const matchingTitle = matchRegex.test(title);
         if (matchingLines.length > 0 || matchingTitle) {
             const result = {
                 id: chordsMain[i].getAttribute("id"),
@@ -487,11 +504,6 @@ function searchText(searchString = "") {
     }
 }
 
-
-searchInput.addEventListener("input", (event) => {
-    const searchString = event.target.value.trim().toLowerCase();
-    searchText(searchString);
-});
 
 function clearSearch() {
     searchInput.value = "";
@@ -592,6 +604,7 @@ function activateTrack() {
 
     modalContent.innerHTML = currTrack;
     modalContent.innerHTML += '<div class="chords-view-switch"></div>';
+    modalContent.innerHTML += '<div class="day-night-switch"></div>';
     
     modal('open');
 
@@ -599,15 +612,18 @@ function activateTrack() {
     document.title = `${title} — ${pageTitle}`;
 
     chordsView(".chords-view-switch");
+    daynight(".modal .day-night-switch");
     
     if (typeof linkWeightChangeTimeout !== 'undefined') {
         clearTimeout(linkWeightChangeTimeout);
     }
-    linkWeightChangeTimeout = setTimeout(linksWeightChange(`#${token}`, 'linksWeight'), 20000);
+    linkWeightChangeTimeout = setTimeout(() => linksWeightChange(`./songs/${token}`, 'linksWeight'), 20000);
 }
 
 
 function randomTrack() {
+    if (!chordsMain || chordsMain.length < 2) return;
+
     let rndId;
     do {
         rndId = chordsMain[~~(Math.random() * chordsMain.length)].id;
@@ -616,7 +632,6 @@ function randomTrack() {
     history.pushState(null, '', `./songs/${rndId}`);
     activateTrack();
 };
-document.querySelector('.randomTrackBtn').addEventListener('click', randomTrack);
 
 
 function clearAddress() {
@@ -631,19 +646,26 @@ function clearAddress() {
 function modal(arg) {
     const modal = document.querySelector('.modal');
     if (!(arg || modal)) {
-        document.body.insertAdjacentHTML('beforeend', '<div class="modal"><div class="modal-content" tabindex="1"></div></div>');
+        document.body.insertAdjacentHTML('beforeend', '<div class="modal"><div class="modal-content" role="dialog" aria-modal="true" tabindex="-1"></div></div>');
+        document.body.insertAdjacentHTML('beforeend', '<div class="random-indicator" aria-hidden="true" data-nosnippet="data-nosnippet">Случайная песня <span>#?</span></div>');
     }
 
     switch (arg) {
         case 'open':
             modal.style.display = 'block';
             document.body.classList.add('modal-lock');
+            document.querySelectorAll('header, main, footer').forEach(el => {
+                el.setAttribute('data-nosnippet', 'data-nosnippet')
+            });
             document.querySelector('.modal-content').focus();
             document.querySelector('.modal').scrollTo(0, 0);
             scrollBorder();
             break;
         case 'close':
             document.body.classList.remove('modal-lock');
+            document.querySelectorAll('header, main, footer').forEach(el => {
+                el.removeAttribute('data-nosnippet')
+            });
             modal.style.display = 'none';
             break;
         default:
@@ -691,41 +713,39 @@ function abcIndex() {
         'Щ': 'w',
         'Э': 'eh',
         'Ю': 'ju',
-        'Я': 'ja'
+        'Я': 'ja',
+        'Ё': 'jo'
     };
 
-    document.querySelector('.abc_index ul').innerHTML = '';
+    const indexUl = document.querySelector('.abc_index ul');
+    indexUl.innerHTML = '';
 
-    if (sorting === 'abc') {
-        document.querySelectorAll('dl.content_contents dt a').forEach(a => {
+    if (sorting !== 'abc') return;
 
-            const l = a.textContent.toUpperCase();
-            let nameVal = '';
-            if (l in aabb) nameVal = aabb[l];
-            else if (/^[a-zA-Z]/.test(l)) nameVal = 'a…z';
-            else if (/^[0-9]/.test(l)) nameVal = '0…9';
-            else nameVal = '';
+    document.querySelectorAll('dl.content_contents dt a').forEach(a => {
+        const l = a.textContent.toUpperCase();
+        let nameVal = '';
+        if (l in aabb) nameVal = aabb[l];
+        else if (/^[a-zA-Z]/.test(l)) nameVal = 'a…z';
+        else if (/^[0-9]/.test(l)) nameVal = '0…9';
 
-            a.setAttribute('name', nameVal);
-            a.setAttribute('href', '#top');
-
-            document.querySelector('.abc_index ul').insertAdjacentHTML('beforeend', `<li><a href="#${a.getAttribute('name')}">${l}</a></li>`);
-            document.querySelectorAll('.abc_index ul a').forEach(a => {
-                const link = a.getAttribute('href');
-                a.addEventListener('click', event => {
-                    event.preventDefault();
-                    let target = document.querySelector(`a[name="${link.substring(1)}"]`);
-                    goToAnchor(target);
-                });
-            });
-            document.querySelectorAll('dt a').forEach(a => {
-                a.addEventListener('click', event => {
-                    event.preventDefault();
-                    document.body.scrollTo(0, 0);
-                });
-            });
+        a.setAttribute('name', nameVal);
+        a.setAttribute('href', '#top');
+        a.addEventListener('click', event => {
+            event.preventDefault();
+            window.scrollTo(0, 0);
         });
-    };
+
+        indexUl.insertAdjacentHTML('beforeend', `<li><a href="#${nameVal}">${l}</a></li>`);
+    });
+
+    indexUl.querySelectorAll('a').forEach(a => {
+        const link = a.getAttribute('href');
+        a.addEventListener('click', event => {
+            event.preventDefault();
+            goToAnchor(document.querySelector(`a[name="${link.substring(1)}"]`));
+        });
+    });
 };
 
 
@@ -778,9 +798,9 @@ function keyListener() {
         const k = a[e.keyCode];
         const targetElement = e.target;
         // 7? key
-        if (e.keyCode === 55 && !(targetElement.matches('[contenteditable], input, textarea') && !(e.ctrlKey || e.altKey || e.metaKey))) randomTrack();
-        // /? key
-        if (e.keyCode === 166 && document.activeElement !== searchInput && !(e.ctrlKey || e.altKey || e.metaKey)) {
+        if ((e.keyCode === 55 || e.key === '7') && !(targetElement.matches('[contenteditable], input, textarea') && !(e.ctrlKey || e.altKey || e.metaKey))) randomTrack();
+        // /? key (191 = physical slash key regardless of layout)
+        if ((e.keyCode === 166 || e.keyCode === 191 || e.key === '/') && document.activeElement !== searchInput && !(e.ctrlKey || e.altKey || e.metaKey)) {
             clearAddress();
             searchInput.focus();
             e.preventDefault();
@@ -883,6 +903,7 @@ function scrollBorder() {
 
 function daynight(selector) {
     const switches = document.querySelectorAll(selector);
+    const states = ['system', 'dark', 'light'];
     let currentColorTheme = localStorage.getItem('colorTheme') || 'system';
 
     function changeState() {
@@ -892,25 +913,37 @@ function daynight(selector) {
     changeState();
 
     switches.forEach(el => {
-        el.addEventListener('click', () => {
-            switch (currentColorTheme) {
-                case 'dark':
-                    currentColorTheme = 'light';
-                    break;
-                case 'light':
-                    currentColorTheme = 'system';
-                    break;
-                default:
-                    currentColorTheme = 'dark';
-            }
+        makeButton(el, 'Переключить тему', () => {
+            let idx = states.indexOf(currentColorTheme);
+            currentColorTheme = states[(idx + 1) % states.length];
             changeState();
         });
     });
 }
 
+// Button semantics + keyboard activation for a non-interactive element
+function makeButton(el, label, action) {
+    el.setAttribute('role', 'button');
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('aria-label', label);
+    el.addEventListener('click', action);
+    el.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            action();
+        }
+    });
+}
+
 function chordsView(selector) {
     const switches = document.querySelectorAll(selector);
-    let currentChordsView = localStorage.getItem('chordsView') || 'line';
+    const states = ['line', 'block', 'none'];
+    let currentChordsView;
+    if (localStorage.getItem('chordsView')) {
+        currentChordsView = localStorage.getItem('chordsView');
+    } else {
+        currentChordsView = window.innerWidth > 730 ? 'line' : 'block';
+    }
 
     function changeState() {
         localStorage.setItem('chordsView', currentChordsView);
@@ -919,20 +952,131 @@ function chordsView(selector) {
     changeState();
 
     switches.forEach(el => {
-        el.addEventListener('click', () => {
-            switch (currentChordsView) {
-                case 'block':
-                    currentChordsView = 'none';
-                    break;
-                case 'none':
-                    currentChordsView = 'line';
-                    break;
-                default:
-                    currentChordsView = 'block';
-            }
+        makeButton(el, 'Расположение аккордов', () => {
+            let idx = states.indexOf(currentChordsView);
+            currentChordsView = states[(idx + 1) % states.length];
             changeState();
         });
     });
+}
+
+/**
+ * Adds left swipe detection to an element that triggers randomTrack()
+ * @param {string} selector - CSS selector for the target element
+ * @param {Object} options - Configuration options
+ * @param {number} options.threshold - Minimum swipe distance
+ * @param {number} options.maxVerticalMovement - Max vertical movement allowed
+ * @param {number} options.scrollThreshold - Max horizontal scroll before disabling
+ */
+function swipeLeftRandom(selector, options = {}) {
+    const {
+        threshold = 100,
+        maxVerticalMovement = 100,
+        scrollThreshold = 30
+    } = options;
+
+    const target = document.querySelector(selector);
+    if (!target) return;
+    if (typeof randomTrack !== 'function') return;
+
+    let touchData = null;
+
+    function handleTouchStart(e) {
+        // Early exit conditions
+        if (window.visualViewport?.scale !== 1) return;
+        if (target.scrollWidth - window.innerWidth > scrollThreshold) return;
+        if (e.touches.length > 1) return;
+
+        const touch = e.touches[0];
+        touchData = {
+            startX: touch.clientX,
+            startY: touch.clientY,
+            currentX: touch.clientX,
+            currentY: touch.clientY,
+            moved: false,
+            prevented: false
+        };
+    }
+
+    function handleTouchMove(e) {
+        if (!touchData) return;
+
+        const touch = e.touches[0];
+        touchData.currentX = touch.clientX;
+        touchData.currentY = touch.clientY;
+
+        const dx = touchData.currentX - touchData.startX;
+        const dy = touchData.currentY - touchData.startY;
+        const absX = Math.abs(dx);
+        const absY = Math.abs(dy);
+
+        // Mark as moved if we've exceeded the initial threshold
+        if (!touchData.moved && (absX > 10 || absY > 10)) {
+            touchData.moved = true;
+        }
+
+        // Update CSS custom property for left swipes
+        if (dx < 0 && absX > absY) {
+            document.body.style.setProperty('--random-progress', absX);
+
+            if (absX > threshold) {
+                document.body.classList.add('random-ready');
+            } else {
+                document.body.classList.remove('random-ready');
+            }
+        }
+
+        // This is likely a left swipe, prevent default scrolling
+        if (touchData.moved && !touchData.prevented) {
+            if (absX > absY && dx < 0) {
+                e.preventDefault();
+                touchData.prevented = true;
+            }
+        }
+    }
+
+    function handleTouchEnd(e) {
+        if (!touchData) return;
+
+        const dx = touchData.currentX - touchData.startX;
+        const dy = touchData.currentY - touchData.startY;
+        const absX = Math.abs(dx);
+        const absY = Math.abs(dy);
+
+        // Check if this qualifies as a left swipe
+        if (absX >= threshold && 
+            absX > absY && 
+            dx < 0 && 
+            absY <= maxVerticalMovement) {
+            try {
+                randomTrack();
+            } catch (error) {
+                console.error('Error calling randomTrack:', error);
+            }
+        }
+
+        // Clean up CSS property and touch data
+        document.body.style.removeProperty('--random-progress');
+        touchData = null;
+    }
+
+    function handleTouchCancel(e) {
+        document.body.style.removeProperty('--random-progress');
+        touchData = null;
+    }
+
+    target.addEventListener('touchstart', handleTouchStart, { passive: true });
+    target.addEventListener('touchmove', handleTouchMove, { passive: false });
+    target.addEventListener('touchend', handleTouchEnd, { passive: true });
+    target.addEventListener('touchcancel', handleTouchCancel, { passive: true });
+
+    return function cleanup() {
+        target.removeEventListener('touchstart', handleTouchStart);
+        target.removeEventListener('touchmove', handleTouchMove);
+        target.removeEventListener('touchend', handleTouchEnd);
+        target.removeEventListener('touchcancel', handleTouchCancel);
+        document.body.classList.remove('random-ready');
+    };
 }
 
 function linksWeightInit(selector, locStorItem) {
@@ -942,6 +1086,9 @@ function linksWeightInit(selector, locStorItem) {
         list: [],
     };
     const dateCurr = new Date().toDateString();
+
+    const currentIds = new Set([...links].map(el => el.getAttribute('href')));
+    linksWeight.list = linksWeight.list.filter(track => currentIds.has(track.id));
 
     links.forEach(el => {
         const trackLink = el.getAttribute('href');
@@ -977,6 +1124,9 @@ function linksWeightChange(id, locStorItem) {
         return false;
     }
     const track = linksWeight.list.find(e => e.id === id);
+    if (!track) {
+        return false;
+    }
 
     if (track.changesToday < 5) {
         if (!isToday(new Date(track.dateChanged))) {
@@ -1059,5 +1209,5 @@ function createStructuredData(chords) {
     const script = document.createElement('script');
     script.type = 'application/ld+json';
     document.head.appendChild(script);
-    script.textContent = JSON.stringify(jsonLD, null, 2);
+    script.textContent = JSON.stringify(jsonLD);
 }

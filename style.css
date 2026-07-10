@@ -91,6 +91,7 @@
 html {
   font-size: 12px;
   scroll-padding: 20px;
+  overscroll-behavior-x: none;
 }
 
 body {
@@ -150,8 +151,8 @@ p {
 .page_title {
   position: relative;
   margin: 5px 0 11px;
-  font-size: 24px;
-  line-height: 32px;
+  font-size: 2rem;
+  line-height: calc(4em / 3);
   font-variation-settings: "wght" 500;
 }
 
@@ -186,8 +187,8 @@ body:not(.searching) .sorting_toggler span.active {
   border: 1px solid var(--gray);
   background: var(--bg);
   color: var(--text);
-  border-radius: 4px;
   font-size: 1.25rem;
+  border-radius: .25em;
   padding: 0.2em 0.25em 0.1em;
   vertical-align: baseline;
   font-family: inherit;
@@ -246,7 +247,7 @@ span.highlight {
   background-color: #fada6280;
 }
 
-.ul.content_search {
+ul.content_search {
   display: none;
   padding: 0;
   margin-top: 4em;
@@ -386,6 +387,11 @@ dl.content_contents li {
   cursor: pointer;
   color: var(--gray);
   background-color: currentColor;
+
+  .modal & {
+    right: 20px;
+    top: 20px;
+  }
 }
 
 :root[data-theme="dark"] .day-night-switch {
@@ -405,6 +411,10 @@ body.modal-lock {
   overflow: hidden;
 }
 
+body.modal-lock .random-indicator {
+  display: block;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -412,6 +422,7 @@ body.modal-lock {
   background-color: rgba(var(--bg-rgb), 0.65);
   overflow: auto;
   backdrop-filter: grayscale(1) contrast(0.25);
+  -webkit-backdrop-filter: grayscale(1) contrast(0.25);
 }
 
 .modal-content {
@@ -421,10 +432,18 @@ body.modal-lock {
   max-width: 80em;
   margin: 4em auto 6em;
   padding: clamp(2rem, 4dvw, 4em) clamp(1rem, 6dvw, 6em) clamp(3rem, 6dvw, 6em) clamp(2rem, 5dvw, 5em);
-  font-size: 11px;
+  font-size: .9em;
   background: var(--bg);
   outline: none;
   user-select: auto;
+  
+  opacity: clamp(.5, calc(1 - (var(--random-progress) * .005)), 1);
+  /* transform: translateX(clamp(-25px, calc(var(--random-progress) * -.25px), 0px)); */
+  transform: translateX(min(calc(var(--random-progress) * -.25px), 0px));
+}
+
+.chords_header {
+  padding-right: max(10px, calc(32px - 2vw));
 }
 
 .chords_text {
@@ -445,10 +464,50 @@ body.modal-lock {
   color: var(--chords);
 }
 
+@property --random-progress {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.random-indicator {
+  display: none;
+  position: fixed;
+  top: 20px;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  padding: calc(20px + 3rem) 10px 0;
+  background: var(--bg);
+  writing-mode: sideways-lr;
+  text-align: right;
+  font-size: 1.25rem;
+  line-height: 2rem;
+  color: var(--gray);
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+
+  opacity: clamp(.5, calc(.5 + var(--random-progress) * .005), 1);
+  transform: translateX(clamp(50px, calc(150px - (var(--random-progress) * 1px)), 150px));
+
+  span {
+    position: absolute;
+    writing-mode: initial;
+    font-size: 2rem;
+    margin-bottom: .5em;
+    font-variation-settings: "wght" 200;
+  }
+
+  .random-ready & {
+    color: var(--link-hover);
+  }
+}
+
 .chords-view-switch {
   position: absolute;
   right: 20px;
-  top: 20px;
+  top: 50px;
   width: 20px;
   height: 20px;
   mask-image: url(./chords-view-icon.svg);
@@ -590,6 +649,7 @@ body.modal-lock > :not(.modal) {
 
 @media screen and (max-width: 730px) {
   body {
+    -webkit-text-size-adjust: none;
   }
 
   dd {
@@ -618,7 +678,8 @@ body.modal-lock > :not(.modal) {
   .search-input,
   .abc_index,
   .footer,
-  .sorting_toggler :not(.active) {
+  .sorting_toggler :not(.active),
+  .random-indicator {
     display: none;
   }
 
