@@ -1,13 +1,29 @@
+// Page flavour: 'main' index.html mode, or others.html («Чужая музыка»)
+// data-mode/data-source on <body> — same engine, another collection.
+const pageConfig = {
+    source: document.body.dataset.source || 'chords.xml',
+    mode: document.body.dataset.mode || 'main',
+};
+
 const cont = document.querySelector('.content_contents');
 let chordsMain;
 let chordsByAbcHtml = [];
 let chordsByYearHtml = [];
 let chordsByAlbumHtml = [];
-let sorting = localStorage.getItem('sorting') || '';
+let chordsByAuthorHtml = [];
+let sorting = pageConfig.mode === 'others' ? 'author' : (localStorage.getItem('sorting') || '');
 let currTrackId;
 let linkWeightChangeTimeout;
 let searchInput;
-const pageTitle = 'Щербаккорды';
+const pageTitle = pageConfig.mode === 'others' ? 'Чужая музыка' : 'Щербаккорды';
+const linksWeightKey = pageConfig.mode === 'others' ? 'linksWeightOthers' : 'linksWeight';
+
+// Others-page songs live in the hash: no server rewrites, no indexing to care about.
+// The page name must be explicit — a bare #hash would resolve against <base>
+// and silently jump to the main page.
+function trackHref(id) {
+    return pageConfig.mode === 'others' ? `others.html#${id}` : `./songs/${id}`;
+}
 
 const albumNames = {
     'monologi': 'Дорожный календарь, или Монологи Cтранствующего Рыцаря',
@@ -43,7 +59,7 @@ daynight('.day-night-switch');
 init();
 
 async function init() {
-    await getXmlMain('chords.xml');
+    await getXmlMain(pageConfig.source);
     parseChords(chordsMain);
 
     searchInput = document.querySelector('.search-input');
@@ -53,7 +69,7 @@ async function init() {
 
     makeButton(document.querySelector('.randomTrackBtn'), 'Случайная песня', randomTrack);
 
-    sortToggle();
+    if (pageConfig.mode !== 'others') sortToggle();
     showContents();
     keyListener();
 
@@ -98,6 +114,17 @@ function handleLinkClick(event) {
         }
         return;
     }
+
+    // Others page: track links are hash-based
+    if (pageConfig.mode === 'others' && href.startsWith('others.html#')) {
+        const trackId = href.split('#').pop();
+        if (chordsMain[trackId]) {
+            event.preventDefault();
+            history.pushState(null, '', href);
+            activateTrack();
+        }
+        return;
+    }
     
     // Handle album/year links when modal is open
     if (document.body.classList.contains('modal-lock') && href.startsWith('#')) {
@@ -125,7 +152,7 @@ async function getXmlMain(file) {
     chordsMain = xmlDoc.getElementsByTagName('track');
     document.querySelector('.chords_number').setAttribute('data-content', chordsMain.length);
 
-    createStructuredData(chordsMain);
+    if (pageConfig.mode !== 'others') createStructuredData(chordsMain);
 
     const trackIds = new Set();
     [...chordsMain].forEach(track => {
@@ -164,9 +191,11 @@ function parseChords(chords) {
     let chordsByAbc = [];
     let chordsByYear = [];
     let chordsByAlbum = [];
+    let chordsByAuthor = [];
     let prevCharAbc = '';
     let prevCharYear = '';
     let prevCharAlbum = '';
+    let prevCharAuthor = '';
 
     for (let el of chords) {
         let textFirstLine = el.getElementsByTagName('title')[1]?.textContent || '';
@@ -184,8 +213,8 @@ function parseChords(chords) {
             chordsByAbc.push(link);
         }
 
-        const year = el.getElementsByTagName('year')[0].textContent;
-        year.match(/\d{4}/g).forEach(itm => {
+        const year = el.getElementsByTagName('year')[0]?.textContent || '';
+        (year.match(/\d{4}/g) || []).forEach(itm => {
             const sortYear = itm;
             let link = document.createElement('a');
             link.setAttribute('href', `./songs/${el.id}`);
@@ -194,6 +223,14 @@ function parseChords(chords) {
             link.innerHTML = italization(titles[0].textContent);
             chordsByYear.push(link);
         });
+
+        const author = el.getElementsByTagName('author')[0]?.textContent || '—';
+        let authorLink = document.createElement('a');
+        authorLink.setAttribute('href', trackHref(el.id));
+        authorLink.setAttribute('data-author', author);
+        authorLink.setAttribute('title', textFirstLine);
+        authorLink.innerHTML = italization(titles[0].textContent);
+        chordsByAuthor.push(authorLink);
 
         const albums = el.getElementsByTagName('album');
         for (let i = 0; i < albums.length; i++) {
@@ -333,6 +370,37 @@ function parseChords(chords) {
     }
     prevCharAlbum = '';
 
+    chordsByAuthor.sort(function (a, b) {
+        const aAuthor = a.getAttribute('data-author');
+        const bAuthor = b.getAttribute('data-author');
+        if (aAuthor !== bAuthor) return aAuthor.localeCompare(bAuthor, undefined, { sensitivity: 'base' });
+        return trimSpecial(a.textContent).localeCompare(trimSpecial(b.textContent), undefined, { numeric: true, sensitivity: 'base' });
+    });
+    chordsByAuthor.forEach(itm => {
+        const curChar = itm.getAttribute('data-author');
+        if (prevCharAuthor === curChar) {
+            chordsByAuthorHtml.push(`<li>${firstQuote(itm).outerHTML}</li>`);
+        } else {
+            if (prevCharAuthor !== '') {
+                chordsByAuthorHtml.push('</ul></dd>');
+            }
+            prevCharAuthor = curChar;
+            chordsByAuthorHtml.push(`<dt>${curChar}</dt>`);
+            chordsByAuthorHtml.push('<dd><ul>');
+            chordsByAuthorHtml.push(`<li>${firstQuote(itm).outerHTML}</li>`);
+        }
+    });
+    if (prevCharAuthor !== '') {
+        chordsByAuthorHtml.push('</ul></dd>');
+    }
+    prevCharAuthor = '';
+
+    if (pageConfig.mode === 'others') {
+        document.querySelector('.page_title').insertAdjacentHTML('beforeend',
+            '<span class="randomTrackBtn interpunctum" title="Случайная песня" data-content=" #?"></span>'
+            + '<input type="search" class="search-input" placeholder="Искать">');
+        return;
+    }
 
     document.querySelector('.page_title').insertAdjacentHTML('beforeend', '<span class="sorting_toggler">'
         + 'по<span class="sortToggle-abc active"> алфавиту<span class="hidden interpunctum"> /</span></span>'
@@ -374,6 +442,9 @@ function showContents() {
         case 'album':
             aArray = chordsByAlbumHtml.join('');
             break;
+        case 'author':
+            aArray = chordsByAuthorHtml.join('');
+            break;
         default:
             aArray = chordsByAbcHtml.join('');
     }
@@ -389,7 +460,7 @@ function showContents() {
 
     cont.innerHTML = aArray;
     abcIndex();
-    linksWeightInit('dd a', 'linksWeight');
+    linksWeightInit('dd a', linksWeightKey);
 }
 
 
@@ -454,7 +525,7 @@ function searchText(searchString = "") {
                 id: chordsMain[i].getAttribute("id"),
                 title: title,
                 lines: matchingLines,
-                year: chordsMain[i].querySelector('year').textContent.match(/\d{4}/g)[0]
+                year: chordsMain[i].querySelector('year')?.textContent.match(/\d{4}/g)?.[0] || ''
             };
             results.push(result);
         }
@@ -485,7 +556,7 @@ function searchText(searchString = "") {
 
         let resultHtml = "";
         for (let i = 0; i < results.length; i++) {
-            resultHtml += `<li><a href="./songs/${results[i].id}">${italization(results[i].title.replace(searchRegex, '<span class="highlight">$&</span>').replace(/^[«]/, '<span style="margin-left:-.6em;">«</span>'))}</a>`;
+            resultHtml += `<li><a href="${trackHref(results[i].id)}">${italization(results[i].title.replace(searchRegex, '<span class="highlight">$&</span>').replace(/^[«]/, '<span style="margin-left:-.6em;">«</span>'))}</a>`;
             resultHtml += "<ul>";
             for (let j = 0; j < results[i].lines.length; j++) {
                 const line = results[i].lines[j].replace(searchRegex, '<span class="highlight">$&</span>');
@@ -551,15 +622,17 @@ function activateTrack() {
     const modalContent = document.querySelector('.modal-content');
     const token = extractToken();
 
-    if (token.startsWith('album-')) {
-        clearAddress();
-        goToAlbum(token.substring(6));
-        return false;
-    }
-    if (token.startsWith('year-')) {
-        clearAddress();
-        goToYear(token.substring(5));
-        return false;
+    if (pageConfig.mode !== 'others') {
+        if (token.startsWith('album-')) {
+            clearAddress();
+            goToAlbum(token.substring(6));
+            return false;
+        }
+        if (token.startsWith('year-')) {
+            clearAddress();
+            goToYear(token.substring(5));
+            return false;
+        }
     }
 
     if (chordsMain[token]) currTrackId = token;
@@ -578,11 +651,23 @@ function activateTrack() {
     const subtitle = currChords.querySelector('subtitle')?.textContent || '';
     const trackSubtitle = subtitle ? `<div class="subtitle">${subtitle}</div>` : '';
 
-    const album = Array.from(currChords.querySelectorAll('album')).map(a => `<li class="album"><a href="#album-${albumLat(a.textContent)}">${a.textContent}</a></li>`).join(', ');
+    // Others page has no album/year views to jump to: author + albums render as plain text
+    let album;
+    if (pageConfig.mode === 'others') {
+        const author = currChords.querySelector('author')?.textContent || '';
+        album = `<span class="">${author}</span> / ` + [...Array.from(currChords.querySelectorAll('album')).map(a => a.textContent)]
+            .filter(Boolean).map(itm => `<li class="album"><span>${itm}</span></li>`).join(', ');
+    } else {
+        album = Array.from(currChords.querySelectorAll('album')).map(a => `<li class="album"><a href="#album-${albumLat(a.textContent)}">${a.textContent}</a></li>`).join(', ');
+    }
     const trackAlbum = album ? `<ul class="albumlist">${album}</ul>` : '';
 
     const year = currChords.querySelector('year')?.textContent || '';
-    const trackYear = year ? ('<div class="year">' + year.replace(/\b(\d{4})\b/g, '<a href="#year-$1">$1</a>') + '</div>') : '';
+    const trackYear = year
+        ? (pageConfig.mode === 'others'
+            ? `<div class="year">${year}</div>`
+            : '<div class="year">' + year.replace(/\b(\d{4})\b/g, '<a href="#year-$1">$1</a>') + '</div>')
+        : '';
 
     let text = currChords.querySelector('text').textContent;
     let lines = text.split(/\r?\n/).map(line => line.split('\u200c'));
@@ -617,7 +702,7 @@ function activateTrack() {
     if (typeof linkWeightChangeTimeout !== 'undefined') {
         clearTimeout(linkWeightChangeTimeout);
     }
-    linkWeightChangeTimeout = setTimeout(() => linksWeightChange(`./songs/${token}`, 'linksWeight'), 20000);
+    linkWeightChangeTimeout = setTimeout(() => linksWeightChange(trackHref(token), linksWeightKey), 20000);
 }
 
 
@@ -629,7 +714,7 @@ function randomTrack() {
         rndId = chordsMain[~~(Math.random() * chordsMain.length)].id;
     } while (rndId === currTrackId);
 
-    history.pushState(null, '', `./songs/${rndId}`);
+    history.pushState(null, '', trackHref(rndId));
     activateTrack();
 };
 
@@ -718,6 +803,7 @@ function abcIndex() {
     };
 
     const indexUl = document.querySelector('.abc_index ul');
+    if (!indexUl) return;
     indexUl.innerHTML = '';
 
     if (sorting !== 'abc') return;
@@ -839,16 +925,34 @@ function keyListener() {
     });
 }
 
+// Called on every modal('open'), but the listener must be attached only once:
+// one stale closure per visited song used to fire on the jump-to-top of a song
+// swap, each with an old scrollPos, flashing the border at full opacity.
+let scrollBorderAttached = false;
+let resetScrollBorder = () => {};
+
 function scrollBorder() {
+    if (scrollBorderAttached) {
+        resetScrollBorder();
+        return;
+    }
+    scrollBorderAttached = true;
+
     const elName = 'scroll-border';
     const container = document.querySelector('.modal');
     const fadeTimerTime = 500;
+    const minDelta = 1;          // ignore only the programmatic scroll-to-top settling,
+                                 // never a genuine slow scroll of a few px per event
 
-    let scrollPos = 0;
+    let scrollPos = container.scrollTop;
     let fadingInterval;
     let fadeStartTimeout;
 
-    const elParent = getScrollParent(document.activeElement);
+    function removeBorder() {
+        clearInterval(fadingInterval);
+        clearTimeout(fadeStartTimeout);
+        document.getElementById(elName)?.remove();
+    }
 
     function createBorder() {
         if (!document.getElementById(elName)) {
@@ -861,7 +965,12 @@ function scrollBorder() {
 
     function updateBorderOpacity() {
         const borderEl = document.getElementById(elName);
-        const scrollDiff = Math.abs(scrollPos - elParent.scrollTop);
+        if (!borderEl) return;
+        // Deliberately keyed to scroll SPEED, not to the distance from the marker:
+        // scrolling slowly means the reader is watching the screen and following the
+        // lines, so there is nothing to recover and no reason to distract them. Only a
+        // fast, imprecise fling loses your place. Don't "fix" this to distance-based.
+        const scrollDiff = Math.abs(scrollPos - container.scrollTop);
         const opacity = Math.min(1, Math.log(scrollDiff + 1) / Math.log(800)); // Adjust the denominator as needed
         borderEl.style.opacity = opacity;
     }
@@ -869,9 +978,10 @@ function scrollBorder() {
     function fadeOutBorder() {
         const borderEl = document.getElementById(elName);
         if (borderEl == null) return;
+        clearInterval(fadingInterval);
         fadingInterval = setInterval(() => {
-            let opacity = parseFloat(borderEl.style.opacity);
-            opacity -= 0.05;
+            const current = parseFloat(borderEl.style.opacity);
+            const opacity = (Number.isFinite(current) ? current : 0) - 0.05;
             borderEl.style.opacity = opacity;
             if (opacity <= 0) {
                 clearInterval(fadingInterval);
@@ -880,24 +990,29 @@ function scrollBorder() {
         }, fadeTimerTime / 20);
     }
 
-    elParent.addEventListener('scroll', () => {
+    container.addEventListener('scroll', () => {
+        if (Math.abs(container.scrollTop - scrollPos) < minDelta) {
+            scrollPos = container.scrollTop;
+            return;
+        }
+        // Scrolling again must call off a fade that already started — otherwise the
+        // interval keeps eating the opacity we just set, and once it removes the
+        // element the next scroll re-anchors the border at the wrong place.
+        clearInterval(fadingInterval);
+        clearTimeout(fadeStartTimeout);
         createBorder();
         updateBorderOpacity();
-        clearTimeout(fadeStartTimeout);
         fadeStartTimeout = setTimeout(fadeOutBorder, 700);
-        scrollPos = elParent.scrollTop;
+        scrollPos = container.scrollTop;
     });
 
-    function getScrollParent(node) {
-        if (node == null) {
-            return null;
-        }
-        if (node.scrollHeight > node.clientHeight) {
-            return node;
-        } else {
-            return getScrollParent(node.parentNode);
-        }
-    }
+    // A new song resets the scroll to the top: that is not a gesture, so it must
+    // not paint a border — drop any leftover one and re-baseline.
+    resetScrollBorder = () => {
+        removeBorder();
+        scrollPos = container.scrollTop;
+    };
+    resetScrollBorder();
 }
 
 
@@ -972,7 +1087,8 @@ function swipeLeftRandom(selector, options = {}) {
     const {
         threshold = 100,
         maxVerticalMovement = 100,
-        scrollThreshold = 30
+        directionLock = 8,      // px of movement before the gesture picks an axis
+        releaseTime = 300       // must be ≥ the .random-releasing transition in style.css
     } = options;
 
     const target = document.querySelector(selector);
@@ -981,88 +1097,137 @@ function swipeLeftRandom(selector, options = {}) {
 
     let touchData = null;
 
+    const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // The live indicator must promise exactly what touchend will do — otherwise the
+    // gesture lights up "ready" and then silently does nothing.
+    function qualifies(dx, dy) {
+        return dx <= -threshold && Math.abs(dx) > Math.abs(dy) && Math.abs(dy) <= maxVerticalMovement;
+    }
+
+    // Wide chord sheets (inline-chords view) scroll horizontally, and that scrolling
+    // belongs to the content: only claim the swipe once there's nothing left to reveal.
+    function atScrollEnd() {
+        const scroller = target.closest('.modal') || target;
+        const max = scroller.scrollWidth - scroller.clientWidth;
+        return max <= 0 || scroller.scrollLeft >= max - 1;
+    }
+
+    function clearProgress() {
+        document.body.style.removeProperty('--random-progress');
+        document.body.classList.remove('random-ready');
+    }
+
+    // Aborted swipe: ease back to rest instead of teleporting.
+    function springBack() {
+        document.body.classList.remove('random-ready');
+        if (reduceMotion()) {
+            clearProgress();
+            return;
+        }
+        document.body.classList.add('random-releasing');
+        document.body.style.setProperty('--random-progress', 0);
+        window.setTimeout(() => {
+            document.body.classList.remove('random-releasing');
+            document.body.style.removeProperty('--random-progress');
+        }, releaseTime);
+    }
+
+    // Completed swipe: carry the card out to the left, swap the song, bring the new
+    // one in from the right. The gesture owns this — activateTrack() stays unaware.
+    function fire() {
+        if (reduceMotion() || typeof target.animate !== 'function') {
+            clearProgress();
+            randomTrack();
+            return;
+        }
+
+        const cs = getComputedStyle(target);
+        const out = target.animate(
+            [{ transform: cs.transform, opacity: cs.opacity },
+             { transform: 'translateX(-55%)', opacity: 0 }],
+            { duration: 170, easing: 'cubic-bezier(.4, 0, 1, 1)', fill: 'forwards' }
+        );
+
+        // The song must change even if the animation never finishes (backgrounded tab,
+        // stalled compositor) — the swap is guaranteed, the animation only decorates it.
+        let swapped = false;
+        const swap = () => {
+            if (swapped) return;
+            swapped = true;
+            clearProgress();
+            randomTrack();
+            try { out.cancel(); } catch (e) { /* already gone */ }
+            target.animate(
+                [{ transform: 'translateX(45%)', opacity: 0 },
+                 { transform: 'translateX(0)', opacity: 1 }],
+                { duration: 240, easing: 'cubic-bezier(0, .55, .25, 1)' }
+            );
+        };
+        out.finished.then(swap, swap);
+        window.setTimeout(swap, 220);
+    }
+
     function handleTouchStart(e) {
-        // Early exit conditions
         if (window.visualViewport?.scale !== 1) return;
-        if (target.scrollWidth - window.innerWidth > scrollThreshold) return;
         if (e.touches.length > 1) return;
 
         const touch = e.touches[0];
-        touchData = {
-            startX: touch.clientX,
-            startY: touch.clientY,
-            currentX: touch.clientX,
-            currentY: touch.clientY,
-            moved: false,
-            prevented: false
-        };
+        touchData = { startX: touch.clientX, startY: touch.clientY, dx: 0, dy: 0, claimed: false, armed: false };
     }
 
     function handleTouchMove(e) {
         if (!touchData) return;
+        if (e.touches.length > 1) {          // pinch started — hand the gesture back
+            if (touchData.claimed) springBack();
+            touchData = null;
+            return;
+        }
 
         const touch = e.touches[0];
-        touchData.currentX = touch.clientX;
-        touchData.currentY = touch.clientY;
+        const dx = touch.clientX - touchData.startX;
+        const dy = touch.clientY - touchData.startY;
+        touchData.dx = dx;
+        touchData.dy = dy;
 
-        const dx = touchData.currentX - touchData.startX;
-        const dy = touchData.currentY - touchData.startY;
-        const absX = Math.abs(dx);
-        const absY = Math.abs(dy);
-
-        // Mark as moved if we've exceeded the initial threshold
-        if (!touchData.moved && (absX > 10 || absY > 10)) {
-            touchData.moved = true;
-        }
-
-        // Update CSS custom property for left swipes
-        if (dx < 0 && absX > absY) {
-            document.body.style.setProperty('--random-progress', absX);
-
-            if (absX > threshold) {
-                document.body.classList.add('random-ready');
+        // Lock the axis once, on the first meaningful movement: either this is our
+        // swipe, or it's a scroll and we stay out of it for the rest of the touch.
+        if (!touchData.claimed) {
+            if (Math.abs(dx) < directionLock && Math.abs(dy) < directionLock) return;
+            if (Math.abs(dx) > Math.abs(dy) && dx < 0 && atScrollEnd()) {
+                touchData.claimed = true;
             } else {
-                document.body.classList.remove('random-ready');
+                touchData = null;
+                return;
             }
         }
 
-        // This is likely a left swipe, prevent default scrolling
-        if (touchData.moved && !touchData.prevented) {
-            if (absX > absY && dx < 0) {
-                e.preventDefault();
-                touchData.prevented = true;
-            }
-        }
+        e.preventDefault();
+        document.body.style.setProperty('--random-progress', Math.max(0, -dx));
+
+        // Arming needs a clean horizontal pull, but once armed only pulling back
+        // out of the threshold disarms it — drifting down afterwards is still a swipe.
+        const past = dx <= -threshold;
+        touchData.armed = touchData.armed ? past : (past && qualifies(dx, dy));
+        document.body.classList.toggle('random-ready', touchData.armed);
     }
 
-    function handleTouchEnd(e) {
+    function handleTouchEnd() {
         if (!touchData) return;
-
-        const dx = touchData.currentX - touchData.startX;
-        const dy = touchData.currentY - touchData.startY;
-        const absX = Math.abs(dx);
-        const absY = Math.abs(dy);
-
-        // Check if this qualifies as a left swipe
-        if (absX >= threshold && 
-            absX > absY && 
-            dx < 0 && 
-            absY <= maxVerticalMovement) {
-            try {
-                randomTrack();
-            } catch (error) {
-                console.error('Error calling randomTrack:', error);
-            }
-        }
-
-        // Clean up CSS property and touch data
-        document.body.style.removeProperty('--random-progress');
+        const { claimed, armed } = touchData;
         touchData = null;
+        if (!claimed) return;
+
+        if (armed) fire();
+        else springBack();
     }
 
-    function handleTouchCancel(e) {
-        document.body.style.removeProperty('--random-progress');
+    function handleTouchCancel() {
+        if (!touchData) return;
+        const claimed = touchData.claimed;
         touchData = null;
+        if (claimed) springBack();
+        else clearProgress();
     }
 
     target.addEventListener('touchstart', handleTouchStart, { passive: true });
@@ -1075,7 +1240,7 @@ function swipeLeftRandom(selector, options = {}) {
         target.removeEventListener('touchmove', handleTouchMove);
         target.removeEventListener('touchend', handleTouchEnd);
         target.removeEventListener('touchcancel', handleTouchCancel);
-        document.body.classList.remove('random-ready');
+        clearProgress();
     };
 }
 

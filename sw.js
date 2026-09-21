@@ -2,13 +2,15 @@
 // - App shell + chords.xml: network-first, so updates land as soon as they're online,
 //   with the cache as an offline fallback.
 // - Covers, font, icons: cache-first, they practically never change.
-const CACHE = 'scherbakkordy-v1';
+const CACHE = 'scherbakkordy-v3';
 
 const APP_SHELL = [
     './',
+    './others.html',
     './js.js',
     './style.css',
     './chords.xml',
+    './chords-others.xml',
     './FiraCode-VF.woff2',
     './favicon.svg',
     './day-night-icon.svg',
@@ -41,8 +43,12 @@ self.addEventListener('fetch', event => {
     if (url.origin !== location.origin) return;
 
     // Song permalinks (/songs/…) are client-side routes — every navigation
-    // is served by the same app shell, cached under './'.
-    const cacheKey = request.mode === 'navigate' ? './' : request;
+    // is served by its page's app shell: others.html for the others page,
+    // './' for everything else.
+    let cacheKey = request;
+    if (request.mode === 'navigate') {
+        cacheKey = url.pathname.endsWith('/others.html') ? './others.html' : './';
+    }
 
     if (CACHE_FIRST.test(url.pathname)) {
         event.respondWith(cacheFirst(request));
@@ -64,7 +70,10 @@ async function cacheFirst(request) {
 async function networkFirst(request, cacheKey) {
     const cache = await caches.open(CACHE);
     try {
-        const fresh = await fetch(request);
+        // 'no-cache' means revalidate, not "skip the cache": the server answers 304
+        // when nothing changed, so a deploy always lands on the next reload while
+        // an unchanged chords.xml still costs almost nothing.
+        const fresh = await fetch(request, { cache: 'no-cache' });
         if (fresh.ok) cache.put(cacheKey, fresh.clone());
         return fresh;
     } catch (err) {

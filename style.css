@@ -167,6 +167,21 @@ p {
   margin-right: 0.8em;
 }
 
+.randomTrackBtn {
+  color: var(--link);
+  cursor: pointer;
+  font-variation-settings: "wght" 200;
+}
+
+/* standalone (others page): not wrapped in the sorting toggler, needs its own gap */
+.page_title > .randomTrackBtn {
+  margin-right: 0.8em;
+}
+
+.randomTrackBtn:hover {
+  color: var(--link-hover);
+}
+
 .sorting_toggler span:not(.active),
 body.searching .sorting_toggler span {
   color: var(--link);
@@ -240,6 +255,12 @@ body.searching .abc_index {
 .footer {
   margin-top: 80px;
   margin-bottom: -40px;
+
+  a {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    text-underline-offset: .15em;
+  }
 }
 
 /* SEARCH */
@@ -419,14 +440,25 @@ body.modal-lock .random-indicator {
   display: none;
   position: fixed;
   inset: 0;
-  background-color: rgba(var(--bg-rgb), 0.65);
   overflow: auto;
+}
+
+/* The tint and the filter live on their own non-scrolling layer. iOS Safari
+   renders backdrop-filter black when it sits on the scroll container itself,
+   so .modal must scroll and this must do the filtering — never both at once. */
+.modal::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: rgba(var(--bg-rgb), 0.65);
   backdrop-filter: grayscale(1) contrast(0.25);
   -webkit-backdrop-filter: grayscale(1) contrast(0.25);
+  pointer-events: none;
 }
 
 .modal-content {
   position: relative;
+  z-index: 1;          /* above the .modal::before tint layer */
   display: block;
   width: 90vw;
   max-width: 80em;
@@ -439,6 +471,9 @@ body.modal-lock .random-indicator {
   
   opacity: clamp(.5, calc(1 - (var(--random-progress) * .005)), 1);
   /* transform: translateX(clamp(-25px, calc(var(--random-progress) * -.25px), 0px)); */
+  /* Keep this a plain 2D transform: promoting the card to its own compositing layer
+     (translate3d / will-change / backface-visibility) makes Safari render the parent's
+     backdrop-filter opaque on scrollable songs. */
   transform: translateX(min(calc(var(--random-progress) * -.25px), 0px));
 }
 
@@ -468,6 +503,15 @@ body.modal-lock .random-indicator {
   syntax: "<number>";
   inherits: true;
   initial-value: 0;
+}
+
+/* Only while the finger is off: during the drag the card must track it 1:1.
+   Duration is mirrored by releaseTime in swipeLeftRandom(). */
+body.random-releasing .modal-content,
+body.random-releasing .random-indicator {
+  transition:
+    transform 0.26s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 0.26s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .random-indicator {
@@ -579,7 +623,8 @@ body.modal-lock > :not(.modal) {
   color: inherit;
 }
 
-.modal-content .album a::before {
+.modal-content .album a::before,
+.modal-content .album span::before {
   content: "◉";
   position: relative;
   font-size: 1.5em;
@@ -588,7 +633,8 @@ body.modal-lock > :not(.modal) {
   bottom: -0.5px;
 }
 
-.modal-content .album a:not(:hover)::before {
+.modal-content .album a:not(:hover)::before,
+.modal-content .album span::before {
   color: var(--icon-gray);
 }
 
@@ -622,7 +668,7 @@ body.modal-lock > :not(.modal) {
 }
 
 #scroll-border {
-  position: fixed;
+  position: absolute;
   height: 100dvh;
   width: 100%;
   opacity: 0;
